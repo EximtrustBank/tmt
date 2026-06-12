@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Turkmen New Manat (TMT) — официальный сайт токена на Solana</title>
-    <meta name="description" content="Официальный сайт Turkmen New Manat (TMT) — цифрового токена на блокчейне Solana (Token-2022). Контракт: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2">
+    <title>Turkmen New Manat (TMT) — Official Token on Solana</title>
+    <meta name="description" content="Official website of Turkmen New Manat (TMT) — digital token on Solana blockchain (Token-2022). Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2">
     <meta property="og:title" content="Turkmen New Manat (TMT)">
-    <meta property="og:description" content="Цифровой токен на Solana (Token-2022). Decimals: 5. Total Supply: 100,000,000,000,000">
+    <meta property="og:description" content="Digital token on Solana (Token-2022). Decimals: 5. Total Supply: 100,000,000,000,000">
     <meta property="og:image" content="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png">
     <meta property="og:url" content="https://eximtrustbank.github.io/tmt/">
     <meta property="og:type" content="website">
@@ -29,6 +29,38 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            gap: 0.5rem;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: #ffd700;
+            color: #0a2e1c;
+        }
+        .lang-btn:hover:not(.active) {
+            background: rgba(255,215,0,0.3);
         }
 
         /* Header */
@@ -161,6 +193,28 @@
             opacity: 0.9;
         }
 
+        .exchange-methods, .card-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .method-item {
+            background: rgba(0,0,0,0.3);
+            border-radius: 16px;
+            padding: 0.8rem 1.2rem;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .barclays {
+            background: linear-gradient(135deg, #003399, #001a66);
+            border: 1px solid #ffd700;
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -190,14 +244,12 @@
             text-decoration: underline;
         }
 
-        button, a {
-            transition: all 0.2s;
-        }
-
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             .container { padding: 1rem; }
             .card { padding: 1.2rem; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.8rem; }
         }
 
         .warning {
@@ -207,9 +259,18 @@
             border-radius: 12px;
             font-size: 0.85rem;
         }
+
+        .history-text {
+            text-align: justify;
+        }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
+
     <div class="container">
         <!-- Header -->
         <div class="header">
@@ -217,18 +278,18 @@
                 <img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="Turkmen New Manat Logo">
             </div>
             <h1>Turkmen New Manat</h1>
-            <div class="badge">$TMT · Token-2022 на Solana</div>
+            <div class="badge">$TMT · Token-2022 on Solana</div>
         </div>
 
         <!-- Contract card -->
         <div class="card">
-            <h2>📜 Смарт-контракт (Mint ID)</h2>
+            <h2 data-en="📜 Smart Contract (Mint ID)" data-ru="📜 Смарт-контракт (Mint ID)">📜 Smart Contract (Mint ID)</h2>
             <div class="contract-box">
                 <span class="contract-address" id="contractAddress">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</span>
-                <button class="btn-copy" onclick="copyAddress()">📋 Копировать</button>
+                <button class="btn-copy" onclick="copyAddress()" data-en="📋 Copy" data-ru="📋 Копировать">📋 Copy</button>
             </div>
             <p style="margin-top: 0.8rem; font-size:0.9rem;">
-                🔗 <a href="https://solscan.io/token/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#ffd700;">Открыть в Solscan →</a>
+                🔗 <a href="https://solscan.io/token/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#ffd700;">Open in Solscan →</a>
             </p>
         </div>
 
@@ -236,71 +297,109 @@
         <div class="grid-2">
             <div class="stat">
                 <div class="stat-number">Token-2022</div>
-                <div class="stat-label">Программа</div>
+                <div class="stat-label" data-en="Program" data-ru="Программа">Program</div>
             </div>
             <div class="stat">
                 <div class="stat-number">5</div>
-                <div class="stat-label">Decimals</div>
+                <div class="stat-label" data-en="Decimals" data-ru="Decimals">Decimals</div>
             </div>
             <div class="stat">
                 <div class="stat-number">100,000,000,000,000</div>
-                <div class="stat-label">Total Supply (10¹⁴ TMT)</div>
+                <div class="stat-label" data-en="Total Supply (10¹⁴ TMT)" data-ru="Total Supply (10¹⁴ TMT)">Total Supply (10¹⁴ TMT)</div>
             </div>
             <div class="stat">
-                <div class="stat-number">🔒 Навсегда</div>
-                <div class="stat-label">Mint Authority Revoked</div>
+                <div class="stat-number">🔒 Forever</div>
+                <div class="stat-label" data-en="Mint Authority Revoked" data-ru="Mint Authority Revoked">Mint Authority Revoked</div>
             </div>
         </div>
 
-        <!-- Description -->
+        <!-- History from Wikipedia -->
         <div class="card">
-            <h2>🇹🇲 О проекте</h2>
-            <p><strong>Turkmen New Manat (TMT)</strong> — это цифровой токен на блокчейне Solana, созданный по передовому стандарту <strong>Token-2022</strong>. Проект представляет собой крипто-версию обновлённого национального маната Туркменистана, оптимизированную для децентрализованных финансов (DeFi).</p>
-            <p style="margin-top: 1rem;">✔️ <strong>Высокая точность:</strong> 5 знаков после запятой для микротранзакций.<br>
-            ✔️ <strong>Фиксированная эмиссия:</strong> 100 триллионов токенов, эмиссия полностью остановлена.<br>
-            ✔️ <strong>Технологичность:</strong> Поддержка конфиденциальных переводов, расширенных метаданных и мемо-полей.</p>
+            <h2 data-en="📜 History of Turkmen Manat" data-ru="📜 История туркменского маната">📜 History of Turkmen Manat</h2>
+            <div class="history-text">
+                <p data-en="The Turkmen manat was introduced on November 1, 1993, replacing the Soviet and Russian ruble at a rate of 500 RUR = 1 TMM. The manat consists of 100 tenge. The ISO 4217 code is TMT (previously TMM). On January 1, 2009, a new manat was introduced with a denomination of 5000 old manats = 1 new manat (TMT). The currency is issued by the Central Bank of Turkmenistan. In 2025, polymer banknotes of 1, 5, 10, and a new 200 manat note were issued, dedicated to the 30th anniversary of Turkmenistan's neutrality. The official dollar exchange rate has been artificially set at 3.5 TMT per USD since 2015, but the black market rate is more than 10 times higher (around 40 TMT per USD as of 2021)." 
+                data-ru="Туркменский манат был введён 1 ноября 1993 года, заменив советский и российский рубль по курсу 500 RUR = 1 TMM. Манат состоит из 100 тенге. Код ISO 4217 — TMT (ранее TMM). 1 января 2009 года был введён новый манат с деноминацией 5000 старых манатов = 1 новый манат (TMT). Эмитентом является Центральный банк Туркменистана. В 2025 году были выпущены полимерные банкноты номиналом 1, 5, 10 и новая банкнота 200 манатов, посвящённые 30-летию нейтралитета Туркменистана. Официальный курс доллара с 2015 года искусственно установлен на уровне 3,5 TMT за USD, однако курс на чёрном рынке более чем в 10 раз выше (около 40 TMT за USD по состоянию на 2021 год).">The Turkmen manat was introduced on November 1, 1993, replacing the Soviet and Russian ruble at a rate of 500 RUR = 1 TMM. The manat consists of 100 tenge. The ISO 4217 code is TMT (previously TMM). On January 1, 2009, a new manat was introduced with a denomination of 5000 old manats = 1 new manat (TMT). The currency is issued by the Central Bank of Turkmenistan. In 2025, polymer banknotes of 1, 5, 10, and a new 200 manat note were issued, dedicated to the 30th anniversary of Turkmenistan's neutrality. The official dollar exchange rate has been artificially set at 3.5 TMT per USD since 2015, but the black market rate is more than 10 times higher (around 40 TMT per USD as of 2021).</p>
+            </div>
         </div>
 
+        <!-- Exchange Information -->
         <div class="card">
-            <h2>🎯 Основные цели</h2>
+            <h2 data-en="💱 Exchange & Purchase TMT" data-ru="💱 Обмен и покупка TMT">💱 Exchange & Purchase TMT</h2>
+            <p data-en="You can buy, sell, or exchange TMT through the following methods:" data-ru="Вы можете купить, продать или обменять TMT следующими способами:"></p>
+            
+            <h3 style="margin: 1rem 0 0.5rem; color:#ffd700;" data-en="💳 Buy with Cards (Top 5)" data-ru="💳 Покупка по картам (Топ 5)">💳 Buy with Cards (Top 5)</h3>
+            <div class="card-list">
+                <div class="method-item">💳 Visa</div>
+                <div class="method-item">💳 Mastercard</div>
+                <div class="method-item">🇨🇳 UnionPay</div>
+                <div class="method-item">₿ Crypto Card (Binance/Bybit)</div>
+                <div class="method-item">🏦 Crypto.com Card</div>
+            </div>
+
+            <h3 style="margin: 1rem 0 0.5rem; color:#ffd700;" data-en="🏦 Exchange via Barclays (UK)" data-ru="🏦 Обмен через Barclays (Великобритания)">🏦 Exchange via Barclays (UK)</h3>
+            <div class="exchange-methods">
+                <div class="method-item barclays">
+                    <strong>Barclays Bank</strong><br>
+                    <span data-en="SWIFT: BARCGB22" data-ru="SWIFT: BARCGB22">SWIFT: BARCGB22</span><br>
+                    <span data-en="Account: Turkmen Manat Exchange" data-ru="Счёт: Turkmen Manat Exchange">Account: Turkmen Manat Exchange</span><br>
+                    <span data-en="Support: GBP ↔ TMT (OTC)" data-ru="Поддержка: GBP ↔ TMT (внебиржевой обмен)">Support: GBP ↔ TMT (OTC)</span>
+                </div>
+                <div class="method-item">
+                    <strong data-en="Crypto Exchanges" data-ru="Криптобиржи">Crypto Exchanges</strong><br>
+                    <span>Jupiter, Raydium, Orca</span><br>
+                    <span data-en="Pair: TMT/USDC, TMT/SOL" data-ru="Пары: TMT/USDC, TMT/SOL">Pair: TMT/USDC, TMT/SOL</span>
+                </div>
+                <div class="method-item">
+                    <strong data-en="P2P Platforms" data-ru="P2P платформы">P2P Platforms</strong><br>
+                    <span>Bybit P2P, Binance P2P</span><br>
+                    <span data-en="Payment: Bank transfers, cards" data-ru="Оплата: банковские переводы, карты">Payment: Bank transfers, cards</span>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-size:0.9rem;">⚠️ <span data-en="For large OTC trades via Barclays, contact the official exchange desk." data-ru="Для крупных внебиржевых сделок через Barclays обращайтесь в официальный обменный пункт.">For large OTC trades via Barclays, contact the official exchange desk.</span></p>
+        </div>
+
+        <!-- Token Features -->
+        <div class="card">
+            <h2 data-en="⚙️ Token Features (Token-2022)" data-ru="⚙️ Особенности токена (Token-2022)">⚙️ Token Features (Token-2022)</h2>
             <ul style="margin-left: 1.5rem;">
-                <li>Служить ликвидным региональным активом в DeFi-пулах на Solana.</li>
-                <li>Обеспечивать быстрые и дешёвые международные переводы (комиссия ~$0.00025).</li>
-                <li>Предоставить сообществу инструмент для хеджирования и сбережений.</li>
+                <li data-en="Confidential transfers (privacy feature)" data-ru="Конфиденциальные переводы (функция приватности)">Confidential transfers (privacy feature)</li>
+                <li data-en="Extended metadata (on-chain)" data-ru="Расширенные метаданные (on-chain)">Extended metadata (on-chain)</li>
+                <li data-en="Memo field for compliance" data-ru="Поле memo для соответствия требованиям">Memo field for compliance</li>
+                <li data-en="Permanent supply (no minting possible)" data-ru="Постоянное предложение (дополнительная эмиссия невозможна)">Permanent supply (no minting possible)</li>
             </ul>
         </div>
 
+        <!-- Goals -->
         <div class="card">
-            <h2>📊 Технические детали</h2>
+            <h2 data-en="🎯 Goals" data-ru="🎯 Цели">🎯 Goals</h2>
             <ul style="margin-left: 1.5rem;">
-                <li><strong>Блокчейн:</strong> Solana (~65 000 TPS)</li>
-                <li><strong>Стандарт:</strong> Token-2022</li>
-                <li><strong>Mint ID:</strong> Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</li>
-                <li><strong>Десятичных знаков:</strong> 5</li>
-                <li><strong>Общее предложение:</strong> 100,000,000,000,000 TMT (фиксировано)</li>
-                <li><strong>Администратор минта:</strong> Отключён (токен не может быть дополнительно эмитирован)</li>
+                <li data-en="Provide a liquid regional asset in DeFi pools on Solana" data-ru="Обеспечить ликвидный региональный актив в DeFi-пулах на Solana">Provide a liquid regional asset in DeFi pools on Solana</li>
+                <li data-en="Enable fast and cheap international transfers (~$0.00025 fee)" data-ru="Обеспечить быстрые и дешёвые международные переводы (комиссия ~$0.00025)">Enable fast and cheap international transfers (~$0.00025 fee)</li>
+                <li data-en="Offer a hedging tool and store of value" data-ru="Предложить инструмент для хеджирования и сбережений">Offer a hedging tool and store of value</li>
             </ul>
         </div>
 
         <!-- Official links -->
         <div class="card">
-            <h2>🔗 Официальные ссылки</h2>
+            <h2 data-en="🔗 Official Links" data-ru="🔗 Официальные ссылки">🔗 Official Links</h2>
             <div class="links">
                 <a href="https://github.com/EximtrustBank/tmt" target="_blank">GitHub</a>
                 <a href="https://solscan.io/token/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank">Solscan</a>
                 <a href="https://explorer.solana.com/address/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank">Solana Explorer</a>
-                <a href="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" target="_blank">Логотип (PNG)</a>
             </div>
         </div>
 
         <!-- Disclaimer -->
         <div class="warning">
-            ⚠️ <strong>Важное предупреждение:</strong> TMT — это экспериментальный крипто-актив, созданный энтузиастами для тестирования технологии Token-2022. <strong>Он не является официальной цифровой валютой Центрального банка Туркменистана (CBDC).</strong> Все операции с токеном осуществляются на собственный риск.
+            ⚠️ <strong data-en="Important Notice:" data-ru="Важное предупреждение:">Important Notice:</strong> 
+            <span data-en="TMT is an experimental crypto asset created by enthusiasts for testing Token-2022 technology. It is NOT an official CBDK of the Central Bank of Turkmenistan. All transactions are at your own risk." 
+                  data-ru="TMT — это экспериментальный крипто-актив, созданный энтузиастами для тестирования технологии Token-2022. Он НЕ является официальной цифровой валютой Центрального банка Туркменистана. Все операции осуществляются на собственный риск.">
+            TMT is an experimental crypto asset created by enthusiasts for testing Token-2022 technology. It is NOT an official CBDC of the Central Bank of Turkmenistan. All transactions are at your own risk.</span>
         </div>
 
         <div class="footer">
-            © 2025 Turkmen New Manat (TMT) — децентрализованный токен на Solana.<br>
-            Контракт: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+            © 2025 Turkmen New Manat (TMT) — decentralized token on Solana.<br>
+            Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
         </div>
     </div>
 
@@ -310,14 +409,50 @@
             navigator.clipboard.writeText(address).then(() => {
                 const btn = document.querySelector('.btn-copy');
                 const originalText = btn.innerText;
-                btn.innerText = '✅ Скопировано!';
+                btn.innerText = (originalText.includes('Copy') ? '✅ Copied!' : '✅ Скопировано!');
                 setTimeout(() => {
                     btn.innerText = originalText;
                 }, 2000);
             }).catch(() => {
-                alert('Не удалось скопировать адрес');
+                alert('Failed to copy address');
             });
         }
+
+        // Language switcher
+        const langBtns = document.querySelectorAll('.lang-btn');
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-en][data-ru]').forEach(el => {
+                if (lang === 'en') {
+                    el.innerText = el.getAttribute('data-en');
+                } else {
+                    el.innerText = el.getAttribute('data-ru');
+                }
+            });
+            // Update active button style
+            langBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            // Update page language attribute
+            document.documentElement.lang = (lang === 'en') ? 'en' : 'ru';
+            document.title = (lang === 'en') ? 'Turkmen New Manat (TMT) — Official Token on Solana' : 'Turkmen New Manat (TMT) — официальный сайт токена на Solana';
+        }
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        // Set default English
+        setLanguage('en');
     </script>
 </body>
 </html>
