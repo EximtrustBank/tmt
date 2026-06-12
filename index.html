@@ -93,6 +93,7 @@
         }
         .card:hover { transform: translateY(-3px); }
         .card h2 { color: #ffd700; margin-bottom: 1rem; font-size: 1.4rem; border-left: 4px solid #ffd700; padding-left: 1rem; }
+        .card h3 { color: #ffec80; margin: 1rem 0 0.5rem; font-size: 1.2rem; }
 
         .contract-box {
             background: rgba(0,0,0,0.4);
@@ -215,6 +216,7 @@
             .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
             h1 { font-size: 1.8rem; }
             .price-big { font-size: 1.6rem; }
+            .btn-buy, .btn-sell { padding: 0.5rem 1rem; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -277,7 +279,7 @@
                 <a href="https://simpleswap.io/buy-token?theme=dark&fixed=USD&ticker=TMT&contract=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="payment-btn">💳 Visa / Mastercard</a>
                 <a href="https://simpleswap.io/buy-token?theme=dark&fixed=USD&ticker=TMT&contract=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="payment-btn">🇨🇳 UnionPay</a>
                 <a href="https://www.binance.com/en/buy-sell-crypto" target="_blank" class="payment-btn">₿ Binance Card</a>
-                <a href="="https://www.bybit.com/fiat/trade/usdt/TWD" target="_blank" class="payment-btn">🏦 Bybit Card</a>
+                <a href="https://www.bybit.com/fiat/trade/usdt/TWD" target="_blank" class="payment-btn">🏦 Bybit Card</a>
                 <a href="https://crypto.com/exchange" target="_blank" class="payment-btn">💎 Crypto.com Card</a>
             </div>
             
@@ -293,12 +295,13 @@
             <p style="margin-top:1rem; font-size:0.8rem; text-align:center;">📞 For OTC trades >$10k: <a href="mailto:otc@eximtrustbank.io" style="color:#ffd700;">otc@eximtrustbank.io</a> or Telegram: <a href="https://t.me/eximtrustbank" style="color:#ffd700;">@eximtrustbank</a></p>
         </div>
 
-        <!-- Premium Functions -->
+        <!-- Premium Functions with REAL prices -->
         <div class="card">
             <h2 data-en="✨ Premium Functions" data-ru="✨ Премиум-функции" data-ar="✨ وظائف متميزة" data-fa="✨ قابلیت‌های ویژه" data-zh="✨ 高级功能">✨ Premium Functions</h2>
             <div class="grid-3">
-                <div class="function-item"><div class="function-icon">🥇</div><div data-en="Buy Gold" data-ru="Купить золото" data-ar="شراء الذهب" data-fa="خرید طلا" data-zh="购买黄金">Buy Gold</div><small>1 oz ≈ 18,500 TMT</small></div>
-                <div class="function-item"><div class="function-icon">🥈</div><div data-en="Buy Silver" data-ru="Купить серебро" data-ar="شراء الفضة" data-fa="خرید نقره" data-zh="购买白银">Buy Silver</div><small>1 oz ≈ 220 TMT</small></div>
+                <div class="function-item"><div class="function-icon">🥇</div><div data-en="Buy Gold" data-ru="Купить золото" data-ar="شراء الذهب" data-fa="خرید طلا" data-zh="购买黄金">Buy Gold</div><small>1 oz ≈ 85,650 TMT | $4,200</small></div>
+                <div class="function-item"><div class="function-icon">🥈</div><div data-en="Buy Silver" data-ru="Купить серебро" data-ar="شراء الفضة" data-fa="خرید نقره" data-zh="购买白银">Buy Silver</div><small>1 oz ≈ 1,375 TMT | $67.50</small></div>
+                <div class="function-item"><div class="function-icon">🔷</div><div data-en="Buy Platinum" data-ru="Купить платину" data-ar="شراء البلاتين" data-fa="خرید پلاتین" data-zh="购买铂金">Buy Platinum</div><small>1 oz ≈ 28,550 TMT | $1,400</small></div>
                 <div class="function-item"><div class="function-icon">💰</div><div data-en="Staking (8-15% APY)" data-ru="Стейкинг" data-ar="تجميد" data-fa="استیکینگ" data-zh="质押">Staking</div><small>8-15% APY</small></div>
                 <div class="function-item"><div class="function-icon">🌉</div><div data-en="Bridge to 10+ Chains" data-ru="Бридж" data-ar="جسر" data-fa="پل" data-zh="跨链桥">Bridge</div><small>Solana ↔ ETH ↔ BSC</small></div>
                 <div class="function-item"><div class="function-icon">🌾</div><div data-en="Yield Farming" data-ru="Фарминг" data-ar="الزراعة" data-fa="فارمینگ" data-zh="流动性挖矿">Yield Farming</div><small>TMT/USDC</small></div>
@@ -310,12 +313,12 @@
 
         <div class="warning">
             ⚠️ <strong data-en="Disclaimer" data-ru="Отказ от ответственности" data-ar="إخلاء مسؤولية" data-fa="سلب مسئولیت" data-zh="免责声明">Disclaimer:</strong> 
-            <span data-en="TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk."
-                  data-ru="TMT — экспериментальный актив. НЕ является официальной CBDC Туркменистана."
-                  data-ar="TMT هو أصل تجريبي. ليس عملة رقمية رسمية لتركمانستان."
-                  data-fa="TMT یک دارایی آزمایشی است. ارز دیجیتال رسمی ترکمنستان نیست."
-                  data-zh="TMT 是一个实验性加密资产。不是土库曼斯坦的官方 CBDC。所有投资都有风险。">
-            TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk.</span>
+            <span data-en="TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk. Precious metal prices are calculated at TMT/USD = 0.04904."
+                  data-ru="TMT — экспериментальный актив. НЕ является официальной CBDC Туркменистана. Цены на драгметаллы рассчитаны по курсу TMT/USD = 0.04904."
+                  data-ar="TMT هو أصل تجريبي. ليس عملة رقمية رسمية لتركمانستان. أسعار المعادن الثمينة محسوبة بسعر TMT/USD = 0.04904."
+                  data-fa="TMT یک دارایی آزمایشی است. ارز دیجیتال رسمی ترکمنستان نیست. قیمت فلزات گرانبها بر اساس نرخ TMT/USD = 0.04904 محاسبه شده است."
+                  data-zh="TMT 是一个实验性加密资产。不是土库曼斯坦的官方 CBDC。贵金属价格按 TMT/USD = 0.04904 计算。">
+            TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk. Precious metal prices are calculated at TMT/USD = 0.04904.</span>
         </div>
 
         <div class="footer">
