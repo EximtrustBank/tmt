@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Turkmen New Manat (TMT) — Official Token on Solana</title>
-    <meta name="description" content="Official website of Turkmen New Manat (TMT) — digital token on Solana (Token-2022). Live price: $0.04904. Total Supply: 100T. Buy with Visa, Mastercard, UnionPay, Crypto Card, Barclays OTC.">
-    <meta property="og:title" content="Turkmen New Manat (TMT) — Live on Meteora">
-    <meta property="og:description" content="Market Cap: $4.9T. Liquidity: $244B. Buy TMT with card or OTC.">
+    <meta name="description" content="Official website of Turkmen New Manat (TMT) — digital token on Solana (Token-2022). Live price: $0.04904. Total Supply: 100T. Buy with Visa, Mastercard, UnionPay, Crypto Card, Barclays OTC, Jupiter, Raydium, Orca, Meteora, Phoenix.">
+    <meta property="og:title" content="Turkmen New Manat (TMT) — 19+ Premium Functions">
+    <meta property="og:description" content="Market Cap: $4.9T. Liquidity: $244B. Buy TMT, Gold, Silver, Platinum. Staking, Lending, Bridging, Debit Card, Insurance and more.">
     <meta property="og:image" content="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png">
     <meta property="og:url" content="https://eximtrustbank.github.io/tmt/">
     <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
@@ -162,7 +162,7 @@
         .btn-sell { background: #dc143c; color: white; }
         .btn-buy:hover, .btn-sell:hover { transform: scale(1.02); opacity: 0.9; }
 
-        .grid-3 {
+        .grid-4 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
@@ -173,16 +173,18 @@
             border-radius: 16px;
             padding: 1rem;
             text-align: center;
+            transition: all 0.2s;
         }
+        .function-item:hover { transform: scale(1.02); background: rgba(0,0,0,0.6); }
         .function-icon { font-size: 2rem; margin-bottom: 0.3rem; }
 
-        .payment-grid {
+        .payment-grid, .dex-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 0.8rem;
             margin: 1rem 0;
         }
-        .payment-btn {
+        .payment-btn, .dex-btn {
             background: rgba(0,0,0,0.5);
             border: 1px solid rgba(255,215,0,0.3);
             border-radius: 40px;
@@ -194,7 +196,7 @@
             transition: 0.2s;
             display: block;
         }
-        .payment-btn:hover { background: rgba(255,215,0,0.3); transform: scale(1.02); }
+        .payment-btn:hover, .dex-btn:hover { background: rgba(255,215,0,0.3); transform: scale(1.02); }
 
         .warning {
             background: rgba(255,100,100,0.2);
@@ -233,7 +235,7 @@
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT Logo"></div>
             <h1>Turkmen New Manat</h1>
-            <div class="badge">$TMT · Token-2022 on Solana · Live on Meteora</div>
+            <div class="badge">$TMT · Token-2022 on Solana · 19+ Premium Functions</div>
         </div>
 
         <!-- Contract -->
@@ -255,10 +257,6 @@
                 <div class="stat-card"><div class="stat-number">$244.82B</div><div class="stat-label" data-en="Liquidity" data-ru="Ликвидность" data-ar="سيولة" data-fa="نقدینگی" data-zh="流动性">Liquidity</div></div>
                 <div class="stat-card"><div class="stat-number">100,000,000,000,000</div><div class="stat-label" data-en="Total Supply" data-ru="Общее предложение" data-ar="العرض الكلي" data-fa="کل عرضه" data-zh="总供应量">Total Supply</div></div>
             </div>
-            <div class="btn-group">
-                <a href="https://www.geckoterminal.com/solana/pools/D1eKXrnmTMH4YpN94CTdpKooW69YAUZT24UXiLQx4dp1" target="_blank" class="btn-buy" data-en="Buy / Swap on GeckoTerminal" data-ru="Купить / Обменять" data-ar="شراء / مبادلة" data-fa="خرید / مبادله" data-zh="在 GeckoTerminal 购买/兑换">Buy / Swap on GeckoTerminal</a>
-                <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="btn-sell" data-en="Swap on Raydium" data-ru="Обменять на Raydium" data-ar="مبادلة على Raydium" data-fa="مبادله در Raydium" data-zh="在 Raydium 上兑换">Swap on Raydium</a>
-            </div>
         </div>
 
         <!-- History -->
@@ -266,15 +264,37 @@
             <h2 data-en="📜 History of Turkmen Manat" data-ru="📜 История туркменского маната" data-ar="📜 تاريخ المانات التركماني" data-fa="📜 تاریخ منات ترکمنستان" data-zh="📜 土库曼马纳特历史">📜 History</h2>
             <p data-en="Introduced Nov 1, 1993, replacing Soviet ruble (500 RUR = 1 TMM). On Jan 1, 2009, new manat (TMT) launched with 5000:1 denomination. In 2025, polymer notes (1,5,10,200 manat) issued for 30th neutrality anniversary. Official USD rate fixed at 3.5 TMT since 2015, but black market rate ~40 TMT/USD." 
                data-ru="Введён 1 ноября 1993 года, заменив советский рубль (500 RUR = 1 TMM). 1 января 2009 года деноминация 5000:1 — новый манат (TMT). В 2025 году выпущены полимерные банкноты к 30-летию нейтралитета. Официальный курс USD — 3.5 TMT, чёрный рынок — ~40 TMT/USD."
-               data-ar="تم إطلاقه في 1 نوفمبر 1993. في 1 يناير 2009، تم إطلاق المانات الجديد (TMT). في 2025، تم إصدار أوراق بوليمر بمناسبة الذكرى الثلاثين للحياد. سعر الصرف الرسمي 3.5 TMT للدولار، بينما السوق السوداء ~40 TMT/USD."
-               data-fa="در تاریخ ۱ نوامبر ۱۹۹۳ معرفی شد. در ۱ ژانویه ۲۰۰۹، منات جدید (TMT) عرضه شد. در ۲۰۲۵، اسکناس‌های پلیمری منتشر شد. نرخ رسمی دلار ۳.۵ TMT، نرخ بازار سیاه ~۴۰ TMT/USD."
-               data-zh="1993年11月1日推出，取代苏联卢布（500 RUR = 1 TMM）。2009年1月1日，新马纳特（TMT）以5000:1的面额推出。2025年，为纪念中立30周年发行了聚合物钞票。自2015年起官方美元汇率固定在3.5 TMT，但黑市汇率约为40 TMT/USD。">
+               data-ar="تم إطلاقه في 1 نوفمبر 1993. في 1 يناير 2009، تم إطلاق المانات الجديد (TMT). في 2025، تم إصدار أوراق بوليمر بمناسبة الذكرى الثلاثين للحياد."
+               data-fa="در تاریخ ۱ نوامبر ۱۹۹۳ معرفی شد. در ۱ ژانویه ۲۰۰۹، منات جدید (TMT) عرضه شد."
+               data-zh="1993年11月1日推出，取代苏联卢布。2009年1月1日，新马纳特（TMT）推出。">
             </p>
         </div>
 
-        <!-- Payment Methods - ALL WORKING LINKS -->
+        <!-- ============ NEW EXCHANGE PATHS ============ -->
         <div class="card">
-            <h2 data-en="💳 Buy TMT with Card / Bank" data-ru="💳 Купить TMT картой / банк" data-ar="💳 شراء TMT بالبطاقة / البنك" data-fa="💳 خرید TMT با کارت / بانک" data-zh="💳 用银行卡/银行购买 TMT">💳 Buy TMT</h2>
+            <h2 data-en="🔄 Swap TMT on DEXes (Solana)" data-ru="🔄 Обмен TMT на DEX (Solana)" data-ar="🔄 مبادلة TMT في البورصات اللامركزية" data-fa="🔄 مبادله TMT در صرافی‌های غیرمتمرکز" data-zh="🔄 在去中心化交易所交易 TMT">🔄 Swap TMT on DEXes</h2>
+            <div class="dex-grid">
+                <a href="https://jup.ag/swap/SOL-TMT" target="_blank" class="dex-btn">🌀 Jupiter (Aggregator) — Best Price</a>
+                <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="dex-btn">⚡ Raydium — Deepest Liquidity</a>
+                <a href="https://www.orca.so/swap" target="_blank" class="dex-btn">🐡 Orca — User Friendly</a>
+                <a href="https://app.meteora.ag/swap" target="_blank" class="dex-btn">🌊 Meteora — Dynamic AMM</a>
+                <a href="https://phoenix.trade/" target="_blank" class="dex-btn">📖 Phoenix — Order Book DEX</a>
+            </div>
+            
+            <h3 data-en="🌉 Cross-Chain Bridges" data-ru="🌉 Кросс-чейн бриджи" data-ar="🌉 جسور عبر السلاسل" data-fa="🌉 پل‌های زنجیره‌ای" data-zh="🌉 跨链桥">🌉 Cross-Chain Bridges</h3>
+            <div class="dex-grid">
+                <a href="https://wormholebridge.com/" target="_blank" class="dex-btn">🪄 Wormhole — Solana ↔ ETH/BSC</a>
+                <a href="https://www.portalbridge.com/" target="_blank" class="dex-btn">🚪 Portal Bridge — 20+ Chains</a>
+                <a href="https://debridge.finance/" target="_blank" class="dex-btn">🔗 deBridge — Solana ↔ EVM</a>
+            </div>
+
+            <h3 data-en="💱 OTC Desks (Large Trades $10k+)" data-ru="💱 Внебиржевые площадки (крупные сделки)" data-ar="💱 مكاتب خارج البورصة" data-fa="💱 میزهای OTC" data-zh="💱 场外交易平台">💱 OTC Desks</h3>
+            <div class="dex-grid">
+                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20via%20FinchTrade" class="payment-btn">🏦 FinchTrade — Swiss VASP (SEPA/SWIFT)</a>
+                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20via%201Konto" class="payment-btn">💳 1Konto — Multi-Currency (USD/EUR/GBP/AUD/MXN)</a>
+            </div>
+
+            <h3 data-en="💳 Fiat On/Off-Ramps (Cards & Banks)" data-ru="💳 Ввод/вывод фиата (карты и банки)" data-ar="💳 منصة الدخول/الخروج من العملات الورقية" data-fa="💳 درگاه فیات" data-zh="💳 法币出入金通道">💳 Fiat On/Off-Ramps</h3>
             <div class="payment-grid">
                 <a href="https://simpleswap.io/buy-token?theme=dark&fixed=USD&ticker=TMT&contract=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="payment-btn">💳 Visa / Mastercard</a>
                 <a href="https://simpleswap.io/buy-token?theme=dark&fixed=USD&ticker=TMT&contract=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="payment-btn">🇨🇳 UnionPay</a>
@@ -283,41 +303,84 @@
                 <a href="https://crypto.com/exchange" target="_blank" class="payment-btn">💎 Crypto.com Card</a>
             </div>
             
-            <h3 data-en="🏦 OTC & Bank Transfer" data-ru="🏦 Внебиржевой и банковский перевод" data-ar="🏦 خارج البورصة والتحويل البنكي" data-fa="🏦 فرابورس و حواله بانکی" data-zh="🏦 场外交易和银行转账">🏦 OTC & Bank Transfer</h3>
+            <h3 data-en="🏦 Bank Transfers (OTC)" data-ru="🏦 Банковские переводы (внебиржевые)" data-ar="🏦 التحويلات المصرفية" data-fa="🏦 حواله بانکی" data-zh="🏦 银行转账">🏦 Bank Transfers</h3>
             <div class="payment-grid">
-                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20via%20Barclays" class="payment-btn">🏦 Barclays (UK) — OTC</a>
-                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20USD" class="payment-btn">🇺🇸 USD (Wise/Revolut)</a>
-                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20EUR" class="payment-btn">🇪🇺 EUR (SEPA)</a>
-                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20GBP" class="payment-btn">🇬🇧 GBP (Faster Payments)</a>
+                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20via%20Barclays" class="payment-btn">🏦 Barclays (UK) — SWIFT: BARCGB22</a>
+                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20SEPA" class="payment-btn">🇪🇺 SEPA (EUR) — Instant</a>
+                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20FasterPayments" class="payment-btn">🇬🇧 Faster Payments (GBP)</a>
+                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20Wise" class="payment-btn">🌍 Wise / Revolut (USD/EUR/GBP)</a>
                 <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20AED" class="payment-btn">🇦🇪 AED (M2 Exchange)</a>
                 <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20TRY" class="payment-btn">🇹🇷 TRY (Papara)</a>
             </div>
             <p style="margin-top:1rem; font-size:0.8rem; text-align:center;">📞 For OTC trades >$10k: <a href="mailto:otc@eximtrustbank.io" style="color:#ffd700;">otc@eximtrustbank.io</a> or Telegram: <a href="https://t.me/eximtrustbank" style="color:#ffd700;">@eximtrustbank</a></p>
         </div>
 
-        <!-- Premium Functions with REAL prices -->
+        <!-- ============ 19 PREMIUM FUNCTIONS (9 original + 10 new) ============ -->
         <div class="card">
-            <h2 data-en="✨ Premium Functions" data-ru="✨ Премиум-функции" data-ar="✨ وظائف متميزة" data-fa="✨ قابلیت‌های ویژه" data-zh="✨ 高级功能">✨ Premium Functions</h2>
-            <div class="grid-3">
-                <div class="function-item"><div class="function-icon">🥇</div><div data-en="Buy Gold" data-ru="Купить золото" data-ar="شراء الذهب" data-fa="خرید طلا" data-zh="购买黄金">Buy Gold</div><small>1 oz ≈ 85,650 TMT | $4,200</small></div>
-                <div class="function-item"><div class="function-icon">🥈</div><div data-en="Buy Silver" data-ru="Купить серебро" data-ar="شراء الفضة" data-fa="خرید نقره" data-zh="购买白银">Buy Silver</div><small>1 oz ≈ 1,375 TMT | $67.50</small></div>
-                <div class="function-item"><div class="function-icon">🔷</div><div data-en="Buy Platinum" data-ru="Купить платину" data-ar="شراء البلاتين" data-fa="خرید پلاتین" data-zh="购买铂金">Buy Platinum</div><small>1 oz ≈ 28,550 TMT | $1,400</small></div>
-                <div class="function-item"><div class="function-icon">💰</div><div data-en="Staking (8-15% APY)" data-ru="Стейкинг" data-ar="تجميد" data-fa="استیکینگ" data-zh="质押">Staking</div><small>8-15% APY</small></div>
-                <div class="function-item"><div class="function-icon">🌉</div><div data-en="Bridge to 10+ Chains" data-ru="Бридж" data-ar="جسر" data-fa="پل" data-zh="跨链桥">Bridge</div><small>Solana ↔ ETH ↔ BSC</small></div>
-                <div class="function-item"><div class="function-icon">🌾</div><div data-en="Yield Farming" data-ru="Фарминг" data-ar="الزراعة" data-fa="فارمینگ" data-zh="流动性挖矿">Yield Farming</div><small>TMT/USDC</small></div>
-                <div class="function-item"><div class="function-icon">💳</div><div data-en="TMT Crypto Card" data-ru="Крипто-карта" data-ar="بطاقة مشفرة" data-fa="کارت ارزدیجیتال" data-zh="加密卡">Crypto Card</div><small>3% cashback</small></div>
-                <div class="function-item"><div class="function-icon">🏦</div><div data-en="Lending / Borrowing" data-ru="Кредитование" data-ar="إقراض" data-fa="وام" data-zh="借贷">Lending</div><small>Collateralized loans</small></div>
-                <div class="function-item"><div class="function-icon">🛡️</div><div data-en="Deposit Insurance" data-ru="Страхование" data-ar="تأمين الودائع" data-fa="بیمه سپرده" data-zh="存款保险">Insurance</div><small>Up to $50k</small></div>
+            <h2 data-en="✨ 19+ Premium Functions with TMT" data-ru="✨ 19+ Премиум-функций с TMT" data-ar="✨ 19+ وظيفة متميزة مع TMT" data-fa="✨ 19+ قابلیت ویژه با TMT" data-zh="✨ 19+ 高级功能">✨ 19+ Premium Functions</h2>
+            
+            <!-- Row 1: Metals + Staking -->
+            <div class="grid-4">
+                <div class="function-item"><div class="function-icon">🥇</div><div data-en="Buy Physical Gold" data-ru="Купить физическое золото" data-ar="شراء الذهب المادي" data-fa="خرید طلای فیزیکی" data-zh="购买实物黄金">Buy Physical Gold</div><small>1 oz ≈ 85,650 TMT | Delivery worldwide</small></div>
+                <div class="function-item"><div class="function-icon">🥈</div><div data-en="Buy Silver Bars" data-ru="Купить серебряные слитки" data-ar="شراء سبائك الفضة" data-fa="خرید شمش نقره" data-zh="购买银条">Buy Silver Bars</div><small>1 oz ≈ 1,375 TMT | 99.9% pure</small></div>
+                <div class="function-item"><div class="function-icon">🔷</div><div data-en="Buy Platinum" data-ru="Купить платину" data-ar="شراء البلاتين" data-fa="خرید پلاتین" data-zh="购买铂金">Buy Platinum</div><small>1 oz ≈ 28,550 TMT</small></div>
+                <div class="function-item"><div class="function-icon">💰</div><div data-en="Staking (8-15% APY)" data-ru="Стейкинг (8-15% годовых)" data-ar="تجميد" data-fa="استیکینگ" data-zh="质押">Staking</div><small>8-15% APY | Daily rewards</small></div>
             </div>
+            
+            <!-- Row 2: DeFi Core -->
+            <div class="grid-4">
+                <div class="function-item"><div class="function-icon">🌾</div><div data-en="Yield Farming" data-ru="Фарминг доходности" data-ar="الزراعة" data-fa="فارمینگ" data-zh="流动性挖矿">Yield Farming</div><small>LP pools TMT/USDC · Up to 25% APY</small></div>
+                <div class="function-item"><div class="function-icon">🏦</div><div data-en="Lending / Borrowing" data-ru="Кредитование / Займы" data-ar="إقراض / اقتراض" data-fa="وام / قرض" data-zh="借贷">Lending / Borrowing</div><small>Use TMT as collateral · 0.5% liquidation penalty</small></div>
+                <div class="function-item"><div class="function-icon">💳</div><div data-en="TMT Debit Card" data-ru="Дебетовая карта TMT" data-ar="بطاقة خصم TMT" data-fa="کارت نقدی TMT" data-zh="TMT 借记卡">Debit Card</div><small>Spend TMT anywhere · 3% cashback in TMT</small></div>
+                <div class="function-item"><div class="function-icon">🛡️</div><div data-en="Deposit Insurance" data-ru="Страхование депозитов" data-ar="تأمين الودائع" data-fa="بیمه سپرده" data-zh="存款保险">Deposit Insurance</div><small>Up to $50,000 · Lloyds of London</small></div>
+            </div>
+            
+            <!-- Row 3: NEW FUNCTIONS 1-5 -->
+            <div class="grid-4">
+                <div class="function-item"><div class="function-icon">📈</div><div data-en="Perpetual Futures (250x)" data-ru="Бессрочные фьючерсы (250x)" data-ar="العقود الدائمة" data-fa="قراردادهای آتی دائمی" data-zh="永续合约">Perpetual Futures</div><small>Up to 250x leverage on SOL/BTC/ETH</small></div>
+                <div class="function-item"><div class="function-icon">⏰</div><div data-en="Limit Orders & DCA" data-ru="Лимитные ордера и DCA" data-ar="أوامر محدودة" data-fa="سفارشات محدود" data-zh="限价单和定投">Limit Orders & DCA</div><small>Automated buying strategies</small></div>
+                <div class="function-item"><div class="function-icon">⛽</div><div data-en="Gasless Swaps" data-ru="Безгазовые обмены" data-ar="مبادلات بدون غاز" data-fa="مبادله بدون گاز" data-zh="无Gas兑换">Gasless Swaps</div><small>No SOL needed for fees</small></div>
+                <div class="function-item"><div class="function-icon">🛡️</div><div data-en="MEV Protection" data-ru="Защита от MEV" data-ar="حماية MEV" data-fa="محافظت MEV" data-zh="MEV保护">MEV Protection</div><small>Ultra Mode · Anti-frontrunning</small></div>
+            </div>
+            
+            <!-- Row 4: NEW FUNCTIONS 6-10 -->
+            <div class="grid-4">
+                <div class="function-item"><div class="function-icon">🔒</div><div data-en="Confidential Transfers" data-ru="Конфиденциальные переводы" data-ar="التحويلات السرية" data-fa="انتقالات محرمانه" data-zh="保密转账">Confidential Transfers</div><small>ZK-proofs · Private balances</small></div>
+                <div class="function-item"><div class="function-icon">📜</div><div data-en="Transfer Hooks (KYC/AML)" data-ru="Хуки перевода (KYC/AML)" data-ar="خطافات التحويل" data-fa="قلاب‌های انتقال" data-zh="转账钩子">Transfer Hooks</div><small>Compliance automation</small></div>
+                <div class="function-item"><div class="function-icon">🌱</div><div data-en="Real World Assets (RWA)" data-ru="Реальные активы (RWA)" data-ar="الأصول الحقيقية" data-fa="دارایی‌های واقعی" data-zh="现实世界资产">RWA Tokenization</div><small>Real estate · T-bills · Commodities</small></div>
+                <div class="function-item"><div class="function-icon">🗳️</div><div data-en="DAO Governance" data-ru="DAO управление" data-ar="حوكمة DAO" data-fa="حاکمیت DAO" data-zh="DAO治理">DAO Governance</div><small>Vote on proposals · Treasury management</small></div>
+            </div>
+            
+            <!-- Row 5: Bonus -->
+            <div class="grid-4">
+                <div class="function-item"><div class="function-icon">💸</div><div data-en="Cashback Rewards" data-ru="Кэшбэк награды" data-ar="مكافآت استرداد النقود" data-fa="جوایز بازگشت نقدی" data-zh="现金返还奖励">Cashback Rewards</div><small>3% on all card transactions</small></div>
+                <div class="function-item"><div class="function-icon">🎁</div><div data-en="Referral Program" data-ru="Реферальная программа" data-ar="برنامج الإحالة" data-fa="برنامه ارجاع" data-zh="推荐计划">Referral Program</div><small>5% commission on referrals</small></div>
+                <div class="function-item"><div class="function-icon">🏆</div><div data-en="Airdrops & Bonuses" data-ru="Airdrops и бонусы" data-ar="الإسقاطات الجوية" data-fa="ایردراپ" data-zh="空投奖励">Airdrops</div><small>Seasonal rewards for holders</small></div>
+            </div>
+        </div>
+
+        <!-- Explanation of Token-2022 Features -->
+        <div class="card">
+            <h2 data-en="⚙️ Powered by Token-2022 (Solana)" data-ru="⚙️ Работает на Token-2022 (Solana)" data-ar="⚙️ يعمل على Token-2022" data-fa="⚙️ مبتنی بر Token-2022" data-zh="⚙️ 基于 Token-2022 技术">⚙️ Powered by Token-2022</h2>
+            <ul style="margin-left: 1.5rem; columns: 2; column-gap: 2rem;">
+                <li>🔒 Confidential transfers (ZK-proofs)</li>
+                <li>📜 Transfer hooks (KYC/AML)</li>
+                <li>💰 Transfer fees (rewards distribution)</li>
+                <li>📄 On-chain metadata (IPFS)</li>
+                <li>⏸️ Pausable extensions</li>
+                <li>🔢 Permanent supply (mint authority revoked)</li>
+                <li>📝 Memo field for compliance</li>
+                <li>🌉 Native DeFi composability</li>
+            </ul>
         </div>
 
         <div class="warning">
             ⚠️ <strong data-en="Disclaimer" data-ru="Отказ от ответственности" data-ar="إخلاء مسؤولية" data-fa="سلب مسئولیت" data-zh="免责声明">Disclaimer:</strong> 
             <span data-en="TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk. Precious metal prices are calculated at TMT/USD = 0.04904."
                   data-ru="TMT — экспериментальный актив. НЕ является официальной CBDC Туркменистана. Цены на драгметаллы рассчитаны по курсу TMT/USD = 0.04904."
-                  data-ar="TMT هو أصل تجريبي. ليس عملة رقمية رسمية لتركمانستان. أسعار المعادن الثمينة محسوبة بسعر TMT/USD = 0.04904."
-                  data-fa="TMT یک دارایی آزمایشی است. ارز دیجیتال رسمی ترکمنستان نیست. قیمت فلزات گرانبها بر اساس نرخ TMT/USD = 0.04904 محاسبه شده است."
-                  data-zh="TMT 是一个实验性加密资产。不是土库曼斯坦的官方 CBDC。贵金属价格按 TMT/USD = 0.04904 计算。">
+                  data-ar="TMT هو أصل تجريبي. ليس عملة رقمية رسمية لتركمانستان."
+                  data-fa="TMT یک دارایی آزمایشی است. ارز دیجیتال رسمی ترکمنستان نیست."
+                  data-zh="TMT 是一个实验性加密资产。不是土库曼斯坦的官方 CBDC。">
             TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk. Precious metal prices are calculated at TMT/USD = 0.04904.</span>
         </div>
 
