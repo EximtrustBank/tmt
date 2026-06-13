@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMT DeFi Hub — Staking · Farming · Lending</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .logo { width: 80px; height: 80px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #ffd700; }
+        .logo img { width: 75%; border-radius: 50%; }
+        h1 { font-size: 2rem; color: #ffd700; }
+        .back-link { color: #ffec80; text-decoration: none; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
+        .nav a:hover, .nav a.active { background: #ffd700; color: #0a2e1c; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); }
+        .card h2 { color: #ffd700; margin-bottom: 1rem; font-size: 1.4rem; }
+        .apy-badge { background: #00a86b; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 40px; font-size: 0.8rem; margin-bottom: 1rem; }
+        .stat { display: flex; justify-content: space-between; margin: 0.8rem 0; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .btn { background: #ffd700; color: #0a2e1c; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
+        .btn-outline { background: transparent; border: 1px solid #ffd700; color: #ffd700; }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
+            <h1>💰 TMT DeFi Hub</h1>
+            <a href="index.html" class="back-link">← Back to Main</a>
+        </div>
+        <div class="nav">
+            <a href="index.html">🏠 Home</a><a href="ecosystem.html">🌿 Ecosystem</a><a href="defi-hub.html" class="active">💰 DeFi Hub</a><a href="rwa.html">🏔️ RWA</a><a href="dao.html">🗳️ DAO</a><a href="card.html">💳 Card</a><a href="bridge.html">🌉 Bridge</a><a href="whitepaper.html">📄 WP</a>
+        </div>
+
+        <div class="grid-2">
+            <div class="card"><h2>🔒 Staking TMT</h2><div class="apy-badge">APY: 8% – 15%</div><div class="stat"><span>Lock 30 days</span><span>8% APY</span></div><div class="stat"><span>Lock 90 days</span><span>10% APY</span></div><div class="stat"><span>Lock 180 days</span><span>12% APY</span></div><div class="stat"><span>Lock 365 days</span><span>15% APY</span></div><div class="stat"><span>Total Staked</span><span>12.5B TMT</span></div><div class="stat"><span>Your Rewards</span><span>0 TMT</span></div><a href="#" class="btn">🔒 Stake Now</a> <a href="#" class="btn-outline btn">📤 Unstake</a></div>
+
+            <div class="card"><h2>🌾 Yield Farming</h2><div class="apy-badge">APY: up to 25%</div><div class="stat"><span>TMT/USDC (Raydium)</span><span>18.5% APY</span></div><div class="stat"><span>TMT/SOL (Meteora)</span><span>22.3% APY</span></div><div class="stat"><span>TMT/USDT (Jupiter)</span><span>25.1% APY</span></div><div class="stat"><span>Your LP Value</span><span>0 USD</span></div><div class="stat"><span>Earned Fees</span><span>0 TMT</span></div><a href="#" class="btn">🌾 Add Liquidity</a> <a href="#" class="btn-outline btn">💧 Remove</a></div>
+
+            <div class="card"><h2>🏦 Lending & Borrowing</h2><div class="apy-badge">Supply APY: 5% | Borrow APY: 8%</div><div class="stat"><span>Supply TMT</span><span>5% APY</span></div><div class="stat"><span>Borrow USDC (collateral TMT)</span><span>8% APY</span></div><div class="stat"><span>Borrow SOL (collateral TMT)</span><span>7.5% APY</span></div><div class="stat"><span>Collateral Ratio</span><span>150%</span></div><div class="stat"><span>Liquidation Penalty</span><span>5%</span></div><a href="#" class="btn">🏦 Supply TMT</a> <a href="#" class="btn-outline btn">📉 Borrow</a></div>
+
+            <div class="card"><h2>📈 Leveraged Yield</h2><div class="apy-badge">APY: up to 60%</div><div class="stat"><span>TMT/USDC 2x Leverage</span><span>35% APY</span></div><div class="stat"><span>TMT/SOL 3x Leverage</span><span>52% APY</span></div><div class="stat"><span>TMT/USDT 5x Leverage</span><span>60% APY</span></div><div class="stat"><span>Liquidation Threshold</span><span>85%</span></div><a href="#" class="btn">⚡ Open Position</a></div>
+        </div>
+
+        <div class="card"><h2>📊 DeFi Dashboard</h2><div class="stat"><span>Total Value Locked (TVL)</span><span>$487.3M</span></div><div class="stat"><span>Daily Active Users</span><span>1,247</span></div><div class="stat"><span>Total Staked TMT</span><span>12.5B TMT</span></div><div class="stat"><span>Total Borrowed</span><span>$89.2M</span></div><div class="stat"><span>Protocol Fees (24h)</span><span>$12,450</span></div></div>
+
+        <div class="footer">© 2025 TMT DeFi Hub — Powered by Solana Token-2022</div>
+    </div>
+</body>
+</html>
