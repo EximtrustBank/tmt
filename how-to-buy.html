@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Как купить TMT за туркменские манаты — пошаговые инструкции</title>
-    <meta name="description" content="Подробные инструкции по покупке токена Turkmen New Manat (TMT) за туркменские манаты. Три способа: через Bitget, P2P, Revolut/Wise. Все ссылки рабочие.">
-    <meta property="og:title" content="Как купить TMT за туркменские манаты">
-    <meta property="og:description" content="Пошаговые инструкции с работающими ссылками. Двух- и трёхэтапные схемы.">
+    <title>How to Buy TMT with Turkmen Manats — Step by Step Guide</title>
+    <meta name="description" content="Step-by-step guide how to buy Turkmen New Manat (TMT) token with Turkmen manats. Three working methods: via Bitget, P2P, Revolut/Wise. All links work.">
+    <meta property="og:title" content="How to Buy TMT with Turkmen Manats">
+    <meta property="og:description" content="Detailed instructions with working links. Two-step and three-step schemes.">
     <meta property="og:image" content="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png">
     <meta property="og:url" content="https://eximtrustbank.github.io/tmt/how-to-buy.html">
+    <meta property="og:type" content="website">
     <style>
         * {
             margin: 0;
@@ -24,13 +25,42 @@
             min-height: 100vh;
         }
 
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .lang-btn.active {
+            background: #ffd700;
+            color: #0a2e1c;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
 
-        /* Header */
         .header {
             text-align: center;
             margin-bottom: 2rem;
@@ -48,7 +78,7 @@
             border: 3px solid #ffd700;
         }
         .logo img { width: 80%; height: auto; border-radius: 50%; }
-        h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #ffd700; }
+        h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #ffd700; }
         .back-link {
             display: inline-block;
             margin-top: 0.5rem;
@@ -57,7 +87,6 @@
         }
         .back-link:hover { text-decoration: underline; }
 
-        /* Cards */
         .card {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(12px);
@@ -78,11 +107,6 @@
             margin: 1.2rem 0 0.8rem;
             font-size: 1.2rem;
         }
-        .card h4 {
-            color: #ffd700;
-            margin: 1rem 0 0.5rem;
-            font-size: 1.1rem;
-        }
 
         .step-list {
             list-style: none;
@@ -93,7 +117,6 @@
             margin: 0.5rem 0;
             padding: 0.8rem 1rem;
             border-radius: 12px;
-            counter-increment: step;
         }
         .step-number {
             display: inline-block;
@@ -175,209 +198,288 @@
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Türkmençe</button>
+        <button class="lang-btn" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="fa">فارسی</button>
+        <button class="lang-btn" data-lang="zh">中文</button>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT Logo"></div>
-            <h1>🇹🇲 Как купить TMT за туркменские манаты</h1>
-            <a href="index.html" class="back-link">← Вернуться на главную страницу</a>
+            <h1 data-en="How to Buy TMT with Turkmen Manats" data-ru="Как купить TMT за туркменские манаты" data-tk="Türkmen manady bilen TMT-ni nädip satyn almaly" data-ar="كيفية شراء TMT بالمانات التركمانية" data-fa="نحوه خرید TMT با منات ترکمنستان" data-zh="如何用土库曼马纳特购买 TMT">How to Buy TMT with Turkmen Manats</h1>
+            <a href="index.html" class="back-link" data-en="← Back to main page" data-ru="← Вернуться на главную" data-tk="← Esasy sahypa gaýt" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to main page</a>
         </div>
 
-        <!-- Важное введение -->
+        <!-- Important intro -->
         <div class="card">
-            <h2>⚡ Важно понять</h2>
+            <h2 data-en="⚡ Important to understand" data-ru="⚡ Важно понять" data-tk="⚡ Düşünmek möhüm" data-ar="⚡ من المهم أن نفهم" data-fa="⚡ مهم است بدانید" data-zh="⚡ 重要须知">⚡ Important to understand</h2>
             <div class="warning">
-                Прямого способа купить токен <strong>TMT (Turkmen New Manat)</strong> напрямую за туркменские манаты (TMT) с карты <strong>не существует</strong>. Ни одна международная биржа не принимает манаты.
+                <span data-en="There is NO direct way to buy TMT token directly with Turkmen manats from a card. No international exchange accepts TMT (manats)." 
+                      data-ru="Прямого способа купить токен TMT напрямую за туркменские манаты с карты НЕ СУЩЕСТВУЕТ. Ни одна международная биржа не принимает манаты."
+                      data-tk="TMT token-i göni Türkmen manady bilen kartyňyzdan satyn almagyñ GÖNI USULY ÝOK. Hiç bir halkara biržasy manady kabul etmeýär."
+                      data-ar="لا توجد طريقة مباشرة لشراء رمز TMT بالمانات التركمانية من البطاقة. لا تقبل أي بورصة دولية المانات."
+                      data-fa="هیچ راه مستقیمی برای خرید توکن TMT مستقیماً با منات ترکمنستان از کارت وجود ندارد. هیچ صرافی بین‌المللی منات را قبول نمی‌کند."
+                      data-zh="没有直接使用土库曼马纳特从卡上购买 TMT 代币的方法。没有国际交易所接受马纳特。">
+                There is NO direct way to buy TMT token directly with Turkmen manats from a card. No international exchange accepts TMT (manats).</span>
             </div>
-            <p style="margin-top: 1rem;">✅ <strong>Решение:</strong> Используйте двух- или трёхэтапную схему. Ниже — <strong>три проверенных способа</strong> с работающими ссылками.</p>
+            <p style="margin-top: 1rem;"><span data-en="✅ Solution: Use a two-step or three-step scheme below. Three verified working methods with live links." 
+                 data-ru="✅ Решение: Используйте двух- или трёхэтапную схему ниже. Три проверенных работающих способа с живыми ссылками."
+                 data-tk="✅ Çözüwi: Iki ýa-da üç ädimlik shema ulanyň. Işleýän üç usul we işjeň linkler."
+                 data-ar="✅ الحل: استخدم مخططًا من خطوتين أو ثلاث أدناه. ثلاث طرق مجربة مع روابط مباشرة."
+                 data-fa="✅ راه حل: از طرح دو یا سه مرحله‌ای زیر استفاده کنید. سه روش تأیید شده با لینک‌های زنده."
+                 data-zh="✅ 解决方案：使用下面的两步或三步方案。三种经过验证的有效方法，包含实时链接。">✅ Solution: Use a two-step or three-step scheme below. Three verified working methods with live links.</span></p>
         </div>
 
-        <!-- Вариант 1: Двухэтапный (самый быстрый) -->
+        <!-- Method 1: Two-step (fastest) -->
         <div class="card">
-            <h2>🚀 Вариант 1: Двухэтапный (15–30 минут)</h2>
-            <p><strong>Лучший выбор для большинства клиентов.</strong> Минимум действий, всё через одну платформу.</p>
+            <h2 data-en="🚀 Method 1: Two-step (15–30 minutes)" data-ru="🚀 Способ 1: Двухэтапный (15–30 минут)" data-tk="🚀 Usul 1: Iki ädimlik (15–30 minut)" data-ar="🚀 الطريقة الأولى: خطوتان (15-30 دقيقة)" data-fa="🚀 روش ۱: دو مرحله‌ای (۱۵–۳۰ دقیقه)" data-zh="🚀 方法一：两步法（15-30分钟）">🚀 Method 1: Two-step (15–30 minutes)</h2>
+            <p><span data-en="Best choice for most clients. Minimum actions, all through one platform." 
+                     data-ru="Лучший выбор для большинства клиентов. Минимум действий, всё через одну платформу."
+                     data-tk="Köp müşderi üçin iň gowy saýlama. Az hereket, hemmesi bir platforma arkaly."
+                     data-ar="الخيار الأفضل لمعظم العملاء. أقل الإجراءات، كل شيء عبر منصة واحدة."
+                     data-fa="بهترین انتخاب برای بیشتر مشتریان. حداقل اقدامات، همه از طریق یک پلتفرم."
+                     data-zh="大多数客户的最佳选择。最少操作，全部通过一个平台完成。">Best choice for most clients. Minimum actions, all through one platform.</span></p>
             
-            <h3>📌 Этап 1: Покупаем USDT за манаты с карты</h3>
+            <h3 data-en="📌 Step 1: Buy USDT for manats with card" data-ru="📌 Шаг 1: Покупаем USDT за манаты с карты" data-tk="📌 1-nji ädim: Manat karty bilen USDT satyn al" data-ar="📌 الخطوة 1: شراء USDT بالمانات من البطاقة" data-fa="📌 مرحله ۱: خرید USDT با منات از کارت" data-zh="📌 步骤 1：用马纳特卡购买 USDT">📌 Step 1: Buy USDT for manats with card</h3>
             <div class="btn-group">
-                <a href="https://bitget.com" target="_blank" class="btn-primary btn">🚀 Bitget — зарегистрироваться</a>
-                <a href="https://www.bybit.com" target="_blank" class="btn-secondary btn">⚡ Bybit — альтернатива</a>
+                <a href="https://bitget.com" target="_blank" class="btn-primary btn">🚀 Bitget — Register</a>
+                <a href="https://www.bybit.com" target="_blank" class="btn-secondary btn">⚡ Bybit — Alternative</a>
             </div>
             <div class="step-list">
-                <li><span class="step-number">1</span> Зарегистрируйтесь на Bitget.com (есть русский интерфейс)</li>
-                <li><span class="step-number">2</span> Пройдите верификацию (KYC) — нужен паспорт или ID</li>
-                <li><span class="step-number">3</span> Перейдите в раздел «Купить» → выберите USDT</li>
-                <li><span class="step-number">4</span> Способ оплаты: банковская карта (Visa/Mastercard)</li>
-                <li><span class="step-number">5</span> Укажите сумму в туркменских манатах — карта сама сконвертирует в USD</li>
-                <li><span class="step-number">6</span> Подтвердите оплату — USDT поступят на ваш счёт в течение 5–10 минут</li>
+                <li><span class="step-number">1</span><span data-en="Register on Bitget.com (Russian interface available)" data-ru="Зарегистрируйтесь на Bitget.com (есть русский интерфейс)" data-tk="Bitget.com-da hasap açyň (rus dilinde interfeýs bar)" data-ar="سجل في Bitget.com (واجهة روسية متاحة)" data-fa="در Bitget.com ثبت‌نام کنید (رابط روسی موجود است)" data-zh="在 Bitget.com 注册（提供俄语界面）">Register on Bitget.com (Russian interface available)</span></li>
+                <li><span class="step-number">2</span><span data-en="Complete verification (KYC) — passport or ID required" data-ru="Пройдите верификацию (KYC) — нужен паспорт или ID" data-tk="Weriplikden geçiň (KYC) — pasport ýa-da ID gerek" data-ar="أكمل التحقق (KYC) — مطلوب جواز سفر أو هوية" data-fa="تأیید هویت را کامل کنید (KYC) — گذرنامه یا شناسنامه لازم است" data-zh="完成验证（KYC）——需要护照或身份证">Complete verification (KYC) — passport or ID required</span></li>
+                <li><span class="step-number">3</span><span data-en="Go to 'Buy' section → select USDT" data-ru="Перейдите в раздел «Купить» → выберите USDT" data-tk="'Satyn al' bölümine giriň → USDT saýlaň" data-ar="انتقل إلى قسم 'شراء' → اختر USDT" data-fa="به بخش 'خرید' بروید → USDT را انتخاب کنید" data-zh="进入'购买'部分 → 选择 USDT">Go to 'Buy' section → select USDT</span></li>
+                <li><span class="step-number">4</span><span data-en="Payment method: Bank card (Visa/Mastercard)" data-ru="Способ оплаты: банковская карта (Visa/Mastercard)" data-tk="Töleg usuly: Bank karty (Visa/Mastercard)" data-ar="طريقة الدفع: بطاقة بنكية (فيزا/ماستركارد)" data-fa="روش پرداخت: کارت بانکی (ویزا/مسترکارت)" data-zh="支付方式：银行卡（Visa/Mastercard）">Payment method: Bank card (Visa/Mastercard)</span></li>
+                <li><span class="step-number">5</span><span data-en="Enter amount in manats — card will convert automatically" data-ru="Укажите сумму в манатах — карта сама сконвертирует" data-tk="Manat mukdaryny giriziň — karta özi konwertir eder" data-ar="أدخل المبلغ بالمانات — ستقوم البطاقة بالتحويل تلقائيًا" data-fa="مبلغ را به منات وارد کنید — کارت به طور خودکار تبدیل می‌کند" data-zh="输入马纳特金额——卡片会自动转换">Enter amount in manats — card will convert automatically</span></li>
+                <li><span class="step-number">6</span><span data-en="Confirm payment — USDT will arrive in 5–10 minutes" data-ru="Подтвердите оплату — USDT поступят в течение 5–10 минут" data-tk="Tölegi tassyklaň — USDT 5–10 minutda gelip gowy bolar" data-ar="أكد الدفع — سيصل USDT خلال 5-10 دقائق" data-fa="پرداخت را تأیید کنید — USDT در عرض ۵–۱۰ دقیقه می‌رسد" data-zh="确认支付——USDT 将在 5-10 分钟内到账">Confirm payment — USDT will arrive in 5–10 minutes</span></li>
             </div>
 
-            <h3>🔄 Этап 2: Обмениваем USDT → TMT</h3>
+            <h3 data-en="🔄 Step 2: Swap USDT → TMT" data-ru="🔄 Шаг 2: Обмениваем USDT → TMT" data-tk="🔄 2-nji ädim: USDT → TMT çalşyk" data-ar="🔄 الخطوة 2: مبادلة USDT → TMT" data-fa="🔄 مرحله ۲: مبادله USDT → TMT" data-zh="🔄 步骤 2：兑换 USDT → TMT">🔄 Step 2: Swap USDT → TMT</h3>
             <div class="btn-group">
-                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-primary btn">🌀 Jupiter (лучшая цена)</a>
-                <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="btn-secondary btn">⚡ Raydium (напрямую)</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-primary btn">🌀 Jupiter (Best price)</a>
+                <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="btn-secondary btn">⚡ Raydium (Direct)</a>
             </div>
             <div class="step-list">
-                <li><span class="step-number">1</span> Выведите USDT с Bitget на ваш Solana-кошелёк (например, Phantom или Solflare)</li>
-                <li><span class="step-number">2</span> Зайдите на <strong>Jupiter (jup.ag)</strong> — агрегатор всех DEX на Solana</li>
-                <li><span class="step-number">3</span> Подключите кошелёк (кнопка «Connect Wallet»)</li>
-                <li><span class="step-number">4</span> Выберите пару: USDC (или USDT) → TMT</li>
-                <li><span class="step-number">5</span> Введите сумму → нажмите «Swap» → подтвердите транзакцию</li>
-                <li><span class="step-number">6</span> Готово! TMT у вас в кошельке</li>
+                <li><span class="step-number">1</span><span data-en="Withdraw USDT from Bitget to your Solana wallet (Phantom or Solflare)" data-ru="Выведите USDT с Bitget на ваш Solana-кошелёк (Phantom или Solflare)" data-tk="USDT-ni Bitget-dan Solana jübiňize çykaryň (Phantom ýa-da Solflare)" data-ar="اسحب USDT من Bitget إلى محفظة Solana الخاصة بك (Phantom أو Solflare)" data-fa="USDT را از Bitget به کیف پول Solana خود منتقل کنید (Phantom یا Solflare)" data-zh="将 USDT 从 Bitget 提取到您的 Solana 钱包（Phantom 或 Solflare）">Withdraw USDT from Bitget to your Solana wallet (Phantom or Solflare)</span></li>
+                <li><span class="step-number">2</span><span data-en="Go to Jupiter (jup.ag) — aggregator of all DEXes on Solana" data-ru="Зайдите на Jupiter (jup.ag) — агрегатор всех DEX на Solana" data-tk="Jupiter (jup.ag) giriň — Solana-daky ähli DEX-leriň aggregatory" data-ar="انتقل إلى Jupiter (jup.ag) — مجمع جميع DEX على Solana" data-fa="به Jupiter (jup.ag) بروید — تجمیع‌کننده همه DEXهای Solana" data-zh="前往 Jupiter (jup.ag)——Solana 上所有 DEX 的聚合器">Go to Jupiter (jup.ag) — aggregator of all DEXes on Solana</span></li>
+                <li><span class="step-number">3</span><span data-en="Connect wallet (click 'Connect Wallet')" data-ru="Подключите кошелёк (кнопка «Connect Wallet»)" data-tk="Jübi birikdiriň ('Connect Wallet' düwmesi)" data-ar="قم بتوصيل المحفظة (انقر على 'Connect Wallet')" data-fa="کیف پول را وصل کنید (دکمه 'Connect Wallet')" data-zh="连接钱包（点击'连接钱包'）">Connect wallet (click 'Connect Wallet')</span></li>
+                <li><span class="step-number">4</span><span data-en="Select pair: USDC (or USDT) → TMT" data-ru="Выберите пару: USDC (или USDT) → TMT" data-tk="Jübüt saýlaň: USDC (ýa-da USDT) → TMT" data-ar="اختر الزوج: USDC (أو USDT) → TMT" data-fa="جفت را انتخاب کنید: USDC (یا USDT) → TMT" data-zh="选择交易对：USDC（或 USDT）→ TMT">Select pair: USDC (or USDT) → TMT</span></li>
+                <li><span class="step-number">5</span><span data-en="Enter amount → click 'Swap' → confirm transaction" data-ru="Введите сумму → нажмите «Swap» → подтвердите транзакцию" data-tk="Mukdary giriziň → 'Swap' düwmesine basyň → amal tassyklaň" data-ar="أدخل المبلغ → انقر على 'Swap' → أكد المعاملة" data-fa="مبلغ را وارد کنید → روی 'Swap' کلیک کنید → تراکنش را تأیید کنید" data-zh="输入金额 → 点击'兑换' → 确认交易">Enter amount → click 'Swap' → confirm transaction</span></li>
+                <li><span class="step-number">6</span><span data-en="Done! TMT is in your wallet" data-ru="Готово! TMT у вас в кошельке" data-tk="Hazyr! TMT siziň jübiňizde" data-ar="تم! TMT في محفظتك" data-fa="انجام شد! TMT در کیف پول شماست" data-zh="完成！TMT 已在您的钱包中">Done! TMT is in your wallet</span></li>
             </div>
             <div class="success">
-                ✅ <strong>Среднее время:</strong> 15–30 минут.<br>
-                ✅ <strong>Комиссии:</strong> ~1-2% (включая конвертацию карты и обмен).<br>
-                ✅ <strong>Риски:</strong> Минимальные.
+                ✅ <span data-en="Average time: 15–30 minutes." data-ru="Среднее время: 15–30 минут." data-tk="Ortaça wagty: 15–30 minut." data-ar="متوسط الوقت: 15-30 دقيقة." data-fa="زمان متوسط: ۱۵–۳۰ دقیقه." data-zh="平均时间：15-30分钟。">Average time: 15–30 minutes.</span><br>
+                ✅ <span data-en="Fees: ~1-2% (including card conversion and swap)." data-ru="Комиссии: ~1-2% (включая конвертацию карты и обмен)." data-tk="Kommisiýalar: ~1-2% (karta konwertasiýasy we çalşyk bilen)." data-ar="الرسوم: ~1-2% (بما في ذلك تحويل البطاقة والمبادلة)." data-fa="کارمزد: ~۱-۲٪ (شامل تبدیل کارت و مبادله)." data-zh="费用：约1-2%（包括卡片转换和兑换）。">Fees: ~1-2% (including card conversion and swap).</span><br>
+                ✅ <span data-en="Risks: Minimal." data-ru="Риски: Минимальные." data-tk="Riwler: Minimal." data-ar="المخاطر: ضئيلة." data-fa="ریسک‌ها: حداقل." data-zh="风险：最小。">Risks: Minimal.</span>
             </div>
         </div>
 
-        <!-- Вариант 2: Трёхэтапный через P2P -->
+        <!-- Method 2: Three-step via P2P -->
         <div class="card">
-            <h2>🔄 Вариант 2: Трёхэтапный через P2P (низкая комиссия)</h2>
-            <p><strong>Самый дешёвый способ.</strong> Подходит для тех, кто готов потратить немного больше времени и разобраться в P2P.</p>
+            <h2 data-en="🔄 Method 2: Three-step via P2P (lowest fees)" data-ru="🔄 Способ 2: Трёхэтапный через P2P (низкая комиссия)" data-tk="🔄 Usul 2: P2P arkaly üç ädimlik (pes komissiýa)" data-ar="🔄 الطريقة الثانية: ثلاث خطوات عبر P2P (أقل رسوم)" data-fa="🔄 روش ۲: سه مرحله‌ای از طریق P2P (کمترین کارمزد)" data-zh="🔄 方法二：通过 P2P 的三步法（最低费用）">🔄 Method 2: Three-step via P2P (lowest fees)</h3>
+            <p><span data-en="Cheapest method. For those willing to spend more time learning P2P." 
+                     data-ru="Самый дешёвый способ. Для тех, кто готов потратить больше времени на изучение P2P."
+                     data-tk="Iň arzan usul. P2P öwrenmäge köp wagt sarp etmäge taýyn bolanlar üçin."
+                     data-ar="أرخص طريقة. لأولئك الراغبين في قضاء المزيد من الوقت في تعلم P2P."
+                     data-fa="ارزان‌ترین روش. برای کسانی که مایل به صرف زمان بیشتر برای یادگیری P2P هستند."
+                     data-zh="最便宜的方法。适合愿意花更多时间学习 P2P 的人。">Cheapest method. For those willing to spend more time learning P2P.</span></p>
             
-            <h3>📌 Этап 1: Регистрация на бирже</h3>
+            <h3 data-en="📌 Step 1: Register on exchange" data-ru="📌 Шаг 1: Регистрация на бирже" data-tk="📌 1-nji ädim: Biržada hasap açmak" data-ar="📌 الخطوة 1: التسجيل في البورصة" data-fa="📌 مرحله ۱: ثبت‌نام در صرافی" data-zh="📌 步骤 1：在交易所注册">📌 Step 1: Register on exchange</h3>
             <div class="btn-group">
                 <a href="https://www.binance.com" target="_blank" class="btn-primary btn">🟡 Binance</a>
                 <a href="https://www.bybit.com" target="_blank" class="btn-secondary btn">⚡ Bybit</a>
             </div>
 
-            <h3>📌 Этап 2: Покупка USDT за манаты через P2P</h3>
+            <h3 data-en="📌 Step 2: Buy USDT for manats via P2P" data-ru="📌 Шаг 2: Покупка USDT за манаты через P2P" data-tk="📌 2-nji ädim: P2P arkaly manat bilen USDT satyn almak" data-ar="📌 الخطوة 2: شراء USDT بالمانات عبر P2P" data-fa="📌 مرحله ۲: خرید USDT با منات از طریق P2P" data-zh="📌 步骤 2：通过 P2P 用马纳特购买 USDT">📌 Step 2: Buy USDT for manats via P2P</h3>
             <div class="step-list">
-                <li><span class="step-number">1</span> Зайдите в раздел <strong>«P2P»</strong> (на Binance — «Торговля» → «P2P»)</li>
-                <li><span class="step-number">2</span> Выберите: «Я хочу купить» → валюта <strong>USDT</strong></li>
-                <li><span class="step-number">3</span> В поиске выберите фиатную валюту <strong>TMT</strong> (туркменский манат)</li>
-                <li><span class="step-number">4</span> Выберите продавца с хорошей репутацией (>100 сделок, высокий рейтинг)</li>
-                <li><span class="step-number">5</span> Нажмите «Купить» → переведите сумму на карту продавца (реквизиты увидите в сделке)</li>
-                <li><span class="step-number">6</span> Подтвердите оплату → USDT поступят на ваш счёт <strong>мгновенно</strong></li>
+                <li><span class="step-number">1</span><span data-en="Go to 'P2P' section" data-ru="Зайдите в раздел «P2P»" data-tk="'P2P' bölümine giriň" data-ar="انتقل إلى قسم 'P2P'" data-fa="به بخش 'P2P' بروید" data-zh="进入'P2P'部分">Go to 'P2P' section</span></li>
+                <li><span class="step-number">2</span><span data-en="Select 'I want to buy' → currency USDT" data-ru="Выберите «Я хочу купить» → валюта USDT" data-tk="'Men satyn almak isleýärin' → USDT walýutasy" data-ar="اختر 'أريد شراء' → العملة USDT" data-fa="'می‌خواهم بخرم' → ارز USDT را انتخاب کنید" data-zh="选择'我要购买' → 货币 USDT">Select 'I want to buy' → currency USDT</span></li>
+                <li><span class="step-number">3</span><span data-en="Search for fiat currency: TMT (Turkmen manat)" data-ru="В поиске выберите фиатную валюту TMT" data-tk="Gözlegde fiat walýutasyny saýlaň: TMT" data-ar="ابحث عن العملة الورقية: TMT (مانات تركماني)" data-fa="ارز فیات را جستجو کنید: TMT (منات ترکمنستان)" data-zh="搜索法定货币：TMT（土库曼马纳特）">Search for fiat currency: TMT (Turkmen manat)</span></li>
+                <li><span class="step-number">4</span><span data-en="Choose a seller with good reputation (>100 trades, high rating)" data-ru="Выберите продавца с хорошей репутацией (>100 сделок, высокий рейтинг)" data-tk="Gowy abraýly satyjyny saýlaň (>100 söwda, ýokary reýting)" data-ar="اختر بائعًا يتمتع بسمعة جيدة (>100 صفقة، تصنيف عالٍ)" data-fa="فروشنده با اعتبار خوب را انتخاب کنید (>۱۰۰ معامله، رتبه بالا)" data-zh="选择信誉良好的卖家（>100 笔交易，高评分）">Choose a seller with good reputation (>100 trades, high rating)</span></li>
+                <li><span class="step-number">5</span><span data-en="Click 'Buy' → transfer amount to seller's card" data-ru="Нажмите «Купить» → переведите сумму на карту продавца" data-tk="'Satyn al' basyň → mugdary satyjynyň kartasyna geçiriň" data-ar="انقر على 'شراء' → حول المبلغ إلى بطاقة البائع" data-fa="روی 'خرید' کلیک کنید → مبلغ را به کارت فروشنده منتقل کنید" data-zh="点击'购买' → 将金额转到卖家卡上">Click 'Buy' → transfer amount to seller's card</span></li>
+                <li><span class="step-number">6</span><span data-en="Confirm payment → USDT credited instantly" data-ru="Подтвердите оплату → USDT поступят мгновенно" data-tk="Tölegi tassyklaň → USDT derrew gelip gowy bolar" data-ar="أكد الدفع → سيتم إضافة USDT على الفور" data-fa="پرداخت را تأیید کنید → USDT بلافاصله واریز می‌شود" data-zh="确认支付 → USDT 即时到账">Confirm payment → USDT credited instantly</span></li>
             </div>
             <div class="info">
-                📌 <strong>Совет:</strong> Используйте только сделки с <strong>эскроу-защитой</strong> (она включена по умолчанию на Binance и Bybit). Никогда не переводите деньги вне платформы.
+                📌 <span data-en="Tip: Always use escrow-protected trades (enabled by default on Binance/Bybit). Never transfer money outside the platform." 
+                         data-ru="Совет: Используйте только сделки с эскроу-защитой (включена по умолчанию на Binance/Bybit). Никогда не переводите деньги вне платформы."
+                         data-tk="Maslahat: Diňe eskrow bilen goralýan söwdalary ulanyň (Binance/Bybit-da deslapky işjeň). Pullary platformanyň daşynda geçirmäň."
+                         data-ar="نصيحة: استخدم فقط الصفقات المحمية بالضمان (ممكّنة افتراضيًا على Binance/Bybit). لا تقم أبدًا بتحويل الأموال خارج المنصة."
+                         data-fa="نکته: فقط از معاملات تحت حفاظت اسکرو استفاده کنید (به طور پیش‌فرض در Binance/Bybit فعال است). هرگز پول را خارج از پلتفرم انتقال ندهید."
+                         data-zh="提示：仅使用受托管保护的交易（默认在 Binance/Bybit 上启用）。绝不在平台外转账。">Tip: Always use escrow-protected trades (enabled by default on Binance/Bybit). Never transfer money outside the platform.</span>
             </div>
 
-            <h3>🔄 Этап 3: Обмен USDT → TMT</h3>
+            <h3 data-en="🔄 Step 3: Swap USDT → TMT" data-ru="🔄 Шаг 3: Обмен USDT → TMT" data-tk="🔄 3-nji ädim: USDT → TMT çalşyk" data-ar="🔄 الخطوة 3: مبادلة USDT → TMT" data-fa="🔄 مرحله ۳: مبادله USDT → TMT" data-zh="🔄 步骤 3：兑换 USDT → TMT">🔄 Step 3: Swap USDT → TMT</h3>
             <div class="btn-group">
-                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-primary btn">🌀 Jupiter (лучшая цена)</a>
-                <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="btn-secondary btn">⚡ Raydium</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-primary btn">🌀 Jupiter (Best price)</a>
             </div>
             <div class="success">
-                ✅ <strong>Среднее время:</strong> 1–2 часа (зависит от продавца).<br>
-                ✅ <strong>Комиссии:</strong> Минимальные (только наценка продавца, обычно 0.5–1%).<br>
-                ⚠️ <strong>Риски:</strong> Средние — всегда проверяйте продавца.
+                ✅ <span data-en="Average time: 1–2 hours (depends on seller)." data-ru="Среднее время: 1–2 часа (зависит от продавца)." data-tk="Ortaça wagty: 1–2 sagat (satyjyna bagly)." data-ar="متوسط الوقت: 1-2 ساعة (يعتمد على البائع)." data-fa="زمان متوسط: ۱–۲ ساعت (بستگی به فروشنده دارد)." data-zh="平均时间：1-2小时（取决于卖家）。">Average time: 1–2 hours (depends on seller).</span><br>
+                ✅ <span data-en="Fees: Minimal (only seller markup, usually 0.5–1%)." data-ru="Комиссии: Минимальные (только наценка продавца, обычно 0.5–1%)." data-tk="Kommisiýalar: Minimal (diňe satyjynyñ belgisi, adatça 0.5–1%)." data-ar="الرسوم: ضئيلة (فقط هامش البائع، عادة 0.5-1%)." data-fa="کارمزد: حداقل (فقط حاشیه فروشنده، معمولاً ۰.۵–۱٪)." data-zh="费用：最低（仅卖家加价，通常为 0.5-1%）。">Fees: Minimal (only seller markup, usually 0.5–1%).</span><br>
+                ⚠️ <span data-en="Risks: Medium — always check the seller." data-ru="Риски: Средние — всегда проверяйте продавца." data-tk="Riwler: Orta — elmydama satyjyny barlaň." data-ar="المخاطر: متوسطة — تحقق دائمًا من البائع." data-fa="ریسک‌ها: متوسط — همیشه فروشنده را بررسی کنید." data-zh="风险：中等——始终检查卖家。">Risks: Medium — always check the seller.</span>
             </div>
         </div>
 
-        <!-- Вариант 3: Для клиентов за границей -->
+        <!-- Method 3: For clients abroad -->
         <div class="card">
-            <h2>🌍 Вариант 3: Для клиентов за пределами Туркменистана</h2>
-            <p><strong>Подходит для тех, у кого есть Revolut, Wise или иностранная карта.</strong></p>
+            <h2 data-en="🌍 Method 3: For clients outside Turkmenistan" data-ru="🌍 Способ 3: Для клиентов за пределами Туркменистана" data-tk="🌍 Usul 3: Türkmenistanyň daşyndaky müşderiler üçin" data-ar="🌍 الطريقة الثالثة: للعملاء خارج تركمانستان" data-fa="🌍 روش ۳: برای مشتریان خارج از ترکمنستان" data-zh="🌍 方法三：适用于土库曼斯坦境外的客户">🌍 Method 3: For clients outside Turkmenistan</h3>
+            <p><span data-en="For those with Revolut, Wise, or international card." 
+                     data-ru="Подходит для тех, у кого есть Revolut, Wise или иностранная карта."
+                     data-tk="Revolut, Wise ýa-da halkara karty bolanlar üçin."
+                     data-ar="لأولئك الذين لديهم Revolut أو Wise أو بطاقة دولية."
+                     data-fa="برای کسانی که Revolut، Wise یا کارت بین‌المللی دارند."
+                     data-zh="适用于拥有 Revolut、Wise 或国际卡的人。">For those with Revolut, Wise, or international card.</span></p>
             
-            <h3>📌 Этап 1: Конвертация через Revolut/Wise</h3>
             <div class="btn-group">
                 <a href="https://www.revolut.com" target="_blank" class="btn-primary btn">💳 Revolut</a>
                 <a href="https://wise.com" target="_blank" class="btn-secondary btn">🌍 Wise</a>
+                <a href="https://bitget.com" target="_blank" class="btn-secondary btn">🚀 Bitget</a>
             </div>
             <div class="step-list">
-                <li><span class="step-number">1</span> Пополните счёт в Revolut/Wise в туркменских манатах (через карту или перевод)</li>
-                <li><span class="step-number">2</span> Конвертируйте нужную сумму в <strong>USD</strong> или <strong>EUR</strong> (курс близок к рыночному)</li>
-            </div>
-
-            <h3>📌 Этап 2: Покупка USDT за USD/EUR</h3>
-            <div class="btn-group">
-                <a href="https://bitget.com" target="_blank" class="btn-primary btn">🚀 Bitget</a>
-                <a href="https://www.binance.com" target="_blank" class="btn-secondary btn">🟡 Binance</a>
-            </div>
-            <div class="step-list">
-                <li><span class="step-number">1</span> Зайдите на Bitget или Binance → раздел «Купить»</li>
-                <li><span class="step-number">2</span> Выберите USDT → оплата картой (Visa/Mastercard) в USD/EUR</li>
-                <li><span class="step-number">3</span> Используйте карту Revolut/Wise для оплаты</li>
-            </div>
-
-            <h3>🔄 Этап 3: Обмен USDT → TMT</h3>
-            <div class="btn-group">
-                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-primary btn">🌀 Jupiter (лучшая цена)</a>
+                <li><span class="step-number">1</span><span data-en="Top up Revolut/Wise in manats → convert to USD or EUR" data-ru="Пополните Revolut/Wise в манатах → конвертируйте в USD или EUR" data-tk="Revolut/Wise manat bilen dolduryň → USD ýa-da EUR-e konwertirläň" data-ar="قم بشحن Revolut/Wise بالمانات → حوّلها إلى دولار أو يورو" data-fa="Revolut/Wise را با منات شارژ کنید → به USD یا EUR تبدیل کنید" data-zh="用马纳特充值 Revolut/Wise → 兑换成 USD 或 EUR">Top up Revolut/Wise in manats → convert to USD or EUR</span></li>
+                <li><span class="step-number">2</span><span data-en="Buy USDT on Bitget for USD/EUR with card" data-ru="Купите USDT на Bitget за USD/EUR картой" data-tk="Bitget-da USDT satyn al karta bilen USD/EUR üçin" data-ar="شراء USDT على Bitget مقابل دولار/يورو بالبطاقة" data-fa="USDT را در Bitget با USD/EUR با کارت خریداری کنید" data-zh="在 Bitget 上用 USD/EUR 卡购买 USDT">Buy USDT on Bitget for USD/EUR with card</span></li>
+                <li><span class="step-number">3</span><span data-en="Swap USDT → TMT on Jupiter" data-ru="Обменяйте USDT → TMT на Jupiter" data-tk="USDT → TMT Jupiter-da çalşyň" data-ar="مبادلة USDT → TMT على Jupiter" data-fa="USDT → TMT را در Jupiter مبادله کنید" data-zh="在 Jupiter 上兑换 USDT → TMT">Swap USDT → TMT on Jupiter</span></li>
             </div>
             <div class="success">
-                ✅ <strong>Среднее время:</strong> 30–60 минут.<br>
-                ✅ <strong>Комиссии:</strong> Выше среднего (Revolut/Wise берут ~0.5%, биржа ~0.1%, обмен ~0.3%).<br>
-                ✅ <strong>Риски:</strong> Минимальные.
+                ✅ <span data-en="Average time: 30–60 minutes." data-ru="Среднее время: 30–60 минут." data-tk="Ortaça wagty: 30–60 minut." data-ar="متوسط الوقت: 30-60 دقيقة." data-fa="زمان متوسط: ۳۰–۶۰ دقیقه." data-zh="平均时间：30-60分钟。">Average time: 30–60 minutes.</span><br>
+                ✅ <span data-en="Risks: Minimal." data-ru="Риски: Минимальные." data-tk="Riwler: Minimal." data-ar="المخاطر: ضئيلة." data-fa="ریسک‌ها: حداقل." data-zh="风险：最小。">Risks: Minimal.</span>
             </div>
         </div>
 
-        <!-- Сравнительная таблица -->
+        <!-- Comparison table -->
         <div class="card">
-            <h2>📊 Сравнение способов</h2>
+            <h2 data-en="📊 Method Comparison" data-ru="📊 Сравнение способов" data-tk="📊 Usullary deňeşdirme" data-ar="📊 مقارنة الطرق" data-fa="📊 مقایسه روش‌ها" data-zh="📊 方法比较">📊 Method Comparison</h3>
             <table class="comparison-table">
                 <thead>
                     <tr>
-                        <th>Критерий</th>
-                        <th>Вариант 1 (Bitget→DEX)</th>
-                        <th>Вариант 2 (P2P→DEX)</th>
-                        <th>Вариант 3 (Revolut→Bitget→DEX)</th>
+                        <th data-en="Criteria" data-ru="Критерий" data-tk="Kriteriý" data-ar="المعيار" data-fa="معیار" data-zh="标准">Criteria</th>
+                        <th data-en="Method 1 (Bitget→DEX)" data-ru="Способ 1 (Bitget→DEX)" data-tk="Usul 1 (Bitget→DEX)" data-ar="الطريقة 1 (Bitget→DEX)" data-fa="روش ۱ (Bitget→DEX)" data-zh="方法 1（Bitget→DEX）">Method 1</th>
+                        <th data-en="Method 2 (P2P→DEX)" data-ru="Способ 2 (P2P→DEX)" data-tk="Usul 2 (P2P→DEX)" data-ar="الطريقة 2 (P2P→DEX)" data-fa="روش ۲ (P2P→DEX)" data-zh="方法 2（P2P→DEX）">Method 2</th>
+                        <th data-en="Method 3 (Revolut→Bitget→DEX)" data-ru="Способ 3 (Revolut→Bitget→DEX)" data-tk="Usul 3 (Revolut→Bitget→DEX)" data-ar="الطريقة 3 (Revolut→Bitget→DEX)" data-fa="روش ۳ (Revolut→Bitget→DEX)" data-zh="方法 3（Revolut→Bitget→DEX）">Method 3</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Время</td><td>15–30 мин</td><td>1–2 часа</td><td>30–60 мин</td></tr>
-                    <tr><td>Комиссия</td><td>Средняя (~1-2%)</td><td>Низкая (~0.5-1%)</td><td>Высокая (~1.5-3%)</td></tr>
-                    <tr><td>Сложность</td><td>⭐ (просто)</td><td>⭐⭐⭐ (требует внимания)</td><td>⭐⭐ (средне)</td></tr>
-                    <tr><td>Где нужен KYC</td><td>Bitget</td><td>Binance/Bybit</td><td>Revolut/Wise + Bitget</td></tr>
-                    <tr><td>Риски</td><td>Минимальные</td><td>Средние (проверяйте продавца)</td><td>Минимальные</td></tr>
+                    <tr><td data-en="Time" data-ru="Время" data-tk="Wagt" data-ar="الوقت" data-fa="زمان" data-zh="时间">Time</td><td>15–30 min</td><td>1–2 hours</td><td>30–60 min</td></tr>
+                    <tr><td data-en="Fees" data-ru="Комиссия" data-tk="Kommisiýa" data-ar="الرسوم" data-fa="کارمزد" data-zh="费用">Fees</td><td>~1-2%</td><td>~0.5-1%</td><td>~1.5-3%</td></tr>
+                    <tr><td data-en="Difficulty" data-ru="Сложность" data-tk="Çylşyrymlylyk" data-ar="الصعوبة" data-fa="سختی" data-zh="难度">Difficulty</td><td>⭐ (Easy)</td><td>⭐⭐⭐ (Needs attention)</td><td>⭐⭐ (Medium)</td></tr>
+                    <tr><td data-en="KYC Required" data-ru="Нужен KYC" data-tk="KYC gerek" data-ar="مطلوب KYC" data-fa="KYC نیاز است" data-zh="需要 KYC">KYC Required</td><td>Bitget</td><td>Binance/Bybit</td><td>Revolut/Wise + Bitget</td></tr>
+                    <tr><td data-en="Risks" data-ru="Риски" data-tk="Riwler" data-ar="المخاطر" data-fa="ریسک‌ها" data-zh="风险">Risks</td><td data-en="Minimal" data-ru="Минимальные" data-tk="Minimal" data-ar="ضئيلة" data-fa="حداقل" data-zh="最小">Minimal</td><td data-en="Medium" data-ru="Средние" data-tk="Orta" data-ar="متوسطة" data-fa="متوسط" data-zh="中等">Medium</td><td data-en="Minimal" data-ru="Минимальные" data-tk="Minimal" data-ar="ضئيلة" data-fa="حداقل" data-zh="最小">Minimal</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- Что нужно для старта -->
+        <!-- What you need -->
         <div class="card">
-            <h2>🛠️ Что нужно подготовить</h2>
+            <h2 data-en="🛠️ What you need to prepare" data-ru="🛠️ Что нужно подготовить" data-tk="🛠️ Näme taýýarlamaly" data-ar="🛠️ ما تحتاج إلى تحضيره" data-fa="🛠️ چه چیزی باید آماده کنید" data-zh="🛠️ 需要准备什么">🛠️ What you need to prepare</h2>
             <ul style="margin-left: 1.5rem;">
-                <li><strong>Паспорт или ID</strong> — для верификации (KYC) на бирже</li>
-                <li><strong>Банковская карта (Visa/Mastercard)</strong> — международная или туркменская, если работает за границей</li>
-                <li><strong>Solana-кошелёк</strong> — например, <a href="https://phantom.app" target="_blank" style="color:#ffd700;">Phantom</a> или <a href="https://solflare.com" target="_blank" style="color:#ffd700;">Solflare</a> (бесплатно)</li>
-                <li><strong>Немного SOL</strong> (≈0.01-0.05 SOL) — для комиссий при обмене на DEX</li>
+                <li><span data-en="Passport or ID — for verification (KYC) on the exchange" data-ru="Паспорт или ID — для верификации (KYC) на бирже" data-tk="Pasport ýa-da ID — biržada tassyklamak üçin (KYC)" data-ar="جواز سفر أو هوية — للتحقق (KYC) في البورصة" data-fa="گذرنامه یا شناسنامه — برای تأیید هویت (KYC) در صرافی" data-zh="护照或身份证——用于交易所验证（KYC）">Passport or ID — for verification (KYC) on the exchange</span></li>
+                <li><span data-en="Bank card (Visa/Mastercard) — international or local if works abroad" data-ru="Банковская карта (Visa/Mastercard) — международная или туркменская, если работает за границей" data-tk="Bank karty (Visa/Mastercard) — halkara ýa-da daşarda işleýän türkmen karty" data-ar="بطاقة بنكية (فيزا/ماستركارد) — دولية أو محلية إذا كانت تعمل في الخارج" data-fa="کارت بانکی (ویزا/مسترکارت) — بین‌المللی یا محلی اگر در خارج کار می‌کند" data-zh="银行卡（Visa/Mastercard）——国际卡或本地卡（如果在国外可用）">Bank card (Visa/Mastercard) — international or local if works abroad</span></li>
+                <li><span data-en="Solana wallet — e.g. Phantom or Solflare (free)" data-ru="Solana-кошелёк — например, Phantom или Solflare (бесплатно)" data-tk="Solana jübi — meselem, Phantom ýa-da Solflare (mugt)" data-ar="محفظة Solana — على سبيل المثال Phantom أو Solflare (مجانية)" data-fa="کیف پول Solana — به عنوان مثال Phantom یا Solflare (رایگان)" data-zh="Solana 钱包——例如 Phantom 或 Solflare（免费）">Solana wallet — e.g. <a href="https://phantom.app" target="_blank" style="color:#ffd700;">Phantom</a> or <a href="https://solflare.com" target="_blank" style="color:#ffd700;">Solflare</a> (free)</span></li>
+                <li><span data-en="A little SOL (≈0.01-0.05 SOL) — for transaction fees on DEX" data-ru="Немного SOL (≈0.01-0.05 SOL) — для комиссий при обмене на DEX" data-tk="Azajyk SOL (≈0.01-0.05 SOL) — DEX-de çalşyk komissiýalary üçin" data-ar="قليل من SOL (≈0.01-0.05 SOL) — لرسوم المعاملات في DEX" data-fa="کمی SOL (≈۰.۰۱-۰.۰۵ SOL) — برای کارمزد تراکنش در DEX" data-zh="少量 SOL（≈0.01-0.05 SOL）——用于 DEX 上的交易费用">A little SOL (≈0.01-0.05 SOL) — for transaction fees on DEX</span></li>
             </ul>
         </div>
 
-        <!-- Частые вопросы -->
+        <!-- FAQ -->
         <div class="card">
-            <h2>❓ Частые вопросы</h2>
+            <h2 data-en="❓ FAQ" data-ru="❓ Частые вопросы" data-tk="❓ Köplenç soralýan soraglar" data-ar="❓ الأسئلة الشائعة" data-fa="❓ سوالات متداول" data-zh="❓ 常见问题">❓ FAQ</h2>
             
-            <h3>❓ Почему нельзя купить TMT напрямую за манаты?</h3>
-            <p>Ни одна международная биржа не принимает туркменские манаты. Это не связано с токеном TMT — так работает любой криптоактив на любой бирже. Манаты — это неконвертируемая валюта вне Туркменистана.</p>
+            <h3 data-en="❓ Why can't I buy TMT directly with manats?" data-ru="❓ Почему нельзя купить TMT напрямую за манаты?" data-tk="❓ Näme üçin TMT-ni gönüden-göni manat bilen satyn alyp bolmaýar?" data-ar="❓ لماذا لا يمكنني شراء TMT مباشرة بالمانات؟" data-fa="❓ چرا نمی‌توانم TMT را مستقیماً با منات بخرم؟" data-zh="❓ 为什么不能用马纳特直接购买 TMT？">❓ Why can't I buy TMT directly with manats?</h3>
+            <p><span data-en="No international exchange accepts Turkmen manats. This is not specific to TMT token — it applies to any crypto asset on any exchange." 
+                     data-ru="Ни одна международная биржа не принимает туркменские манаты. Это не связано с токеном TMT — так работает любой криптоактив на любой бирже."
+                     data-tk="Hiç bir halkara biržasy türkmen manadyny kabul etmeýär. Bu TMT tokenine mahsus däl — bu islendik biržada islendik kripto aktiw üçin işleýär."
+                     data-ar="لا تقبل أي بورصة دولية المانات التركمانية. هذا ليس خاصًا برمز TMT — هذا ينطبق على أي أصل مشفر في أي بورصة."
+                     data-fa="هیچ صرافی بین‌المللی منات ترکمنستان را قبول نمی‌کند. این خاص توکن TMT نیست — این برای هر دارایی رمزنگاری شده در هر صرافی صدق می‌کند."
+                     data-zh="没有国际交易所接受土库曼马纳特。这不是 TMT 代币特有的——这适用于任何交易所的任何加密资产。">No international exchange accepts Turkmen manats. This is not specific to TMT token — it applies to any crypto asset on any exchange.</span></p>
             
-            <h3>❓ Какой способ самый безопасный?</h3>
-            <p><strong>Вариант 1 (Bitget → Jupiter).</strong> Вы работаете только с лицензированной биржей (Bitget) и официальным DEX (Jupiter). Без P2P и посредников.</p>
+            <h3 data-en="❓ Which method is safest?" data-ru="❓ Какой способ самый безопасный?" data-tk="❓ Haýsy usul iň howpsuz?" data-ar="❓ أي طريقة هي الأكثر أمانًا؟" data-fa="❓ کدام روش امن‌ترین است؟" data-zh="❓ 哪种方法最安全？">❓ Which method is safest?</h3>
+            <p><span data-en="Method 1 (Bitget → Jupiter). You only work with a licensed exchange (Bitget) and an official DEX (Jupiter). No P2P or intermediaries." 
+                     data-ru="Способ 1 (Bitget → Jupiter). Вы работаете только с лицензированной биржей (Bitget) и официальным DEX (Jupiter). Без P2P и посредников."
+                     data-tk="Usul 1 (Bitget → Jupiter). Diňe ygtyýarly birža (Bitget) we resmi DEX (Jupiter) bilen işleýärsiňiz. P2P ýa-da araçylar ýok."
+                     data-ar="الطريقة الأولى (Bitget → Jupiter). أنت تعمل فقط مع بورصة مرخصة (Bitget) و DEX رسمي (Jupiter). بدون P2P أو وسطاء."
+                     data-fa="روش ۱ (Bitget → Jupiter). شما فقط با صرافی دارای مجوز (Bitget) و DEX رسمی (Jupiter) کار می‌کنید. بدون P2P یا واسطه."
+                     data-zh="方法 1（Bitget → Jupiter）。您只与持牌交易所（Bitget）和官方 DEX（Jupiter）合作。没有 P2P 或中介。">Method 1 (Bitget → Jupiter). You only work with a licensed exchange (Bitget) and an official DEX (Jupiter). No P2P or intermediaries.</span></p>
             
-            <h3>❓ Нужно ли платить налоги при покупке TMT?</h3>
-            <p>По закону Туркменистана «О виртуальных активах» (с 1 января 2026), владение криптовалютой не облагается налогом. Но консультация с юристом не помешает.</p>
-            
-            <h3>❓ Что делать, если я не могу пройти верификацию на Bitget?</h3>
-            <p>Попробуйте Bybit — там аналогичный процесс. Или используйте <strong>Вариант 2 (P2P)</strong> — KYC там тоже нужен, но иногда требования проще.</p>
-            
-            <h3>❓ Сколько SOL нужно для комиссий?</h3>
-            <p>~0.01-0.05 SOL (около $0.15–0.75). Этого хватит на десятки обменов на Jupiter или Raydium. Комиссия Solana — одна из самых низких в криптоиндустрии.</p>
+            <h3 data-en="❓ Do I need to pay taxes when buying TMT?" data-ru="❓ Нужно ли платить налоги при покупке TMT?" data-tk="❓ TMT satyn alanda salgyt tölemeli mi?" data-ar="❓ هل أحتاج إلى دفع ضرائب عند شراء TMT؟" data-fa="❓ آیا هنگام خرید TMT باید مالیات پرداخت کنم؟" data-zh="❓ 购买 TMT 时需要纳税吗？">❓ Do I need to pay taxes when buying TMT?</h3>
+            <p><span data-en="Under Turkmenistan's 'Virtual Assets' law (since Jan 1, 2026), crypto ownership is not taxed. But consult a lawyer to be sure." 
+                     data-ru="По закону Туркменистана «О виртуальных активах» (с 1 января 2026), владение криптовалютой не облагается налогом. Но консультация с юристом не помешает."
+                     data-tk="Türkmenistanyň 'Wirtual aktiwler' kanuny boýunça (2026-njy ýylyň 1-nji ýanwaryndan), kripto eýeçiligi salgyt salynmaýar. Ynamly bolmak üçin hukukçy bilen maslahatlaşyň."
+                     data-ar="بموجب قانون 'الأصول الافتراضية' في تركمانستان (منذ 1 يناير 2026)، لا تخضع ملكية العملات المشفرة للضريبة. لكن استشر محاميًا لتكون متأكدًا."
+                     data-fa="طبق قانون 'دارایی‌های مجازی' ترکمنستان (از ۱ ژانویه ۲۰۲۶)، مالکیت رمزارز مشمول مالیات نمی‌شود. اما برای اطمینان با وکیل مشورت کنید."
+                     data-zh="根据土库曼斯坦《虚拟资产法》（自 2026 年 1 月 1 日起），加密资产所有权不征税。但请咨询律师以确定。">Under Turkmenistan's 'Virtual Assets' law (since Jan 1, 2026), crypto ownership is not taxed. But consult a lawyer to be sure.</span></p>
         </div>
 
-        <!-- Контакты -->
+        <!-- Contacts -->
         <div class="card">
-            <h2>📞 Нужна помощь?</h2>
-            <p>Если у клиентов возникают проблемы с покупкой — они могут написать нам.</p>
+            <h2 data-en="📞 Need help?" data-ru="📞 Нужна помощь?" data-tk="📞 Kömek gerekmi?" data-ar="📞 بحاجة إلى مساعدة؟" data-fa="📞 نیاز به کمک دارید؟" data-zh="📞 需要帮助吗？">📞 Need help?</h2>
+            <p><span data-en="If clients have problems buying, they can contact us." 
+                     data-ru="Если у клиентов возникают проблемы с покупкой — они могут написать нам."
+                     data-tk="Müşderileriň satyn almakda kynçylyklary bolsa, bize ýüz tutup bilerler."
+                     data-ar="إذا واجه العملاء مشاكل في الشراء، يمكنهم الاتصال بنا."
+                     data-fa="اگر مشتریان در خرید مشکل دارند، می‌توانند با ما تماس بگیرند."
+                     data-zh="如果客户在购买时遇到问题，可以联系我们。">If clients have problems buying, they can contact us.</span></p>
             <div class="btn-group">
                 <a href="mailto:otc@eximtrustbank.io" class="btn-primary btn">📧 otc@eximtrustbank.io</a>
                 <a href="https://t.me/eximtrustbank" target="_blank" class="btn-secondary btn">📱 Telegram: @eximtrustbank</a>
             </div>
             <div class="info">
-                📌 Для крупных сумм (>$10,000) предоставляем персонального менеджера и прямую OTC-схему.
+                📌 <span data-en="For large amounts (>$10,000) we provide a personal manager and direct OTC scheme." 
+                         data-ru="Для крупных сумм (>$10,000) предоставляем персонального менеджера и прямую OTC-схему."
+                         data-tk="Uly mukdarlar üçin (>$10,000) şahsy menejeri we göni OTC shemasyny hödürleýäris."
+                         data-ar="للمبالغ الكبيرة (> 10000 دولار) نقدم مديرًا شخصيًا ومخطط OTC مباشر."
+                         data-fa="برای مقادیر بزرگ (>۱۰,۰۰۰ دلار) مدیر شخصی و طرح مستقیم OTC ارائه می‌دهیم."
+                         data-zh="对于大额（>10,000 美元），我们提供个人经理和直接 OTC 方案。">For large amounts (>$10,000) we provide a personal manager and direct OTC scheme.</span>
             </div>
         </div>
 
-        <!-- Дисклеймер -->
+        <!-- Disclaimer -->
         <div class="warning">
-            ⚠️ <strong>Отказ от ответственности:</strong> TMT — экспериментальный крипто-актив. Он <strong>не является</strong> официальной цифровой валютой Центрального банка Туркменистана (CBDC). Все операции с токеном осуществляются на собственный риск. Приведённые инструкции носят информационный характер.
+            ⚠️ <strong data-en="Disclaimer:" data-ru="Отказ от ответственности:" data-tk="Jogapkärçilik çäklendirmesi:" data-ar="إخلاء مسؤولية:" data-fa="سلب مسئولیت:" data-zh="免责声明：">Disclaimer:</strong> 
+            <span data-en="TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk. These instructions are for informational purposes only."
+                  data-ru="TMT — экспериментальный крипто-актив. НЕ является официальной CBDC Туркменистана. Все инвестиции сопряжены с риском. Приведённые инструкции носят информационный характер."
+                  data-tk="TMT eksperimental kripto aktiw. Türkmenistanyň resmi CBDC-si DÄLDIR. Investmentleriň hemmesi töwekgelçilik bilen baglanyşykly. Bu görkezmeler diňe maglumat üçin."
+                  data-ar="TMT هو أصل تشفير تجريبي. ليس عملة رقمية رسمية لتركمانستان. جميع الاستثمارات تنطوي على مخاطر. هذه التعليمات هي لأغراض إعلامية فقط."
+                  data-fa="TMT یک دارایی رمزنگاری تجربی است. ارز دیجیتال رسمی ترکمنستان نیست. همه سرمایه‌گذاری‌ها ریسک دارند. این دستورالعمل‌ها فقط برای اهداف اطلاع‌رسانی هستند."
+                  data-zh="TMT 是一个实验性加密资产。不是土库曼斯坦的官方 CBDC。所有投资都有风险。这些说明仅供参考。">
+            TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk. These instructions are for informational purposes only.</span>
         </div>
 
         <div class="footer">
-            © 2025 Turkmen New Manat (TMT) — децентрализованный токен на Solana.<br>
-            Контракт: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+            © 2025 Turkmen New Manat (TMT) — Decentralized token on Solana.<br>
+            Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
         </div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            document.documentElement.lang = lang;
+            if (lang === 'ar' || lang === 'fa') {
+                document.body.style.direction = 'rtl';
+                document.querySelector('.container').style.direction = 'rtl';
+            } else {
+                document.body.style.direction = 'ltr';
+                document.querySelector('.container').style.direction = 'ltr';
+            }
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+        setLanguage('en');
+    </script>
 </body>
 </html>
