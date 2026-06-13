@@ -82,6 +82,28 @@
         h1 { font-size: 2.5rem; margin-bottom: 0.3rem; background: linear-gradient(135deg, #ffd700, #ffec80); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .badge { display: inline-block; background: rgba(255,215,0,0.2); backdrop-filter: blur(10px); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; border: 1px solid rgba(255,215,0,0.5); }
 
+        /* Navigation */
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        .nav a {
+            background: rgba(255,215,0,0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .nav a:hover {
+            background: #ffd700;
+            color: #0a2e1c;
+        }
+
         .card {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(12px);
@@ -240,6 +262,19 @@
             <div class="badge">$TMT · Token-2022 on Solana · 19+ Premium Functions</div>
         </div>
 
+        <!-- Navigation Bar -->
+        <div class="nav">
+            <a href="index.html" style="background:#ffd700; color:#0a2e1c;">🏠 Home</a>
+            <a href="ecosystem.html">🌿 Ecosystem</a>
+            <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="rwa.html">🏔️ RWA</a>
+            <a href="dao.html">🗳️ DAO</a>
+            <a href="card.html">💳 Card</a>
+            <a href="bridge.html">🌉 Bridge</a>
+            <a href="islamic.html">🕌 Islamic</a>
+            <a href="whitepaper.html">📄 WP</a>
+        </div>
+
         <!-- Contract -->
         <div class="card">
             <h2 data-en="📜 Smart Contract (Mint ID)" data-ru="📜 Смарт-контракт" data-tk="📜 Akylly şertnama (Mint ID)" data-ar="📜 العقد الذكي" data-fa="📜 قرارداد هوشمند" data-zh="📜 智能合约 (铸造地址)">📜 Smart Contract</h2>
@@ -361,6 +396,7 @@
                 <div class="function-item"><div class="function-icon">💸</div><div data-en="Cashback Rewards" data-ru="Кэшбэк награды" data-tk="Cashback baýraklary" data-ar="مكافآت استرداد النقود" data-fa="جوایز بازگشت نقدی" data-zh="现金返还奖励">Cashback Rewards</div><small>3% on all card transactions</small></div>
                 <div class="function-item"><div class="function-icon">🎁</div><div data-en="Referral Program" data-ru="Реферальная программа" data-tk="Referal programmasy" data-ar="برنامج الإحالة" data-fa="برنامه ارجاع" data-zh="推荐计划">Referral Program</div><small>5% commission on referrals</small></div>
                 <div class="function-item"><div class="function-icon">🏆</div><div data-en="Airdrops & Bonuses" data-ru="Airdrops и бонусы" data-tk="Airdroplar we baýraklar" data-ar="الإسقاطات الجوية" data-fa="ایردراپ" data-zh="空投奖励">Airdrops</div><small>Seasonal rewards for holders</small></div>
+                <div class="function-item"><div class="function-icon">🕌</div><div data-en="Islamic Finance" data-ru="Исламское финансирование" data-tk="Yslam maliýe" data-ar="التمويل الإسلامي" data-fa="مالی اسلامی" data-zh="伊斯兰金融">Islamic Finance</div><small>Sharia-compliant · Murabaha · Mudarabah · Sukuk</small></div>
             </div>
         </div>
 
