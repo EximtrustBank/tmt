@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMT Payments — Merchant Gateway, IBAN, Multi-Currency Wallet</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%); color: #fff; line-height: 1.6; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffd700; }
+        .logo img { width: 80%; border-radius: 50%; }
+        h1 { font-size: 2rem; color: #ffd700; }
+        .back-link { color: #ffec80; text-decoration: none; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
+        .nav a:hover { background: #ffd700; color: #0a2e1c; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); }
+        .card h2 { color: #ffd700; margin-bottom: 1rem; }
+        .card-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .btn { background: #ffd700; color: #0a2e1c; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
+            <h1>💳 TMT Payments</h1>
+            <a href="index.html" class="back-link">← Back to Main Page</a>
+        </div>
+        <div class="nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="ecosystem.html">🌿 Ecosystem</a>
+            <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="trading.html">📈 Trading</a>
+            <a href="earn.html">💸 Earn</a>
+            <a href="rwa.html">🏔️ RWA</a>
+            <a href="payments.html" style="background:#ffd700; color:#0a2e1c;">💳 Payments</a>
+            <a href="social.html">🎮 Social</a>
+            <a href="dao.html">🗳️ DAO</a>
+            <a href="islamic.html">🕌 Islamic</a>
+            <a href="whitepaper.html">📄 WP</a>
+        </div>
+
+        <div class="grid-3">
+            <div class="card"><div class="card-icon">🏪</div><h2>TMT Pay (Merchant Gateway)</h2><p>Платёжный шлюз для интернет-магазинов. Принимайте TMT, конвертируйте в фиат.</p><div class="stat"><span>Подключено магазинов</span><span>1,247</span></div><div class="stat"><span>Объём платежей</span><span>$12.4M</span></div><div class="stat"><span>Комиссия</span><span>0.5%</span></div><a href="#" class="btn">Integrate →</a></div>
+            <div class="card"><div class="card-icon">🏦</div><h2>Virtual IBAN</h2><p>Виртуальный банковский счёт в евро/долларах для бизнеса и физлиц.</p><div class="stat"><span>Выдано счетов</span><span>8,492</span></div><div class="stat"><span>Оборот</span><span>$89M</span></div><div class="stat"><span>Поддержка SEPA/SWIFT</span><span>Да</span></div><a href="#" class="btn">Open Account →</a></div>
+            <div class="card"><div class="card-icon">💱</div><h2>Multi-Currency Wallet</h2><p>Храните TMT, BTC, ETH, SOL, USDC, USDT, а также EUR, USD, GBP.</p><div class="stat"><span>Активных кошельков</span><span>142,893</span></div><div class="stat"><span>Конвертация без комиссии</span><span>Да</span></div><a href="#" class="btn">Open Wallet →</a></div>
+            <div class="card"><div class="card-icon">📞</div><h2>Bill Payments</h2><p>Оплата коммунальных услуг, телефона, интернета через TMT.</p><div class="stat"><span>Доступно провайдеров</span><span>347</span></div><div class="stat"><span>Оплачено счетов</span><span>23,894</span></div><a href="#" class="btn">Pay Bills →</a></div>
+            <div class="card"><div class="card-icon">👥</div><h2>Payroll API</h2><p>Автоматическая выплата зарплат сотрудникам в TMT. Интеграция с HR-системами.</p><div class="stat"><span>Компаний используют</span><span>234</span></div><div class="stat"><span>Выплачено зарплат</span><span>$8.4M</span></div><a href="#" class="btn">Get API Key →</a></div>
+        </div>
+        <div class="footer">© 2025 TMT Payments — Your Crypto Bank</div>
+    </div>
+</body>
+</html>
