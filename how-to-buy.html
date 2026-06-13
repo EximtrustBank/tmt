@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Как купить TMT за туркменские манаты — пошаговые инструкции</title>
+    <meta name="description" content="Подробные инструкции по покупке токена Turkmen New Manat (TMT) за туркменские манаты. Три способа: через Bitget, P2P, Revolut/Wise. Все ссылки рабочие.">
+    <meta property="og:title" content="Как купить TMT за туркменские манаты">
+    <meta property="og:description" content="Пошаговые инструкции с работающими ссылками. Двух- и трёхэтапные схемы.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png">
+    <meta property="og:url" content="https://eximtrustbank.github.io/tmt/how-to-buy.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 3px solid #ffd700;
+        }
+        .logo img { width: 80%; height: auto; border-radius: 50%; }
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #ffd700; }
+        .back-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: #ffec80;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        /* Cards */
+        .card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .card h2 {
+            color: #ffd700;
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+            border-left: 4px solid #ffd700;
+            padding-left: 1rem;
+        }
+        .card h3 {
+            color: #ffec80;
+            margin: 1.2rem 0 0.8rem;
+            font-size: 1.2rem;
+        }
+        .card h4 {
+            color: #ffd700;
+            margin: 1rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        .step-list li {
+            background: rgba(0,0,0,0.3);
+            margin: 0.5rem 0;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            counter-increment: step;
+        }
+        .step-number {
+            display: inline-block;
+            background: #ffd700;
+            color: #0a2e1c;
+            width: 28px;
+            height: 28px;
+            text-align: center;
+            line-height: 28px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 0.8rem;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.2s;
+            text-align: center;
+        }
+        .btn-primary { background: #00a86b; color: white; }
+        .btn-secondary { background: #1e3a8a; color: white; }
+        .btn-warning { background: #dc143c; color: white; }
+        .btn-primary:hover, .btn-secondary:hover, .btn-warning:hover { transform: scale(1.02); opacity: 0.9; }
+
+        .warning {
+            background: rgba(255,100,100,0.2);
+            border-left: 4px solid #ff6464;
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        .success {
+            background: rgba(0,200,100,0.2);
+            border-left: 4px solid #00c864;
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        .info {
+            background: rgba(0,100,200,0.2);
+            border-left: 4px solid #0064c8;
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .comparison-table th { color: #ffd700; }
+
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        hr { border-color: rgba(255,255,255,0.1); margin: 1rem 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT Logo"></div>
+            <h1>🇹🇲 Как купить TMT за туркменские манаты</h1>
+            <a href="index.html" class="back-link">← Вернуться на главную страницу</a>
+        </div>
+
+        <!-- Важное введение -->
+        <div class="card">
+            <h2>⚡ Важно понять</h2>
+            <div class="warning">
+                Прямого способа купить токен <strong>TMT (Turkmen New Manat)</strong> напрямую за туркменские манаты (TMT) с карты <strong>не существует</strong>. Ни одна международная биржа не принимает манаты.
+            </div>
+            <p style="margin-top: 1rem;">✅ <strong>Решение:</strong> Используйте двух- или трёхэтапную схему. Ниже — <strong>три проверенных способа</strong> с работающими ссылками.</p>
+        </div>
+
+        <!-- Вариант 1: Двухэтапный (самый быстрый) -->
+        <div class="card">
+            <h2>🚀 Вариант 1: Двухэтапный (15–30 минут)</h2>
+            <p><strong>Лучший выбор для большинства клиентов.</strong> Минимум действий, всё через одну платформу.</p>
+            
+            <h3>📌 Этап 1: Покупаем USDT за манаты с карты</h3>
+            <div class="btn-group">
+                <a href="https://bitget.com" target="_blank" class="btn-primary btn">🚀 Bitget — зарегистрироваться</a>
+                <a href="https://www.bybit.com" target="_blank" class="btn-secondary btn">⚡ Bybit — альтернатива</a>
+            </div>
+            <div class="step-list">
+                <li><span class="step-number">1</span> Зарегистрируйтесь на Bitget.com (есть русский интерфейс)</li>
+                <li><span class="step-number">2</span> Пройдите верификацию (KYC) — нужен паспорт или ID</li>
+                <li><span class="step-number">3</span> Перейдите в раздел «Купить» → выберите USDT</li>
+                <li><span class="step-number">4</span> Способ оплаты: банковская карта (Visa/Mastercard)</li>
+                <li><span class="step-number">5</span> Укажите сумму в туркменских манатах — карта сама сконвертирует в USD</li>
+                <li><span class="step-number">6</span> Подтвердите оплату — USDT поступят на ваш счёт в течение 5–10 минут</li>
+            </div>
+
+            <h3>🔄 Этап 2: Обмениваем USDT → TMT</h3>
+            <div class="btn-group">
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-primary btn">🌀 Jupiter (лучшая цена)</a>
+                <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="btn-secondary btn">⚡ Raydium (напрямую)</a>
+            </div>
+            <div class="step-list">
+                <li><span class="step-number">1</span> Выведите USDT с Bitget на ваш Solana-кошелёк (например, Phantom или Solflare)</li>
+                <li><span class="step-number">2</span> Зайдите на <strong>Jupiter (jup.ag)</strong> — агрегатор всех DEX на Solana</li>
+                <li><span class="step-number">3</span> Подключите кошелёк (кнопка «Connect Wallet»)</li>
+                <li><span class="step-number">4</span> Выберите пару: USDC (или USDT) → TMT</li>
+                <li><span class="step-number">5</span> Введите сумму → нажмите «Swap» → подтвердите транзакцию</li>
+                <li><span class="step-number">6</span> Готово! TMT у вас в кошельке</li>
+            </div>
+            <div class="success">
+                ✅ <strong>Среднее время:</strong> 15–30 минут.<br>
+                ✅ <strong>Комиссии:</strong> ~1-2% (включая конвертацию карты и обмен).<br>
+                ✅ <strong>Риски:</strong> Минимальные.
+            </div>
+        </div>
+
+        <!-- Вариант 2: Трёхэтапный через P2P -->
+        <div class="card">
+            <h2>🔄 Вариант 2: Трёхэтапный через P2P (низкая комиссия)</h2>
+            <p><strong>Самый дешёвый способ.</strong> Подходит для тех, кто готов потратить немного больше времени и разобраться в P2P.</p>
+            
+            <h3>📌 Этап 1: Регистрация на бирже</h3>
+            <div class="btn-group">
+                <a href="https://www.binance.com" target="_blank" class="btn-primary btn">🟡 Binance</a>
+                <a href="https://www.bybit.com" target="_blank" class="btn-secondary btn">⚡ Bybit</a>
+            </div>
+
+            <h3>📌 Этап 2: Покупка USDT за манаты через P2P</h3>
+            <div class="step-list">
+                <li><span class="step-number">1</span> Зайдите в раздел <strong>«P2P»</strong> (на Binance — «Торговля» → «P2P»)</li>
+                <li><span class="step-number">2</span> Выберите: «Я хочу купить» → валюта <strong>USDT</strong></li>
+                <li><span class="step-number">3</span> В поиске выберите фиатную валюту <strong>TMT</strong> (туркменский манат)</li>
+                <li><span class="step-number">4</span> Выберите продавца с хорошей репутацией (>100 сделок, высокий рейтинг)</li>
+                <li><span class="step-number">5</span> Нажмите «Купить» → переведите сумму на карту продавца (реквизиты увидите в сделке)</li>
+                <li><span class="step-number">6</span> Подтвердите оплату → USDT поступят на ваш счёт <strong>мгновенно</strong></li>
+            </div>
+            <div class="info">
+                📌 <strong>Совет:</strong> Используйте только сделки с <strong>эскроу-защитой</strong> (она включена по умолчанию на Binance и Bybit). Никогда не переводите деньги вне платформы.
+            </div>
+
+            <h3>🔄 Этап 3: Обмен USDT → TMT</h3>
+            <div class="btn-group">
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-primary btn">🌀 Jupiter (лучшая цена)</a>
+                <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="btn-secondary btn">⚡ Raydium</a>
+            </div>
+            <div class="success">
+                ✅ <strong>Среднее время:</strong> 1–2 часа (зависит от продавца).<br>
+                ✅ <strong>Комиссии:</strong> Минимальные (только наценка продавца, обычно 0.5–1%).<br>
+                ⚠️ <strong>Риски:</strong> Средние — всегда проверяйте продавца.
+            </div>
+        </div>
+
+        <!-- Вариант 3: Для клиентов за границей -->
+        <div class="card">
+            <h2>🌍 Вариант 3: Для клиентов за пределами Туркменистана</h2>
+            <p><strong>Подходит для тех, у кого есть Revolut, Wise или иностранная карта.</strong></p>
+            
+            <h3>📌 Этап 1: Конвертация через Revolut/Wise</h3>
+            <div class="btn-group">
+                <a href="https://www.revolut.com" target="_blank" class="btn-primary btn">💳 Revolut</a>
+                <a href="https://wise.com" target="_blank" class="btn-secondary btn">🌍 Wise</a>
+            </div>
+            <div class="step-list">
+                <li><span class="step-number">1</span> Пополните счёт в Revolut/Wise в туркменских манатах (через карту или перевод)</li>
+                <li><span class="step-number">2</span> Конвертируйте нужную сумму в <strong>USD</strong> или <strong>EUR</strong> (курс близок к рыночному)</li>
+            </div>
+
+            <h3>📌 Этап 2: Покупка USDT за USD/EUR</h3>
+            <div class="btn-group">
+                <a href="https://bitget.com" target="_blank" class="btn-primary btn">🚀 Bitget</a>
+                <a href="https://www.binance.com" target="_blank" class="btn-secondary btn">🟡 Binance</a>
+            </div>
+            <div class="step-list">
+                <li><span class="step-number">1</span> Зайдите на Bitget или Binance → раздел «Купить»</li>
+                <li><span class="step-number">2</span> Выберите USDT → оплата картой (Visa/Mastercard) в USD/EUR</li>
+                <li><span class="step-number">3</span> Используйте карту Revolut/Wise для оплаты</li>
+            </div>
+
+            <h3>🔄 Этап 3: Обмен USDT → TMT</h3>
+            <div class="btn-group">
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-primary btn">🌀 Jupiter (лучшая цена)</a>
+            </div>
+            <div class="success">
+                ✅ <strong>Среднее время:</strong> 30–60 минут.<br>
+                ✅ <strong>Комиссии:</strong> Выше среднего (Revolut/Wise берут ~0.5%, биржа ~0.1%, обмен ~0.3%).<br>
+                ✅ <strong>Риски:</strong> Минимальные.
+            </div>
+        </div>
+
+        <!-- Сравнительная таблица -->
+        <div class="card">
+            <h2>📊 Сравнение способов</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Критерий</th>
+                        <th>Вариант 1 (Bitget→DEX)</th>
+                        <th>Вариант 2 (P2P→DEX)</th>
+                        <th>Вариант 3 (Revolut→Bitget→DEX)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Время</td><td>15–30 мин</td><td>1–2 часа</td><td>30–60 мин</td></tr>
+                    <tr><td>Комиссия</td><td>Средняя (~1-2%)</td><td>Низкая (~0.5-1%)</td><td>Высокая (~1.5-3%)</td></tr>
+                    <tr><td>Сложность</td><td>⭐ (просто)</td><td>⭐⭐⭐ (требует внимания)</td><td>⭐⭐ (средне)</td></tr>
+                    <tr><td>Где нужен KYC</td><td>Bitget</td><td>Binance/Bybit</td><td>Revolut/Wise + Bitget</td></tr>
+                    <tr><td>Риски</td><td>Минимальные</td><td>Средние (проверяйте продавца)</td><td>Минимальные</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Что нужно для старта -->
+        <div class="card">
+            <h2>🛠️ Что нужно подготовить</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Паспорт или ID</strong> — для верификации (KYC) на бирже</li>
+                <li><strong>Банковская карта (Visa/Mastercard)</strong> — международная или туркменская, если работает за границей</li>
+                <li><strong>Solana-кошелёк</strong> — например, <a href="https://phantom.app" target="_blank" style="color:#ffd700;">Phantom</a> или <a href="https://solflare.com" target="_blank" style="color:#ffd700;">Solflare</a> (бесплатно)</li>
+                <li><strong>Немного SOL</strong> (≈0.01-0.05 SOL) — для комиссий при обмене на DEX</li>
+            </ul>
+        </div>
+
+        <!-- Частые вопросы -->
+        <div class="card">
+            <h2>❓ Частые вопросы</h2>
+            
+            <h3>❓ Почему нельзя купить TMT напрямую за манаты?</h3>
+            <p>Ни одна международная биржа не принимает туркменские манаты. Это не связано с токеном TMT — так работает любой криптоактив на любой бирже. Манаты — это неконвертируемая валюта вне Туркменистана.</p>
+            
+            <h3>❓ Какой способ самый безопасный?</h3>
+            <p><strong>Вариант 1 (Bitget → Jupiter).</strong> Вы работаете только с лицензированной биржей (Bitget) и официальным DEX (Jupiter). Без P2P и посредников.</p>
+            
+            <h3>❓ Нужно ли платить налоги при покупке TMT?</h3>
+            <p>По закону Туркменистана «О виртуальных активах» (с 1 января 2026), владение криптовалютой не облагается налогом. Но консультация с юристом не помешает.</p>
+            
+            <h3>❓ Что делать, если я не могу пройти верификацию на Bitget?</h3>
+            <p>Попробуйте Bybit — там аналогичный процесс. Или используйте <strong>Вариант 2 (P2P)</strong> — KYC там тоже нужен, но иногда требования проще.</p>
+            
+            <h3>❓ Сколько SOL нужно для комиссий?</h3>
+            <p>~0.01-0.05 SOL (около $0.15–0.75). Этого хватит на десятки обменов на Jupiter или Raydium. Комиссия Solana — одна из самых низких в криптоиндустрии.</p>
+        </div>
+
+        <!-- Контакты -->
+        <div class="card">
+            <h2>📞 Нужна помощь?</h2>
+            <p>Если у клиентов возникают проблемы с покупкой — они могут написать нам.</p>
+            <div class="btn-group">
+                <a href="mailto:otc@eximtrustbank.io" class="btn-primary btn">📧 otc@eximtrustbank.io</a>
+                <a href="https://t.me/eximtrustbank" target="_blank" class="btn-secondary btn">📱 Telegram: @eximtrustbank</a>
+            </div>
+            <div class="info">
+                📌 Для крупных сумм (>$10,000) предоставляем персонального менеджера и прямую OTC-схему.
+            </div>
+        </div>
+
+        <!-- Дисклеймер -->
+        <div class="warning">
+            ⚠️ <strong>Отказ от ответственности:</strong> TMT — экспериментальный крипто-актив. Он <strong>не является</strong> официальной цифровой валютой Центрального банка Туркменистана (CBDC). Все операции с токеном осуществляются на собственный риск. Приведённые инструкции носят информационный характер.
+        </div>
+
+        <div class="footer">
+            © 2025 Turkmen New Manat (TMT) — децентрализованный токен на Solana.<br>
+            Контракт: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+        </div>
+    </div>
+</body>
+</html>
