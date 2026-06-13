@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMT Social — Quests, Leaderboard, NFT Marketplace, Social Feed</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%); color: #fff; line-height: 1.6; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffd700; }
+        .logo img { width: 80%; border-radius: 50%; }
+        h1 { font-size: 2rem; color: #ffd700; }
+        .back-link { color: #ffec80; text-decoration: none; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
+        .nav a:hover { background: #ffd700; color: #0a2e1c; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h2 { color: #ffd700; margin-bottom: 1rem; }
+        .card-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .btn { background: #ffd700; color: #0a2e1c; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+        .quest-item { background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 16px; margin: 0.5rem 0; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
+            <h1>🎮 TMT Social & Gamification</h1>
+            <a href="index.html" class="back-link">← Back to Main Page</a>
+        </div>
+        <div class="nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="ecosystem.html">🌿 Ecosystem</a>
+            <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="trading.html">📈 Trading</a>
+            <a href="earn.html">💸 Earn</a>
+            <a href="rwa.html">🏔️ RWA</a>
+            <a href="payments.html">💳 Payments</a>
+            <a href="social.html" style="background:#ffd700; color:#0a2e1c;">🎮 Social</a>
+            <a href="dao.html">🗳️ DAO</a>
+            <a href="islamic.html">🕌 Islamic</a>
+            <a href="whitepaper.html">📄 WP</a>
+        </div>
+
+        <div class="grid-3">
+            <div class="card"><div class="card-icon">🎯</div><h2>Quest Board</h2><p>Выполняйте задания и получайте награды в TMT.</p><div class="quest-item"><span>🔁 Сделать swap на $100</span><span>+50 TMT</span></div><div class="quest-item"><span>🌉 Сделать bridge на Solana</span><span>+100 TMT</span></div><div class="quest-item"><span>💰 Застейкать 10,000 TMT</span><span>+250 TMT</span></div><div class="quest-item"><span>👥 Пригласить друга</span><span>+500 TMT</span></div><a href="#" class="btn">View All Quests →</a></div>
+            <div class="card"><div class="card-icon">🏆</div><h2>Leaderboard</h2><p>Топ пользователей по объёму торгов, стейкингу и активности.</p><div class="stat"><span>1. Whale.eth</span><span>$12.4M</span></div><div class="stat"><span>2. DiamondHands</span><span>$8.2M</span></div><div class="stat"><span>3. TMTMaxi</span><span>$5.1M</span></div><div class="stat"><span>4. SolanaKing</span><span>$3.8M</span></div><div class="stat"><span>5. DeFiGuru</span><span>$2.9M</span></div><a href="#" class="btn">View Full Leaderboard →</a></div>
+            <div class="card"><div class="card-icon">🖼️</div><h2>NFT Marketplace</h2><p>Покупайте и продавайте NFT за TMT. Эксклюзивные коллекции.</p><div class="stat"><span>Всего NFT</span><span>12,847</span></div><div class="stat"><span>Объём торгов</span><span>$3.4M</span></div><div class="stat"><span>Продавцов</span><span>2,384</span></div><a href="#" class="btn">Explore NFTs →</a></div>
+            <div class="card"><div class="card-icon">📱</div><h2>Social Feed</h2><p>Лента активностей пользователей. Комментируйте, лайкайте, подписывайтесь.</p><div class="stat"><span>Постов в день</span><span>4,892</span></div><div class="stat"><span>Активных пользователей</span><span>12,847</span></div><a href="#" class="btn">Open Feed →</a></div>
+            <div class="card"><div class="card-icon">👥</div><h2>Referral 2.0 (3 levels)</h2><p>Многоуровневая реферальная программа. Зарабатывайте до 5% в 3 уровня.</p><div class="stat"><span>Level 1 (прямые)</span><span>3%</span></div><div class="stat"><span>Level 2</span><span>1.5%</span></div><div class="stat"><span>Level 3</span><span>0.5%</span></div><div class="stat"><span>Ваша реферальная ссылка</span><span>tmt.cc/ref/yourname</span></div><a href="#" class="btn">Invite Friends →</a></div>
+        </div>
+        <div class="footer">© 2025 TMT Social — Join the Community</div>
+    </div>
+</body>
+</html>
