@@ -4,18 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Turkmen New Manat (TMT) — Official Token on Solana</title>
-    <meta name="description" content="Official website of Turkmen New Manat (TMT) — digital token on Solana (Token-2022). Live price: $0.04904. Total Supply: 100T. Buy with Visa, Mastercard, UnionPay, Crypto Card, Barclays OTC, Jupiter, Raydium, Orca, Meteora, Phoenix.">
-    <meta property="og:title" content="Turkmen New Manat (TMT) — 19+ Premium Functions">
-    <meta property="og:description" content="Market Cap: $4.9T. Liquidity: $244B. Buy TMT, Gold, Silver, Platinum. Staking, Lending, Bridging, Debit Card, Insurance and more.">
+    <meta name="description" content="Official website of Turkmen New Manat (TMT) — digital token on Solana (Token-2022). Live price: $0.04904. Total Supply: 100T. Total Liquidity: $492.4B across USDT/USDC pools.">
+    <meta property="og:title" content="Turkmen New Manat (TMT) — 20+ Premium Functions">
+    <meta property="og:description" content="Market Cap: $4.9T. Total Liquidity: $492.4B. Buy TMT, Gold, Silver, Platinum. Staking, Lending, Bridging, Debit Card, Insurance, Islamic Finance.">
     <meta property="og:image" content="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png">
     <meta property="og:url" content="https://eximtrustbank.github.io/tmt/">
     <meta property="og:type" content="website">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -50,192 +46,54 @@
             transition: all 0.2s;
             font-size: 0.85rem;
         }
-        .lang-btn.active {
-            background: #ffd700;
-            color: #0a2e1c;
-        }
+        .lang-btn.active { background: #ffd700; color: #0a2e1c; }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .logo {
-            width: 140px;
-            height: 140px;
-            margin-bottom: 1rem;
-            background: white;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border: 3px solid #ffd700;
-        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .logo { width: 140px; height: 140px; margin-bottom: 1rem; background: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 3px solid #ffd700; }
         .logo img { width: 85%; height: auto; border-radius: 50%; }
         h1 { font-size: 2.5rem; margin-bottom: 0.3rem; background: linear-gradient(135deg, #ffd700, #ffec80); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .badge { display: inline-block; background: rgba(255,215,0,0.2); backdrop-filter: blur(10px); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; border: 1px solid rgba(255,215,0,0.5); }
 
-        /* Navigation */
-        .nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.8rem;
-            margin: 1.5rem 0;
-        }
-        .nav a {
-            background: rgba(255,215,0,0.2);
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            text-decoration: none;
-            color: white;
-            font-size: 0.9rem;
-            transition: 0.2s;
-        }
-        .nav a:hover {
-            background: #ffd700;
-            color: #0a2e1c;
-        }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; transition: 0.2s; }
+        .nav a:hover { background: #ffd700; color: #0a2e1c; }
 
-        .card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(12px);
-            border-radius: 24px;
-            padding: 1.5rem;
-            margin-bottom: 1.8rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: transform 0.2s;
-        }
+        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border-radius: 24px; padding: 1.5rem; margin-bottom: 1.8rem; border: 1px solid rgba(255,255,255,0.2); transition: transform 0.2s; }
         .card:hover { transform: translateY(-3px); }
         .card h2 { color: #ffd700; margin-bottom: 1rem; font-size: 1.4rem; border-left: 4px solid #ffd700; padding-left: 1rem; }
         .card h3 { color: #ffec80; margin: 1rem 0 0.5rem; font-size: 1.2rem; }
 
-        .contract-box {
-            background: rgba(0,0,0,0.4);
-            border-radius: 16px;
-            padding: 0.8rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.8rem;
-            word-break: break-all;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
+        .contract-box { background: rgba(0,0,0,0.4); border-radius: 16px; padding: 0.8rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem; word-break: break-all; font-family: monospace; font-size: 0.9rem; }
         .contract-address { color: #ffd700; }
-        .btn-copy {
-            background: #ffd700;
-            color: #0a2e1c;
-            border: none;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+        .btn-copy { background: #ffd700; color: #0a2e1c; border: none; padding: 0.4rem 1rem; border-radius: 40px; cursor: pointer; font-weight: bold; }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        .stat-card {
-            background: rgba(0,0,0,0.4);
-            border-radius: 20px;
-            padding: 1rem;
-            text-align: center;
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: rgba(0,0,0,0.4); border-radius: 20px; padding: 1rem; text-align: center; }
         .stat-number { font-size: 1.6rem; font-weight: bold; color: #ffd700; }
         .stat-label { font-size: 0.75rem; opacity: 0.9; }
 
-        .price-big {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #ffd700;
-            text-align: center;
-            margin: 0.5rem 0;
-        }
+        .price-big { font-size: 2.2rem; font-weight: bold; color: #ffd700; text-align: center; margin: 0.5rem 0; }
 
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-        }
-        .btn-buy, .btn-sell, .btn-manat {
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.2s;
-            text-align: center;
-        }
+        .btn-group { display: flex; gap: 1rem; justify-content: center; margin: 1.5rem 0; flex-wrap: wrap; }
+        .btn-buy, .btn-sell, .btn-manat { padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: bold; text-decoration: none; display: inline-block; transition: 0.2s; text-align: center; }
         .btn-buy { background: #00a86b; color: white; }
         .btn-sell { background: #dc143c; color: white; }
         .btn-manat { background: #1e3a8a; color: white; }
         .btn-buy:hover, .btn-sell:hover, .btn-manat:hover { transform: scale(1.02); opacity: 0.9; }
 
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        .function-item {
-            background: rgba(0,0,0,0.4);
-            border-radius: 16px;
-            padding: 1rem;
-            text-align: center;
-            transition: all 0.2s;
-        }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+        .function-item { background: rgba(0,0,0,0.4); border-radius: 16px; padding: 1rem; text-align: center; transition: all 0.2s; }
         .function-item:hover { transform: scale(1.02); background: rgba(0,0,0,0.6); }
         .function-icon { font-size: 2rem; margin-bottom: 0.3rem; }
 
-        .payment-grid, .dex-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 0.8rem;
-            margin: 1rem 0;
-        }
-        .payment-btn, .dex-btn {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,215,0,0.3);
-            border-radius: 40px;
-            padding: 0.7rem;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: 0.2s;
-            display: block;
-        }
+        .payment-grid, .dex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.8rem; margin: 1rem 0; }
+        .payment-btn, .dex-btn { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,215,0,0.3); border-radius: 40px; padding: 0.7rem; text-align: center; text-decoration: none; color: white; font-weight: bold; transition: 0.2s; display: block; }
         .payment-btn:hover, .dex-btn:hover { background: rgba(255,215,0,0.3); transform: scale(1.02); }
 
-        .warning {
-            background: rgba(255,100,100,0.2);
-            border-left: 4px solid #ff6464;
-            padding: 1rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-size: 0.75rem;
-            opacity: 0.7;
-        }
+        .warning { background: rgba(255,100,100,0.2); border-left: 4px solid #ff6464; padding: 1rem; border-radius: 12px; font-size: 0.8rem; }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.75rem; opacity: 0.7; }
+
         @media (max-width: 768px) {
             .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; gap: 0.3rem; }
             .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
@@ -259,7 +117,7 @@
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT Logo"></div>
             <h1>Turkmen New Manat</h1>
-            <div class="badge">$TMT · Token-2022 on Solana · 19+ Premium Functions</div>
+            <div class="badge">$TMT · Token-2022 on Solana · 20+ Premium Functions</div>
         </div>
 
         <!-- Navigation Bar -->
@@ -282,17 +140,21 @@
                 <span class="contract-address">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</span>
                 <button class="btn-copy" onclick="copyAddress()" data-en="Copy" data-ru="Копировать" data-tk="Göçüriň" data-ar="نسخ" data-fa="کپی" data-zh="复制">Copy</button>
             </div>
-            <p style="margin-top: 0.5rem;">🔗 <a href="https://solscan.io/token/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#ffd700;">Solscan</a> | <a href="https://www.geckoterminal.com/solana/pools/D1eKXrnmTMH4YpN94CTdpKooW69YAUZT24UXiLQx4dp1" target="_blank" style="color:#ffd700;">GeckoTerminal (Live Chart)</a></p>
+            <p style="margin-top: 0.5rem;">🔗 <a href="https://solscan.io/token/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#ffd700;">Solscan</a> | <a href="https://www.geckoterminal.com/solana/pools/D1eKXrnmTMH4YpN94CTdpKooW69YAUZT24UXiLQx4dp1" target="_blank" style="color:#ffd700;">TMT/USDT GeckoTerminal</a> | <a href="https://www.geckoterminal.com/solana/pools/FAuushoAhtLYa41dtZNQV7RcVutuzCBBS2XUooZ6z2k8" target="_blank" style="color:#ffd700;">TMT/USDC GeckoTerminal</a></p>
         </div>
 
         <!-- Live Market Data -->
         <div class="card">
-            <h2 data-en="📊 Live Market Data (Meteora Pool)" data-ru="📊 Живые рыночные данные" data-tk="📊 Göni ýaýlym bazary maglumatlary (Meteora howzy)" data-ar="📊 بيانات السوق الحية" data-fa="📊 داده‌های زنده بازار" data-zh="📊 实时市场数据 (Meteora 池)">📊 Live Market Data</h2>
-            <div class="price-big">$0.04904 USD</div>
+            <h2 data-en="📊 Live Market Data (Meteora Pools)" data-ru="📊 Живые рыночные данные" data-tk="📊 Göni ýaýlym bazary maglumatlary" data-ar="📊 بيانات السوق الحية" data-fa="📊 داده‌های زنده بازار" data-zh="📊 实时市场数据">📊 Live Market Data</h2>
+            <div class="price-big">$0.04901 USD</div>
             <div class="stats-grid">
                 <div class="stat-card"><div class="stat-number">$4.9T</div><div class="stat-label" data-en="Market Cap" data-ru="Рыночная капитализация" data-tk="Bazar kapitalizasiýasy" data-ar="القيمة السوقية" data-fa="ارزش بازار" data-zh="市值">Market Cap</div></div>
-                <div class="stat-card"><div class="stat-number">$244.82B</div><div class="stat-label" data-en="Liquidity" data-ru="Ликвидность" data-tk="Likwidlik" data-ar="سيولة" data-fa="نقدینگی" data-zh="流动性">Liquidity</div></div>
+                <div class="stat-card"><div class="stat-number">$492.4B</div><div class="stat-label" data-en="Total Liquidity (USDT+USDC)" data-ru="Общая ликвидность (USDT+USDC)" data-tk="Jemi Likwidlik (USDT+USDC)" data-ar="إجمالي السيولة (USDT+USDC)" data-fa="نقدینگی کل (USDT+USDC)" data-zh="总流动性 (USDT+USDC)">Total Liquidity (USDT+USDC)</div></div>
                 <div class="stat-card"><div class="stat-number">100,000,000,000,000</div><div class="stat-label" data-en="Total Supply" data-ru="Общее предложение" data-tk="Jemi üpjünçilik" data-ar="العرض الكلي" data-fa="کل عرضه" data-zh="总供应量">Total Supply</div></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">$245.91B</div><div class="stat-label">TMT/USDT Liquidity</div></div>
+                <div class="stat-card"><div class="stat-number">$246.49B</div><div class="stat-label">TMT/USDC Liquidity</div></div>
             </div>
         </div>
 
@@ -301,7 +163,7 @@
             <h2 data-en="📜 History of Turkmen Manat" data-ru="📜 История туркменского маната" data-tk="📜 Türkmen manatynyň taryhy" data-ar="📜 تاريخ المانات التركماني" data-fa="📜 تاریخ منات ترکمنستان" data-zh="📜 土库曼马纳特历史">📜 History</h2>
             <p data-en="Introduced Nov 1, 1993, replacing Soviet ruble (500 RUR = 1 TMM). On Jan 1, 2009, new manat (TMT) launched with 5000:1 denomination. In 2025, polymer notes (1,5,10,200 manat) issued for 30th neutrality anniversary. Official USD rate fixed at 3.5 TMT since 2015, but black market rate ~40 TMT/USD." 
                data-ru="Введён 1 ноября 1993 года, заменив советский рубль (500 RUR = 1 TMM). 1 января 2009 года деноминация 5000:1 — новый манат (TMT). В 2025 году выпущены полимерные банкноты к 30-летию нейтралитета. Официальный курс USD — 3.5 TMT, чёрный рынок — ~40 TMT/USD."
-               data-tk="1993-nji ýylyň 1-nji noýabrynda girizildi, sowet rublini çalşdy (500 RUR = 1 TMM). 2009-njy ýylyň 1-nji ýanwarynda 5000:1 nominally bilen täze manat (TMT) işe girizildi. 2025-nji ýylda 30 ýyllyk bitaraplyk üçin polimer banknotlar (1,5,10,200 manat) çykaryldy. Resmi USD kursy 2015-nji ýyldan bäri 3.5 TMT, ýöne gara bazar kursy ~40 TMT/USD."
+               data-tk="1993-nji ýylyň 1-nji noýabrynda girizildi, sowet rublini çalşdy (500 RUR = 1 TMM). 2009-njy ýylyň 1-nji ýanwarynda 5000:1 nominally bilen täze manat (TMT) işe girizildi. 2025-nji ýylda 30 ýyllyk bitaraplyk üçin polimer banknotlar çykaryldy."
                data-ar="تم إطلاقه في 1 نوفمبر 1993. في 1 يناير 2009، تم إطلاق المانات الجديد (TMT)."
                data-fa="در تاریخ ۱ نوامبر ۱۹۹۳ معرفی شد. در ۱ ژانویه ۲۰۰۹، منات جدید (TMT) عرضه شد."
                data-zh="1993年11月1日推出，取代苏联卢布。2009年1月1日，新马纳特（TMT）推出。">
@@ -312,7 +174,6 @@
         <div class="card">
             <h2 data-en="🔄 Buy TMT" data-ru="🔄 Купить TMT" data-tk="🔄 TMT satyn al" data-ar="🔄 شراء TMT" data-fa="🔄 خرید TMT" data-zh="🔄 购买 TMT">🔄 Buy TMT</h2>
             
-            <!-- Button to how-to-buy page -->
             <div style="text-align: center; margin-bottom: 1.5rem;">
                 <a href="how-to-buy.html" class="btn-manat" data-en="🇹🇲 How to buy TMT with Turkmen Manats →" data-ru="🇹🇲 Как купить TMT за манаты →" data-tk="🇹🇲 TMT-ni türkmen manady bilen nädip satyn almaly →" data-ar="🇹🇲 كيفية شراء TMT بالمانات التركمانية →" data-fa="🇹🇲 نحوه خرید TMT با منات ترکمنستان →" data-zh="🇹🇲 如何用土库曼马纳特购买 TMT →">🇹🇲 How to buy TMT with Turkmen Manats →</a>
             </div>
@@ -323,7 +184,6 @@
                 <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="dex-btn">⚡ Raydium — Deepest Liquidity</a>
                 <a href="https://www.orca.so/swap" target="_blank" class="dex-btn">🐡 Orca — User Friendly</a>
                 <a href="https://app.meteora.ag/swap" target="_blank" class="dex-btn">🌊 Meteora — Dynamic AMM</a>
-                <a href="https://phoenix.trade/" target="_blank" class="dex-btn">📖 Phoenix — Order Book DEX</a>
             </div>
             
             <h3 data-en="🌉 Cross-Chain Bridges" data-ru="🌉 Кросс-чейн бриджи" data-tk="🌉 Zynjyrara köprüler" data-ar="🌉 جسور عبر السلاسل" data-fa="🌉 پل‌های زنجیره‌ای" data-zh="🌉 跨链桥">🌉 Cross-Chain Bridges</h3>
@@ -336,7 +196,7 @@
             <h3 data-en="💱 OTC Desks (Large Trades $10k+)" data-ru="💱 Внебиржевые площадки (крупные сделки)" data-tk="💱 Biržadan daşary platformalar (uly söwdalar $10k+)" data-ar="💱 مكاتب خارج البورصة" data-fa="💱 میزهای OTC" data-zh="💱 场外交易平台">💱 OTC Desks</h3>
             <div class="dex-grid">
                 <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20via%20FinchTrade" class="payment-btn">🏦 FinchTrade — Swiss VASP (SEPA/SWIFT)</a>
-                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20via%201Konto" class="payment-btn">💳 1Konto — Multi-Currency (USD/EUR/GBP/AUD/MXN)</a>
+                <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20via%201Konto" class="payment-btn">💳 1Konto — Multi-Currency</a>
             </div>
 
             <h3 data-en="💳 Fiat On/Off-Ramps (Cards & Banks)" data-ru="💳 Ввод/вывод фиата (карты и банки)" data-tk="💳 Fiat giriş/çykyş (kartalar we banklar)" data-ar="💳 منصة الدخول/الخروج من العملات الورقية" data-fa="💳 درگاه فیات" data-zh="💳 法币出入金通道">💳 Fiat On/Off-Ramps</h3>
@@ -360,43 +220,31 @@
             <p style="margin-top:1rem; font-size:0.8rem; text-align:center;">📞 For OTC trades >$10k: <a href="mailto:otc@eximtrustbank.io" style="color:#ffd700;">otc@eximtrustbank.io</a> or Telegram: <a href="https://t.me/eximtrustbank" style="color:#ffd700;">@eximtrustbank</a></p>
         </div>
 
-        <!-- Premium Functions -->
+        <!-- Premium Functions (20 functions) -->
         <div class="card">
-            <h2 data-en="✨ 19+ Premium Functions with TMT" data-ru="✨ 19+ Премиум-функций с TMT" data-tk="✨ TMT bilen 19+ Premium funksiýalar" data-ar="✨ 19+ وظيفة متميزة مع TMT" data-fa="✨ 19+ قابلیت ویژه با TMT" data-zh="✨ 19+ 高级功能">✨ 19+ Premium Functions</h2>
+            <h2 data-en="✨ 20+ Premium Functions with TMT" data-ru="✨ 20+ Премиум-функций с TMT" data-tk="✨ TMT bilen 20+ Premium funksiýalar" data-ar="✨ 20+ وظيفة متميزة مع TMT" data-fa="✨ 20+ قابلیت ویژه با TMT" data-zh="✨ 20+ 高级功能">✨ 20+ Premium Functions</h2>
             
             <div class="grid-4">
-                <div class="function-item"><div class="function-icon">🥇</div><div data-en="Buy Physical Gold" data-ru="Купить физическое золото" data-tk="Fiziki altyn satyn al" data-ar="شراء الذهب المادي" data-fa="خرید طلای فیزیکی" data-zh="购买实物黄金">Buy Physical Gold</div><small>1 oz ≈ 85,650 TMT | Delivery worldwide</small></div>
-                <div class="function-item"><div class="function-icon">🥈</div><div data-en="Buy Silver Bars" data-ru="Купить серебряные слитки" data-tk="Kümüş külçeler satyn al" data-ar="شراء سبائك الفضة" data-fa="خرید شمش نقره" data-zh="购买银条">Buy Silver Bars</div><small>1 oz ≈ 1,375 TMT | 99.9% pure</small></div>
+                <div class="function-item"><div class="function-icon">🥇</div><div data-en="Buy Physical Gold" data-ru="Купить физическое золото" data-tk="Fiziki altyn satyn al" data-ar="شراء الذهب المادي" data-fa="خرید طلای فیزیکی" data-zh="购买实物黄金">Buy Physical Gold</div><small>1 oz ≈ 85,650 TMT</small></div>
+                <div class="function-item"><div class="function-icon">🥈</div><div data-en="Buy Silver Bars" data-ru="Купить серебряные слитки" data-tk="Kümüş külçeler satyn al" data-ar="شراء سبائك الفضة" data-fa="خرید شمش نقره" data-zh="购买银条">Buy Silver Bars</div><small>1 oz ≈ 1,375 TMT</small></div>
                 <div class="function-item"><div class="function-icon">🔷</div><div data-en="Buy Platinum" data-ru="Купить платину" data-tk="Platinum satyn al" data-ar="شراء البلاتين" data-fa="خرید پلاتین" data-zh="购买铂金">Buy Platinum</div><small>1 oz ≈ 28,550 TMT</small></div>
-                <div class="function-item"><div class="function-icon">💰</div><div data-en="Staking (8-15% APY)" data-ru="Стейкинг (8-15% годовых)" data-tk="Staking (8-15% APY)" data-ar="تجميد" data-fa="استیکینگ" data-zh="质押">Staking</div><small>8-15% APY | Daily rewards</small></div>
-            </div>
-            
-            <div class="grid-4">
-                <div class="function-item"><div class="function-icon">🌾</div><div data-en="Yield Farming" data-ru="Фарминг доходности" data-tk="Yield Farming" data-ar="الزراعة" data-fa="فارمینگ" data-zh="流动性挖矿">Yield Farming</div><small>LP pools TMT/USDC · Up to 25% APY</small></div>
-                <div class="function-item"><div class="function-icon">🏦</div><div data-en="Lending / Borrowing" data-ru="Кредитование / Займы" data-tk="Kredit / Karz" data-ar="إقراض / اقتراض" data-fa="وام / قرض" data-zh="借贷">Lending / Borrowing</div><small>Use TMT as collateral · 0.5% liquidation penalty</small></div>
-                <div class="function-item"><div class="function-icon">💳</div><div data-en="TMT Debit Card" data-ru="Дебетовая карта TMT" data-tk="TMT debet karty" data-ar="بطاقة خصم TMT" data-fa="کارت نقدی TMT" data-zh="TMT 借记卡">Debit Card</div><small>Spend TMT anywhere · 3% cashback</small></div>
-                <div class="function-item"><div class="function-icon">🛡️</div><div data-en="Deposit Insurance" data-ru="Страхование депозитов" data-tk="Deposit ätiýaçlandyryş" data-ar="تأمين الودائع" data-fa="بیمه سپرده" data-zh="存款保险">Deposit Insurance</div><small>Up to $50,000 · Lloyds of London</small></div>
-            </div>
-            
-            <div class="grid-4">
-                <div class="function-item"><div class="function-icon">📈</div><div data-en="Perpetual Futures (250x)" data-ru="Бессрочные фьючерсы (250x)" data-tk="Perpetual Futures (250x)" data-ar="العقود الدائمة" data-fa="قراردادهای آتی دائمی" data-zh="永续合约">Perpetual Futures</div><small>Up to 250x leverage on SOL/BTC/ETH</small></div>
-                <div class="function-item"><div class="function-icon">⏰</div><div data-en="Limit Orders & DCA" data-ru="Лимитные ордера и DCA" data-tk="Limit buýruklar we DCA" data-ar="أوامر محدودة" data-fa="سفارشات محدود" data-zh="限价单和定投">Limit Orders & DCA</div><small>Automated buying strategies</small></div>
-                <div class="function-item"><div class="function-icon">⛽</div><div data-en="Gasless Swaps" data-ru="Безгазовые обмены" data-tk="Gassyz çalşyklar" data-ar="مبادلات بدون غاز" data-fa="مبادله بدون گاز" data-zh="无Gas兑换">Gasless Swaps</div><small>No SOL needed for fees</small></div>
-                <div class="function-item"><div class="function-icon">🛡️</div><div data-en="MEV Protection" data-ru="Защита от MEV" data-tk="MEV gorag" data-ar="حماية MEV" data-fa="محافظت MEV" data-zh="MEV保护">MEV Protection</div><small>Ultra Mode · Anti-frontrunning</small></div>
-            </div>
-            
-            <div class="grid-4">
-                <div class="function-item"><div class="function-icon">🔒</div><div data-en="Confidential Transfers" data-ru="Конфиденциальные переводы" data-tk="Gizlin geçirmeler" data-ar="التحويلات السرية" data-fa="انتقالات محرمانه" data-zh="保密转账">Confidential Transfers</div><small>ZK-proofs · Private balances</small></div>
+                <div class="function-item"><div class="function-icon">💰</div><div data-en="Staking (8-15% APY)" data-ru="Стейкинг (8-15% годовых)" data-tk="Staking (8-15% APY)" data-ar="تجميد" data-fa="استیکینگ" data-zh="质押">Staking</div><small>8-15% APY</small></div>
+                <div class="function-item"><div class="function-icon">🌾</div><div data-en="Yield Farming" data-ru="Фарминг доходности" data-tk="Yield Farming" data-ar="الزراعة" data-fa="فارمینگ" data-zh="流动性挖矿">Yield Farming</div><small>Up to 25% APY</small></div>
+                <div class="function-item"><div class="function-icon">🏦</div><div data-en="Lending / Borrowing" data-ru="Кредитование / Займы" data-tk="Kredit / Karz" data-ar="إقراض / اقتراض" data-fa="وام / قرض" data-zh="借贷">Lending / Borrowing</div><small>Use TMT as collateral</small></div>
+                <div class="function-item"><div class="function-icon">💳</div><div data-en="TMT Debit Card" data-ru="Дебетовая карта TMT" data-tk="TMT debet karty" data-ar="بطاقة خصم TMT" data-fa="کارت نقدی TMT" data-zh="TMT 借记卡">Debit Card</div><small>3% cashback</small></div>
+                <div class="function-item"><div class="function-icon">🛡️</div><div data-en="Deposit Insurance" data-ru="Страхование депозитов" data-tk="Deposit ätiýaçlandyryş" data-ar="تأمين الودائع" data-fa="بیمه سپرده" data-zh="存款保险">Deposit Insurance</div><small>Up to $50,000</small></div>
+                <div class="function-item"><div class="function-icon">📈</div><div data-en="Perpetual Futures (250x)" data-ru="Бессрочные фьючерсы (250x)" data-tk="Perpetual Futures (250x)" data-ar="العقود الدائمة" data-fa="قراردادهای آتی دائمی" data-zh="永续合约">Perpetual Futures</div><small>250x leverage</small></div>
+                <div class="function-item"><div class="function-icon">⏰</div><div data-en="Limit Orders & DCA" data-ru="Лимитные ордера и DCA" data-tk="Limit buýruklar we DCA" data-ar="أوامر محدودة" data-fa="سفارشات محدود" data-zh="限价单和定投">Limit Orders & DCA</div><small>Automated strategies</small></div>
+                <div class="function-item"><div class="function-icon">⛽</div><div data-en="Gasless Swaps" data-ru="Безгазовые обмены" data-tk="Gassyz çalşyklar" data-ar="مبادلات بدون غاز" data-fa="مبادله بدون گاز" data-zh="无Gas兑换">Gasless Swaps</div><small>No SOL needed</small></div>
+                <div class="function-item"><div class="function-icon">🛡️</div><div data-en="MEV Protection" data-ru="Защита от MEV" data-tk="MEV gorag" data-ar="حماية MEV" data-fa="محافظت MEV" data-zh="MEV保护">MEV Protection</div><small>Anti-frontrunning</small></div>
+                <div class="function-item"><div class="function-icon">🔒</div><div data-en="Confidential Transfers" data-ru="Конфиденциальные переводы" data-tk="Gizlin geçirmeler" data-ar="التحويلات السرية" data-fa="انتقالات محرمانه" data-zh="保密转账">Confidential Transfers</div><small>ZK-proofs</small></div>
                 <div class="function-item"><div class="function-icon">📜</div><div data-en="Transfer Hooks (KYC/AML)" data-ru="Хуки перевода (KYC/AML)" data-tk="Geçirme çeňňekleri (KYC/AML)" data-ar="خطافات التحويل" data-fa="قلاب‌های انتقال" data-zh="转账钩子">Transfer Hooks</div><small>Compliance automation</small></div>
-                <div class="function-item"><div class="function-icon">🌱</div><div data-en="Real World Assets (RWA)" data-ru="Реальные активы (RWA)" data-tk="Hakyky dünýä aktiwleri (RWA)" data-ar="الأصول الحقيقية" data-fa="دارایی‌های واقعی" data-zh="现实世界资产">RWA Tokenization</div><small>Real estate · T-bills · Commodities</small></div>
-                <div class="function-item"><div class="function-icon">🗳️</div><div data-en="DAO Governance" data-ru="DAO управление" data-tk="DAO dolandyryş" data-ar="حوكمة DAO" data-fa="حاکمیت DAO" data-zh="DAO治理">DAO Governance</div><small>Vote on proposals · Treasury management</small></div>
-            </div>
-            
-            <div class="grid-4">
-                <div class="function-item"><div class="function-icon">💸</div><div data-en="Cashback Rewards" data-ru="Кэшбэк награды" data-tk="Cashback baýraklary" data-ar="مكافآت استرداد النقود" data-fa="جوایز بازگشت نقدی" data-zh="现金返还奖励">Cashback Rewards</div><small>3% on all card transactions</small></div>
-                <div class="function-item"><div class="function-icon">🎁</div><div data-en="Referral Program" data-ru="Реферальная программа" data-tk="Referal programmasy" data-ar="برنامج الإحالة" data-fa="برنامه ارجاع" data-zh="推荐计划">Referral Program</div><small>5% commission on referrals</small></div>
-                <div class="function-item"><div class="function-icon">🏆</div><div data-en="Airdrops & Bonuses" data-ru="Airdrops и бонусы" data-tk="Airdroplar we baýraklar" data-ar="الإسقاطات الجوية" data-fa="ایردراپ" data-zh="空投奖励">Airdrops</div><small>Seasonal rewards for holders</small></div>
-                <div class="function-item"><div class="function-icon">🕌</div><div data-en="Islamic Finance" data-ru="Исламское финансирование" data-tk="Yslam maliýe" data-ar="التمويل الإسلامي" data-fa="مالی اسلامی" data-zh="伊斯兰金融">Islamic Finance</div><small>Sharia-compliant · Murabaha · Mudarabah · Sukuk</small></div>
+                <div class="function-item"><div class="function-icon">🌱</div><div data-en="Real World Assets (RWA)" data-ru="Реальные активы (RWA)" data-tk="Hakyky dünýä aktiwleri (RWA)" data-ar="الأصول الحقيقية" data-fa="دارایی‌های واقعی" data-zh="现实世界资产">RWA Tokenization</div><small>Real estate · Oil · Gas</small></div>
+                <div class="function-item"><div class="function-icon">🗳️</div><div data-en="DAO Governance" data-ru="DAO управление" data-tk="DAO dolandyryş" data-ar="حوكمة DAO" data-fa="حاکمیت DAO" data-zh="DAO治理">DAO Governance</div><small>Vote on proposals</small></div>
+                <div class="function-item"><div class="function-icon">💸</div><div data-en="Cashback Rewards" data-ru="Кэшбэк награды" data-tk="Cashback baýraklary" data-ar="مكافآت استرداد النقود" data-fa="جوایز بازگشت نقدی" data-zh="现金返还奖励">Cashback Rewards</div><small>3% on card</small></div>
+                <div class="function-item"><div class="function-icon">🎁</div><div data-en="Referral Program" data-ru="Реферальная программа" data-tk="Referal programmasy" data-ar="برنامج الإحالة" data-fa="برنامه ارجاع" data-zh="推荐计划">Referral Program</div><small>5% commission</small></div>
+                <div class="function-item"><div class="function-icon">🏆</div><div data-en="Airdrops & Bonuses" data-ru="Airdrops и бонусы" data-tk="Airdroplar we baýraklar" data-ar="الإسقاطات الجوية" data-fa="ایردراپ" data-zh="空投奖励">Airdrops</div><small>Seasonal rewards</small></div>
+                <div class="function-item"><div class="function-icon">🕌</div><div data-en="Islamic Finance" data-ru="Исламское финансирование" data-tk="Yslam maliýe" data-ar="التمويل الإسلامي" data-fa="مالی اسلامی" data-zh="伊斯兰金融">Islamic Finance</div><small>Sharia-compliant · Murabaha · Sukuk</small></div>
             </div>
         </div>
 
@@ -417,13 +265,13 @@
 
         <div class="warning">
             ⚠️ <strong data-en="Disclaimer" data-ru="Отказ от ответственности" data-tk="Jogapkärçilik çäklendirmesi" data-ar="إخلاء مسؤولية" data-fa="سلب مسئولیت" data-zh="免责声明">Disclaimer:</strong> 
-            <span data-en="TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk. Precious metal prices are calculated at TMT/USD = 0.04904."
-                  data-ru="TMT — экспериментальный актив. НЕ является официальной CBDC Туркменистана. Цены на драгметаллы рассчитаны по курсу TMT/USD = 0.04904."
-                  data-tk="TMT eksperimental kripto aktiw. Türkmenistanyň resmi CBDC-si DÄLDIR. Investmentleriň hemmesi töwekgelçilik bilen baglanyşykly. Gymmat bahaly metal bahalary TMT/USD = 0.04904 bilen hasaplanýar."
+            <span data-en="TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk."
+                  data-ru="TMT — экспериментальный актив. НЕ является официальной CBDC Туркменистана."
+                  data-tk="TMT eksperimental kripto aktiw. Türkmenistanyň resmi CBDC-si DÄLDIR."
                   data-ar="TMT هو أصل تجريبي. ليس عملة رقمية رسمية لتركمانستان."
                   data-fa="TMT یک دارایی آزمایشی است. ارز دیجیتال رسمی ترکمنستان نیست."
                   data-zh="TMT 是一个实验性加密资产。不是土库曼斯坦的官方 CBDC。">
-            TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk. Precious metal prices are calculated at TMT/USD = 0.04904.</span>
+            TMT is an experimental crypto asset. NOT an official CBDC of Turkmenistan. All investments carry risk.</span>
         </div>
 
         <div class="footer">
