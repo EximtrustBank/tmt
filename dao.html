@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMT DAO — Community Governance</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .logo { width: 80px; height: 80px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #ffd700; }
+        .logo img { width: 75%; border-radius: 50%; }
+        h1 { font-size: 2rem; color: #ffd700; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
+        .nav a:hover, .nav a.active { background: #ffd700; color: #0a2e1c; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
+        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); }
+        .card h2 { color: #ffd700; margin-bottom: 1rem; }
+        .proposal { background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 16px; margin: 1rem 0; }
+        .vote-bar { background: #1e3a8a; height: 8px; border-radius: 4px; margin: 0.5rem 0; }
+        .vote-for { background: #00a86b; width: 67%; height: 100%; border-radius: 4px; }
+        .vote-against { background: #dc143c; width: 33%; height: 100%; border-radius: 4px; }
+        .btn { background: #ffd700; color: #0a2e1c; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-right: 0.5rem; font-weight: bold; }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"><div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div><h1>🗳️ TMT DAO Governance</h1><a href="index.html" class="back-link">← Back to Main</a></div>
+        <div class="nav"><a href="index.html">🏠 Home</a><a href="ecosystem.html">🌿 Ecosystem</a><a href="defi-hub.html">💰 DeFi Hub</a><a href="rwa.html">🏔️ RWA</a><a href="dao.html" class="active">🗳️ DAO</a><a href="card.html">💳 Card</a><a href="bridge.html">🌉 Bridge</a><a href="whitepaper.html">📄 WP</a></div>
+
+        <div class="grid-2">
+            <div class="card"><h2>📊 DAO Dashboard</h2><div class="stat"><span>TMT Locked in DAO</span><span>8.2B TMT</span></div><div class="stat"><span>Active Delegates</span><span>127</span></div><div class="stat"><span>Your Voting Power</span><span>0 TMT</span></div><div class="stat"><span>Treasury Balance</span><span>$42.7M</span></div><a href="#" class="btn">Delegate Votes</a> <a href="#" class="btn">Lock TMT for Voting</a></div>
+
+            <div class="card"><h2>🏦 Treasury Proposals</h2><div class="proposal"><strong>#12: Increase Staking Rewards to 15%</strong><p>Proposed by: Whale.eth | Status: Active</p><div class="vote-bar"><div class="vote-for"></div></div><p>For: 67% (5.2M TMT) | Against: 33% (2.6M TMT)</p><a href="#" class="btn">✅ Vote For</a><a href="#" class="btn">❌ Vote Against</a></div>
+            <div class="proposal"><strong>#13: Allocate $500k for CEX Listing</strong><p>Proposed by: TMT Foundation | Status: Active</p><div class="vote-bar"><div class="vote-for" style="width:82%"></div></div><p>For: 82% (6.1M TMT) | Against: 18% (1.3M TMT)</p><a href="#" class="btn">✅ Vote For</a><a href="#" class="btn">❌ Vote Against</a></div>
+            <div class="proposal"><strong>#14: Add TMT/USDC Farm on Meteora</strong><p>Proposed by: DeFiGuy | Status: Voting ends in 3 days</p><a href="#" class="btn">✅ Vote For</a><a href="#" class="btn">❌ Vote Against</a></div></div>
+
+            <div class="card"><h2>📜 Past Proposals</h2><div class="proposal">✅ #9: Bridge to Ethereum — PASSED (89%)<br>✅ #10: Gold Tokenization Launch — PASSED (94%)<br>✅ #11: Reduce Protocol Fees from 0.3% to 0.1% — PASSED (76%)<br>❌ #8: Increase Total Supply — REJECTED (91% against)</div></div>
+
+            <div class="card"><h2>🗳️ Create Proposal</h2><p>Require 1M TMT locked for 30 days to create a proposal.</p><a href="#" class="btn">+ New Proposal</a></div>
+        </div>
+
+        <div class="footer">© 2025 TMT DAO — Community-Driven Governance on Solana</div>
+    </div>
+</body>
+</html>
