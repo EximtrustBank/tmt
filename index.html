@@ -149,7 +149,7 @@
             margin: 1.5rem 0;
             flex-wrap: wrap;
         }
-        .btn-buy, .btn-sell {
+        .btn-buy, .btn-sell, .btn-manat {
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
             font-weight: bold;
@@ -160,7 +160,8 @@
         }
         .btn-buy { background: #00a86b; color: white; }
         .btn-sell { background: #dc143c; color: white; }
-        .btn-buy:hover, .btn-sell:hover { transform: scale(1.02); opacity: 0.9; }
+        .btn-manat { background: #1e3a8a; color: white; }
+        .btn-buy:hover, .btn-sell:hover, .btn-manat:hover { transform: scale(1.02); opacity: 0.9; }
 
         .grid-4 {
             display: grid;
@@ -218,7 +219,7 @@
             .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
             h1 { font-size: 1.8rem; }
             .price-big { font-size: 1.6rem; }
-            .btn-buy, .btn-sell { padding: 0.5rem 1rem; font-size: 0.8rem; }
+            .btn-buy, .btn-sell, .btn-manat { padding: 0.5rem 1rem; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -264,15 +265,22 @@
             <h2 data-en="📜 History of Turkmen Manat" data-ru="📜 История туркменского маната" data-ar="📜 تاريخ المانات التركماني" data-fa="📜 تاریخ منات ترکمنستان" data-zh="📜 土库曼马纳特历史">📜 History</h2>
             <p data-en="Introduced Nov 1, 1993, replacing Soviet ruble (500 RUR = 1 TMM). On Jan 1, 2009, new manat (TMT) launched with 5000:1 denomination. In 2025, polymer notes (1,5,10,200 manat) issued for 30th neutrality anniversary. Official USD rate fixed at 3.5 TMT since 2015, but black market rate ~40 TMT/USD." 
                data-ru="Введён 1 ноября 1993 года, заменив советский рубль (500 RUR = 1 TMM). 1 января 2009 года деноминация 5000:1 — новый манат (TMT). В 2025 году выпущены полимерные банкноты к 30-летию нейтралитета. Официальный курс USD — 3.5 TMT, чёрный рынок — ~40 TMT/USD."
-               data-ar="تم إطلاقه في 1 نوفمبر 1993. في 1 يناير 2009، تم إطلاق المانات الجديد (TMT). في 2025، تم إصدار أوراق بوليمر بمناسبة الذكرى الثلاثين للحياد."
+               data-ar="تم إطلاقه في 1 نوفمبر 1993. في 1 يناير 2009، تم إطلاق المانات الجديد (TMT)."
                data-fa="در تاریخ ۱ نوامبر ۱۹۹۳ معرفی شد. در ۱ ژانویه ۲۰۰۹، منات جدید (TMT) عرضه شد."
                data-zh="1993年11月1日推出，取代苏联卢布。2009年1月1日，新马纳特（TMT）推出。">
             </p>
         </div>
 
-        <!-- ============ NEW EXCHANGE PATHS ============ -->
+        <!-- ============ EXCHANGE PATHS with MANAT BUTTON ============ -->
         <div class="card">
-            <h2 data-en="🔄 Swap TMT on DEXes (Solana)" data-ru="🔄 Обмен TMT на DEX (Solana)" data-ar="🔄 مبادلة TMT في البورصات اللامركزية" data-fa="🔄 مبادله TMT در صرافی‌های غیرمتمرکز" data-zh="🔄 在去中心化交易所交易 TMT">🔄 Swap TMT on DEXes</h2>
+            <h2 data-en="🔄 Buy TMT" data-ru="🔄 Купить TMT" data-ar="🔄 شراء TMT" data-fa="🔄 خرید TMT" data-zh="🔄 购买 TMT">🔄 Buy TMT</h2>
+            
+            <!-- NEW BUTTON for how-to-buy page -->
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <a href="how-to-buy.html" class="btn-manat" data-en="🇹🇲 How to buy TMT with Turkmen Manats →" data-ru="🇹🇲 Как купить TMT за манаты →" data-ar="🇹🇲 كيفية شراء TMT بالمانات التركمانية →" data-fa="🇹🇲 نحوه خرید TMT با منات ترکمنستان →" data-zh="🇹🇲 如何用土库曼马纳特购买 TMT →">🇹🇲 How to buy TMT with Turkmen Manats →</a>
+            </div>
+
+            <h3 data-en="🌀 Swap TMT on DEXes (Solana)" data-ru="🌀 Обмен TMT на DEX (Solana)" data-ar="🌀 مبادلة TMT في البورصات اللامركزية" data-fa="🌀 مبادله TMT در صرافی‌های غیرمتمرکز" data-zh="🌀 在去中心化交易所交易 TMT">🌀 Swap TMT on DEXes</h3>
             <div class="dex-grid">
                 <a href="https://jup.ag/swap/SOL-TMT" target="_blank" class="dex-btn">🌀 Jupiter (Aggregator) — Best Price</a>
                 <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="dex-btn">⚡ Raydium — Deepest Liquidity</a>
@@ -315,11 +323,10 @@
             <p style="margin-top:1rem; font-size:0.8rem; text-align:center;">📞 For OTC trades >$10k: <a href="mailto:otc@eximtrustbank.io" style="color:#ffd700;">otc@eximtrustbank.io</a> or Telegram: <a href="https://t.me/eximtrustbank" style="color:#ffd700;">@eximtrustbank</a></p>
         </div>
 
-        <!-- ============ 19 PREMIUM FUNCTIONS (9 original + 10 new) ============ -->
+        <!-- ============ 19 PREMIUM FUNCTIONS ============ -->
         <div class="card">
             <h2 data-en="✨ 19+ Premium Functions with TMT" data-ru="✨ 19+ Премиум-функций с TMT" data-ar="✨ 19+ وظيفة متميزة مع TMT" data-fa="✨ 19+ قابلیت ویژه با TMT" data-zh="✨ 19+ 高级功能">✨ 19+ Premium Functions</h2>
             
-            <!-- Row 1: Metals + Staking -->
             <div class="grid-4">
                 <div class="function-item"><div class="function-icon">🥇</div><div data-en="Buy Physical Gold" data-ru="Купить физическое золото" data-ar="شراء الذهب المادي" data-fa="خرید طلای فیزیکی" data-zh="购买实物黄金">Buy Physical Gold</div><small>1 oz ≈ 85,650 TMT | Delivery worldwide</small></div>
                 <div class="function-item"><div class="function-icon">🥈</div><div data-en="Buy Silver Bars" data-ru="Купить серебряные слитки" data-ar="شراء سبائك الفضة" data-fa="خرید شمش نقره" data-zh="购买银条">Buy Silver Bars</div><small>1 oz ≈ 1,375 TMT | 99.9% pure</small></div>
@@ -327,15 +334,13 @@
                 <div class="function-item"><div class="function-icon">💰</div><div data-en="Staking (8-15% APY)" data-ru="Стейкинг (8-15% годовых)" data-ar="تجميد" data-fa="استیکینگ" data-zh="质押">Staking</div><small>8-15% APY | Daily rewards</small></div>
             </div>
             
-            <!-- Row 2: DeFi Core -->
             <div class="grid-4">
                 <div class="function-item"><div class="function-icon">🌾</div><div data-en="Yield Farming" data-ru="Фарминг доходности" data-ar="الزراعة" data-fa="فارمینگ" data-zh="流动性挖矿">Yield Farming</div><small>LP pools TMT/USDC · Up to 25% APY</small></div>
                 <div class="function-item"><div class="function-icon">🏦</div><div data-en="Lending / Borrowing" data-ru="Кредитование / Займы" data-ar="إقراض / اقتراض" data-fa="وام / قرض" data-zh="借贷">Lending / Borrowing</div><small>Use TMT as collateral · 0.5% liquidation penalty</small></div>
-                <div class="function-item"><div class="function-icon">💳</div><div data-en="TMT Debit Card" data-ru="Дебетовая карта TMT" data-ar="بطاقة خصم TMT" data-fa="کارت نقدی TMT" data-zh="TMT 借记卡">Debit Card</div><small>Spend TMT anywhere · 3% cashback in TMT</small></div>
+                <div class="function-item"><div class="function-icon">💳</div><div data-en="TMT Debit Card" data-ru="Дебетовая карта TMT" data-ar="بطاقة خصم TMT" data-fa="کارت نقدی TMT" data-zh="TMT 借记卡">Debit Card</div><small>Spend TMT anywhere · 3% cashback</small></div>
                 <div class="function-item"><div class="function-icon">🛡️</div><div data-en="Deposit Insurance" data-ru="Страхование депозитов" data-ar="تأمين الودائع" data-fa="بیمه سپرده" data-zh="存款保险">Deposit Insurance</div><small>Up to $50,000 · Lloyds of London</small></div>
             </div>
             
-            <!-- Row 3: NEW FUNCTIONS 1-5 -->
             <div class="grid-4">
                 <div class="function-item"><div class="function-icon">📈</div><div data-en="Perpetual Futures (250x)" data-ru="Бессрочные фьючерсы (250x)" data-ar="العقود الدائمة" data-fa="قراردادهای آتی دائمی" data-zh="永续合约">Perpetual Futures</div><small>Up to 250x leverage on SOL/BTC/ETH</small></div>
                 <div class="function-item"><div class="function-icon">⏰</div><div data-en="Limit Orders & DCA" data-ru="Лимитные ордера и DCA" data-ar="أوامر محدودة" data-fa="سفارشات محدود" data-zh="限价单和定投">Limit Orders & DCA</div><small>Automated buying strategies</small></div>
@@ -343,7 +348,6 @@
                 <div class="function-item"><div class="function-icon">🛡️</div><div data-en="MEV Protection" data-ru="Защита от MEV" data-ar="حماية MEV" data-fa="محافظت MEV" data-zh="MEV保护">MEV Protection</div><small>Ultra Mode · Anti-frontrunning</small></div>
             </div>
             
-            <!-- Row 4: NEW FUNCTIONS 6-10 -->
             <div class="grid-4">
                 <div class="function-item"><div class="function-icon">🔒</div><div data-en="Confidential Transfers" data-ru="Конфиденциальные переводы" data-ar="التحويلات السرية" data-fa="انتقالات محرمانه" data-zh="保密转账">Confidential Transfers</div><small>ZK-proofs · Private balances</small></div>
                 <div class="function-item"><div class="function-icon">📜</div><div data-en="Transfer Hooks (KYC/AML)" data-ru="Хуки перевода (KYC/AML)" data-ar="خطافات التحويل" data-fa="قلاب‌های انتقال" data-zh="转账钩子">Transfer Hooks</div><small>Compliance automation</small></div>
@@ -351,7 +355,6 @@
                 <div class="function-item"><div class="function-icon">🗳️</div><div data-en="DAO Governance" data-ru="DAO управление" data-ar="حوكمة DAO" data-fa="حاکمیت DAO" data-zh="DAO治理">DAO Governance</div><small>Vote on proposals · Treasury management</small></div>
             </div>
             
-            <!-- Row 5: Bonus -->
             <div class="grid-4">
                 <div class="function-item"><div class="function-icon">💸</div><div data-en="Cashback Rewards" data-ru="Кэшбэк награды" data-ar="مكافآت استرداد النقود" data-fa="جوایز بازگشت نقدی" data-zh="现金返还奖励">Cashback Rewards</div><small>3% on all card transactions</small></div>
                 <div class="function-item"><div class="function-icon">🎁</div><div data-en="Referral Program" data-ru="Реферальная программа" data-ar="برنامج الإحالة" data-fa="برنامه ارجاع" data-zh="推荐计划">Referral Program</div><small>5% commission on referrals</small></div>
@@ -359,7 +362,7 @@
             </div>
         </div>
 
-        <!-- Explanation of Token-2022 Features -->
+        <!-- Token-2022 Features -->
         <div class="card">
             <h2 data-en="⚙️ Powered by Token-2022 (Solana)" data-ru="⚙️ Работает на Token-2022 (Solana)" data-ar="⚙️ يعمل على Token-2022" data-fa="⚙️ مبتنی بر Token-2022" data-zh="⚙️ 基于 Token-2022 技术">⚙️ Powered by Token-2022</h2>
             <ul style="margin-left: 1.5rem; columns: 2; column-gap: 2rem;">
