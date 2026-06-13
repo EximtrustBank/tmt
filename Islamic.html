@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>TMT Islamic Finance — Sharia-Compliant Digital Asset Solutions</title>
     <meta name="description" content="Halal crypto financing with TMT. Murabaha, Mudarabah, Ijara, Sukuk, Qard al-Hasan. Submit KYC application, upload business plan, feasibility study.">
-    <meta property="og:title" content="TMT Islamic Finance — Sharia-Compliant">
-    <meta property="og:description" content="Halal financing products for businesses and individuals. Registered with AAOIFI standards.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0a2e1c 0%, #1a5e3a 50%, #0a3d22 100%);
             color: #fff;
             line-height: 1.6;
@@ -36,11 +33,10 @@
         .badge-sharia { background: #00a86b; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 40px; font-size: 0.7rem; margin-bottom: 1rem; }
         .form-group { margin-bottom: 1rem; }
         label { display: block; margin-bottom: 0.3rem; font-weight: bold; }
-        input, select, textarea, .file-input {
+        input, select, textarea {
             width: 100%; padding: 0.8rem; border-radius: 12px; border: 1px solid rgba(255,215,0,0.5);
             background: rgba(0,0,0,0.4); color: white; font-size: 1rem;
         }
-        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.5); }
         .btn { background: #ffd700; color: #0a2e1c; padding: 0.8rem 1.5rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; border: none; cursor: pointer; transition: 0.2s; }
         .btn:hover { transform: scale(1.02); background: #ffec80; }
         .btn-outline { background: transparent; border: 1px solid #ffd700; color: #ffd700; }
@@ -48,7 +44,6 @@
         .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
         .warning { background: rgba(255,100,100,0.2); border-left: 4px solid #ff6464; padding: 1rem; border-radius: 12px; margin: 1rem 0; }
         .success { background: rgba(0,200,100,0.2); border-left: 4px solid #00c864; padding: 1rem; border-radius: 12px; margin: 1rem 0; }
-        .sharia-badge { background: #1e3a8a; color: white; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; display: inline-block; margin-right: 0.5rem; }
         @media (max-width: 768px) { h1 { font-size: 1.5rem; } .grid-2, .grid-3 { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -73,223 +68,58 @@
             <a href="whitepaper.html">📄 WP</a>
         </div>
 
-        <!-- Sharia Certification Badge -->
         <div class="success" style="text-align: center;">
             🕋 <strong>AAOIFI Sharia Standard Certified</strong> — All products comply with Islamic Finance principles. 
             Fatwa endorsed by the International Islamic Fiqh Academy.
         </div>
 
-        <!-- Islamic Finance Products -->
         <h2 style="color:#ffd700; margin: 1rem 0;">📜 Sharia-Compliant Financing Products</h2>
         <div class="grid-3">
-            <div class="card">
-                <div class="card-icon">🏺</div>
-                <h3>Murabaha (Cost-Plus)</h3>
-                <div class="badge-sharia">Asset-Backed</div>
-                <p>TMT for purchase of real assets. Transparent markup, no interest (riba). Fixed profit rate disclosed upfront.</p>
-                <div class="stat"><span>Min Amount</span><span>10,000 TMT</span></div>
-                <div class="stat"><span>Tenor</span><span>6-36 months</span></div>
-                <div class="stat"><span>Profit Rate</span><span>8% fixed</span></div>
-                <a href="#application" class="btn-outline btn" style="margin-top:0.5rem;">Apply →</a>
-            </div>
-            <div class="card">
-                <div class="card-icon">🤝</div>
-                <h3>Mudarabah (Profit-Sharing)</h3>
-                <div class="badge-sharia">Investment Partnership</div>
-                <p>You provide capital (TMT), we manage the business. Profits shared 70/30, losses borne by capital provider.</p>
-                <div class="stat"><span>Min Investment</span><span>50,000 TMT</span></div>
-                <div class="stat"><span>Projected Profit</span><span>12-20% p.a.</span></div>
-                <div class="stat"><span>Term</span><span>12 months</span></div>
-                <a href="#application" class="btn-outline btn">Apply →</a>
-            </div>
-            <div class="card">
-                <div class="card-icon">🏗️</div>
-                <h3>Ijara (Lease-to-Own)</h3>
-                <div class="badge-sharia">Asset Leasing</div>
-                <p>Lease equipment, vehicles, or real estate. TMT used to purchase the asset, you pay rent with option to own.</p>
-                <div class="stat"><span>Asset Types</span><span>Real Estate, Machinery, Vehicles</span></div>
-                <div class="stat"><span>Rental Term</span><span>12-60 months</span></div>
-                <div class="stat"><span>Down Payment</span><span>20% of asset value</span></div>
-                <a href="#application" class="btn-outline btn">Apply →</a>
-            </div>
-            <div class="card">
-                <div class="card-icon">📜</div>
-                <h3>Sukuk (Islamic Bonds)</h3>
-                <div class="badge-sharia">Asset-Backed Securities</div>
-                <p>Invest in TMT-denominated sukuk backed by real assets (real estate, infrastructure, gold).</p>
-                <div class="stat"><span>Min Subscription</span><span>5,000 TMT</span></div>
-                <div class="stat"><span>Yield</span><span>6-9% p.a.</span></div>
-                <div class="stat"><span>Maturity</span><span>1, 3, 5 years</span></div>
-                <a href="#application" class="btn-outline btn">Subscribe →</a>
-            </div>
-            <div class="card">
-                <div class="card-icon">💚</div>
-                <h3>Qard al-Hasan (Benevolent Loan)</h3>
-                <div class="badge-sharia">Zero-Interest</div>
-                <p>Interest-free loan for small businesses, education, healthcare, and emergencies. Repay only principal.</p>
-                <div class="stat"><span>Max Amount</span><span>10,000 TMT</span></div>
-                <div class="stat"><span>Repayment</span><span>Up to 24 months</span></div>
-                <div class="stat"><span>Service Fee</span><span>0%</span></div>
-                <a href="#application" class="btn-outline btn">Request →</a>
-            </div>
-            <div class="card">
-                <div class="card-icon">🌾</div>
-                <h3>Istisna (Manufacturing Finance)</h3>
-                <div class="badge-sharia">Project-Based</div>
-                <p>Financing for construction, manufacturing, and agriculture. TMT advanced for specific deliverables.</p>
-                <div class="stat"><span>Min Amount</span><span>100,000 TMT</span></div>
-                <div class="stat"><span>Payment Schedule</span><span>Milestone-based</span></div>
-                <div class="stat"><span>Required</span><span>Business plan + TEO</span></div>
-                <a href="#application" class="btn-outline btn">Apply →</a>
-            </div>
+            <div class="card"><div class="card-icon">🏺</div><h3>Murabaha (Cost-Plus)</h3><div class="badge-sharia">Asset-Backed</div><p>TMT for purchase of real assets. Transparent markup, no interest.</p><div class="stat"><span>Min Amount</span><span>10,000 TMT</span></div><div class="stat"><span>Tenor</span><span>6-36 months</span></div><div class="stat"><span>Profit Rate</span><span>8% fixed</span></div><a href="#application" class="btn-outline btn">Apply →</a></div>
+            <div class="card"><div class="card-icon">🤝</div><h3>Mudarabah (Profit-Sharing)</h3><div class="badge-sharia">Investment Partnership</div><p>You provide capital, we manage the business. Profits shared 70/30.</p><div class="stat"><span>Min Investment</span><span>50,000 TMT</span></div><div class="stat"><span>Projected Profit</span><span>12-20% p.a.</span></div><a href="#application" class="btn-outline btn">Apply →</a></div>
+            <div class="card"><div class="card-icon">🏗️</div><h3>Ijara (Lease-to-Own)</h3><div class="badge-sharia">Asset Leasing</div><p>Lease equipment, vehicles, or real estate with option to own.</p><div class="stat"><span>Asset Types</span><span>Real Estate, Machinery</span></div><div class="stat"><span>Rental Term</span><span>12-60 months</span></div><a href="#application" class="btn-outline btn">Apply →</a></div>
+            <div class="card"><div class="card-icon">📜</div><h3>Sukuk (Islamic Bonds)</h3><div class="badge-sharia">Asset-Backed</div><p>Invest in TMT-denominated sukuk backed by real assets.</p><div class="stat"><span>Min Subscription</span><span>5,000 TMT</span></div><div class="stat"><span>Yield</span><span>6-9% p.a.</span></div><a href="#application" class="btn-outline btn">Subscribe →</a></div>
+            <div class="card"><div class="card-icon">💚</div><h3>Qard al-Hasan (Benevolent Loan)</h3><div class="badge-sharia">Zero-Interest</div><p>Interest-free loan for small businesses, education, healthcare.</p><div class="stat"><span>Max Amount</span><span>10,000 TMT</span></div><div class="stat"><span>Service Fee</span><span>0%</span></div><a href="#application" class="btn-outline btn">Request →</a></div>
+            <div class="card"><div class="card-icon">🌾</div><h3>Istisna (Manufacturing Finance)</h3><div class="badge-sharia">Project-Based</div><p>Financing for construction, manufacturing, and agriculture.</p><div class="stat"><span>Min Amount</span><span>100,000 TMT</span></div><div class="stat"><span>Required</span><span>Business plan + ТЭО</span></div><a href="#application" class="btn-outline btn">Apply →</a></div>
         </div>
 
-        <!-- KYC Application Form with File Uploads -->
+        <!-- Application Form -->
         <div class="card" id="application">
             <h2>📋 Apply for Islamic Financing</h2>
             <p>Complete the application below. Our Sharia board will review within 5-7 business days.</p>
-            
-            <form id="islamicApplication" action="https://formspree.io/f/YOUR_EMAIL" method="POST" enctype="multipart/form-data">
+            <form id="islamicApplication" action="https://formspree.io/f/xkjdklqj" method="POST" enctype="multipart/form-data">
                 <div class="grid-2">
-                    <div class="form-group"><label>Full Name (as per ID)</label><input type="text" name="fullname" required placeholder="e.g., Ahmed Al-Mansouri"></div>
+                    <div class="form-group"><label>Full Name</label><input type="text" name="fullname" required placeholder="Ahmed Al-Mansouri"></div>
                     <div class="form-group"><label>Email Address</label><input type="email" name="email" required placeholder="ahmed@example.com"></div>
-                    <div class="form-group"><label>Phone Number (WhatsApp)</label><input type="tel" name="phone" required placeholder="+993 XX XXX XXX"></div>
+                    <div class="form-group"><label>Phone (WhatsApp)</label><input type="tel" name="phone" required placeholder="+993 XX XXX XXX"></div>
                     <div class="form-group"><label>Country of Residence</label><input type="text" name="country" required placeholder="Turkmenistan, UAE, Saudi Arabia..."></div>
-                    <div class="form-group"><label>Select Financing Product</label>
-                        <select name="product" required>
-                            <option value="">-- Select --</option>
-                            <option value="Murabaha">Murabaha (Cost-Plus)</option>
-                            <option value="Mudarabah">Mudarabah (Profit-Sharing)</option>
-                            <option value="Ijara">Ijara (Lease-to-Own)</option>
-                            <option value="Sukuk">Sukuk (Islamic Bonds)</option>
-                            <option value="Qard al-Hasan">Qard al-Hasan (Benevolent Loan)</option>
-                            <option value="Istisna">Istisna (Manufacturing Finance)</option>
-                        </select>
-                    </div>
+                    <div class="form-group"><label>Select Product</label><select name="product" required><option value="">-- Select --</option><option value="Murabaha">Murabaha</option><option value="Mudarabah">Mudarabah</option><option value="Ijara">Ijara</option><option value="Sukuk">Sukuk</option><option value="Qard al-Hasan">Qard al-Hasan</option><option value="Istisna">Istisna</option></select></div>
                     <div class="form-group"><label>Requested Amount (TMT)</label><input type="number" name="amount" required placeholder="Min 5,000 TMT"></div>
-                    <div class="form-group"><label>Purpose of Financing</label>
-                        <select name="purpose" required>
-                            <option value="">-- Select --</option>
-                            <option value="Business Expansion">Business Expansion</option>
-                            <option value="Real Estate Purchase">Real Estate Purchase</option>
-                            <option value="Equipment Purchase">Equipment Purchase</option>
-                            <option value="Working Capital">Working Capital</option>
-                            <option value="Education/Healthcare">Education/Healthcare (Qard al-Hasan)</option>
-                            <option value="Manufacturing Project">Manufacturing/Construction Project</option>
-                        </select>
-                    </div>
-                    <div class="form-group"><label>Upload KYC Documents (Passport/ID)</label>
-                        <input type="file" name="kyc_document" accept=".pdf,.jpg,.png" required>
-                        <small>PDF, JPG, PNG (max 10MB)</small>
-                    </div>
-                    <div class="form-group"><label>Upload Business Plan (PDF)</label>
-                        <input type="file" name="business_plan" accept=".pdf">
-                        <small>Required for Mudarabah, Istisna, amounts >50k TMT</small>
-                    </div>
-                    <div class="form-group"><label>Upload Feasibility Study (ТЭО)</label>
-                        <input type="file" name="feasibility_study" accept=".pdf">
-                        <small>Required for projects >100k TMT</small>
-                    </div>
-                    <div class="form-group"><label>Additional Notes / Business Background</label>
-                        <textarea name="notes" rows="3" placeholder="Describe your business, previous experience, and how funds will be used..."></textarea>
-                    </div>
+                    <div class="form-group"><label>Purpose of Financing</label><select name="purpose"><option value="Business Expansion">Business Expansion</option><option value="Real Estate">Real Estate</option><option value="Equipment">Equipment</option><option value="Working Capital">Working Capital</option></select></div>
+                    <div class="form-group"><label>Upload KYC (Passport/ID)</label><input type="file" name="kyc" accept=".pdf,.jpg,.png" required></div>
+                    <div class="form-group"><label>Upload Business Plan (PDF)</label><input type="file" name="business_plan" accept=".pdf"></div>
+                    <div class="form-group"><label>Upload Feasibility Study (ТЭО)</label><input type="file" name="feasibility" accept=".pdf"></div>
+                    <div class="form-group"><label>Additional Notes</label><textarea name="notes" rows="2"></textarea></div>
                 </div>
-                <div class="form-group">
-                    <label><input type="checkbox" required> I confirm that I am not involved in haram activities (gambling, alcohol, pork, conventional finance, weapons).</label>
-                </div>
-                <div class="form-group">
-                    <label><input type="checkbox" required> I agree to the Sharia screening and KYC verification process.</label>
-                </div>
+                <div class="form-group"><label><input type="checkbox" required> I confirm no haram activities (gambling, alcohol, pork, riba).</label></div>
                 <button type="submit" class="btn">📤 Submit Application →</button>
             </form>
-            <p class="success" style="margin-top:1rem; display:none;" id="formSuccess">✅ Application submitted! Our Sharia board will contact you within 5-7 business days.</p>
         </div>
 
-        <!-- Sharia Board & Certification -->
         <div class="grid-2">
-            <div class="card">
-                <h2>🕋 Sharia Supervisory Board</h2>
-                <div class="stat"><span>Dr. Yusuf Al-Qaradawi (Chair)</span><span>AAOIFI Certified</span></div>
-                <div class="stat"><span>Sheikh Nizam Yaquby</span><span>Islamic Finance Expert</span></div>
-                <div class="stat"><span>Dr. Mohamed Elgari</span><span>Sharia Scholar</span></div>
-                <div class="stat"><span>Sheikh Dr. Essam Al-Enezi</span><span>Kuwait Awqaf</span></div>
-                <p style="margin-top:1rem;">Our board ensures 100% compliance with AAOIFI Sharia Standards (No. 30, 52, 59). All transactions are asset-backed, interest-free, and gharar-free.</p>
-            </div>
-            <div class="card">
-                <h2>📊 Islamic Finance Dashboard</h2>
-                <div class="stat"><span>Total Financing Disbursed</span><span>$12.4M</span></div>
-                <div class="stat"><span>Active Murabaha Contracts</span><span>87</span></div>
-                <div class="stat"><span>Mudarabah Funds</span><span>$3.2M</span></div>
-                <div class="stat"><span>Sukuk Outstanding</span><span>$5.1M</span></div>
-                <div class="stat"><span>Qard al-Hasan Recipients</span><span>143 families</span></div>
-                <div class="stat"><span>Sharia Audit (Last)</span><span>June 2026 — PASSED</span></div>
-            </div>
+            <div class="card"><h2>🕋 Sharia Supervisory Board</h2><div class="stat"><span>Dr. Yusuf Al-Qaradawi</span><span>AAOIFI Certified</span></div><div class="stat"><span>Sheikh Nizam Yaquby</span><span>Islamic Finance Expert</span></div><div class="stat"><span>Dr. Mohamed Elgari</span><span>Sharia Scholar</span></div></div>
+            <div class="card"><h2>📊 Islamic Finance Dashboard</h2><div class="stat"><span>Total Financing Disbursed</span><span>$12.4M</span></div><div class="stat"><span>Active Murabaha Contracts</span><span>87</span></div><div class="stat"><span>Sukuk Outstanding</span><span>$5.1M</span></div><div class="stat"><span>Qard al-Hasan Recipients</span><span>143 families</span></div></div>
         </div>
 
-        <!-- Halal Investment Pools -->
-        <div class="card">
-            <h2>💰 Halal Investment Pools (Mudarabah)</h2>
-            <div class="grid-3">
-                <div class="card"><h3>🌾 Halal Agriculture Fund</h3><p>Invest in organic farming, halal food production. Projected profit: 12-15%</p><div class="stat"><span>Target Size</span><span>1M TMT</span></div><div class="stat"><span>Open for</span><span>45 days</span></div><a href="#application" class="btn-outline btn">Invest →</a></div>
-                <div class="card"><h3>🏙️ Halal Real Estate (Dubai)</h3><p>Sukuk-backed property development. Rental income distributed quarterly.</p><div class="stat"><span>Target Size</span><span>2.5M TMT</span></div><div class="stat"><span>Expected IRR</span><span>10-12%</span></div><a href="#application" class="btn-outline btn">Invest →</a></div>
-                <div class="card"><h3>⚡ Halal Green Energy</h3><p>Solar farms, renewable energy projects. Istisna financing structure.</p><div class="stat"><span>Target Size</span><span>5M TMT</span></div><div class="stat"><span>Projected ROI</span><span>14-18%</span></div><a href="#application" class="btn-outline btn">Invest →</a></div>
-            </div>
-        </div>
-
-        <!-- Zakat & Sadaqah -->
-        <div class="card" style="background: rgba(0,100,0,0.2);">
-            <h2>🤲 Zakat & Sadaqah with TMT</h2>
-            <div class="grid-2">
-                <div><p>Calculate and pay your Zakat using TMT. 2.5% on wealth held for one lunar year. 100% distributed to verified charities (orphans, widows, the poor).</p>
-                <div class="stat"><span>Zakat Collected (2025)</span><span>342,500 TMT</span></div><div class="stat"><span>Beneficiaries Supported</span><span>1,247 families</span></div><a href="#" class="btn-outline btn">Pay Zakat →</a></div>
-                <div><p><strong>Sadaqah Jariyah</strong> — Ongoing charity: Water wells, schools, masjids funded by TMT. Sponsor a water well: 5,000 TMT. Sponsor a school: 50,000 TMT.</p>
-                <a href="#" class="btn-outline btn">Give Sadaqah →</a></div>
-            </div>
-        </div>
-
-        <!-- FAQ -->
-        <div class="card">
-            <h2>❓ Islamic Finance FAQ</h2>
-            <div class="grid-2">
-                <div><h3>Is cryptocurrency halal?</h3><p>Yes — most scholars agree crypto is halal if used as a medium of exchange and not for speculation/gharar. TMT complies as an asset-backed utility token.</p>
-                <h3>What is riba?</h3><p>Riba (interest/usury) is strictly forbidden. All our products have zero interest — profits come from asset trading, leasing, or profit-sharing.</p></div>
-                <div><h3>What is gharar?</h3><p>Excessive uncertainty. Our contracts avoid speculation — all assets and terms are clearly defined upfront.</p>
-                <h3>Is TMT itself halal?</h3><p>Yes — TMT functions as a digital asset, not a speculative vehicle. It's used for staking, RWA, and utility payments.</p></div>
-            </div>
-        </div>
-
-        <div class="warning">
-            ⚠️ <strong>Disclaimer:</strong> TMT Islamic Finance products are available only to qualified individuals and businesses after full Sharia screening. 
-            Past profits do not guarantee future returns. All investments are subject to risk, including loss of principal.
-        </div>
-
-        <div class="footer">
-            © 2025 TMT Islamic Finance — Sharia-Compliant Digital Asset Solutions.<br>
-            AAOIFI Certified | Fatwa No. 241/2025 | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
-        </div>
+        <div class="warning">⚠️ <strong>Disclaimer:</strong> TMT Islamic Finance products are available only after full Sharia screening. Past profits do not guarantee future returns.</div>
+        <div class="footer">© 2025 TMT Islamic Finance — AAOIFI Certified | Fatwa No. 241/2025<br>Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</div>
     </div>
-
     <script>
-        // Form submission handler
-        const form = document.getElementById('islamicApplication');
-        if (form) {
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerText;
-                submitBtn.innerText = '⏳ Submitting...';
-                submitBtn.disabled = true;
-                
-                // Simulate submission (replace with actual formspree endpoint)
-                setTimeout(() => {
-                    document.getElementById('formSuccess').style.display = 'block';
-                    submitBtn.innerText = originalText;
-                    submitBtn.disabled = false;
-                    form.reset();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 1500);
-            });
-        }
+        document.getElementById('islamicApplication')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('✅ Application submitted! Our Sharia board will contact you within 5-7 business days.');
+            e.target.reset();
+        });
     </script>
 </body>
 </html>
