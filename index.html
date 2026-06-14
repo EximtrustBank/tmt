@@ -6,7 +6,7 @@
     <title>Turkmen New Manat (TMT) — Official Token on Solana</title>
     <meta name="description" content="Official website of Turkmen New Manat (TMT) — digital token on Solana (Token-2022). Live price: $0.04901. Total Supply: 100T. Total Liquidity: $492.4B across USDT/USDC pools. 45+ Premium Functions.">
     <meta property="og:title" content="Turkmen New Manat (TMT) — 45+ Premium Functions">
-    <meta property="og:description" content="Market Cap: $4.9T. Total Liquidity: $492.4B. Trading, Earn, RWA, Payments, Social, Islamic Finance, and more.">
+    <meta property="og:description" content="Market Cap: $4.9T. Total Liquidity: $492.4B. Trading, Earn, RWA, Payments, Social, Islamic Finance, Currency Exchange and more.">
     <meta property="og:image" content="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png">
     <meta property="og:url" content="https://eximtrustbank.github.io/tmt/">
     <meta property="og:type" content="website">
@@ -15,8 +15,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%);
-            color: #fff;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
             line-height: 1.6;
             min-height: 100vh;
         }
@@ -33,12 +33,12 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            border: 1px solid rgba(255,215,0,0.3);
+            border: 1px solid rgba(212,168,67,0.3);
         }
         .lang-btn {
             background: transparent;
             border: none;
-            color: white;
+            color: #d0d8d0;
             cursor: pointer;
             padding: 0.3rem 0.8rem;
             border-radius: 30px;
@@ -46,33 +46,36 @@
             transition: all 0.2s;
             font-size: 0.85rem;
         }
-        .lang-btn.active { background: #ffd700; color: #0a2e1c; }
+        .lang-btn.active {
+            background: #d4a843;
+            color: #0a1a0f;
+        }
 
         .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 140px; height: 140px; margin-bottom: 1rem; background: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 3px solid #ffd700; }
+        .logo { width: 120px; height: 120px; margin-bottom: 1rem; background: #0f2418; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(212,168,67,0.2); border: 2px solid #d4a843; }
         .logo img { width: 85%; height: auto; border-radius: 50%; }
-        h1 { font-size: 2.5rem; margin-bottom: 0.3rem; background: linear-gradient(135deg, #ffd700, #ffec80); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .badge { display: inline-block; background: rgba(255,215,0,0.2); backdrop-filter: blur(10px); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; border: 1px solid rgba(255,215,0,0.5); }
+        h1 { font-size: 2.2rem; margin-bottom: 0.3rem; background: linear-gradient(135deg, #e8d8a8, #d4a843); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .badge { display: inline-block; background: rgba(212,168,67,0.2); backdrop-filter: blur(10px); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; border: 1px solid rgba(212,168,67,0.5); }
 
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 0.9rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.85rem; transition: 0.2s; }
-        .nav a:hover { background: #ffd700; color: #0a2e1c; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.4rem 0.9rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.85rem; transition: 0.2s; border: 1px solid rgba(212,168,67,0.25); }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
 
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border-radius: 24px; padding: 1.5rem; margin-bottom: 1.8rem; border: 1px solid rgba(255,255,255,0.2); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-3px); }
-        .card h2 { color: #ffd700; margin-bottom: 1rem; font-size: 1.4rem; border-left: 4px solid #ffd700; padding-left: 1rem; }
-        .card h3 { color: #ffec80; margin: 1rem 0 0.5rem; font-size: 1.2rem; }
+        .card { background: rgba(20,35,25,0.65); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; margin-bottom: 1.8rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .card h2 { color: #e8d8a8; margin-bottom: 1rem; font-size: 1.4rem; border-left: 4px solid #d4a843; padding-left: 1rem; }
+        .card h3 { color: #e8d8a8; margin: 1rem 0 0.5rem; font-size: 1.2rem; }
 
         .contract-box { background: rgba(0,0,0,0.4); border-radius: 16px; padding: 0.8rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem; word-break: break-all; font-family: monospace; font-size: 0.9rem; }
-        .contract-address { color: #ffd700; }
-        .btn-copy { background: #ffd700; color: #0a2e1c; border: none; padding: 0.4rem 1rem; border-radius: 40px; cursor: pointer; font-weight: bold; }
+        .contract-address { color: #d4a843; }
+        .btn-copy { background: #d4a843; color: #0a1a0f; border: none; padding: 0.4rem 1rem; border-radius: 40px; cursor: pointer; font-weight: bold; }
 
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
         .stat-card { background: rgba(0,0,0,0.4); border-radius: 20px; padding: 1rem; text-align: center; }
-        .stat-number { font-size: 1.6rem; font-weight: bold; color: #ffd700; }
+        .stat-number { font-size: 1.6rem; font-weight: bold; color: #e8d8a8; }
         .stat-label { font-size: 0.75rem; opacity: 0.9; }
-        .price-big { font-size: 2.2rem; font-weight: bold; color: #ffd700; text-align: center; margin: 0.5rem 0; }
+        .price-big { font-size: 2.2rem; font-weight: bold; color: #e8d8a8; text-align: center; margin: 0.5rem 0; }
 
         .btn-group { display: flex; gap: 1rem; justify-content: center; margin: 1.5rem 0; flex-wrap: wrap; }
         .btn-buy, .btn-sell, .btn-manat { padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: bold; text-decoration: none; display: inline-block; transition: 0.2s; text-align: center; }
@@ -87,16 +90,16 @@
         .function-icon { font-size: 2rem; margin-bottom: 0.3rem; }
 
         .payment-grid, .dex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.8rem; margin: 1rem 0; }
-        .payment-btn, .dex-btn { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,215,0,0.3); border-radius: 40px; padding: 0.7rem; text-align: center; text-decoration: none; color: white; font-weight: bold; transition: 0.2s; display: block; }
-        .payment-btn:hover, .dex-btn:hover { background: rgba(255,215,0,0.3); transform: scale(1.02); }
+        .payment-btn, .dex-btn { background: rgba(0,0,0,0.5); border: 1px solid rgba(212,168,67,0.3); border-radius: 40px; padding: 0.7rem; text-align: center; text-decoration: none; color: #d0d8d0; font-weight: bold; transition: 0.2s; display: block; }
+        .payment-btn:hover, .dex-btn:hover { background: rgba(212,168,67,0.3); transform: scale(1.02); }
 
-        .warning { background: rgba(255,100,100,0.2); border-left: 4px solid #ff6464; padding: 1rem; border-radius: 12px; font-size: 0.8rem; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.75rem; opacity: 0.7; }
+        .warning { background: rgba(255,100,100,0.15); border-left: 4px solid #ff6464; padding: 1rem; border-radius: 12px; font-size: 0.8rem; }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.75rem; opacity: 0.7; }
 
         @media (max-width: 768px) {
             .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; gap: 0.3rem; }
             .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
-            h1 { font-size: 1.8rem; }
+            h1 { font-size: 1.5rem; }
             .price-big { font-size: 1.6rem; }
             .btn-buy, .btn-sell, .btn-manat { padding: 0.5rem 1rem; font-size: 0.8rem; }
         }
@@ -119,9 +122,9 @@
             <div class="badge">$TMT · Token-2022 on Solana · 45+ Premium Functions</div>
         </div>
 
-        <!-- Navigation Bar with ALL pages -->
+        <!-- Navigation Bar with ALL pages INCLUDING CURRENCY -->
         <div class="nav">
-            <a href="index.html" style="background:#ffd700; color:#0a2e1c;">🏠 Home</a>
+            <a href="index.html" style="background:#d4a843; color:#0a1a0f;">🏠 Home</a>
             <a href="ecosystem.html">🌿 Ecosystem</a>
             <a href="defi-hub.html">💰 DeFi Hub</a>
             <a href="trading.html">📈 Trading</a>
@@ -133,6 +136,7 @@
             <a href="dao.html">🗳️ DAO</a>
             <a href="card.html">💳 Card</a>
             <a href="bridge.html">🌉 Bridge</a>
+            <a href="currency.html">💱 Currency</a>
             <a href="islamic.html">🕌 Islamic</a>
             <a href="whitepaper.html">📄 WP</a>
         </div>
@@ -144,7 +148,7 @@
                 <span class="contract-address">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</span>
                 <button class="btn-copy" onclick="copyAddress()" data-en="Copy" data-ru="Копировать" data-tk="Göçüriň" data-ar="نسخ" data-fa="کپی" data-zh="复制">Copy</button>
             </div>
-            <p style="margin-top: 0.5rem;">🔗 <a href="https://solscan.io/token/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#ffd700;">Solscan</a> | <a href="https://www.geckoterminal.com/solana/pools/D1eKXrnmTMH4YpN94CTdpKooW69YAUZT24UXiLQx4dp1" target="_blank" style="color:#ffd700;">TMT/USDT GeckoTerminal</a> | <a href="https://www.geckoterminal.com/solana/pools/FAuushoAhtLYa41dtZNQV7RcVutuzCBBS2XUooZ6z2k8" target="_blank" style="color:#ffd700;">TMT/USDC GeckoTerminal</a></p>
+            <p style="margin-top: 0.5rem;">🔗 <a href="https://solscan.io/token/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Solscan</a> | <a href="https://www.geckoterminal.com/solana/pools/D1eKXrnmTMH4YpN94CTdpKooW69YAUZT24UXiLQx4dp1" target="_blank" style="color:#d4a843;">TMT/USDT GeckoTerminal</a> | <a href="https://www.geckoterminal.com/solana/pools/FAuushoAhtLYa41dtZNQV7RcVutuzCBBS2XUooZ6z2k8" target="_blank" style="color:#d4a843;">TMT/USDC GeckoTerminal</a></p>
         </div>
 
         <!-- Live Market Data -->
@@ -221,75 +225,22 @@
                 <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20AED" class="payment-btn">🇦🇪 AED (M2 Exchange)</a>
                 <a href="mailto:otc@eximtrustbank.io?subject=OTC%20TMT%20Purchase%20TRY" class="payment-btn">🇹🇷 TRY (Papara)</a>
             </div>
-            <p style="margin-top:1rem; font-size:0.8rem; text-align:center;">📞 For OTC trades >$10k: <a href="mailto:otc@eximtrustbank.io" style="color:#ffd700;">otc@eximtrustbank.io</a> or Telegram: <a href="https://t.me/eximtrustbank" style="color:#ffd700;">@eximtrustbank</a></p>
+            <p style="margin-top:1rem; font-size:0.8rem; text-align:center;">📞 For OTC trades >$10k: <a href="mailto:otc@eximtrustbank.io" style="color:#d4a843;">otc@eximtrustbank.io</a> or Telegram: <a href="https://t.me/eximtrustbank" style="color:#d4a843;">@eximtrustbank</a></p>
         </div>
 
         <!-- Premium Functions (45+ functions) -->
         <div class="card">
             <h2 data-en="✨ 45+ Premium Functions with TMT" data-ru="✨ 45+ Премиум-функций с TMT" data-tk="✨ TMT bilen 45+ Premium funksiýalar" data-ar="✨ 45+ وظيفة متميزة مع TMT" data-fa="✨ 45+ قابلیت ویژه با TMT" data-zh="✨ 45+ 高级功能">✨ 45+ Premium Functions</h2>
             
-            <!-- Row 1: Core DeFi -->
             <div class="grid-4">
                 <div class="function-item"><div class="function-icon">🥇</div><div data-en="Buy Physical Gold" data-ru="Купить физическое золото" data-tk="Fiziki altyn satyn al" data-ar="شراء الذهب المادي" data-fa="خرید طلای فیزیکی" data-zh="购买实物黄金">Buy Physical Gold</div><small>1 oz ≈ 85,650 TMT</small></div>
                 <div class="function-item"><div class="function-icon">🥈</div><div data-en="Buy Silver Bars" data-ru="Купить серебряные слитки" data-tk="Kümüş külçeler satyn al" data-ar="شراء سبائك الفضة" data-fa="خرید شمش نقره" data-zh="购买银条">Buy Silver Bars</div><small>1 oz ≈ 1,375 TMT</small></div>
                 <div class="function-item"><div class="function-icon">🔷</div><div data-en="Buy Platinum" data-ru="Купить платину" data-tk="Platinum satyn al" data-ar="شراء البلاتين" data-fa="خرید پلاتین" data-zh="购买铂金">Buy Platinum</div><small>1 oz ≈ 28,550 TMT</small></div>
                 <div class="function-item"><div class="function-icon">💰</div><div data-en="Staking (8-15% APY)" data-ru="Стейкинг (8-15% годовых)" data-tk="Staking (8-15% APY)" data-ar="تجميد" data-fa="استیکینگ" data-zh="质押">Staking</div><small>8-15% APY</small></div>
-            </div>
-            
-            <!-- Row 2: DeFi Advanced -->
-            <div class="grid-4">
-                <div class="function-item"><div class="function-icon">🌾</div><div data-en="Yield Farming" data-ru="Фарминг доходности" data-tk="Yield Farming" data-ar="الزراعة" data-fa="فارمینگ" data-zh="流动性挖矿">Yield Farming</div><small>Up to 25% APY</small></div>
-                <div class="function-item"><div class="function-icon">🏦</div><div data-en="Lending / Borrowing" data-ru="Кредитование / Займы" data-tk="Kredit / Karz" data-ar="إقراض / اقتراض" data-fa="وام / قرض" data-zh="借贷">Lending / Borrowing</div><small>Use TMT as collateral</small></div>
-                <div class="function-item"><div class="function-icon">💳</div><div data-en="TMT Debit Card" data-ru="Дебетовая карта TMT" data-tk="TMT debet karty" data-ar="بطاقة خصم TMT" data-fa="کارت نقدی TMT" data-zh="TMT 借记卡">Debit Card</div><small>3% cashback</small></div>
-                <div class="function-item"><div class="function-icon">🛡️</div><div data-en="Deposit Insurance" data-ru="Страхование депозитов" data-tk="Deposit ätiýaçlandyryş" data-ar="تأمين الودائع" data-fa="بیمه سپرده" data-zh="存款保险">Deposit Insurance</div><small>Up to $50,000</small></div>
-            </div>
-            
-            <!-- Row 3: Trading Features -->
-            <div class="grid-4">
                 <div class="function-item"><div class="function-icon">📈</div><div data-en="Copy Trading" data-ru="Копи-трейдинг" data-tk="Copy Trading" data-ar="نسخ التداول" data-fa="کپی تریدینگ" data-zh="跟单交易">Copy Trading</div><small>Копируйте топ-трейдеров</small></div>
-                <div class="function-item"><div class="function-icon">📊</div><div data-en="Grid Trading Bot" data-ru="Grid Trading Bot" data-tk="Grid söwda boty" data-ar="روبوت التداول الشبكي" data-fa="ربات معاملات گرید" data-zh="网格交易机器人">Grid Trading Bot</div><small>Автоматическая торговля</small></div>
-                <div class="function-item"><div class="function-icon">📉</div><div data-en="DCA Bot" data-ru="DCA бот" data-tk="DCA bot" data-ar="بوت متوسط التكلفة" data-fa="ربات DCA" data-zh="定投机器人">DCA Bot</div><small>Усреднение цены</small></div>
-                <div class="function-item"><div class="function-icon">🔄</div><div data-en="DEX Aggregator" data-ru="DEX агрегатор" data-tk="DEX aggregatory" data-ar="مجمّع البورصات اللامركزية" data-fa="تجمیع‌کننده DEX" data-zh="DEX聚合器">DEX Aggregator</div><small>Лучшая цена из 20+ DEX</small></div>
-            </div>
-            
-            <!-- Row 4: Earn Features -->
-            <div class="grid-4">
                 <div class="function-item"><div class="function-icon">💧</div><div data-en="Liquid Staking" data-ru="Ликвидный стейкинг" data-tk="Likwid staking" data-ar="الستاكينغ السائل" data-fa="استیکینگ مایع" data-zh="流动性质押">Liquid Staking</div><small>stTMT + 7.5% APY</small></div>
-                <div class="function-item"><div class="function-icon">🔄</div><div data-en="Restaking" data-ru="Рестейкинг" data-tk="Restaking" data-ar="إعادة التجميد" data-fa="ریاستیکینگ" data-zh="再质押">Restaking</div><small>Дополнительный доход 12%</small></div>
-                <div class="function-item"><div class="function-icon">🏦</div><div data-en="Automated Vaults" data-ru="Автоматические Vaults" data-tk="Awtomatiki kassa" data-ar="خزائن آلية" data-fa="خودکار والتها" data-zh="自动化金库">Automated Vaults</div><small>APY 15-35%</small></div>
-                <div class="function-item"><div class="function-icon">⚡</div><div data-en="Perpetuals (50x)" data-ru="Перпетуалы (50x)" data-tk="Perpetuals (50x)" data-ar="العقود الدائمة (50x)" data-fa="پرپچوال (50x)" data-zh="永续合约">Perpetuals (50x)</div><small>Плечо до 50x</small></div>
-            </div>
-            
-            <!-- Row 5: RWA Features -->
-            <div class="grid-4">
-                <div class="function-item"><div class="function-icon">🏢</div><div data-en="Private Equity" data-ru="Private Equity" data-tk="Hususý kapital" data-ar="أسهم خاصة" data-fa="سرمایه‌گذاری خصوصی" data-zh="私募股权">Private Equity</div><small>Доли в стартапах</small></div>
-                <div class="function-item"><div class="function-icon">🎨</div><div data-en="Art Tokenization" data-ru="Токенизация искусства" data-tk="Şekillendiriş tokenizasiýasy" data-ar="ترميز الفن" data-fa="توکنایزیشن هنر" data-zh="艺术品代币化">Art Tokenization</div><small>Долевое владение</small></div>
-                <div class="function-item"><div class="function-icon">🌍</div><div data-en="Carbon Credits" data-ru="Углеродные кредиты" data-tk="Uglerod kreditleri" data-ar="ائتمانات الكربون" data-fa="اعتبارات کربن" data-zh="碳信用">Carbon Credits</div><small>Торговля квотами</small></div>
-                <div class="function-item"><div class="function-icon">🛢️</div><div data-en="Commodities" data-ru="Товары" data-tk="Harytlar" data-ar="السلع" data-fa="کالاها" data-zh="大宗商品">Commodities</div><small>Нефть, газ, пшеница</small></div>
-            </div>
-            
-            <!-- Row 6: Payment Features -->
-            <div class="grid-4">
                 <div class="function-item"><div class="function-icon">🏪</div><div data-en="TMT Pay Gateway" data-ru="Платёжный шлюз" data-tk="TMT töleg şlýuzy" data-ar="بوابة دفع TMT" data-fa="درگاه پرداخت TMT" data-zh="TMT支付网关">TMT Pay Gateway</div><small>Для интернет-магазинов</small></div>
-                <div class="function-item"><div class="function-icon">🏦</div><div data-en="Virtual IBAN" data-ru="Виртуальный IBAN" data-tk="Wirtualny IBAN" data-ar="IBAN افتراضي" data-fa="IBAN مجازی" data-zh="虚拟IBAN">Virtual IBAN</div><small>Банковский счёт</small></div>
-                <div class="function-item"><div class="function-icon">💱</div><div data-en="Multi-Currency Wallet" data-ru="Мультивалютный кошелёк" data-tk="Köp walýutaly jübi" data-ar="محفظة متعددة العملات" data-fa="کیف پول چند ارزی" data-zh="多币种钱包">Multi-Currency Wallet</div><small>Храните 10+ валют</small></div>
-                <div class="function-item"><div class="function-icon">📞</div><div data-en="Bill Payments" data-ru="Оплата счетов" data-tk="Hasap tölegleri" data-ar="دفع الفواتير" data-fa="پرداخت قبوض" data-zh="账单支付">Bill Payments</div><small>Коммунальные услуги</small></div>
-            </div>
-            
-            <!-- Row 7: Social Features -->
-            <div class="grid-4">
                 <div class="function-item"><div class="function-icon">🎯</div><div data-en="Quest Board" data-ru="Квесты и награды" data-tk="Quest tagtasy" data-ar="لوحة المهام" data-fa="تابلو کوئست" data-zh="任务板">Quest Board</div><small>Выполняй → получай TMT</small></div>
-                <div class="function-item"><div class="function-icon">🏆</div><div data-en="Leaderboard" data-ru="Таблица лидеров" data-tk="Liderler tablisasy" data-ar="لوحة المتصدرين" data-fa="تابلو رهبران" data-zh="排行榜">Leaderboard</div><small>Рейтинг пользователей</small></div>
-                <div class="function-item"><div class="function-icon">🖼️</div><div data-en="NFT Marketplace" data-ru="NFT маркетплейс" data-tk="NFT bazar" data-ar="سوق NFT" data-fa="بازار NFT" data-zh="NFT市场">NFT Marketplace</div><small>Покупайте/продавайте NFT</small></div>
-                <div class="function-item"><div class="function-icon">👥</div><div data-en="Referral 2.0" data-ru="Рефералы 2.0" data-tk="Referal 2.0" data-ar="الإحالة 2.0" data-fa="ارجاع ۲.۰" data-zh="推荐计划2.0">Referral 2.0</div><small>3 уровня, до 5%</small></div>
-            </div>
-            
-            <!-- Row 8: Token-2022 & Islamic -->
-            <div class="grid-4">
-                <div class="function-item"><div class="function-icon">🔒</div><div data-en="Confidential Transfers" data-ru="Конфиденциальные переводы" data-tk="Gizlin geçirmeler" data-ar="التحويلات السرية" data-fa="انتقالات محرمانه" data-zh="保密转账">Confidential Transfers</div><small>ZK-proofs</small></div>
-                <div class="function-item"><div class="function-icon">📜</div><div data-en="Transfer Hooks" data-ru="Хуки перевода" data-tk="Geçirme çeňňekleri" data-ar="خطافات التحويل" data-fa="قلاب‌های انتقال" data-zh="转账钩子">Transfer Hooks</div><small>KYC/AML</small></div>
-                <div class="function-item"><div class="function-icon">🗳️</div><div data-en="DAO Governance" data-ru="DAO управление" data-tk="DAO dolandyryş" data-ar="حوكمة DAO" data-fa="حاکمیت DAO" data-zh="DAO治理">DAO Governance</div><small>Голосуйте за предложения</small></div>
-                <div class="function-item"><div class="function-icon">🕌</div><div data-en="Islamic Finance" data-ru="Исламское финансирование" data-tk="Yslam maliýe" data-ar="التمويل الإسلامي" data-fa="مالی اسلامی" data-zh="伊斯兰金融">Islamic Finance</div><small>Шариат-комплаент</small></div>
             </div>
         </div>
 
