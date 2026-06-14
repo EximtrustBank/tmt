@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>TMT Bridge — Cross-Chain to Solana | 40+ Bridges</title>
-    <meta name="description" content="Bridge any asset to Solana then swap to TMT token. Over 40 cross-chain bridges: Wormhole, deBridge, Jupiter, Mayan, Stargate, Across, Relay, Symbiosis, Celer, Allbridge, RocketX, Rango, ChangeNOW and more.">
+    <title>TMT Bridge — Как перевести деньги на TMT токен? Пошаговые инструкции</title>
+    <meta name="description" content="Пошаговые инструкции как перевести USDT, USDC, SOL, ETH, BTC на Solana и обменять на TMT токен. Простые гайды для новичков.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -16,59 +16,47 @@
             min-height: 100vh;
         }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; box-shadow: 0 0 12px rgba(212,168,67,0.15); }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #e8d8a8; letter-spacing: -0.5px; }
-        .back-link { color: #d4a843; text-decoration: none; transition: 0.2s; }
-        .back-link:hover { color: #e8d8a8; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
 
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(30,45,35,0.7); backdrop-filter: blur(4px); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.85rem; transition: 0.2s; border: 1px solid rgba(212,168,67,0.25); }
-        .nav a:hover { background: #d4a843; color: #0a1a0f; border-color: #d4a843; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
 
-        .info-box {
-            background: rgba(25,45,30,0.6);
-            backdrop-filter: blur(8px);
-            border-radius: 28px;
-            padding: 1.8rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            border: 1px solid rgba(212,168,67,0.3);
-        }
-
-        .section-title { font-size: 1.5rem; color: #e8d8a8; margin: 1.5rem 0 1rem; border-left: 3px solid #d4a843; padding-left: 1rem; }
-        .grid-3, .grid-4 { display: grid; gap: 1.2rem; margin: 1.2rem 0; }
-        .grid-3 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-        .grid-4 { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-
-        .bridge-card {
+        .bridge-block {
             background: rgba(20,35,25,0.65);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 1.2rem;
-            border: 1px solid rgba(212,168,67,0.2);
-            transition: all 0.2s ease;
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(212,168,67,0.25);
+            transition: 0.2s;
         }
-        .bridge-card:hover { transform: translateY(-3px); border-color: rgba(212,168,67,0.5); background: rgba(30,50,38,0.75); }
+        .bridge-block:hover { border-color: #d4a843; background: rgba(30,50,38,0.75); }
 
-        .bridge-name { font-size: 1.25rem; color: #e8d8a8; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-        .badge { font-size: 0.7rem; background: rgba(212,168,67,0.2); padding: 0.2rem 0.6rem; border-radius: 30px; color: #d4a843; }
-        .bridge-desc { font-size: 0.85rem; margin: 0.6rem 0; color: #b0c0b0; }
-        .bridge-stats { font-size: 0.75rem; margin: 0.5rem 0; color: #8a9a8a; }
-        .btn-bridge { background: #d4a843; color: #0a1a0f; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 0.85rem; transition: 0.2s; margin-top: 0.5rem; }
-        .btn-bridge:hover { background: #e8c060; transform: scale(1.02); }
-        .btn-small { background: transparent; border: 1px solid #d4a843; color: #d4a843; padding: 0.25rem 0.8rem; border-radius: 30px; text-decoration: none; font-size: 0.75rem; display: inline-block; margin-left: 0.5rem; }
-        .btn-small:hover { background: rgba(212,168,67,0.2); }
+        .bridge-title { font-size: 1.4rem; color: #e8d8a8; margin-bottom: 0.3rem; }
+        .bridge-desc { color: #b0c0b0; margin-bottom: 1rem; font-size: 0.95rem; }
 
-        .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
-        .footer { text-align: center; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.75rem; color: #8a9a8a; }
+        .step-list { background: rgba(0,0,0,0.3); border-radius: 20px; padding: 1rem; margin: 1rem 0; }
+        .step-list li { margin-left: 1.5rem; padding: 0.3rem 0; }
+        .step-list strong { color: #d4a843; }
+
+        .btn-bridge { background: #d4a843; color: #0a1a0f; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin: 0.5rem 0.5rem 0.5rem 0; }
+        .btn-bridge:hover { background: #e8c060; }
+
+        .tmt-final { background: #1a2a1a; border-left: 3px solid #d4a843; padding: 0.8rem; margin-top: 1rem; border-radius: 16px; font-size: 0.85rem; }
+        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.4rem; border-radius: 6px; color: #d4a843; }
+
+        .info-box { background: rgba(25,45,30,0.5); border-radius: 20px; padding: 1.2rem; margin-bottom: 1.5rem; text-align: center; }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.75rem; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 1.5rem; }
-            .section-title { font-size: 1.2rem; }
-            .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            h1 { font-size: 1.3rem; }
+            .bridge-title { font-size: 1.2rem; }
+            .step-list li { margin-left: 1rem; }
         }
     </style>
 </head>
@@ -76,132 +64,182 @@
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1>🌉 Cross-Chain to TMT on Solana</h1>
-            <p>Bridge from any chain → Solana → Swap to TMT</p>
-            <a href="index.html" class="back-link">← Back to Main Page</a>
+            <h1>🌉 Как перевести деньги на TMT токен?</h1>
+            <p>Пошаговые инструкции для новичков. Любая монета → Solana → TMT</p>
+            <a href="index.html" class="back-link">← На главную</a>
         </div>
 
         <div class="nav">
-            <a href="index.html">🏠 Home</a>
-            <a href="ecosystem.html">🌿 Ecosystem</a>
+            <a href="index.html">🏠 Главная</a>
+            <a href="ecosystem.html">🌿 Экосистема</a>
             <a href="defi-hub.html">💰 DeFi Hub</a>
-            <a href="trading.html">📈 Trading</a>
-            <a href="earn.html">💸 Earn</a>
-            <a href="rwa.html">🏔️ RWA</a>
-            <a href="payments.html">💳 Payments</a>
-            <a href="social.html">🎮 Social</a>
-            <a href="dao.html">🗳️ DAO</a>
-            <a href="card.html">💳 Card</a>
-            <a href="bridge.html" style="background:#d4a843; color:#0a1a0f;">🌉 Bridge</a>
+            <a href="bridge.html" style="background:#d4a843; color:#0a1a0f;">🌉 Мосты</a>
+            <a href="card.html">💳 Карта</a>
             <a href="islamic.html">🕌 Islamic</a>
-            <a href="whitepaper.html">📄 WP</a>
         </div>
 
-        <!-- Info Box -->
         <div class="info-box">
-            <h2 style="color:#e8d8a8; margin-bottom: 0.5rem;">✨ How to get TMT from any chain</h2>
-            <p>1️⃣ Choose a bridge below → Bridge any asset (USDC, USDT, ETH, SOL, BTC, BNB) to <strong>Solana</strong><br>
-            2️⃣ Swap your bridged asset to <strong>TMT</strong> on <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a> or <a href="https://raydium.io/swap" target="_blank" style="color:#d4a843;">Raydium</a><br>
-            🚀 All bridges lead to Solana → then to TMT token</p>
+            <p>🎯 <strong>Ваша цель:</strong> Получить токен TMT на кошелёк Solana.<br>
+            📌 <strong>Контракт TMT:</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code><br>
+            🔑 <strong>Сначала нужно:</strong> Установить кошелёк <a href="https://phantom.app" target="_blank" style="color:#d4a843;">Phantom</a> (браузерное расширение) и создать кошелёк Solana.<br>
+            ✅ После любого моста — <strong>финальный шаг</strong> обменять на TMT через <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a> или <a href="https://raydium.io/swap" target="_blank" style="color:#d4a843;">Raydium</a>.</p>
         </div>
 
-        <!-- ==================== TOP TIER BRIDGES (1-10) ==================== -->
-        <h2 class="section-title">🏆 Top 10 Most Popular Bridges to Solana</h2>
-        <div class="grid-3">
-            <div class="bridge-card"><div class="bridge-name">🌀 Jupiter</div><div class="bridge-desc">Solana's #1 DEX aggregator + bridge aggregator. Finds the best route automatically. Built into Phantom wallet.</div><div class="bridge-stats">💰 TVL: $487M | ⚡ Speed: 10-30s</div><a href="https://jup.ag/bridge" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Best for beginners</span></div>
-            <div class="bridge-card"><div class="bridge-name">🪄 Wormhole (Portal)</div><div class="bridge-desc">The most widely used Solana bridge. Connects 30+ chains including Ethereum, BNB, Tron, Arbitrum, Base, Polygon.</div><div class="bridge-stats">💰 TVL: $62.59B | ⚡ Speed: 2-5 min</div><a href="https://portalbridge.com" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">30+ chains</span></div>
-            <div class="bridge-card"><div class="bridge-name">⚡ deBridge (DLN)</div><div class="bridge-desc">Fastest intent-based protocol. Zero-TVL design — no pool to hack. Native token delivery in seconds.</div><div class="bridge-stats">💰 Volume: $20B+ | ⚡ Speed: 10-30s</div><a href="https://app.debridge.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Fastest</span></div>
-            <div class="bridge-card"><div class="bridge-name">🌊 Mayan Finance</div><div class="bridge-desc">Solver-based cross-chain swap. Optimized for Solana ↔ EVM. Near-instant settlement.</div><div class="bridge-stats">💰 7d Volume: $76.9M | ⚡ Speed: 12-60s</div><a href="https://mayan.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Low slippage</span></div>
-            <div class="bridge-card"><div class="bridge-name">🔷 Stargate (LayerZero)</div><div class="bridge-desc">Unified liquidity pools. Native asset transfers across 40+ chains. Hydra mechanism for deep liquidity.</div><div class="bridge-stats">💰 7d Volume: $61.4M | ⚡ Speed: 1-2 min</div><a href="https://stargate.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Native assets</span></div>
-            <div class="bridge-card"><div class="bridge-name">⚡ Across Protocol</div><div class="bridge-desc">Intent-based bridge with relayers. Near-instant transfers, especially for Ethereum L2s.</div><div class="bridge-stats">💰 7d Volume: $66.8M | ⚡ Speed: 6-30s</div><a href="https://across.to" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Fast L2</span></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Relay</div><div class="bridge-desc">80+ networks, gas-on-arrival faucet. Treats dozens of rollups as one liquidity layer.</div><div class="bridge-stats">💰 7d Volume: $287.6M | ⚡ Speed: 10-30s</div><a href="https://relay.link" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Gas included</span></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Symbiosis Finance</div><div class="bridge-desc">One-click swaps across EVM and non-EVM chains (Bitcoin, Tron, Solana). 30+ networks.</div><div class="bridge-stats">💰 7d Volume: $25M | ⚡ Speed: ~2 min</div><a href="https://symbiosis.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Cross-token</span></div>
-            <div class="bridge-card"><div class="bridge-name">🔗 Celer cBridge</div><div class="bridge-desc">40+ chains, $14B+ volume. Active bug bounty, insurance fund, non-custodial.</div><div class="bridge-stats">💰 7d Volume: $13.7M | ⚡ Speed: <1 min</div><a href="https://cbridge.celer.network" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Audited</span></div>
-        </div>
-
-        <!-- ==================== AGGREGATORS & NO-KYC (11-20) ==================== -->
-        <h2 class="section-title">🔄 Aggregators & No-KYC Bridges</h2>
-        <div class="grid-3">
-            <div class="bridge-card"><div class="bridge-name">🚀 RocketX</div><div class="bridge-desc">Aggregates 500+ exchanges, 200+ chains. No account, no KYC. Private Swaps mode unlinks wallets.</div><div class="bridge-stats">💰 Volume: $2B+ | ⚡ Speed: 30-90s</div><a href="https://rocketx.exchange" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">No KYC</span></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Rango Exchange</div><div class="bridge-desc">73+ chains including Bitcoin, Cosmos, TON. Aggregates DEXs and bridges for best price.</div><div class="bridge-stats">💰 Swaps: 4.8M+ | ⚡ Speed: 30-90s</div><a href="https://rango.exchange" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Best price</span></div>
-            <div class="bridge-card"><div class="bridge-name">💱 ChangeNOW</div><div class="bridge-desc">110+ chains, 1,500+ assets. No account needed. AML check only for flagged transactions.</div><div class="bridge-stats">⚡ Speed: 5-30 min</div><a href="https://changenow.io" target="_blank" class="btn-bridge">Exchange →</a> <span class="badge">No signup</span></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 LI.FI / Jumper</div><div class="bridge-desc">Cross-chain aggregator. Compares routes across 30+ bridges, finds best price.</div><div class="bridge-stats">⚡ Speed: Varies by route</div><a href="https://jumper.exchange" target="_blank" class="btn-bridge">Aggregate →</a> <span class="badge">Compare routes</span></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Squid Router (Axelar)</div><div class="bridge-desc">Axelar-powered cross-chain swaps. EVM + Cosmos + Solana support.</div><div class="bridge-stats">⚡ Speed: 1-3 min</div><a href="https://app.squidrouter.com" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Axelar</span></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Allbridge Core</div><div class="bridge-desc">Stablecoin-focused bridge. USDC/USDT between 20+ chains including Solana, NEAR, Tron.</div><div class="bridge-stats">💰 TVL: $3.7M | ⚡ Speed: 3-8 min</div><a href="https://core.allbridge.io" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Stablecoins</span></div>
-        </div>
-
-        <!-- ==================== EVM LAYER 2 BRIDGES (21-28) ==================== -->
-        <h2 class="section-title">⚡ Ethereum L2 Bridges</h2>
-        <div class="grid-3">
-            <div class="bridge-card"><div class="bridge-name">🔄 Orbiter Finance</div><div class="bridge-desc">Specialist L2 bridge. Extremely low fees for Arbitrum, Optimism, zkSync, Base, Linea.</div><div class="bridge-stats">⚡ Speed: 10-30s</div><a href="https://www.orbiter.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Lowest fees</span></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Hop Protocol</div><div class="bridge-desc">L2-to-L2 transfers with bonders. Fast exits from rollups to Ethereum.</div><div class="bridge-stats">⚡ Speed: 30-90s</div><a href="https://app.hop.exchange" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">L2 specialist</span></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Arbitrum Bridge</div><div class="bridge-desc">Official bridge for Arbitrum. ETH ↔ Arbitrum transfers.</div><div class="bridge-stats">💰 7d Volume: $54.3M</div><a href="https://bridge.arbitrum.io" target="_blank" class="btn-bridge">Bridge →</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Optimism Gateway</div><div class="bridge-desc">Official Optimism bridge. ETH and standard ERC-20s.</div><div class="bridge-stats">💰 7d Volume: $22.1M</div><a href="https://app.optimism.io/bridge" target="_blank" class="btn-bridge">Bridge →</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Base Bridge</div><div class="bridge-desc">Official bridge for Base (Coinbase L2). ETH and USDC transfers.</div><a href="https://bridge.base.org" target="_blank" class="btn-bridge">Bridge →</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 zkSync Bridge</div><div class="bridge-desc">Official zkSync Era bridge. ETH and ERC-20 tokens.</div><a href="https://bridge.zksync.io" target="_blank" class="btn-bridge">Bridge →</a></div>
-        </div>
-
-        <!-- ==================== BITCOIN & CROSS-ECOSYSTEM (29-35) ==================== -->
-        <h2 class="section-title">₿ Bitcoin & Cross-Ecosystem Bridges</h2>
-        <div class="grid-3">
-            <div class="bridge-card"><div class="bridge-name">₿ Thorchain / THORSwap</div><div class="bridge-desc">Native cross-chain swaps. BTC, ETH, SOL, BNB — direct no wrapping.</div><div class="bridge-stats">⚡ Speed: 2-5 min</div><a href="https://thorswap.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">BTC native</span></div>
-            <div class="bridge-card"><div class="bridge-name">₿ RenBridge</div><div class="bridge-desc">Bitcoin to Solana via renBTC. Wrapped representation.</div><a href="https://bridge.renproject.io" target="_blank" class="btn-bridge">Bridge →</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Interport Finance</div><div class="bridge-desc">70+ chains, cross-chain limit orders. Solana support.</div><div class="bridge-stats">💰 7d Volume: $19.7M</div><a href="https://interport.fi" target="_blank" class="btn-bridge">Bridge →</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Cashmere</div><div class="bridge-desc">19+ chains including Solana. Cross-chain DEX aggregator.</div><div class="bridge-stats">💰 7d Volume: $21M</div><a href="https://cashmere.exchange" target="_blank" class="btn-bridge">Bridge →</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Rhino.fi</div><div class="bridge-desc">20+ chains. Aggregates bridges for best route.</div><div class="bridge-stats">💰 7d Volume: $39.9M</div><a href="https://rhino.fi" target="_blank" class="btn-bridge">Bridge →</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Hyperliquid Bridge</div><div class="bridge-desc">Arbitrum ↔ Hyperliquid for perp trading.</div><div class="bridge-stats">💰 7d Volume: $344.6M</div><a href="https://hyperliquid.xyz/bridge" target="_blank" class="btn-bridge">Bridge →</a></div>
-        </div>
-
-        <!-- ==================== ADDITIONAL RELIABLE BRIDGES (36-45) ==================== -->
-        <h2 class="section-title">🔗 More Trusted Bridges to Solana</h2>
-        <div class="grid-4">
-            <div class="bridge-card"><div class="bridge-name">🔄 Unit5</div><div class="bridge-desc">5 chains, $63.56M TVL</div><a href="https://unit5.io" target="_blank" class="btn-small">Bridge</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Aster</div><div class="bridge-desc">9 chains, $18.03M TVL</div><a href="https://aster.io" target="_blank" class="btn-small">Bridge</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Orderly Bridge</div><div class="bridge-desc">18 chains, $8.27M TVL</div><a href="https://orderly.network" target="_blank" class="btn-small">Bridge</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Wan Bridge</div><div class="bridge-desc">36 chains</div><a href="https://wanbridge.org" target="_blank" class="btn-small">Bridge</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 SoDEX Bridge</div><div class="bridge-desc">11 chains</div><a href="https://sodex.link" target="_blank" class="btn-small">Bridge</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Neony Bridge</div><div class="bridge-desc">Solana bridge</div><a href="https://neony.io" target="_blank" class="btn-small">Bridge</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 Symbiosis BNB→SOL</div><div class="bridge-desc">BNB to Solana native</div><a href="https://symbiosis.finance" target="_blank" class="btn-small">Bridge</a></div>
-            <div class="bridge-card"><div class="bridge-name">🔄 deBridge EVM→SOL</div><div class="bridge-desc">ETH/BNB/Matic to SOL</div><a href="https://app.debridge.finance" target="_blank" class="btn-small">Bridge</a></div>
-        </div>
-
-        <!-- ==================== CEX OPTIONS (NO BRIDGE NEEDED) ==================== -->
-        <h2 class="section-title">🏦 Centralized Exchanges (Simplest Option)</h2>
-        <div class="grid-3">
-            <div class="bridge-card"><div class="bridge-name">🟡 Binance</div><div class="bridge-desc">Deposit fiat/crypto → Buy SOL or USDC → Withdraw to Solana wallet → Swap to TMT.</div><a href="https://binance.com" target="_blank" class="btn-bridge">Go →</a> <span class="badge">Fast for >$100k</span></div>
-            <div class="bridge-card"><div class="bridge-name">⚡ Bybit</div><div class="bridge-desc">Buy SOL/USDT directly with card → Withdraw to Solana.</div><a href="https://bybit.com" target="_blank" class="btn-bridge">Go →</a> <span class="badge">No KYC for small amounts</span></div>
-            <div class="bridge-card"><div class="bridge-name">🟣 MEXC</div><div class="bridge-desc">SOL/TMT pair available. Direct fiat on-ramp.</div><a href="https://mexc.com" target="_blank" class="btn-bridge">Go →</a> <span class="badge">SOL/TMT direct</span></div>
-            <div class="bridge-card"><div class="bridge-name">💎 Bitget</div><div class="bridge-desc">Buy USDT with card → Withdraw to Solana.</div><a href="https://bitget.com" target="_blank" class="btn-bridge">Go →</a></div>
-            <div class="bridge-card"><div class="bridge-name">🌀 KuCoin</div><div class="bridge-desc">SOL/USDT trading. Fiat on-ramp available.</div><a href="https://kucoin.com" target="_blank" class="btn-bridge">Go →</a></div>
-            <div class="bridge-card"><div class="bridge-name">🌐 OKX</div><div class="bridge-desc">Built-in cross-chain bridge + exchange.</div><a href="https://okx.com" target="_blank" class="btn-bridge">Go →</a></div>
-        </div>
-
-        <!-- Quick Stats Table -->
-        <div class="info-box">
-            <h2 style="color:#e8d8a8; margin-bottom: 1rem;">📊 Bridge Selection Guide</h2>
-            <div class="stat"><span>🏆 Most widely used</span><span>Wormhole — 30+ chains, $62B TVL</span></div>
-            <div class="stat"><span>⚡ Fastest</span><span>deBridge / Jupiter / Mayan — 10-30 seconds</span></div>
-            <div class="stat"><span>💰 Cheapest for small amounts</span><span>Relay / Symbiosis / deBridge</span></div>
-            <div class="stat"><span>🛡️ Most secure (no TVL)</span><span>deBridge (zero-TVL design)</span></div>
-            <div class="stat"><span>🌉 Most chains</span><span>RocketX (200+), Rango (73+), Stargate (40+)</span></div>
-            <div class="stat"><span>₿ Bitcoin to Solana</span><span>Thorchain, RenBridge, RocketX</span></div>
-            <div class="stat"><span>📱 Easiest UX</span><span>Jupiter (built into Phantom wallet)</span></div>
-        </div>
-
-        <!-- Final Step -->
-        <div class="info-box">
-            <h2 style="color:#e8d8a8; margin-bottom: 0.5rem;">📌 Final Step — Swap to TMT</h2>
-            <p>Once your funds arrive on Solana, swap them to <strong>TMT token</strong> on:</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
-                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-bridge">🔄 Jupiter → Swap to TMT</a>
-                <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="btn-bridge">⚡ Raydium → Swap to TMT</a>
+        <!-- ==================== 1. JUPITER (Самый простой) ==================== -->
+        <div class="bridge-block">
+            <div class="bridge-title">🔄 1. Jupiter — самый простой способ (встроен в Phantom)</div>
+            <div class="bridge-desc">Jupiter — это агрегатор, который сам найдёт лучший маршрут для перевода ваших денег на Solana. Работает прямо в кошельке Phantom. Нужен только кошелёк.</div>
+            <div class="step-list">
+                <li><strong>Шаг 1:</strong> Установите кошелёк <a href="https://phantom.app" target="_blank" style="color:#d4a843;">Phantom</a> для браузера Chrome. Создайте новый кошелёк и сохраните секретную фразу (24 слова).</li>
+                <li><strong>Шаг 2:</strong> Откройте вкладку <strong>"Swap" / "Обмен"</strong> внутри Phantom.</li>
+                <li><strong>Шаг 3:</strong> Сверху выберите монету, которая у вас есть (USDT, ETH, BTC, BNB — всё что угодно).</li>
+                <li><strong>Шаг 4:</strong> Внизу выберите <strong>SOL или USDC на Solana</strong> (целевая сеть).</li>
+                <li><strong>Шаг 5:</strong> Введите сумму, нажмите "Swap" / "Обменять", подтвердите транзакцию.</li>
+                <li><strong>Шаг 6:</strong> Через 1-3 минуты токены придут на ваш кошелёк Solana.</li>
             </div>
-            <p style="margin-top: 1rem; font-size: 0.85rem;">TMT Contract: <code style="background:#1a2a1a; padding: 0.2rem 0.5rem; border-radius: 8px;">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <a href="https://jup.ag/bridge" target="_blank" class="btn-bridge">🚀 Перейти на Jupiter →</a>
+            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Теперь у вас есть USDC/SOL на Solana. Перейдите на <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter Swap</a>, выберите "USDC → TMT" (или SOL → TMT), введите контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>, нажмите Swap. Готово, вы владелец TMT!</div>
+        </div>
+
+        <!-- ==================== 2. WORMHOLE / PORTAL (Для Ethereum, BNB, Polygon) ==================== -->
+        <div class="bridge-block">
+            <div class="bridge-title">🪄 2. Portal Bridge (Wormhole) — для Ethereum, BNB, Polygon, Avalanche</div>
+            <div class="bridge-desc">Портальный мост — один из самых надёжных. Переводит USDC, USDT, ETH, BNB, MATIC, AVAX на Solana.</div>
+            <div class="step-list">
+                <li><strong>Шаг 1:</strong> Установите кошелёк Phantom. Подключите его к сайту Portal Bridge.</li>
+                <li><strong>Шаг 2:</strong> Выберите <strong>"Source chain"</strong> — сеть, где сейчас ваши деньги (например, BNB Chain, если у вас BNB).</li>
+                <li><strong>Шаг 3:</strong> Выберите <strong>"Target chain"</strong> — Solana.</li>
+                <li><strong>Шаг 4:</strong> Выберите токен: USDC, USDT, ETH, WETH, BNB, MATIC, AVAX.</li>
+                <li><strong>Шаг 5:</strong> Введите сумму. Нажмите "Approve" (подтвердить), затем "Transfer".</li>
+                <li><strong>Шаг 6:</strong> Подождите 2-5 минут. Ваши токены появятся в кошельке Phantom на Solana.</li>
+            </div>
+            <a href="https://www.portalbridge.com/" target="_blank" class="btn-bridge">🚀 Перейти на Portal Bridge →</a>
+            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Теперь у вас есть токены на Solana. Зайдите на <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, выберите ваш токен → TMT. Контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>. Нажмите Swap.</div>
+        </div>
+
+        <!-- ==================== 3. DEBRIDGE (Самый быстрый) ==================== -->
+        <div class="bridge-block">
+            <div class="bridge-title">⚡ 3. deBridge — самый быстрый мост (10-30 секунд)</div>
+            <div class="bridge-desc">Очень быстрый и безопасный мост. Переводит USDC, USDT, ETH, BNB на Solana почти мгновенно.</div>
+            <div class="step-list">
+                <li><strong>Шаг 1:</strong> Перейдите на deBridge. Подключите кошелёк Phantom.</li>
+                <li><strong>Шаг 2:</strong> В поле <strong>"From"</strong> выберите сеть (Ethereum, BNB, Polygon, Arbitrum).</li>
+                <li><strong>Шаг 3:</strong> В поле <strong>"To"</strong> выберите Solana.</li>
+                <li><strong>Шаг 4:</strong> Выберите токен: USDC или USDT (лучше всего подходят для перевода).</li>
+                <li><strong>Шаг 5:</strong> Введите сумму, нажмите "Bridge". Подтвердите транзакцию в кошельке.</li>
+                <li><strong>Шаг 6:</strong> Через 30 секунд токены будут на вашем Solana-кошельке.</li>
+            </div>
+            <a href="https://app.debridge.finance/" target="_blank" class="btn-bridge">🚀 Перейти на deBridge →</a>
+            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Получили USDC на Solana? Идите на <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium</a> (контракт USDC вставлен), или на Jupiter. Обменяйте на TMT по контракту <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.</div>
+        </div>
+
+        <!-- ==================== 4. MAYAN FINANCE ==================== -->
+        <div class="bridge-block">
+            <div class="bridge-title">🌊 4. Mayan Finance — для любой сети (EVM → Solana)</div>
+            <div class="bridge-desc">Подходит для Ethereum, BNB, Polygon, Arbitrum, Optimism, Base, Avalanche. Переводит USDC и USDT.</div>
+            <div class="step-list">
+                <li><strong>Шаг 1:</strong> Зайдите на Mayan. Подключите Phantom.</li>
+                <li><strong>Шаг 2:</strong> Выберите <strong>"From"</strong> сеть (где ваши деньги).</li>
+                <li><strong>Шаг 3:</strong> Выберите <strong>"To"</strong> Solana.</li>
+                <li><strong>Шаг 4:</strong> Выберите токен (USDC, USDT).</li>
+                <li><strong>Шаг 5:</strong> Укажите сумму, нажмите "Swap".</li>
+                <li><strong>Шаг 6:</strong> Через 1-2 минуты токены придут на Phantom.</li>
+            </div>
+            <a href="https://mayan.finance/" target="_blank" class="btn-bridge">🚀 Перейти на Mayan →</a>
+            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Обменяйте USDC или SOL на TMT через <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter Swap</a>. Контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>. После обмена токены TMT будут в вашем кошельке Phantom.</div>
+        </div>
+
+        <!-- ==================== 5. ROCKETX (Без регистрации, много монет) ==================== -->
+        <div class="bridge-block">
+            <div class="bridge-title">🚀 5. RocketX — без регистрации, 200+ сетей</div>
+            <div class="bridge-desc">Поддерживает Bitcoin, Ethereum, BNB, Solana, Tron и многие другие. Не требует KYC и регистрации.</div>
+            <div class="step-list">
+                <li><strong>Шаг 1:</strong> Зайдите на RocketX. Не нужна регистрация.</li>
+                <li><strong>Шаг 2:</strong> Выберите <strong>"From"</strong> — сеть и токен, который у вас есть.</li>
+                <li><strong>Шаг 3:</strong> Выберите <strong>"To"</strong> — Solana и токен назначения (например, USDC).</li>
+                <li><strong>Шаг 4:</strong> Введите сумму. Укажите ваш адрес Phantom кошелька.</li>
+                <li><strong>Шаг 5:</strong> Отправьте монеты на указанный адрес. RocketX перешлёт их на Solana.</li>
+                <li><strong>Шаг 6:</strong> Получите токены на Phantom через 5-15 минут.</li>
+            </div>
+            <a href="https://rocketx.exchange/" target="_blank" class="btn-bridge">🚀 Перейти на RocketX →</a>
+            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Как только получили USDC на Solana — идите на <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>. В поле "Вы получите" вставьте контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>. Нажмите Swap. Готово!</div>
+        </div>
+
+        <!-- ==================== 6. CHANGE NOW (Без кошелька, очень просто) ==================== -->
+        <div class="bridge-block">
+            <div class="bridge-title">💱 6. ChangeNOW — самый простой для новичков (обмен без кошелька)</div>
+            <div class="bridge-desc">Не нужен кошелёк на старте. Просто отправляете любую монету на адрес ChangeNOW, а они отправляют USDC на ваш Solana-кошелёк. Регистрация не требуется.</div>
+            <div class="step-list">
+                <li><strong>Шаг 1:</strong> Зайдите на ChangeNOW.</li>
+                <li><strong>Шаг 2:</strong> В поле <strong>"You send"</strong> выберите монету, которая у вас есть (USDT, BTC, ETH, BNB, TRX — любую).</li>
+                <li><strong>Шаг 3:</strong> В поле <strong>"You get"</strong> выберите USDC или USDT на Solana (обратите внимание на иконку Solana).</li>
+                <li><strong>Шаг 4:</strong> Введите сумму. В поле <strong>"Recipient address"</strong> вставьте адрес вашего Phantom кошелька.</li>
+                <li><strong>Шаг 5:</strong> Нажмите "Exchange". Вам покажут адрес, куда отправить деньги. Отправьте с вашего биржевого кошелька или другого кошелька.</li>
+                <li><strong>Шаг 6:</strong> Подождите 5-20 минут. USDC придут на ваш Phantom.</li>
+            </div>
+            <a href="https://changenow.io/" target="_blank" class="btn-bridge">🚀 Перейти на ChangeNOW →</a>
+            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Получили USDC на Phantom? Зайдите на <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium</a> (уже выбрана пара USDC→TMT). Нажмите Swap. TMT появятся в вашем кошельке!</div>
+        </div>
+
+        <!-- ==================== 7. THORSWAP (Bitcoin → Solana без обёрток) ==================== -->
+        <div class="bridge-block">
+            <div class="bridge-title">₿ 7. THORSwap — Bitcoin напрямую на Solana</div>
+            <div class="bridge-desc">Если у вас есть Bitcoin (BTC), вы можете обменять его напрямую на SOL или USDC на Solana, без промежуточных шагов.</div>
+            <div class="step-list">
+                <li><strong>Шаг 1:</strong> Зайдите на THORSwap. Подключите Phantom кошелёк.</li>
+                <li><strong>Шаг 2:</strong> Выберите <strong>"From"</strong> — Bitcoin (BTC).</li>
+                <li><strong>Шаг 3:</strong> Выберите <strong>"To"</strong> — Solana и токен SOL или USDC.</li>
+                <li><strong>Шаг 4:</strong> Введите сумму. Укажите ваш адрес Phantom.</li>
+                <li><strong>Шаг 5:</strong> Отправьте BTC на указанный адрес. Через 5-15 минут получите SOL/USDC на Phantom.</li>
+            </div>
+            <a href="https://thorswap.finance/" target="_blank" class="btn-bridge">🚀 Перейти на THORSwap →</a>
+            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Получили SOL? Зайдите на <a href="https://jup.ag/swap/SOL-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, выберите SOL → TMT. Контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>. Обменяйте. Всё!</div>
+        </div>
+
+        <!-- ==================== 8. SIMPLESWAP (Покупка за карту Visa/Mastercard) ==================== -->
+        <div class="bridge-block">
+            <div class="bridge-title">💳 8. SimpleSwap — покупка за рубли/доллары картой</div>
+            <div class="bridge-desc">Если у вас вообще нет криптовалюты — купите USDT на Solana напрямую с вашей банковской карты Visa/Mastercard.</div>
+            <div class="step-list">
+                <li><strong>Шаг 1:</strong> Зайдите на SimpleSwap.</li>
+                <li><strong>Шаг 2:</strong> В поле <strong>"You send"</strong> выберите "USD" или "EUR", оплата картой.</li>
+                <li><strong>Шаг 3:</strong> В поле <strong>"You get"</strong> выберите USDC (Solana).</li>
+                <li><strong>Шаг 4:</strong> В поле адрес получателя вставьте ваш Phantom кошелёк.</li>
+                <li><strong>Шаг 5:</strong> Оплатите картой. Через 5-15 минут USDC придут на ваш Phantom.</li>
+            </div>
+            <a href="https://simpleswap.io/buy-token?theme=dark&fixed=USD&ticker=USDC&network=solana" target="_blank" class="btn-bridge">🚀 Перейти на SimpleSwap →</a>
+            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> USDC на Phantom? Переходите на <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, обменяйте на TMT по контракту <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>. TMT у вас!</div>
+        </div>
+
+        <!-- ==================== 9. ALLBRIDGE CORE (Только стейблкоины) ==================== -->
+        <div class="bridge-block">
+            <div class="bridge-title">🔄 9. Allbridge Core — для USDC/USDT между 20+ сетями</div>
+            <div class="bridge-desc">Переводит USDC и USDT между Ethereum, BNB, Polygon, Solana, Tron, Avalanche и другими сетями.</div>
+            <div class="step-list">
+                <li><strong>Шаг 1:</strong> Зайдите на Allbridge.</li>
+                <li><strong>Шаг 2:</strong> Подключите кошелёк Phantom.</li>
+                <li><strong>Шаг 3:</strong> Выберите исходную сеть (например, BNB Chain) и токен (USDC).</li>
+                <li><strong>Шаг 4:</strong> Выберите целевую сеть (Solana) и тот же токен (USDC).</li>
+                <li><strong>Шаг 5:</strong> Введите сумму, нажмите "Bridge". Подтвердите.</li>
+                <li><strong>Шаг 6:</strong> Через 3-5 минут USDC на Solana.</li>
+            </div>
+            <a href="https://core.allbridge.io/" target="_blank" class="btn-bridge">🚀 Перейти на Allbridge →</a>
+            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Получили USDC на Solana? На <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a> обменяйте на TMT. Контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.</div>
+        </div>
+
+        <!-- ==================== 10. БЫСТРЫЙ ФИНАЛ (Краткая памятка) ==================== -->
+        <div class="info-box">
+            <h3 style="color:#e8d8a8;">📌 КРАТКАЯ ПАМЯТКА (для любого моста)</h3>
+            <p><strong>ШАГ 1:</strong> Установить кошелёк <a href="https://phantom.app" target="_blank" style="color:#d4a843;">Phantom</a>.<br>
+            <strong>ШАГ 2:</strong> Выбрать мост выше → перевести USDT/USDC/ETH/BTC на <strong>Solana</strong>.<br>
+            <strong>ШАГ 3:</strong> Зайти на <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter Swap</a> или <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium</a>.<br>
+            <strong>ШАГ 4:</strong> Обменять полученный токен на <strong>TMT</strong> по контракту <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.<br>
+            🎉 <strong>ГОТОВО!</strong> Вы владелец TMT токена на Solana.</p>
         </div>
 
         <div class="footer">
-            © 2025 TMT Bridge — Cross-Chain to Solana | TMT Token: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2<br>
-            Always verify bridge URLs. Do a small test transfer first. DYOR.
+            © 2025 TMT — Контракт: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2<br>
+            Всегда делайте тестовый перевод на маленькую сумму. Будьте осторожны с мошенниками.
         </div>
     </div>
 </body>
