@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>TMT Bridge — Как перевести деньги на TMT токен? Пошаговые инструкции</title>
-    <meta name="description" content="Пошаговые инструкции как перевести USDT, USDC, SOL, ETH, BTC на Solana и обменять на TMT токен. Простые гайды для новичков.">
+    <title>TMT Bridge — How to Transfer Money to TMT Token | Step-by-Step Guide</title>
+    <meta name="description" content="Step-by-step instructions on how to transfer any coin to Solana and swap to TMT token. Complete beginner's guide with working links.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -16,6 +16,36 @@
             min-height: 100vh;
         }
 
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #d0d8d0;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .lang-btn.active {
+            background: #d4a843;
+            color: #0a1a0f;
+        }
+
         .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
         .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
@@ -24,223 +54,214 @@
         .back-link { color: #d4a843; text-decoration: none; }
 
         .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
         .nav a:hover { background: #d4a843; color: #0a1a0f; }
 
-        .bridge-block {
-            background: rgba(20,35,25,0.65);
-            border-radius: 28px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(212,168,67,0.25);
-            transition: 0.2s;
-        }
-        .bridge-block:hover { border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .info-box { background: rgba(25,45,30,0.6); border-radius: 20px; padding: 1.2rem; margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(212,168,67,0.3); }
+        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.5rem; border-radius: 6px; color: #d4a843; }
 
-        .bridge-title { font-size: 1.4rem; color: #e8d8a8; margin-bottom: 0.3rem; }
-        .bridge-desc { color: #b0c0b0; margin-bottom: 1rem; font-size: 0.95rem; }
+        .bridge-block { background: rgba(20,35,25,0.7); border-radius: 24px; padding: 1.2rem; margin-bottom: 1.5rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .bridge-block:hover { border-color: #d4a843; transform: translateY(-2px); background: rgba(30,50,38,0.8); }
 
-        .step-list { background: rgba(0,0,0,0.3); border-radius: 20px; padding: 1rem; margin: 1rem 0; }
-        .step-list li { margin-left: 1.5rem; padding: 0.3rem 0; }
+        .bridge-title { font-size: 1.3rem; color: #e8d8a8; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+        .bridge-desc { font-size: 0.9rem; margin: 0.5rem 0; color: #b0c0b0; }
+
+        .step-list { background: rgba(0,0,0,0.3); border-radius: 16px; padding: 0.8rem; margin: 1rem 0; }
+        .step-list li { margin-left: 1.2rem; padding: 0.3rem 0; font-size: 0.85rem; }
         .step-list strong { color: #d4a843; }
 
-        .btn-bridge { background: #d4a843; color: #0a1a0f; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin: 0.5rem 0.5rem 0.5rem 0; }
-        .btn-bridge:hover { background: #e8c060; }
+        .btn-bridge { background: #d4a843; color: #0a1a0f; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 0.85rem; margin: 0.5rem 0.3rem 0 0; transition: 0.2s; }
+        .btn-bridge:hover { background: #e8c060; transform: scale(1.02); }
+        .btn-small { background: transparent; border: 1px solid #d4a843; color: #d4a843; padding: 0.3rem 0.8rem; border-radius: 30px; text-decoration: none; font-size: 0.75rem; display: inline-block; margin: 0.2rem; }
 
-        .tmt-final { background: #1a2a1a; border-left: 3px solid #d4a843; padding: 0.8rem; margin-top: 1rem; border-radius: 16px; font-size: 0.85rem; }
-        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.4rem; border-radius: 6px; color: #d4a843; }
-
-        .info-box { background: rgba(25,45,30,0.5); border-radius: 20px; padding: 1.2rem; margin-bottom: 1.5rem; text-align: center; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.75rem; }
+        .tmt-final { background: #1a2a1a; border-left: 3px solid #d4a843; padding: 0.8rem; margin-top: 1rem; border-radius: 12px; font-size: 0.85rem; }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
 
         @media (max-width: 768px) {
             h1 { font-size: 1.3rem; }
-            .bridge-title { font-size: 1.2rem; }
-            .step-list li { margin-left: 1rem; }
+            .bridge-title { font-size: 1.1rem; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1>🌉 Как перевести деньги на TMT токен?</h1>
-            <p>Пошаговые инструкции для новичков. Любая монета → Solana → TMT</p>
-            <a href="index.html" class="back-link">← На главную</a>
+            <h1 data-en="🌉 How to Transfer Money to TMT Token?" data-ru="🌉 Как перевести деньги на TMT токен?" data-tk="🌉 TMT Token-a pul nädip geçirmeli?" data-ar="🌉 كيفية تحويل الأموال إلى رمز TMT؟" data-fa="🌉 چگونه پول را به توکن TMT منتقل کنیم؟" data-zh="🌉 如何将资金转入 TMT 代币？">🌉 How to Transfer Money to TMT Token?</h1>
+            <p data-en="Step-by-step instructions for beginners. Any coin → Solana → TMT" data-ru="Пошаговые инструкции для новичков. Любая монета → Solana → TMT" data-tk="Başlangyçlar üçin ädimme-ädim görkezmeler. Islendik teňňe → Solana → TMT" data-ar="إرشادات خطوة بخطوة للمبتدئين. أي عملة ← Solana ← TMT" data-fa="دستورالعمل‌های گام به گام برای مبتدیان. هر سکه ← Solana ← TMT" data-zh="面向初学者的分步说明。任何硬币 → Solana → TMT">Step-by-step instructions for beginners. Any coin → Solana → TMT</p>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
 
         <div class="nav">
-            <a href="index.html">🏠 Главная</a>
-            <a href="ecosystem.html">🌿 Экосистема</a>
-            <a href="defi-hub.html">💰 DeFi Hub</a>
-            <a href="bridge.html" style="background:#d4a843; color:#0a1a0f;">🌉 Мосты</a>
-            <a href="card.html">💳 Карта</a>
-            <a href="islamic.html">🕌 Islamic</a>
+            <a href="index.html" data-en="🏠 Home" data-ru="🏠 Главная" data-tk="🏠 Baş sahypa" data-ar="🏠 الرئيسية" data-fa="🏠 صفحه اصلی" data-zh="🏠 主页">🏠 Home</a>
+            <a href="ecosystem.html" data-en="🌿 Ecosystem" data-ru="🌿 Экосистема" data-tk="🌿 Ekosistema" data-ar="🌿 النظام البيئي" data-fa="🌿 اکوسیستم" data-zh="🌿 生态系统">🌿 Ecosystem</a>
+            <a href="defi-hub.html" data-en="💰 DeFi Hub" data-ru="💰 DeFi Hub" data-tk="💰 DeFi merkezi" data-ar="💰 مركز التمويل اللامركزي" data-fa="💰 مرکز دیفای" data-zh="💰 DeFi 中心">💰 DeFi Hub</a>
+            <a href="trading.html" data-en="📈 Trading" data-ru="📈 Торговля" data-tk="📈 Söwda" data-ar="📈 تداول" data-fa="📈 معامله" data-zh="📈 交易">📈 Trading</a>
+            <a href="earn.html" data-en="💸 Earn" data-ru="💸 Заработок" data-tk="💸 Gazanç" data-ar="💸 كسب" data-fa="💸 درآمد" data-zh="💸 赚取">💸 Earn</a>
+            <a href="rwa.html" data-en="🏔️ RWA" data-ru="🏔️ RWA" data-tk="🏔️ Hakyky aktiwler" data-ar="🏔️ الأصول الحقيقية" data-fa="🏔️ دارایی‌های واقعی" data-zh="🏔️ 现实世界资产">🏔️ RWA</a>
+            <a href="rwa2.html" data-en="🏔️ RWA+" data-ru="🏔️ RWA+" data-tk="🏔️ RWA+" data-ar="🏔️ RWA+" data-fa="🏔️ RWA+" data-zh="🏔️ RWA+">🏔️ RWA+</a>
+            <a href="payments.html" data-en="💳 Payments" data-ru="💳 Платежи" data-tk="💳 Tölegler" data-ar="💳 المدفوعات" data-fa="💳 پرداخت‌ها" data-zh="💳 支付">💳 Payments</a>
+            <a href="social.html" data-en="🎮 Social" data-ru="🎮 Социальные" data-tk="🎮 Sosial" data-ar="🎮 اجتماعي" data-fa="🎮 اجتماعی" data-zh="🎮 社交">🎮 Social</a>
+            <a href="dao.html" data-en="🗳️ DAO" data-ru="🗳️ DAO" data-tk="🗳️ DAO" data-ar="🗳️ منظمة مستقلة" data-fa="🗳️ سازمان خودگردان" data-zh="🗳️ 去中心化自治组织">🗳️ DAO</a>
+            <a href="card.html" data-en="💳 Card" data-ru="💳 Карта" data-tk="💳 Karta" data-ar="💳 بطاقة" data-fa="💳 کارت" data-zh="💳 卡片">💳 Card</a>
+            <a href="bridge.html" style="background:#d4a843; color:#0a1a0f;" data-en="🌉 Bridge" data-ru="🌉 Мост" data-tk="🌉 Köpri" data-ar="🌉 جسر" data-fa="🌉 پل" data-zh="🌉 跨链桥">🌉 Bridge</a>
+            <a href="currency.html" data-en="💱 Currency" data-ru="💱 Валюты" data-tk="💱 Walýutalar" data-ar="💱 عملات" data-fa="💱 ارزها" data-zh="💱 货币">💱 Currency</a>
+            <a href="islamic.html" data-en="🕌 Islamic" data-ru="🕌 Исламское" data-tk="🕌 Yslam" data-ar="🕌 إسلامي" data-fa="🕌 اسلامی" data-zh="🕌 伊斯兰">🕌 Islamic</a>
+            <a href="whitepaper.html" data-en="📄 WP" data-ru="📄 WP" data-tk="📄 WP" data-ar="📄 الورقة البيضاء" data-fa="📄 وایت‌پیپر" data-zh="📄 白皮书">📄 WP</a>
         </div>
 
+        <!-- Goal Box -->
         <div class="info-box">
-            <p>🎯 <strong>Ваша цель:</strong> Получить токен TMT на кошелёк Solana.<br>
-            📌 <strong>Контракт TMT:</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code><br>
-            🔑 <strong>Сначала нужно:</strong> Установить кошелёк <a href="https://phantom.app" target="_blank" style="color:#d4a843;">Phantom</a> (браузерное расширение) и создать кошелёк Solana.<br>
-            ✅ После любого моста — <strong>финальный шаг</strong> обменять на TMT через <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a> или <a href="https://raydium.io/swap" target="_blank" style="color:#d4a843;">Raydium</a>.</p>
+            <p>🎯 <strong data-en="Your goal:" data-ru="Ваша цель:" data-tk="Siziň maksadyňyz:" data-ar="هدفك:" data-fa="هدف شما:" data-zh="您的目标：">Your goal:</strong> <span data-en="Get TMT token on Solana wallet" data-ru="Получить токен TMT на кошелёк Solana" data-tk="Solana jübüsinde TMT tokenyny alyň" data-ar="الحصول على رمز TMT على محفظة Solana" data-fa="دریافت توکن TMT در کیف پول Solana" data-zh="在 Solana 钱包中获取 TMT 代币">Get TMT token on Solana wallet</span></p>
+            <p>📌 <strong data-en="TMT Contract:" data-ru="Контракт TMT:" data-tk="TMT şertnamasy:" data-ar="عقد TMT:" data-fa="قرارداد TMT:" data-zh="TMT 合约：">TMT Contract:</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <p>🔑 <strong data-en="First step:" data-ru="Сначала нужно:" data-tk="Ilkinji ädim:" data-ar="الخطوة الأولى:" data-fa="مرحله اول:" data-zh="第一步：">First step:</strong> <span data-en="Install Phantom wallet and create Solana wallet" data-ru="Установить кошелёк Phantom и создать кошелёк Solana" data-tk="Phantom jübisini gurnuň we Solana jübi dörediň" data-ar="قم بتثبيت محفظة Phantom وإنشاء محفظة Solana" data-fa="کیف پول Phantom را نصب کنید و کیف پول Solana ایجاد کنید" data-zh="安装 Phantom 钱包并创建 Solana 钱包">Install Phantom wallet and create Solana wallet</span></p>
+            <p>✅ <span data-en="After any bridge — final step: swap to TMT via Jupiter or Raydium" data-ru="После любого моста — финальный шаг: обменять на TMT через Jupiter или Raydium" data-tk="Islendik mostdan soň — jemleýji ädim: Jupiter ýa-da Raydium arkaly TMT-e çalşyň" data-ar="بعد أي جسر — الخطوة النهائية: استبدل إلى TMT عبر Jupiter أو Raydium" data-fa="بعد هر پل — مرحله نهایی: از طریق Jupiter یا Raydium به TMT تبدیل کنید" data-zh="在任何跨链桥之后——最后一步：通过 Jupiter 或 Raydium 兑换为 TMT">After any bridge — final step: swap to TMT via Jupiter or Raydium</span></p>
         </div>
 
-        <!-- ==================== 1. JUPITER (Самый простой) ==================== -->
+        <!-- ==================== 1. JUPITER ==================== -->
         <div class="bridge-block">
-            <div class="bridge-title">🔄 1. Jupiter — самый простой способ (встроен в Phantom)</div>
-            <div class="bridge-desc">Jupiter — это агрегатор, который сам найдёт лучший маршрут для перевода ваших денег на Solana. Работает прямо в кошельке Phantom. Нужен только кошелёк.</div>
-            <div class="step-list">
-                <li><strong>Шаг 1:</strong> Установите кошелёк <a href="https://phantom.app" target="_blank" style="color:#d4a843;">Phantom</a> для браузера Chrome. Создайте новый кошелёк и сохраните секретную фразу (24 слова).</li>
-                <li><strong>Шаг 2:</strong> Откройте вкладку <strong>"Swap" / "Обмен"</strong> внутри Phantom.</li>
-                <li><strong>Шаг 3:</strong> Сверху выберите монету, которая у вас есть (USDT, ETH, BTC, BNB — всё что угодно).</li>
-                <li><strong>Шаг 4:</strong> Внизу выберите <strong>SOL или USDC на Solana</strong> (целевая сеть).</li>
-                <li><strong>Шаг 5:</strong> Введите сумму, нажмите "Swap" / "Обменять", подтвердите транзакцию.</li>
-                <li><strong>Шаг 6:</strong> Через 1-3 минуты токены придут на ваш кошелёк Solana.</li>
-            </div>
-            <a href="https://jup.ag/bridge" target="_blank" class="btn-bridge">🚀 Перейти на Jupiter →</a>
-            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Теперь у вас есть USDC/SOL на Solana. Перейдите на <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter Swap</a>, выберите "USDC → TMT" (или SOL → TMT), введите контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>, нажмите Swap. Готово, вы владелец TMT!</div>
+            <div class="bridge-title"><span>🔄</span> <span data-en="1. Jupiter — Easiest way (built into Phantom)" data-ru="1. Jupiter — самый простой способ (встроен в Phantom)" data-tk="1. Jupiter — iň aňsat usul (Phantom-a gurlan)" data-ar="1. Jupiter — أسهل طريقة (مدمج في Phantom)" data-fa="۱. Jupiter — ساده‌ترین راه (ساخته شده در Phantom)" data-zh="1. Jupiter — 最简单的方法（内置在 Phantom 中）">1. Jupiter — Easiest way (built into Phantom)</span></div>
+            <div class="bridge-desc" data-en="Jupiter is an aggregator that finds the best route to transfer your money to Solana. Works directly in Phantom wallet. Only a wallet is needed." data-ru="Jupiter — это агрегатор, который сам найдёт лучший маршрут для перевода ваших денег на Solana. Работает прямо в кошельке Phantom. Нужен только кошелёк." data-tk="Jupiter, puluňyzy Solana geçirmegiň iň gowy ugruny tapýan agregatordyr. Gönüden-göni Phantom jübüsinde işleýär. Diňe jübi gerek." data-ar="Jupiter هو مجمع يجد أفضل طريق لتحويل أموالك إلى Solana. يعمل مباشرة في محفظة Phantom. تحتاج فقط إلى محفظة." data-fa="Jupiter یک تجمیع‌کننده است که بهترین مسیر برای انتقال پول شما به Solana را پیدا می‌کند. مستقیماً در کیف پول Phantom کار می‌کند. فقط به کیف پول نیاز دارید." data-zh="Jupiter 是一个聚合器，可以找到将您的资金转移到 Solana 的最佳路径。直接在 Phantom 钱包中工作。只需要一个钱包。">Jupiter is an aggregator that finds the best route to transfer your money to Solana. Works directly in Phantom wallet. Only a wallet is needed.</div>
+            <a href="https://jup.ag/bridge" target="_blank" class="btn-bridge" data-en="🚀 Go to Jupiter →" data-ru="🚀 Перейти на Jupiter →" data-tk="🚀 Jupiter-a geç →" data-ar="🚀 انتقل إلى Jupiter ←" data-fa="🚀 رفتن به Jupiter ←" data-zh="🚀 前往 Jupiter →">🚀 Go to Jupiter →</a>
+            <div class="tmt-final">🎯 <strong data-en="FINAL STEP:" data-ru="ФИНАЛ:" data-tk="JEMLEJI ÄDIM:" data-ar="الخطوة النهائية:" data-fa="مرحله نهایی:" data-zh="最后一步：">FINAL STEP:</strong> <span data-en="Now you have USDC/SOL on Solana. Go to" data-ru="Теперь у вас есть USDC/SOL на Solana. Перейдите на" data-tk="Indi Solana-da USDC/SOL bar. Geçiň" data-ar="الآن لديك USDC/SOL على Solana. اذهب إلى" data-fa="اکنون USDC/SOL در Solana دارید. بروید به" data-zh="现在您在 Solana 上有了 USDC/SOL。前往">Now you have USDC/SOL on Solana. Go to</span> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter Swap</a>, <span data-en="select 'USDC → TMT' (or SOL → TMT), enter TMT contract" data-ru="выберите 'USDC → TMT' (или SOL → TMT), введите контракт TMT" data-tk="'USDC → TMT' (ýa-da SOL → TMT) saýlaň, TMT şertnamasyny giriziň" data-ar="اختر 'USDC → TMT' (أو SOL → TMT)، أدخل عقد TMT" data-fa="'USDC → TMT' (یا SOL → TMT) را انتخاب کنید، قرارداد TMT را وارد کنید" data-zh="选择 'USDC → TMT'（或 SOL → TMT），输入 TMT 合约">select 'USDC → TMT' (or SOL → TMT), enter TMT contract</span> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>, <span data-en="click Swap. Done!" data-ru="нажмите Swap. Готово!" data-tk="Swap düwmesine basyň. Gutardy!" data-ar="انقر على Swap. تم!" data-fa="روی Swap کلیک کنید. انجام شد!" data-zh="点击兑换。完成！">click Swap. Done!</span></div>
         </div>
 
-        <!-- ==================== 2. WORMHOLE / PORTAL (Для Ethereum, BNB, Polygon) ==================== -->
+        <!-- ==================== 2. PORTAL / WORMHOLE ==================== -->
         <div class="bridge-block">
-            <div class="bridge-title">🪄 2. Portal Bridge (Wormhole) — для Ethereum, BNB, Polygon, Avalanche</div>
-            <div class="bridge-desc">Портальный мост — один из самых надёжных. Переводит USDC, USDT, ETH, BNB, MATIC, AVAX на Solana.</div>
-            <div class="step-list">
-                <li><strong>Шаг 1:</strong> Установите кошелёк Phantom. Подключите его к сайту Portal Bridge.</li>
-                <li><strong>Шаг 2:</strong> Выберите <strong>"Source chain"</strong> — сеть, где сейчас ваши деньги (например, BNB Chain, если у вас BNB).</li>
-                <li><strong>Шаг 3:</strong> Выберите <strong>"Target chain"</strong> — Solana.</li>
-                <li><strong>Шаг 4:</strong> Выберите токен: USDC, USDT, ETH, WETH, BNB, MATIC, AVAX.</li>
-                <li><strong>Шаг 5:</strong> Введите сумму. Нажмите "Approve" (подтвердить), затем "Transfer".</li>
-                <li><strong>Шаг 6:</strong> Подождите 2-5 минут. Ваши токены появятся в кошельке Phantom на Solana.</li>
-            </div>
-            <a href="https://www.portalbridge.com/" target="_blank" class="btn-bridge">🚀 Перейти на Portal Bridge →</a>
-            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Теперь у вас есть токены на Solana. Зайдите на <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, выберите ваш токен → TMT. Контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>. Нажмите Swap.</div>
+            <div class="bridge-title"><span>🪄</span> <span data-en="2. Portal Bridge (Wormhole) — for Ethereum, BNB, Polygon, Avalanche" data-ru="2. Portal Bridge (Wormhole) — для Ethereum, BNB, Polygon, Avalanche" data-tk="2. Portal Bridge (Wormhole) — Ethereum, BNB, Polygon, Avalanche üçin" data-ar="2. Portal Bridge (Wormhole) — لإيثريوم، BNB، بوليجون، أفالانش" data-fa="۲. Portal Bridge (Wormhole) — برای اتریوم، BNB، پلیگان، آوالانچ" data-zh="2. Portal Bridge（Wormhole）——适用于以太坊、BNB、Polygon、Avalanche">2. Portal Bridge (Wormhole) — for Ethereum, BNB, Polygon, Avalanche</span></div>
+            <div class="bridge-desc" data-en="One of the most reliable bridges. Transfers USDC, USDT, ETH, BNB, MATIC, AVAX to Solana." data-ru="Один из самых надёжных мостов. Переводит USDC, USDT, ETH, BNB, MATIC, AVAX на Solana." data-tk="Iň ygtybarly mostlardan biri. USDC, USDT, ETH, BNB, MATIC, AVAX-ni Solana geçirýär." data-ar="واحد من أكثر الجسور موثوقية. ينقل USDC، USDT، ETH، BNB، MATIC، AVAX إلى Solana." data-fa="یکی از قابل اعتمادترین پل‌ها. USDC، USDT، ETH، BNB، MATIC، AVAX را به Solana منتقل می‌کند." data-zh="最可靠的跨链桥之一。将 USDC、USDT、ETH、BNB、MATIC、AVAX 转移到 Solana。">One of the most reliable bridges. Transfers USDC, USDT, ETH, BNB, MATIC, AVAX to Solana.</div>
+            <a href="https://www.portalbridge.com/" target="_blank" class="btn-bridge" data-en="🚀 Go to Portal Bridge →" data-ru="🚀 Перейти на Portal Bridge →" data-tk="🚀 Portal Bridge geç →" data-ar="🚀 انتقل إلى Portal Bridge ←" data-fa="🚀 رفتن به Portal Bridge ←" data-zh="🚀 前往 Portal Bridge →">🚀 Go to Portal Bridge →</a>
+            <div class="tmt-final">🎯 <strong data-en="FINAL STEP:" data-ru="ФИНАЛ:" data-tk="JEMLEJI ÄDIM:" data-ar="الخطوة النهائية:" data-fa="مرحله نهایی:" data-zh="最后一步：">FINAL STEP:</strong> <span data-en="Now you have tokens on Solana. Go to" data-ru="Теперь у вас есть токены на Solana. Зайдите на" data-tk="Indi Solana-da tokenlaryňyz bar. Giriň" data-ar="الآن لديك رموز على Solana. اذهب إلى" data-fa="اکنون توکن‌ها در Solana دارید. بروید به" data-zh="现在您在 Solana 上有了代币。前往">Now you have tokens on Solana. Go to</span> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, <span data-en="select your token → TMT. Enter contract" data-ru="выберите ваш токен → TMT. Введите контракт" data-tk="tokenyňyzy saýlaň → TMT. Şertnamany giriziň" data-ar="اختر رمزك ← TMT. أدخل العقد" data-fa="توکن خود را انتخاب کنید ← TMT. قرارداد را وارد کنید" data-zh="选择您的代币 → TMT。输入合约">select your token → TMT. Enter contract</span> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>, <span data-en="click Swap." data-ru="нажмите Swap." data-tk="Swap düwmesine basyň." data-ar="انقر على Swap." data-fa="روی Swap کلیک کنید." data-zh="点击兑换。">click Swap.</span></div>
         </div>
 
-        <!-- ==================== 3. DEBRIDGE (Самый быстрый) ==================== -->
+        <!-- ==================== 3. DEBRIDGE ==================== -->
         <div class="bridge-block">
-            <div class="bridge-title">⚡ 3. deBridge — самый быстрый мост (10-30 секунд)</div>
-            <div class="bridge-desc">Очень быстрый и безопасный мост. Переводит USDC, USDT, ETH, BNB на Solana почти мгновенно.</div>
-            <div class="step-list">
-                <li><strong>Шаг 1:</strong> Перейдите на deBridge. Подключите кошелёк Phantom.</li>
-                <li><strong>Шаг 2:</strong> В поле <strong>"From"</strong> выберите сеть (Ethereum, BNB, Polygon, Arbitrum).</li>
-                <li><strong>Шаг 3:</strong> В поле <strong>"To"</strong> выберите Solana.</li>
-                <li><strong>Шаг 4:</strong> Выберите токен: USDC или USDT (лучше всего подходят для перевода).</li>
-                <li><strong>Шаг 5:</strong> Введите сумму, нажмите "Bridge". Подтвердите транзакцию в кошельке.</li>
-                <li><strong>Шаг 6:</strong> Через 30 секунд токены будут на вашем Solana-кошельке.</li>
-            </div>
-            <a href="https://app.debridge.finance/" target="_blank" class="btn-bridge">🚀 Перейти на deBridge →</a>
-            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Получили USDC на Solana? Идите на <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium</a> (контракт USDC вставлен), или на Jupiter. Обменяйте на TMT по контракту <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.</div>
+            <div class="bridge-title"><span>⚡</span> <span data-en="3. deBridge — Fastest bridge (10-30 seconds)" data-ru="3. deBridge — самый быстрый мост (10-30 секунд)" data-tk="3. deBridge — iň çalt most (10-30 sekunt)" data-ar="3. deBridge — أسرع جسر (10-30 ثانية)" data-fa="۳. deBridge — سریع‌ترین پل (۱۰-۳۰ ثانیه)" data-zh="3. deBridge — 最快的跨链桥（10-30秒）">3. deBridge — Fastest bridge (10-30 seconds)</span></div>
+            <div class="bridge-desc" data-en="Very fast and secure bridge. Transfers USDC, USDT, ETH, BNB to Solana almost instantly." data-ru="Очень быстрый и безопасный мост. Переводит USDC, USDT, ETH, BNB на Solana почти мгновенно." data-tk="Örän çalt we ygtybarly most. USDC, USDT, ETH, BNB-ni Solana derrew diýen ýaly geçirýär." data-ar="جسر سريع وآمن للغاية. ينقل USDC، USDT، ETH، BNB إلى Solana بشكل فوري تقريبًا." data-fa="پل بسیار سریع و امن. USDC، USDT، ETH، BNB را تقریباً فوراً به Solana منتقل می‌کند." data-zh="非常快速和安全的跨链桥。几乎即时将 USDC、USDT、ETH、BNB 转移到 Solana。">Very fast and secure bridge. Transfers USDC, USDT, ETH, BNB to Solana almost instantly.</div>
+            <a href="https://app.debridge.finance/" target="_blank" class="btn-bridge" data-en="🚀 Go to deBridge →" data-ru="🚀 Перейти на deBridge →" data-tk="🚀 deBridge geç →" data-ar="🚀 انتقل إلى deBridge ←" data-fa="🚀 رفتن به deBridge ←" data-zh="🚀 前往 deBridge →">🚀 Go to deBridge →</a>
+            <div class="tmt-final">🎯 <strong data-en="FINAL STEP:" data-ru="ФИНАЛ:" data-tk="JEMLEJI ÄDIM:" data-ar="الخطوة النهائية:" data-fa="مرحله نهایی:" data-zh="最后一步：">FINAL STEP:</strong> <span data-en="Got USDC on Solana? Go to" data-ru="Получили USDC на Solana? Идите на" data-tk="Solana-da USDC aldyňyzmy? Giriň" data-ar="هل حصلت على USDC على Solana؟ اذهب إلى" data-fa="USDC در Solana دریافت کردید؟ بروید به" data-zh="在 Solana 上获得了 USDC？前往">Got USDC on Solana? Go to</span> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a> <span data-en="or" data-ru="или" data-tk="ýa-da" data-ar="أو" data-fa="یا" data-zh="或">or</span> <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium</a>, <span data-en="swap to TMT using contract" data-ru="обменяйте на TMT по контракту" data-tk="şertnama arkaly TMT-e çalşyň" data-ar="استبدل إلى TMT باستخدام العقد" data-fa="با استفاده از قرارداد به TMT تبدیل کنید" data-zh="使用合约兑换为 TMT">swap to TMT using contract</span> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.</div>
         </div>
 
         <!-- ==================== 4. MAYAN FINANCE ==================== -->
         <div class="bridge-block">
-            <div class="bridge-title">🌊 4. Mayan Finance — для любой сети (EVM → Solana)</div>
-            <div class="bridge-desc">Подходит для Ethereum, BNB, Polygon, Arbitrum, Optimism, Base, Avalanche. Переводит USDC и USDT.</div>
-            <div class="step-list">
-                <li><strong>Шаг 1:</strong> Зайдите на Mayan. Подключите Phantom.</li>
-                <li><strong>Шаг 2:</strong> Выберите <strong>"From"</strong> сеть (где ваши деньги).</li>
-                <li><strong>Шаг 3:</strong> Выберите <strong>"To"</strong> Solana.</li>
-                <li><strong>Шаг 4:</strong> Выберите токен (USDC, USDT).</li>
-                <li><strong>Шаг 5:</strong> Укажите сумму, нажмите "Swap".</li>
-                <li><strong>Шаг 6:</strong> Через 1-2 минуты токены придут на Phantom.</li>
-            </div>
-            <a href="https://mayan.finance/" target="_blank" class="btn-bridge">🚀 Перейти на Mayan →</a>
-            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Обменяйте USDC или SOL на TMT через <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter Swap</a>. Контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>. После обмена токены TMT будут в вашем кошельке Phantom.</div>
+            <div class="bridge-title"><span>🌊</span> <span data-en="4. Mayan Finance — for any EVM chain to Solana" data-ru="4. Mayan Finance — для любой EVM сети (→ Solana)" data-tk="4. Mayan Finance — islendik EVM zynjyry üçin (→ Solana)" data-ar="4. Mayan Finance — لأي سلسلة EVM (→ Solana)" data-fa="۴. Mayan Finance — برای هر زنجیره EVM (→ Solana)" data-zh="4. Mayan Finance — 适用于任何 EVM 链（→ Solana）">4. Mayan Finance — for any EVM chain to Solana</span></div>
+            <div class="bridge-desc" data-en="Works for Ethereum, BNB, Polygon, Arbitrum, Optimism, Base, Avalanche. Transfers USDC and USDT." data-ru="Подходит для Ethereum, BNB, Polygon, Arbitrum, Optimism, Base, Avalanche. Переводит USDC и USDT." data-tk="Ethereum, BNB, Polygon, Arbitrum, Optimism, Base, Avalanche üçin işleýär. USDC we USDT geçirýär." data-ar="يعمل مع إيثريوم، BNB، بوليجون، أربيتروم، أوبتيميزم، Base، أفالانش. ينقل USDC و USDT." data-fa="برای اتریوم، BNB، پلیگان، آربیتروم، آپتیمیزم، Base، آوالانچ کار می‌کند. USDC و USDT را منتقل می‌کند." data-zh="适用于以太坊、BNB、Polygon、Arbitrum、Optimism、Base、Avalanche。转移 USDC 和 USDT。">Works for Ethereum, BNB, Polygon, Arbitrum, Optimism, Base, Avalanche. Transfers USDC and USDT.</div>
+            <a href="https://mayan.finance/" target="_blank" class="btn-bridge" data-en="🚀 Go to Mayan Finance →" data-ru="🚀 Перейти на Mayan Finance →" data-tk="🚀 Mayan Finance geç →" data-ar="🚀 انتقل إلى Mayan Finance ←" data-fa="🚀 رفتن به Mayan Finance ←" data-zh="🚀 前往 Mayan Finance →">🚀 Go to Mayan Finance →</a>
+            <div class="tmt-final">🎯 <strong data-en="FINAL STEP:" data-ru="ФИНАЛ:" data-tk="JEMLEJI ÄDIM:" data-ar="الخطوة النهائية:" data-fa="مرحله نهایی:" data-zh="最后一步：">FINAL STEP:</strong> <span data-en="Swap USDC or SOL to TMT via" data-ru="Обменяйте USDC или SOL на TMT через" data-tk="USDC ýa-da SOL-ni TMT-e çalşyň" data-ar="استبدل USDC أو SOL إلى TMT عبر" data-fa="USDC یا SOL را از طریق" data-zh="通过以下方式将 USDC 或 SOL 兑换为 TMT">Swap USDC or SOL to TMT via</span> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>. <span data-en="Contract:" data-ru="Контракт:" data-tk="Şertnama:" data-ar="العقد:" data-fa="قرارداد:" data-zh="合约：">Contract:</span> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.</div>
         </div>
 
-        <!-- ==================== 5. ROCKETX (Без регистрации, много монет) ==================== -->
+        <!-- ==================== 5. ROCKETX ==================== -->
         <div class="bridge-block">
-            <div class="bridge-title">🚀 5. RocketX — без регистрации, 200+ сетей</div>
-            <div class="bridge-desc">Поддерживает Bitcoin, Ethereum, BNB, Solana, Tron и многие другие. Не требует KYC и регистрации.</div>
-            <div class="step-list">
-                <li><strong>Шаг 1:</strong> Зайдите на RocketX. Не нужна регистрация.</li>
-                <li><strong>Шаг 2:</strong> Выберите <strong>"From"</strong> — сеть и токен, который у вас есть.</li>
-                <li><strong>Шаг 3:</strong> Выберите <strong>"To"</strong> — Solana и токен назначения (например, USDC).</li>
-                <li><strong>Шаг 4:</strong> Введите сумму. Укажите ваш адрес Phantom кошелька.</li>
-                <li><strong>Шаг 5:</strong> Отправьте монеты на указанный адрес. RocketX перешлёт их на Solana.</li>
-                <li><strong>Шаг 6:</strong> Получите токены на Phantom через 5-15 минут.</li>
-            </div>
-            <a href="https://rocketx.exchange/" target="_blank" class="btn-bridge">🚀 Перейти на RocketX →</a>
-            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Как только получили USDC на Solana — идите на <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>. В поле "Вы получите" вставьте контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>. Нажмите Swap. Готово!</div>
+            <div class="bridge-title"><span>🚀</span> <span data-en="5. RocketX — No registration, 200+ networks" data-ru="5. RocketX — без регистрации, 200+ сетей" data-tk="5. RocketX — hasap açman, 200+ torlar" data-ar="5. RocketX — بدون تسجيل، أكثر من 200 شبكة" data-fa="۵. RocketX — بدون ثبت‌نام، بیش از ۲۰۰ شبکه" data-zh="5. RocketX — 无需注册，200+ 网络">5. RocketX — No registration, 200+ networks</span></div>
+            <div class="bridge-desc" data-en="Supports Bitcoin, Ethereum, BNB, Solana, Tron and many others. No KYC required." data-ru="Поддерживает Bitcoin, Ethereum, BNB, Solana, Tron и многие другие. Не требует KYC." data-tk="Bitcoin, Ethereum, BNB, Solana, Tron we beýleki köpüsini goldaýar. KYC talap etmeýär." data-ar="يدعم Bitcoin، Ethereum، BNB، Solana، Tron وغيرها الكثير. لا يتطلب KYC." data-fa="از بیت‌کوین، اتریوم، BNB، Solana، Tron و بسیاری دیگر پشتیبانی می‌کند. نیازی به KYC ندارد." data-zh="支持比特币、以太坊、BNB、Solana、波场等。无需 KYC。">Supports Bitcoin, Ethereum, BNB, Solana, Tron and many others. No KYC required.</div>
+            <a href="https://rocketx.exchange/" target="_blank" class="btn-bridge" data-en="🚀 Go to RocketX →" data-ru="🚀 Перейти на RocketX →" data-tk="🚀 RocketX geç →" data-ar="🚀 انتقل إلى RocketX ←" data-fa="🚀 رفتن به RocketX ←" data-zh="🚀 前往 RocketX →">🚀 Go to RocketX →</a>
+            <div class="tmt-final">🎯 <strong data-en="FINAL STEP:" data-ru="ФИНАЛ:" data-tk="JEMLEJI ÄDIM:" data-ar="الخطوة النهائية:" data-fa="مرحله نهایی:" data-zh="最后一步：">FINAL STEP:</strong> <span data-en="Got USDC on Solana? Go to" data-ru="Получили USDC на Solana? Идите на" data-tk="Solana-da USDC aldyňyzmy? Giriň" data-ar="هل حصلت على USDC على Solana؟ اذهب إلى" data-fa="USDC در Solana دریافت کردید؟ بروید به" data-zh="在 Solana 上获得了 USDC？前往">Got USDC on Solana? Go to</span> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, <span data-en="enter TMT contract" data-ru="введите контракт TMT" data-tk="TMT şertnamasyny giriziň" data-ar="أدخل عقد TMT" data-fa="قرارداد TMT را وارد کنید" data-zh="输入 TMT 合约">enter TMT contract</span> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>, <span data-en="click Swap." data-ru="нажмите Swap." data-tk="Swap düwmesine basyň." data-ar="انقر على Swap." data-fa="روی Swap کلیک کنید." data-zh="点击兑换。">click Swap.</span></div>
         </div>
 
-        <!-- ==================== 6. CHANGE NOW (Без кошелька, очень просто) ==================== -->
+        <!-- ==================== 6. CHANGENOW ==================== -->
         <div class="bridge-block">
-            <div class="bridge-title">💱 6. ChangeNOW — самый простой для новичков (обмен без кошелька)</div>
-            <div class="bridge-desc">Не нужен кошелёк на старте. Просто отправляете любую монету на адрес ChangeNOW, а они отправляют USDC на ваш Solana-кошелёк. Регистрация не требуется.</div>
-            <div class="step-list">
-                <li><strong>Шаг 1:</strong> Зайдите на ChangeNOW.</li>
-                <li><strong>Шаг 2:</strong> В поле <strong>"You send"</strong> выберите монету, которая у вас есть (USDT, BTC, ETH, BNB, TRX — любую).</li>
-                <li><strong>Шаг 3:</strong> В поле <strong>"You get"</strong> выберите USDC или USDT на Solana (обратите внимание на иконку Solana).</li>
-                <li><strong>Шаг 4:</strong> Введите сумму. В поле <strong>"Recipient address"</strong> вставьте адрес вашего Phantom кошелька.</li>
-                <li><strong>Шаг 5:</strong> Нажмите "Exchange". Вам покажут адрес, куда отправить деньги. Отправьте с вашего биржевого кошелька или другого кошелька.</li>
-                <li><strong>Шаг 6:</strong> Подождите 5-20 минут. USDC придут на ваш Phantom.</li>
-            </div>
-            <a href="https://changenow.io/" target="_blank" class="btn-bridge">🚀 Перейти на ChangeNOW →</a>
-            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Получили USDC на Phantom? Зайдите на <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium</a> (уже выбрана пара USDC→TMT). Нажмите Swap. TMT появятся в вашем кошельке!</div>
+            <div class="bridge-title"><span>💱</span> <span data-en="6. ChangeNOW — Easiest for beginners (no wallet needed)" data-ru="6. ChangeNOW — самый простой для новичков (не нужен кошелёк)" data-tk="6. ChangeNOW — başlangyçlar üçin iň aňsat (jübi gerek däl)" data-ar="6. ChangeNOW — الأسهل للمبتدئين (لا حاجة لمحفظة)" data-fa="۶. ChangeNOW — ساده‌ترین برای مبتدیان (نیازی به کیف پول نیست)" data-zh="6. ChangeNOW — 最适合初学者（无需钱包）">6. ChangeNOW — Easiest for beginners (no wallet needed)</span></div>
+            <div class="bridge-desc" data-en="No wallet needed at start. Just send any coin to ChangeNOW address, they send USDC to your Solana wallet. No registration." data-ru="Не нужен кошелёк на старте. Просто отправляете любую монету на адрес ChangeNOW, а они отправляют USDC на ваш Solana-кошелёк. Регистрация не требуется." data-tk="Başda jübi gerek däl. ChangeNOW salgysyna islendik teňňe iberiň, olar USDC-ni Solana jübiňize iberýärler. Hasap açmak talap edilmeýär." data-ar="لا حاجة لمحفظة في البداية. فقط أرسل أي عملة إلى عنوان ChangeNOW، وسيرسلون USDC إلى محفظة Solana الخاصة بك. لا حاجة للتسجيل." data-fa="در ابتدا نیازی به کیف پول نیست. فقط هر سکه‌ای را به آدرس ChangeNOW ارسال کنید، آنها USDC را به کیف پول Solana شما ارسال می‌کنند. نیازی به ثبت‌نام نیست." data-zh="开始时无需钱包。只需将任何硬币发送到 ChangeNOW 地址，他们就会将 USDC 发送到您的 Solana 钱包。无需注册。">No wallet needed at start. Just send any coin to ChangeNOW address, they send USDC to your Solana wallet. No registration.</div>
+            <a href="https://changenow.io/" target="_blank" class="btn-bridge" data-en="🚀 Go to ChangeNOW →" data-ru="🚀 Перейти на ChangeNOW →" data-tk="🚀 ChangeNOW geç →" data-ar="🚀 انتقل إلى ChangeNOW ←" data-fa="🚀 رفتن به ChangeNOW ←" data-zh="🚀 前往 ChangeNOW →">🚀 Go to ChangeNOW →</a>
+            <div class="tmt-final">🎯 <strong data-en="FINAL STEP:" data-ru="ФИНАЛ:" data-tk="JEMLEJI ÄDIM:" data-ar="الخطوة النهائية:" data-fa="مرحله نهایی:" data-zh="最后一步：">FINAL STEP:</strong> <span data-en="Got USDC on Phantom? Go to" data-ru="Получили USDC на Phantom? Зайдите на" data-tk="Phantom-da USDC aldyňyzmy? Giriň" data-ar="هل حصلت على USDC على Phantom؟ اذهب إلى" data-fa="USDC در Phantom دریافت کردید؟ بروید به" data-zh="在 Phantom 上获得了 USDC？前往">Got USDC on Phantom? Go to</span> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a> <span data-en="or" data-ru="или" data-tk="ýa-da" data-ar="أو" data-fa="یا" data-zh="或">or</span> <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium</a>, <span data-en="swap to TMT using contract" data-ru="обменяйте на TMT по контракту" data-tk="şertnama arkaly TMT-e çalşyň" data-ar="استبدل إلى TMT باستخدام العقد" data-fa="با استفاده از قرارداد به TMT تبدیل کنید" data-zh="使用合约兑换为 TMT">swap to TMT using contract</span> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.</div>
         </div>
 
-        <!-- ==================== 7. THORSWAP (Bitcoin → Solana без обёрток) ==================== -->
+        <!-- ==================== 7. THORSWAP ==================== -->
         <div class="bridge-block">
-            <div class="bridge-title">₿ 7. THORSwap — Bitcoin напрямую на Solana</div>
-            <div class="bridge-desc">Если у вас есть Bitcoin (BTC), вы можете обменять его напрямую на SOL или USDC на Solana, без промежуточных шагов.</div>
-            <div class="step-list">
-                <li><strong>Шаг 1:</strong> Зайдите на THORSwap. Подключите Phantom кошелёк.</li>
-                <li><strong>Шаг 2:</strong> Выберите <strong>"From"</strong> — Bitcoin (BTC).</li>
-                <li><strong>Шаг 3:</strong> Выберите <strong>"To"</strong> — Solana и токен SOL или USDC.</li>
-                <li><strong>Шаг 4:</strong> Введите сумму. Укажите ваш адрес Phantom.</li>
-                <li><strong>Шаг 5:</strong> Отправьте BTC на указанный адрес. Через 5-15 минут получите SOL/USDC на Phantom.</li>
-            </div>
-            <a href="https://thorswap.finance/" target="_blank" class="btn-bridge">🚀 Перейти на THORSwap →</a>
-            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Получили SOL? Зайдите на <a href="https://jup.ag/swap/SOL-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, выберите SOL → TMT. Контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>. Обменяйте. Всё!</div>
+            <div class="bridge-title"><span>₿</span> <span data-en="7. THORSwap — Bitcoin directly to Solana" data-ru="7. THORSwap — Bitcoin напрямую на Solana" data-tk="7. THORSwap — Bitcoin gönüden-göni Solana" data-ar="7. THORSwap — بيتكوين مباشرة إلى Solana" data-fa="۷. THORSwap — بیت‌کوین مستقیماً به Solana" data-zh="7. THORSwap — 比特币直接到 Solana">7. THORSwap — Bitcoin directly to Solana</span></div>
+            <div class="bridge-desc" data-en="If you have Bitcoin (BTC), you can swap it directly to SOL or USDC on Solana, without intermediate steps." data-ru="Если у вас есть Bitcoin (BTC), вы можете обменять его напрямую на SOL или USDC на Solana, без промежуточных шагов." data-tk="Bitcoin (BTC) bar bolsa, ony araçy ädimler bolmazdan gönüden-göni SOL ýa-da USDC-e çalşyp bilersiňiz." data-ar="إذا كان لديك بيتكوين (BTC)، يمكنك استبداله مباشرة إلى SOL أو USDC على Solana، دون خطوات وسيطة." data-fa="اگر بیت‌کوین (BTC) دارید، می‌توانید آن را مستقیماً به SOL یا USDC در Solana، بدون مراحل میانی تبدیل کنید." data-zh="如果您有比特币（BTC），您可以直接将其兑换为 Solana 上的 SOL 或 USDC，无需中间步骤。">If you have Bitcoin (BTC), you can swap it directly to SOL or USDC on Solana, without intermediate steps.</div>
+            <a href="https://thorswap.finance/" target="_blank" class="btn-bridge" data-en="🚀 Go to THORSwap →" data-ru="🚀 Перейти на THORSwap →" data-tk="🚀 THORSwap geç →" data-ar="🚀 انتقل إلى THORSwap ←" data-fa="🚀 رفتن به THORSwap ←" data-zh="🚀 前往 THORSwap →">🚀 Go to THORSwap →</a>
+            <div class="tmt-final">🎯 <strong data-en="FINAL STEP:" data-ru="ФИНАЛ:" data-tk="JEMLEJI ÄDIM:" data-ar="الخطوة النهائية:" data-fa="مرحله نهایی:" data-zh="最后一步：">FINAL STEP:</strong> <span data-en="Got SOL? Go to" data-ru="Получили SOL? Зайдите на" data-tk="SOL aldyňyzmy? Giriň" data-ar="هل حصلت على SOL؟ اذهب إلى" data-fa="SOL دریافت کردید؟ بروید به" data-zh="获得了 SOL？前往">Got SOL? Go to</span> <a href="https://jup.ag/swap/SOL-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, <span data-en="select SOL → TMT. Contract" data-ru="выберите SOL → TMT. Контракт" data-tk="SOL → TMT saýlaň. Şertnama" data-ar="اختر SOL ← TMT. العقد" data-fa="SOL ← TMT را انتخاب کنید. قرارداد" data-zh="选择 SOL → TMT。合约">select SOL → TMT. Contract</span> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>, <span data-en="click Swap." data-ru="нажмите Swap." data-tk="Swap düwmesine basyň." data-ar="انقر على Swap." data-fa="روی Swap کلیک کنید." data-zh="点击兑换。">click Swap.</span></div>
         </div>
 
-        <!-- ==================== 8. SIMPLESWAP (Покупка за карту Visa/Mastercard) ==================== -->
+        <!-- ==================== 8. SIMPLESWAP ==================== -->
         <div class="bridge-block">
-            <div class="bridge-title">💳 8. SimpleSwap — покупка за рубли/доллары картой</div>
-            <div class="bridge-desc">Если у вас вообще нет криптовалюты — купите USDT на Solana напрямую с вашей банковской карты Visa/Mastercard.</div>
-            <div class="step-list">
-                <li><strong>Шаг 1:</strong> Зайдите на SimpleSwap.</li>
-                <li><strong>Шаг 2:</strong> В поле <strong>"You send"</strong> выберите "USD" или "EUR", оплата картой.</li>
-                <li><strong>Шаг 3:</strong> В поле <strong>"You get"</strong> выберите USDC (Solana).</li>
-                <li><strong>Шаг 4:</strong> В поле адрес получателя вставьте ваш Phantom кошелёк.</li>
-                <li><strong>Шаг 5:</strong> Оплатите картой. Через 5-15 минут USDC придут на ваш Phantom.</li>
-            </div>
-            <a href="https://simpleswap.io/buy-token?theme=dark&fixed=USD&ticker=USDC&network=solana" target="_blank" class="btn-bridge">🚀 Перейти на SimpleSwap →</a>
-            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> USDC на Phantom? Переходите на <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, обменяйте на TMT по контракту <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>. TMT у вас!</div>
+            <div class="bridge-title"><span>💳</span> <span data-en="8. SimpleSwap — Buy with card (USD/EUR)" data-ru="8. SimpleSwap — покупка за рубли/доллары картой" data-tk="8. SimpleSwap — karta bilen satyn almak (USD/EUR)" data-ar="8. SimpleSwap — شراء بالبطاقة (دولار/يورو)" data-fa="۸. SimpleSwap — خرید با کارت (دلار/یورو)" data-zh="8. SimpleSwap — 用卡购买（美元/欧元）">8. SimpleSwap — Buy with card (USD/EUR)</span></div>
+            <div class="bridge-desc" data-en="If you have no crypto at all — buy USDT on Solana directly with your bank card Visa/Mastercard." data-ru="Если у вас вообще нет криптовалюты — купите USDT на Solana напрямую с вашей банковской карты Visa/Mastercard." data-tk="Umuman kripto ýok bolsa — Visa/Mastercard kartyňyz bilen göni Solana-da USDT satyn alyň." data-ar="إذا لم يكن لديك عملات مشفرة على الإطلاق — اشترِ USDT على Solana مباشرةً ببطاقتك البنكية فيزا/ماستركارد." data-fa="اگر اصلاً رمزارز ندارید — مستقیماً با کارت بانکی Visa/Mastercard خود USDT در Solana خریداری کنید." data-zh="如果您根本没有加密货币——直接用您的 Visa/Mastercard 银行卡在 Solana 上购买 USDT。">If you have no crypto at all — buy USDT on Solana directly with your bank card Visa/Mastercard.</div>
+            <a href="https://simpleswap.io/buy-token?theme=dark&fixed=USD&ticker=USDC&network=solana" target="_blank" class="btn-bridge" data-en="🚀 Go to SimpleSwap →" data-ru="🚀 Перейти на SimpleSwap →" data-tk="🚀 SimpleSwap geç →" data-ar="🚀 انتقل إلى SimpleSwap ←" data-fa="🚀 رفتن به SimpleSwap ←" data-zh="🚀 前往 SimpleSwap →">🚀 Go to SimpleSwap →</a>
+            <div class="tmt-final">🎯 <strong data-en="FINAL STEP:" data-ru="ФИНАЛ:" data-tk="JEMLEJI ÄDIM:" data-ar="الخطوة النهائية:" data-fa="مرحله نهایی:" data-zh="最后一步：">FINAL STEP:</strong> <span data-en="Got USDC on Phantom? Go to" data-ru="USDC на Phantom? Переходите на" data-tk="Phantom-da USDC aldyňyzmy? Giriň" data-ar="هل حصلت على USDC على Phantom؟ اذهب إلى" data-fa="USDC در Phantom دریافت کردید؟ بروید به" data-zh="在 Phantom 上获得了 USDC？前往">Got USDC on Phantom? Go to</span> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, <span data-en="swap to TMT using contract" data-ru="обменяйте на TMT по контракту" data-tk="şertnama arkaly TMT-e çalşyň" data-ar="استبدل إلى TMT باستخدام العقد" data-fa="با استفاده از قرارداد به TMT تبدیل کنید" data-zh="使用合约兑换为 TMT">swap to TMT using contract</span> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.</div>
         </div>
 
-        <!-- ==================== 9. ALLBRIDGE CORE (Только стейблкоины) ==================== -->
+        <!-- ==================== 9. ALLBRIDGE ==================== -->
         <div class="bridge-block">
-            <div class="bridge-title">🔄 9. Allbridge Core — для USDC/USDT между 20+ сетями</div>
-            <div class="bridge-desc">Переводит USDC и USDT между Ethereum, BNB, Polygon, Solana, Tron, Avalanche и другими сетями.</div>
-            <div class="step-list">
-                <li><strong>Шаг 1:</strong> Зайдите на Allbridge.</li>
-                <li><strong>Шаг 2:</strong> Подключите кошелёк Phantom.</li>
-                <li><strong>Шаг 3:</strong> Выберите исходную сеть (например, BNB Chain) и токен (USDC).</li>
-                <li><strong>Шаг 4:</strong> Выберите целевую сеть (Solana) и тот же токен (USDC).</li>
-                <li><strong>Шаг 5:</strong> Введите сумму, нажмите "Bridge". Подтвердите.</li>
-                <li><strong>Шаг 6:</strong> Через 3-5 минут USDC на Solana.</li>
-            </div>
-            <a href="https://core.allbridge.io/" target="_blank" class="btn-bridge">🚀 Перейти на Allbridge →</a>
-            <div class="tmt-final">🎯 <strong>ФИНАЛ:</strong> Получили USDC на Solana? На <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a> обменяйте на TMT. Контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.</div>
+            <div class="bridge-title"><span>🔄</span> <span data-en="9. Allbridge Core — For USDC/USDT between 20+ networks" data-ru="9. Allbridge Core — для USDC/USDT между 20+ сетями" data-tk="9. Allbridge Core — 20+ tor arasynda USDC/USDT üçin" data-ar="9. Allbridge Core — لـ USDC/USDT بين أكثر من 20 شبكة" data-fa="۹. Allbridge Core — برای USDC/USDT بین بیش از ۲۰ شبکه" data-zh="9. Allbridge Core — 用于 USDC/USDT 在 20 多个网络之间">9. Allbridge Core — For USDC/USDT between 20+ networks</span></div>
+            <div class="bridge-desc" data-en="Transfers USDC and USDT between Ethereum, BNB, Polygon, Solana, Tron, Avalanche and other networks." data-ru="Переводит USDC и USDT между Ethereum, BNB, Polygon, Solana, Tron, Avalanche и другими сетями." data-tk="USDC we USDT-ni Ethereum, BNB, Polygon, Solana, Tron, Avalanche we beýleki torlar arasynda geçirýär." data-ar="ينقل USDC و USDT بين إيثريوم، BNB، بوليجون، Solana، ترون، أفالانش والشبكات الأخرى." data-fa="USDC و USDT را بین اتریوم، BNB، پلیگان، Solana، ترون، آوالانچ و سایر شبکه‌ها منتقل می‌کند." data-zh="在以太坊、BNB、Polygon、Solana、波场、Avalanche 和其他网络之间转移 USDC 和 USDT。">Transfers USDC and USDT between Ethereum, BNB, Polygon, Solana, Tron, Avalanche and other networks.</div>
+            <a href="https://core.allbridge.io/" target="_blank" class="btn-bridge" data-en="🚀 Go to Allbridge →" data-ru="🚀 Перейти на Allbridge →" data-tk="🚀 Allbridge geç →" data-ar="🚀 انتقل إلى Allbridge ←" data-fa="🚀 رفتن به Allbridge ←" data-zh="🚀 前往 Allbridge →">🚀 Go to Allbridge →</a>
+            <div class="tmt-final">🎯 <strong data-en="FINAL STEP:" data-ru="ФИНАЛ:" data-tk="JEMLEJI ÄDIM:" data-ar="الخطوة النهائية:" data-fa="مرحله نهایی:" data-zh="最后一步：">FINAL STEP:</strong> <span data-en="Got USDC on Solana? Go to" data-ru="Получили USDC на Solana? На" data-tk="Solana-da USDC aldyňyzmy? Giriň" data-ar="هل حصلت على USDC على Solana؟ اذهب إلى" data-fa="USDC در Solana دریافت کردید؟ بروید به" data-zh="在 Solana 上获得了 USDC？前往">Got USDC on Solana? Go to</span> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a>, <span data-en="swap to TMT using contract" data-ru="обменяйте на TMT по контракту" data-tk="şertnama arkaly TMT-e çalşyň" data-ar="استبدل إلى TMT باستخدام العقد" data-fa="با استفاده از قرارداد به TMT تبدیل کنید" data-zh="使用合约兑换为 TMT">swap to TMT using contract</span> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.</div>
         </div>
 
-        <!-- ==================== 10. БЫСТРЫЙ ФИНАЛ (Краткая памятка) ==================== -->
-        <div class="info-box">
-            <h3 style="color:#e8d8a8;">📌 КРАТКАЯ ПАМЯТКА (для любого моста)</h3>
-            <p><strong>ШАГ 1:</strong> Установить кошелёк <a href="https://phantom.app" target="_blank" style="color:#d4a843;">Phantom</a>.<br>
-            <strong>ШАГ 2:</strong> Выбрать мост выше → перевести USDT/USDC/ETH/BTC на <strong>Solana</strong>.<br>
-            <strong>ШАГ 3:</strong> Зайти на <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter Swap</a> или <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium</a>.<br>
-            <strong>ШАГ 4:</strong> Обменять полученный токен на <strong>TMT</strong> по контракту <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code>.<br>
-            🎉 <strong>ГОТОВО!</strong> Вы владелец TMT токена на Solana.</p>
+        <!-- ==================== QUICK SUMMARY ==================== -->
+        <div class="info-box" style="background: rgba(212,168,67,0.1); border-color: #d4a843;">
+            <h3 style="color:#e8d8a8;" data-en="📌 QUICK SUMMARY (For any bridge)" data-ru="📌 КРАТКАЯ ПАМЯТКА (для любого моста)" data-tk="�2 GYSGAÇA MEMO (Islendik most üçin)" data-ar="📌 ملخص سريع (لأي جسر)" data-fa="📌 خلاصه سریع (برای هر پلی)" data-zh="📌 快速总结（适用于任何跨链桥）">📌 QUICK SUMMARY (For any bridge)</h3>
+            <div style="text-align: left; margin-top: 1rem;">
+                <div class="step-list">
+                    <li data-en="<strong>STEP 1:</strong> Install Phantom wallet" data-ru="<strong>ШАГ 1:</strong> Установить кошелёк Phantom" data-tk="<strong>1-nji ÄDIM:</strong> Phantom jübisini gurnuň" data-ar="<strong>الخطوة 1:</strong> قم بتثبيت محفظة Phantom" data-fa="<strong>مرحله ۱:</strong> کیف پول Phantom را نصب کنید" data-zh="<strong>步骤 1：</strong> 安装 Phantom 钱包"><strong>STEP 1:</strong> Install Phantom wallet</li>
+                    <li data-en="<strong>STEP 2:</strong> Choose a bridge above → transfer USDT/USDC/ETH/BTC to Solana" data-ru="<strong>ШАГ 2:</strong> Выбрать мост выше → перевести USDT/USDC/ETH/BTC на Solana" data-tk="<strong>2-nji ÄDIM:</strong> Above most saýlaň → USDT/USDC/ETH/BTC-ni Solana geçiriň" data-ar="<strong>الخطوة 2:</strong> اختر جسرًا أعلاه ← انقل USDT/USDC/ETH/BTC إلى Solana" data-fa="<strong>مرحله ۲:</strong> یک پل بالا انتخاب کنید ← USDT/USDC/ETH/BTC را به Solana منتقل کنید" data-zh="<strong>步骤 2：</strong> 选择上面的跨链桥 → 将 USDT/USDC/ETH/BTC 转移到 Solana"><strong>STEP 2:</strong> Choose a bridge above → transfer USDT/USDC/ETH/BTC to Solana</li>
+                    <li data-en="<strong>STEP 3:</strong> Go to Jupiter Swap or Raydium" data-ru="<strong>ШАГ 3:</strong> Зайти на Jupiter Swap или Raydium" data-tk="<strong>3-nji ÄDIM:</strong> Jupiter Swap ýa-da Raydium giriň" data-ar="<strong>الخطوة 3:</strong> اذهب إلى Jupiter Swap أو Raydium" data-fa="<strong>مرحله ۳:</strong> به Jupiter Swap یا Raydium بروید" data-zh="<strong>步骤 3：</strong> 前往 Jupiter Swap 或 Raydium"><strong>STEP 3:</strong> Go to Jupiter Swap or Raydium</li>
+                    <li data-en="<strong>STEP 4:</strong> Swap your token to TMT using contract" data-ru="<strong>ШАГ 4:</strong> Обменять полученный токен на TMT по контракту" data-tk="<strong>4-nji ÄDIM:</strong> Tokenyňyzy şertnama arkaly TMT-e çalşyň" data-ar="<strong>الخطوة 4:</strong> استبدل رمزك إلى TMT باستخدام العقد" data-fa="<strong>مرحله ۴:</strong> توکن خود را با استفاده از قرارداد به TMT تبدیل کنید" data-zh="<strong>步骤 4：</strong> 使用合约将您的代币兑换为 TMT"><strong>STEP 4:</strong> Swap your token to TMT using contract</li>
+                </div>
+                <p style="margin-top: 1rem;">🎉 <strong data-en="DONE!" data-ru="ГОТОВО!" data-tk="GUTARDY!" data-ar="تم!" data-fa="انجام شد!" data-zh="完成！">DONE!</strong> <span data-en="You now own TMT tokens on Solana!" data-ru="Вы владелец TMT токена на Solana!" data-tk="Indi Solana-da TMT tokenlarynyň eýesi!" data-ar="أصبحت الآن مالكًا لرموز TMT على Solana!" data-fa="اکنون صاحب توکن‌های TMT در Solana هستید!" data-zh="您现在拥有 Solana 上的 TMT 代币！">You now own TMT tokens on Solana!</span></p>
+            </div>
         </div>
 
         <div class="footer">
-            © 2025 TMT — Контракт: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2<br>
-            Всегда делайте тестовый перевод на маленькую сумму. Будьте осторожны с мошенниками.
+            © 2025 TMT Bridge — Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2<br>
+            <span data-en="Always do a test transfer with a small amount first. Beware of scammers." data-ru="Всегда делайте тестовый перевод на маленькую сумму. Будьте осторожны с мошенниками." data-tk="Elmydama ilki bilen az mukdarda synag geçiriň. Aldawçylardan özüňizi goraň." data-ar="قم دائمًا بإجراء تحويل تجريبي بمبلغ صغير أولاً. احذر من المحتالين." data-fa="همیشه ابتدا یک انتقال آزمایشی با مبلغ کم انجام دهید. مراقب کلاهبرداران باشید." data-zh="始终先进行小额测试转账。谨防诈骗。">Always do a test transfer with a small amount first. Beware of scammers.</span>
         </div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Set HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Handle RTL for Arabic and Farsi
+            if (lang === 'ar' || lang === 'fa') {
+                document.body.style.direction = 'rtl';
+                document.querySelector('.container').style.direction = 'rtl';
+            } else {
+                document.body.style.direction = 'ltr';
+                document.querySelector('.container').style.direction = 'ltr';
+            }
+        }
+
+        // Add click handlers to language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+        
+        // Set English as default
+        setLanguage('en');
+    </script>
 </body>
 </html>
