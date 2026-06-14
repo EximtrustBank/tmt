@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TMT Конвертация валют — Обмен манатов, сумов, тенге, юаней, рублей через TMT токен</title>
+    <meta name="description" content="Как обменять туркменские манаты на узбекские сумы, казахстанские тенге, китайские юани, российские рубли, иранские риалы, дирхамы, сомони и сомы через TMT токен. Работающие ссылки и простые схемы.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
+        .header { text-align: center; margin-bottom: 1.5rem; }
+        .logo { width: 80px; height: 80px; margin: 0 auto 0.8rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
+        .logo img { width: 80%; border-radius: 50%; }
+        h1 { font-size: 1.6rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; font-size: 0.9rem; }
+
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
+
+        .info-box { background: rgba(25,45,30,0.6); border-radius: 20px; padding: 1rem; margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(212,168,67,0.3); }
+        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.5rem; border-radius: 6px; color: #d4a843; font-size: 0.8rem; }
+
+        /* Основная сетка валют */
+        .currency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
+        .currency-card { background: rgba(20,35,25,0.7); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.3); transition: 0.2s; }
+        .currency-card:hover { border-color: #d4a843; transform: translateY(-2px); background: rgba(30,50,38,0.8); }
+
+        .currency-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .flag { font-size: 2rem; }
+        .currency-name { font-size: 1.3rem; color: #e8d8a8; font-weight: bold; }
+        .currency-code { background: rgba(212,168,67,0.2); padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; }
+
+        /* Схема обмена — три колонки */
+        .exchange-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
+        .exchange-from, .exchange-to { background: rgba(0,0,0,0.4); border-radius: 16px; padding: 0.8rem; flex: 1; min-width: 120px; text-align: center; }
+        .exchange-arrow { font-size: 1.5rem; color: #d4a843; padding: 0 0.2rem; }
+        .tmt-center { background: #1a2a1a; border-radius: 20px; padding: 0.6rem; text-align: center; margin: 0.5rem 0; border: 1px dashed #d4a843; }
+        .tmt-center strong { color: #e8d8a8; }
+
+        .btn-action { background: #d4a843; color: #0a1a0f; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 0.85rem; margin: 0.5rem 0.3rem 0 0; transition: 0.2s; }
+        .btn-action:hover { background: #e8c060; transform: scale(1.02); }
+        .btn-small { background: transparent; border: 1px solid #d4a843; color: #d4a843; padding: 0.3rem 0.8rem; border-radius: 30px; text-decoration: none; font-size: 0.7rem; display: inline-block; margin: 0.2rem; }
+
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+
+        @media (max-width: 700px) {
+            .currency-grid { grid-template-columns: 1fr; }
+            .exchange-row { flex-direction: column; }
+            .exchange-arrow { transform: rotate(90deg); }
+            .exchange-from, .exchange-to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
+            <h1>🔄 Обмен валют через TMT токен</h1>
+            <p>Любые деньги → TMT → Любые другие деньги. Работающие ссылки для каждого шага.</p>
+            <a href="index.html" class="back-link">← На главную</a>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">🏠 Главная</a>
+            <a href="ecosystem.html">🌿 Экосистема</a>
+            <a href="bridge.html">🌉 Мосты</a>
+            <a href="currency.html" style="background:#d4a843; color:#0a1a0f;">💱 Валюты</a>
+            <a href="card.html">💳 Карта</a>
+            <a href="islamic.html">🕌 Islamic</a>
+        </div>
+
+        <div class="info-box">
+            <p>🎯 <strong>Контракт TMT токена (Solana):</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <p>📌 <strong>Как работает:</strong> Ваши деньги → Покупаете USDT/USDC → Обмениваете на TMT → Обмениваете TMT на нужную валюту</p>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 1. ТУРКМЕНСКИЙ МАНАТ (TMT) — СТАРТОВАЯ ВАЛЮТА -->
+        <!-- ============================================== -->
+        <div class="currency-card">
+            <div class="currency-header"><span class="flag">🇹🇲</span><span class="currency-name">Туркменский манат</span><span class="currency-code">TMT</span></div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇹🇲 Манаты (TMT)</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>🎯 TMT токен</div>
+            </div>
+            <div class="tmt-center"><strong>⚡ Единая точка входа:</strong> Сначала нужно купить TMT токен за манаты</div>
+            <div class="exchange-row">
+                <a href="how-to-buy.html" class="btn-action">🇹🇲 Как купить TMT за манаты →</a>
+                <a href="https://bitget.com" target="_blank" class="btn-small">Bitget</a>
+                <a href="https://p2p.binance.com" target="_blank" class="btn-small">Binance P2P</a>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 2. УЗБЕКСКИЙ СУМ (UZS) -->
+        <!-- ============================================== -->
+        <div class="currency-card">
+            <div class="currency-header"><span class="flag">🇺🇿</span><span class="currency-name">Узбекский сум</span><span class="currency-code">UZS</span></div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇺🇿 Сумы (UZS)</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            </div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇺🇿 Сумы (UZS)</div>
+            </div>
+            <div class="tmt-center"><strong>🔄 Схема:</strong> Сумы → USDT (P2P) → TMT → USDT → Сумы</div>
+            <div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=UZS" target="_blank" class="btn-action">🇺🇿 Купить USDT за сумы →</a>
+                <a href="https://p2p.binance.com/ru/trade/buy/USDT?fiat=UZS" target="_blank" class="btn-action">🇺🇿 Продать USDT за сумы →</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 3. КАЗАХСТАНСКИЙ ТЕНГЕ (KZT) -->
+        <!-- ============================================== -->
+        <div class="currency-card">
+            <div class="currency-header"><span class="flag">🇰🇿</span><span class="currency-name">Казахстанский тенге</span><span class="currency-code">KZT</span></div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇰🇿 Тенге (KZT)</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            </div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇰🇿 Тенге (KZT)</div>
+            </div>
+            <div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=KZT" target="_blank" class="btn-action">🇰🇿 Купить USDT за тенге →</a>
+                <a href="https://p2p.binance.com/ru/trade/buy/USDT?fiat=KZT" target="_blank" class="btn-action">🇰🇿 Продать USDT за тенге →</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 4. КИТАЙСКИЙ ЮАНЬ (CNY) — ДЛЯ ТОВАРОВ ИЗ КИТАЯ -->
+        <!-- ============================================== -->
+        <div class="currency-card">
+            <div class="currency-header"><span class="flag">🇨🇳</span><span class="currency-name">Китайский юань</span><span class="currency-code">CNY</span></div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇨🇳 Юани (CNY)</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            </div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇨🇳 Юани (CNY)</div>
+            </div>
+            <div class="tmt-center"><strong>📦 Для предпринимателей:</strong> Оплата товаров из Китая через TMT — быстро и без банковских комиссий</div>
+            <div>
+                <a href="https://www.binance.com/ru/p2p" target="_blank" class="btn-action">🇨🇳 P2P: Юань ↔ USDT →</a>
+                <a href="https://simpleswap.io/" target="_blank" class="btn-action">💱 SimpleSwap: Юань → USDT</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 5. РОССИЙСКИЙ РУБЛЬ (RUB) -->
+        <!-- ============================================== -->
+        <div class="currency-card">
+            <div class="currency-header"><span class="flag">🇷🇺</span><span class="currency-name">Российский рубль</span><span class="currency-code">RUB</span></div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇷🇺 Рубли (RUB)</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            </div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇷🇺 Рубли (RUB)</div>
+            </div>
+            <div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=RUB" target="_blank" class="btn-action">🇷🇺 Купить USDT за рубли →</a>
+                <a href="https://p2p.binance.com/ru/trade/buy/USDT?fiat=RUB" target="_blank" class="btn-action">🇷🇺 Продать USDT за рубли →</a>
+                <a href="https://www.bybit.com/ru-RU/fiat/trade/usdt/RUB" target="_blank" class="btn-small">Bybit P2P</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 6. ИРАНСКИЙ РИАЛ (IRR) -->
+        <!-- ============================================== -->
+        <div class="currency-card">
+            <div class="currency-header"><span class="flag">🇮🇷</span><span class="currency-name">Иранский риал</span><span class="currency-code">IRR</span></div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇮🇷 Риалы (IRR)</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            </div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇮🇷 Риалы (IRR)</div>
+            </div>
+            <div class="tmt-center"><strong>🕌 Рекомендация:</strong> Используйте <a href="islamic.html" style="color:#d4a843;">исламское финансирование</a> для крупных сумм</div>
+            <div>
+                <a href="https://nobitex.ir/" target="_blank" class="btn-action">🇮🇷 Nobitex (Иран) →</a>
+                <a href="https://excoino.com/" target="_blank" class="btn-action">🇮🇷 Excoino →</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 7. КЫРГЫЗСКИЙ СОМ (KGS) -->
+        <!-- ============================================== -->
+        <div class="currency-card">
+            <div class="currency-header"><span class="flag">🇰🇬</span><span class="currency-name">Кыргызский сом</span><span class="currency-code">KGS</span></div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇰🇬 Сомы (KGS)</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            </div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇰🇬 Сомы (KGS)</div>
+            </div>
+            <div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=KGS" target="_blank" class="btn-action">🇰🇬 Купить USDT за сомы →</a>
+                <a href="https://p2p.binance.com/ru/trade/buy/USDT?fiat=KGS" target="_blank" class="btn-action">🇰🇬 Продать USDT за сомы →</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 8. ТАДЖИКСКИЙ СОМОНИ (TJS) -->
+        <!-- ============================================== -->
+        <div class="currency-card">
+            <div class="currency-header"><span class="flag">🇹🇯</span><span class="currency-name">Таджикский сомони</span><span class="currency-code">TJS</span></div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇹🇯 Сомони (TJS)</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            </div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇹🇯 Сомони (TJS)</div>
+            </div>
+            <div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=TJS" target="_blank" class="btn-action">🇹🇯 Купить USDT за сомони →</a>
+                <a href="https://p2p.binance.com/ru/trade/buy/USDT?fiat=TJS" target="_blank" class="btn-action">🇹🇯 Продать USDT за сомони →</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 9. ДИРХАМ ОАЭ (AED) -->
+        <!-- ============================================== -->
+        <div class="currency-card">
+            <div class="currency-header"><span class="flag">🇦🇪</span><span class="currency-name">Дирхам ОАЭ</span><span class="currency-code">AED</span></div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇦🇪 Дирхамы (AED)</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            </div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇦🇪 Дирхамы (AED)</div>
+            </div>
+            <div>
+                <a href="https://www.binance.com/ru/p2p/AED" target="_blank" class="btn-action">🇦🇪 P2P Дирхамы ↔ USDT →</a>
+                <a href="https://www.bybit.com/fiat/trade/usdt/AED" target="_blank" class="btn-small">Bybit AED</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 10. ДОПОЛНИТЕЛЬНО: USD / EUR (ДЛЯ ТУРИЗМА) -->
+        <!-- ============================================== -->
+        <div class="currency-card">
+            <div class="currency-header"><span class="flag">🌍</span><span class="currency-name">Доллар / Евро</span><span class="currency-code">USD / EUR</span></div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💵 USD / 💶 EUR</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            </div>
+            <div class="exchange-row">
+                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
+                <div class="exchange-arrow">→</div>
+                <div class="exchange-to"><strong>📥 Получаете</strong><br>💵 USD / 💶 EUR</div>
+            </div>
+            <div class="tmt-center"><strong>✈️ Для туристов:</strong> Самый быстрый способ — через Bitget или Bybit</div>
+            <div>
+                <a href="https://bitget.com" target="_blank" class="btn-action">💳 Bitget: Карта → USDT → TMT</a>
+                <a href="https://www.bybit.com/fiat/trade/usdt/USD" target="_blank" class="btn-action">💳 Bybit: Карта → USDT → TMT</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">Jupiter: USDT → TMT</a>
+            </div>
+        </div>
+
+        <!-- ==================== ДОПОЛНИТЕЛЬНЫЕ СЦЕНАРИИ ==================== -->
+        <div class="info-box" style="margin-top: 1rem;">
+            <h3 style="color:#e8d8a8;">📌 Готовые схемы для разных ситуаций</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div><strong>✈️ Туристам</strong><br>Манаты → TMT → Дирхамы (ОАЭ) → оплата отеля</div>
+                <div><strong>📦 Предпринимателям</strong><br>Манаты → TMT → Юани → оплата товаров из Китая</div>
+                <div><strong>🏦 Взаиморасчёты внутри ЦА</strong><br>Манаты → TMT → Сумы / Тенге / Сомы / Сомони</div>
+                <div><strong>🕌 Иран</strong><br>Манаты → TMT → Риалы (через исламские обменники)</div>
+            </div>
+        </div>
+
+        <!-- ==================== ФИНАЛЬНЫЙ ШАГ ==================== -->
+        <div class="info-box">
+            <p><strong>🎯 ФИНАЛЬНЫЙ ШАГ ДЛЯ ЛЮБОЙ ВАЛЮТЫ:</strong> После получения TMT токена вы можете обменять его обратно на нужную валюту по той же схеме.</p>
+            <p>📌 <strong>Контракт TMT:</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <p>🔄 <strong>Универсальный обменник:</strong> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter (USDC ↔ TMT)</a> | <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium (USDC ↔ TMT)</a></p>
+        </div>
+
+        <div class="footer">
+            © 2025 TMT — Контракт: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2<br>
+            Всегда делайте тестовый перевод на маленькую сумму. Курсы на P2P могут отличаться.
+        </div>
+    </div>
+</body>
+</html>
