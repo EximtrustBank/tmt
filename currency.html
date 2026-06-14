@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>TMT Конвертация валют — Обмен манатов, сумов, тенге, юаней, рублей через TMT токен</title>
-    <meta name="description" content="Как обменять туркменские манаты на узбекские сумы, казахстанские тенге, китайские юани, российские рубли, иранские риалы, дирхамы, сомони и сомы через TMT токен. Работающие ссылки и простые схемы.">
+    <title>TMT Currency Exchange — Convert Manats, Som, Tenge, Yuan, Rubles via TMT Token</title>
+    <meta name="description" content="How to exchange Turkmen manats to Uzbek som, Kazakh tenge, Chinese yuan, Russian rubles, Iranian rial, dirhams, somoni and som through TMT token. Working links for every step.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -16,21 +16,50 @@
             min-height: 100vh;
         }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
-        .header { text-align: center; margin-bottom: 1.5rem; }
-        .logo { width: 80px; height: 80px; margin: 0 auto 0.8rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #d0d8d0;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .lang-btn.active {
+            background: #d4a843;
+            color: #0a1a0f;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
-        h1 { font-size: 1.6rem; color: #e8d8a8; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
         .back-link { color: #d4a843; text-decoration: none; font-size: 0.9rem; }
 
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1rem 0; }
-        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
         .nav a:hover { background: #d4a843; color: #0a1a0f; }
 
-        .info-box { background: rgba(25,45,30,0.6); border-radius: 20px; padding: 1rem; margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(212,168,67,0.3); }
-        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.5rem; border-radius: 6px; color: #d4a843; font-size: 0.8rem; }
+        .info-box { background: rgba(25,45,30,0.6); border-radius: 20px; padding: 1.2rem; margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(212,168,67,0.3); }
+        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.5rem; border-radius: 6px; color: #d4a843; font-size: 0.85rem; }
 
-        /* Основная сетка валют */
         .currency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
         .currency-card { background: rgba(20,35,25,0.7); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.3); transition: 0.2s; }
         .currency-card:hover { border-color: #d4a843; transform: translateY(-2px); background: rgba(30,50,38,0.8); }
@@ -40,293 +69,308 @@
         .currency-name { font-size: 1.3rem; color: #e8d8a8; font-weight: bold; }
         .currency-code { background: rgba(212,168,67,0.2); padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; }
 
-        /* Схема обмена — три колонки */
         .exchange-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
         .exchange-from, .exchange-to { background: rgba(0,0,0,0.4); border-radius: 16px; padding: 0.8rem; flex: 1; min-width: 120px; text-align: center; }
         .exchange-arrow { font-size: 1.5rem; color: #d4a843; padding: 0 0.2rem; }
-        .tmt-center { background: #1a2a1a; border-radius: 20px; padding: 0.6rem; text-align: center; margin: 0.5rem 0; border: 1px dashed #d4a843; }
+        .tmt-center { background: #1a2a1a; border-radius: 20px; padding: 0.6rem; text-align: center; margin: 0.5rem 0; border: 1px dashed #d4a843; font-size: 0.85rem; }
         .tmt-center strong { color: #e8d8a8; }
 
         .btn-action { background: #d4a843; color: #0a1a0f; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 0.85rem; margin: 0.5rem 0.3rem 0 0; transition: 0.2s; }
         .btn-action:hover { background: #e8c060; transform: scale(1.02); }
-        .btn-small { background: transparent; border: 1px solid #d4a843; color: #d4a843; padding: 0.3rem 0.8rem; border-radius: 30px; text-decoration: none; font-size: 0.7rem; display: inline-block; margin: 0.2rem; }
+        .btn-small { background: transparent; border: 1px solid #d4a843; color: #d4a843; padding: 0.3rem 0.8rem; border-radius: 30px; text-decoration: none; font-size: 0.75rem; display: inline-block; margin: 0.2rem; }
 
         .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+        .scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
 
         @media (max-width: 700px) {
+            h1 { font-size: 1.3rem; }
             .currency-grid { grid-template-columns: 1fr; }
             .exchange-row { flex-direction: column; }
             .exchange-arrow { transform: rotate(90deg); }
             .exchange-from, .exchange-to { width: 100%; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1>🔄 Обмен валют через TMT токен</h1>
-            <p>Любые деньги → TMT → Любые другие деньги. Работающие ссылки для каждого шага.</p>
-            <a href="index.html" class="back-link">← На главную</a>
+            <h1 data-en="🔄 Currency Exchange via TMT Token" data-ru="🔄 Обмен валют через TMT токен" data-tk="🔄 TMT Token arkaly walýuta çalşygy" data-ar="🔄 صرف العملات عبر رمز TMT" data-fa="🔄 مبادله ارز از طریق توکن TMT" data-zh="🔄 通过 TMT 代币进行货币兑换">🔄 Currency Exchange via TMT Token</h1>
+            <p data-en="Any money → TMT → Any other money. Working links for every step." data-ru="Любые деньги → TMT → Любые другие деньги. Работающие ссылки для каждого шага." data-tk="Islendik pul → TMT → Islendik beýleki pul. Her ädim üçin işleýän baglanyşyklar." data-ar="أي أموال ← TMT ← أي أموال أخرى. روابط تعمل لكل خطوة." data-fa="هر پولی ← TMT ← هر پول دیگری. لینک‌های کار برای هر مرحله." data-zh="任何货币 → TMT → 任何其他货币。每一步都有有效的链接。">Any money → TMT → Any other money. Working links for every step.</p>
+            <a href="index.html" class="back-link" data-en="← Back to Main" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main</a>
         </div>
 
         <div class="nav">
-            <a href="index.html">🏠 Главная</a>
-            <a href="ecosystem.html">🌿 Экосистема</a>
-            <a href="bridge.html">🌉 Мосты</a>
-            <a href="currency.html" style="background:#d4a843; color:#0a1a0f;">💱 Валюты</a>
-            <a href="card.html">💳 Карта</a>
-            <a href="islamic.html">🕌 Islamic</a>
+            <a href="index.html" data-en="🏠 Home" data-ru="🏠 Главная" data-tk="🏠 Baş sahypa" data-ar="🏠 الرئيسية" data-fa="🏠 صفحه اصلی" data-zh="🏠 主页">🏠 Home</a>
+            <a href="ecosystem.html" data-en="🌿 Ecosystem" data-ru="🌿 Экосистема" data-tk="🌿 Ekosistema" data-ar="🌿 النظام البيئي" data-fa="🌿 اکوسیستم" data-zh="🌿 生态系统">🌿 Ecosystem</a>
+            <a href="defi-hub.html" data-en="💰 DeFi Hub" data-ru="💰 DeFi Hub" data-tk="💰 DeFi merkezi" data-ar="💰 مركز التمويل اللامركزي" data-fa="💰 مرکز دیفای" data-zh="💰 DeFi 中心">💰 DeFi Hub</a>
+            <a href="trading.html" data-en="📈 Trading" data-ru="📈 Торговля" data-tk="📈 Söwda" data-ar="📈 تداول" data-fa="📈 معامله" data-zh="📈 交易">📈 Trading</a>
+            <a href="earn.html" data-en="💸 Earn" data-ru="💸 Заработок" data-tk="💸 Gazanç" data-ar="💸 كسب" data-fa="💸 درآمد" data-zh="💸 赚取">💸 Earn</a>
+            <a href="rwa.html" data-en="🏔️ RWA" data-ru="🏔️ RWA" data-tk="🏔️ Hakyky aktiwler" data-ar="🏔️ الأصول الحقيقية" data-fa="🏔️ دارایی‌های واقعی" data-zh="🏔️ 现实世界资产">🏔️ RWA</a>
+            <a href="rwa2.html" data-en="🏔️ RWA+" data-ru="🏔️ RWA+" data-tk="🏔️ RWA+" data-ar="🏔️ RWA+" data-fa="🏔️ RWA+" data-zh="🏔️ RWA+">🏔️ RWA+</a>
+            <a href="payments.html" data-en="💳 Payments" data-ru="💳 Платежи" data-tk="💳 Tölegler" data-ar="💳 المدفوعات" data-fa="💳 پرداخت‌ها" data-zh="💳 支付">💳 Payments</a>
+            <a href="social.html" data-en="🎮 Social" data-ru="🎮 Социальные" data-tk="🎮 Sosial" data-ar="🎮 اجتماعي" data-fa="🎮 اجتماعی" data-zh="🎮 社交">🎮 Social</a>
+            <a href="dao.html" data-en="🗳️ DAO" data-ru="🗳️ DAO" data-tk="🗳️ DAO" data-ar="🗳️ منظمة مستقلة" data-fa="🗳️ سازمان خودگردان" data-zh="🗳️ 去中心化自治组织">🗳️ DAO</a>
+            <a href="card.html" data-en="💳 Card" data-ru="💳 Карта" data-tk="💳 Karta" data-ar="💳 بطاقة" data-fa="💳 کارت" data-zh="💳 卡片">💳 Card</a>
+            <a href="bridge.html" data-en="🌉 Bridge" data-ru="🌉 Мост" data-tk="🌉 Köpri" data-ar="🌉 جسر" data-fa="🌉 پل" data-zh="🌉 跨链桥">🌉 Bridge</a>
+            <a href="currency.html" style="background:#d4a843; color:#0a1a0f;" data-en="💱 Currency" data-ru="💱 Валюты" data-tk="💱 Walýutalar" data-ar="💱 عملات" data-fa="💱 ارزها" data-zh="💱 货币">💱 Currency</a>
+            <a href="islamic.html" data-en="🕌 Islamic" data-ru="🕌 Исламское" data-tk="🕌 Yslam" data-ar="🕌 إسلامي" data-fa="🕌 اسلامی" data-zh="🕌 伊斯兰">🕌 Islamic</a>
+            <a href="whitepaper.html" data-en="📄 WP" data-ru="📄 WP" data-tk="📄 WP" data-ar="📄 الورقة البيضاء" data-fa="📄 وایت‌پیپر" data-zh="📄 白皮书">📄 WP</a>
         </div>
 
         <div class="info-box">
-            <p>🎯 <strong>Контракт TMT токена (Solana):</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
-            <p>📌 <strong>Как работает:</strong> Ваши деньги → Покупаете USDT/USDC → Обмениваете на TMT → Обмениваете TMT на нужную валюту</p>
+            <p>🎯 <strong data-en="TMT Token Contract (Solana):" data-ru="Контракт TMT токена (Solana):" data-tk="TMT Token şertnamasy (Solana):" data-ar="عقد رمز TMT (Solana):" data-fa="قرارداد توکن TMT (Solana):" data-zh="TMT 代币合约（Solana）：">TMT Token Contract (Solana):</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <p>📌 <strong data-en="How it works:" data-ru="Как работает:" data-tk="Nähili işleýär:" data-ar="كيف يعمل:" data-fa="نحوه کار:" data-zh="工作原理：">How it works:</strong> <span data-en="Your money → Buy USDT/USDC → Swap to TMT → Swap TMT to desired currency" data-ru="Ваши деньги → Покупаете USDT/USDC → Обмениваете на TMT → Обмениваете TMT на нужную валюту" data-tk="Puluňyz → USDT/USDC satyn alyň → TMT-e çalşyň → TMT-ni islenýän walýuta çalşyň" data-ar="أموالك ← شراء USDT/USDC ← استبدل إلى TMT ← استبدل TMT إلى العملة المطلوبة" data-fa="پول شما ← خرید USDT/USDC ← تبدیل به TMT ← تبدیل TMT به ارز مورد نظر" data-zh="您的资金 → 购买 USDT/USDC → 兑换为 TMT → 将 TMT 兑换为所需货币">Your money → Buy USDT/USDC → Swap to TMT → Swap TMT to desired currency</span></p>
         </div>
 
-        <!-- ============================================== -->
-        <!-- 1. ТУРКМЕНСКИЙ МАНАТ (TMT) — СТАРТОВАЯ ВАЛЮТА -->
-        <!-- ============================================== -->
-        <div class="currency-card">
-            <div class="currency-header"><span class="flag">🇹🇲</span><span class="currency-name">Туркменский манат</span><span class="currency-code">TMT</span></div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇹🇲 Манаты (TMT)</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>🎯 TMT токен</div>
+        <!-- ==================== CURRENCY GRID ==================== -->
+        <div class="currency-grid">
+            <!-- TURKMEN MANAT (Starting currency) -->
+            <div class="currency-card">
+                <div class="currency-header"><span class="flag">🇹🇲</span><span class="currency-name" data-en="Turkmen Manat" data-ru="Туркменский манат" data-tk="Türkmen manady" data-ar="مانات تركماني" data-fa="منات ترکمنستان" data-zh="土库曼马纳特">Turkmen Manat</span><span class="currency-code">TMT</span></div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>🇹🇲 <span data-en="Manats (TMT)" data-ru="Манаты (TMT)" data-tk="Manat (TMT)" data-ar="مانات (TMT)" data-fa="منات (TMT)" data-zh="马纳特（TMT）">Manats (TMT)</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>🎯 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                </div>
+                <div class="tmt-center"><strong>⚡ <span data-en="Single entry point:" data-ru="Единая точка входа:" data-tk="Biteý giriş nokady:" data-ar="نقطة دخول واحدة:" data-fa="نقطه ورود واحد:" data-zh="单入口点：">Single entry point:</span></strong> <span data-en="First you need to buy TMT token for manats" data-ru="Сначала нужно купить TMT токен за манаты" data-tk="Ilki bilen TMT tokeny manat bilen satyn almaly" data-ar="أولاً تحتاج إلى شراء رمز TMT بالمانات" data-fa="ابتدا باید توکن TMT را با منات خریداری کنید" data-zh="首先需要用马纳特购买 TMT 代币">First you need to buy TMT token for manats</span></div>
+                <a href="how-to-buy.html" class="btn-action" data-en="🇹🇲 How to buy TMT for manats →" data-ru="🇹🇲 Как купить TMT за манаты →" data-tk="🇹🇲 TMT-ni manat bilen nädip satyn almaly →" data-ar="🇹🇲 كيفية شراء TMT بالمانات ←" data-fa="🇹🇲 نحوه خرید TMT با منات ←" data-zh="🇹🇲 如何用马纳特购买 TMT →">🇹🇲 How to buy TMT for manats →</a>
             </div>
-            <div class="tmt-center"><strong>⚡ Единая точка входа:</strong> Сначала нужно купить TMT токен за манаты</div>
-            <div class="exchange-row">
-                <a href="how-to-buy.html" class="btn-action">🇹🇲 Как купить TMT за манаты →</a>
-                <a href="https://bitget.com" target="_blank" class="btn-small">Bitget</a>
-                <a href="https://p2p.binance.com" target="_blank" class="btn-small">Binance P2P</a>
-            </div>
-        </div>
 
-        <!-- ============================================== -->
-        <!-- 2. УЗБЕКСКИЙ СУМ (UZS) -->
-        <!-- ============================================== -->
-        <div class="currency-card">
-            <div class="currency-header"><span class="flag">🇺🇿</span><span class="currency-name">Узбекский сум</span><span class="currency-code">UZS</span></div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇺🇿 Сумы (UZS)</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            <!-- UZBEK SOM -->
+            <div class="currency-card">
+                <div class="currency-header"><span class="flag">🇺🇿</span><span class="currency-name" data-en="Uzbek Som" data-ru="Узбекский сум" data-tk="Özbek somy" data-ar="سوم أوزبكستاني" data-fa="سوم ازبکستان" data-zh="乌兹别克斯坦索姆">Uzbek Som</span><span class="currency-code">UZS</span></div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>🇺🇿 <span data-en="Som (UZS)" data-ru="Сумы (UZS)" data-tk="Som (UZS)" data-ar="سوم (UZS)" data-fa="سوم (UZS)" data-zh="索姆（UZS）">Som (UZS)</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                </div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>🇺🇿 <span data-en="Som (UZS)" data-ru="Сумы (UZS)" data-tk="Som (UZS)" data-ar="سوم (UZS)" data-fa="سوم (UZS)" data-zh="索姆（UZS）">Som (UZS)</span></div>
+                </div>
+                <div class="tmt-center"><strong>🔄 <span data-en="Scheme:" data-ru="Схема:" data-tk="Shema:" data-ar="المخطط:" data-fa="طرح:" data-zh="方案：">Scheme:</span></strong> <span data-en="Som → USDT (P2P) → TMT → USDT → Som" data-ru="Сумы → USDT (P2P) → TMT → USDT → Сумы" data-tk="Som → USDT (P2P) → TMT → USDT → Som" data-ar="سوم ← USDT (P2P) ← TMT ← USDT ← سوم" data-fa="سوم ← USDT (P2P) ← TMT ← USDT ← سوم" data-zh="索姆 → USDT（P2P）→ TMT → USDT → 索姆">Som → USDT (P2P) → TMT → USDT → Som</span></div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=UZS" target="_blank" class="btn-action" data-en="🇺🇿 Buy USDT with Som →" data-ru="🇺🇿 Купить USDT за сумы →" data-tk="🇺🇿 USDT-ni som bilen satyn al →" data-ar="🇺🇿 شراء USDT بالسوم ←" data-fa="🇺🇿 خرید USDT با سوم ←" data-zh="🇺🇿 用索姆购买 USDT →">🇺🇿 Buy USDT with Som →</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small" data-en="USDT → TMT" data-ru="USDT → TMT" data-tk="USDT → TMT" data-ar="USDT ← TMT" data-fa="USDT ← TMT" data-zh="USDT → TMT">USDT → TMT</a>
             </div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇺🇿 Сумы (UZS)</div>
-            </div>
-            <div class="tmt-center"><strong>🔄 Схема:</strong> Сумы → USDT (P2P) → TMT → USDT → Сумы</div>
-            <div>
-                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=UZS" target="_blank" class="btn-action">🇺🇿 Купить USDT за сумы →</a>
-                <a href="https://p2p.binance.com/ru/trade/buy/USDT?fiat=UZS" target="_blank" class="btn-action">🇺🇿 Продать USDT за сумы →</a>
+
+            <!-- KAZAKH TENGE -->
+            <div class="currency-card">
+                <div class="currency-header"><span class="flag">🇰🇿</span><span class="currency-name" data-en="Kazakh Tenge" data-ru="Казахстанский тенге" data-tk="Gazak tenge" data-ar="تينغ كازاخستاني" data-fa="تنگه قزاقستان" data-zh="哈萨克斯坦坚戈">Kazakh Tenge</span><span class="currency-code">KZT</span></div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>🇰🇿 <span data-en="Tenge (KZT)" data-ru="Тенге (KZT)" data-tk="Tenge (KZT)" data-ar="تينغ (KZT)" data-fa="تنگه (KZT)" data-zh="坚戈（KZT）">Tenge (KZT)</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                </div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>🇰🇿 <span data-en="Tenge (KZT)" data-ru="Тенге (KZT)" data-tk="Tenge (KZT)" data-ar="تينغ (KZT)" data-fa="تنگه (KZT)" data-zh="坚戈（KZT）">Tenge (KZT)</span></div>
+                </div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=KZT" target="_blank" class="btn-action" data-en="🇰🇿 Buy USDT with Tenge →" data-ru="🇰🇿 Купить USDT за тенге →" data-tk="🇰🇿 USDT-ni tenge bilen satyn al →" data-ar="🇰🇿 شراء USDT بالتينغ ←" data-fa="🇰🇿 خرید USDT با تنگه ←" data-zh="🇰🇿 用坚戈购买 USDT →">🇰🇿 Buy USDT with Tenge →</a>
                 <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
             </div>
-        </div>
 
-        <!-- ============================================== -->
-        <!-- 3. КАЗАХСТАНСКИЙ ТЕНГЕ (KZT) -->
-        <!-- ============================================== -->
-        <div class="currency-card">
-            <div class="currency-header"><span class="flag">🇰🇿</span><span class="currency-name">Казахстанский тенге</span><span class="currency-code">KZT</span></div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇰🇿 Тенге (KZT)</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
-            </div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇰🇿 Тенге (KZT)</div>
-            </div>
-            <div>
-                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=KZT" target="_blank" class="btn-action">🇰🇿 Купить USDT за тенге →</a>
-                <a href="https://p2p.binance.com/ru/trade/buy/USDT?fiat=KZT" target="_blank" class="btn-action">🇰🇿 Продать USDT за тенге →</a>
+            <!-- CHINESE YUAN -->
+            <div class="currency-card">
+                <div class="currency-header"><span class="flag">🇨🇳</span><span class="currency-name" data-en="Chinese Yuan" data-ru="Китайский юань" data-tk="Hytaý ýuany" data-ar="اليوان الصيني" data-fa="یوان چین" data-zh="人民币">Chinese Yuan</span><span class="currency-code">CNY</span></div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>🇨🇳 <span data-en="Yuan (CNY)" data-ru="Юани (CNY)" data-tk="Ýuan (CNY)" data-ar="يوان (CNY)" data-fa="یوان (CNY)" data-zh="元（CNY）">Yuan (CNY)</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                </div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>🇨🇳 <span data-en="Yuan (CNY)" data-ru="Юани (CNY)" data-tk="Ýuan (CNY)" data-ar="يوان (CNY)" data-fa="یوان (CNY)" data-zh="元（CNY）">Yuan (CNY)</span></div>
+                </div>
+                <div class="tmt-center"><strong>📦 <span data-en="For entrepreneurs:" data-ru="Для предпринимателей:" data-tk="Telekeçiler üçin:" data-ar="لرجال الأعمال:" data-fa="برای کارآفرینان:" data-zh="对于企业家：">For entrepreneurs:</span></strong> <span data-en="Payment for Chinese goods via TMT — fast and without bank fees" data-ru="Оплата товаров из Китая через TMT — быстро и без банковских комиссий" data-tk="Hytaý harytlary üçin TMT arkaly töleg — çalt we bank komissiýasyz" data-ar="الدفع مقابل السلع الصينية عبر TMT — سريع وبدون رسوم بنكية" data-fa="پرداخت کالاهای چینی از طریق TMT — سریع و بدون کارمزد بانکی" data-zh="通过 TMT 支付中国商品——快速且无银行费用">Payment for Chinese goods via TMT — fast and without bank fees</span></div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=CNY" target="_blank" class="btn-action" data-en="🇨🇳 Buy USDT with Yuan →" data-ru="🇨🇳 Купить USDT за юани →" data-tk="🇨🇳 USDT-ni ýuan bilen satyn al →" data-ar="🇨🇳 شراء USDT باليوان ←" data-fa="🇨🇳 خرید USDT با یوان ←" data-zh="🇨🇳 用元购买 USDT →">🇨🇳 Buy USDT with Yuan →</a>
                 <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
             </div>
-        </div>
 
-        <!-- ============================================== -->
-        <!-- 4. КИТАЙСКИЙ ЮАНЬ (CNY) — ДЛЯ ТОВАРОВ ИЗ КИТАЯ -->
-        <!-- ============================================== -->
-        <div class="currency-card">
-            <div class="currency-header"><span class="flag">🇨🇳</span><span class="currency-name">Китайский юань</span><span class="currency-code">CNY</span></div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇨🇳 Юани (CNY)</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
-            </div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇨🇳 Юани (CNY)</div>
-            </div>
-            <div class="tmt-center"><strong>📦 Для предпринимателей:</strong> Оплата товаров из Китая через TMT — быстро и без банковских комиссий</div>
-            <div>
-                <a href="https://www.binance.com/ru/p2p" target="_blank" class="btn-action">🇨🇳 P2P: Юань ↔ USDT →</a>
-                <a href="https://simpleswap.io/" target="_blank" class="btn-action">💱 SimpleSwap: Юань → USDT</a>
+            <!-- RUSSIAN RUBLE -->
+            <div class="currency-card">
+                <div class="currency-header"><span class="flag">🇷🇺</span><span class="currency-name" data-en="Russian Ruble" data-ru="Российский рубль" data-tk="Rus rubli" data-ar="الروبل الروسي" data-fa="روبل روسیه" data-zh="俄罗斯卢布">Russian Ruble</span><span class="currency-code">RUB</span></div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>🇷🇺 <span data-en="Rubles (RUB)" data-ru="Рубли (RUB)" data-tk="Rubl (RUB)" data-ar="روبل (RUB)" data-fa="روبل (RUB)" data-zh="卢布（RUB）">Rubles (RUB)</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                </div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>🇷🇺 <span data-en="Rubles (RUB)" data-ru="Рубли (RUB)" data-tk="Rubl (RUB)" data-ar="روبل (RUB)" data-fa="روبل (RUB)" data-zh="卢布（RUB）">Rubles (RUB)</span></div>
+                </div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=RUB" target="_blank" class="btn-action" data-en="🇷🇺 Buy USDT with Rubles →" data-ru="🇷🇺 Купить USDT за рубли →" data-tk="🇷🇺 USDT-ni rubl bilen satyn al →" data-ar="🇷🇺 شراء USDT بالروبل ←" data-fa="🇷🇺 خرید USDT با روبل ←" data-zh="🇷🇺 用卢布购买 USDT →">🇷🇺 Buy USDT with Rubles →</a>
                 <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
             </div>
-        </div>
 
-        <!-- ============================================== -->
-        <!-- 5. РОССИЙСКИЙ РУБЛЬ (RUB) -->
-        <!-- ============================================== -->
-        <div class="currency-card">
-            <div class="currency-header"><span class="flag">🇷🇺</span><span class="currency-name">Российский рубль</span><span class="currency-code">RUB</span></div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇷🇺 Рубли (RUB)</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
+            <!-- IRANIAN RIAL -->
+            <div class="currency-card">
+                <div class="currency-header"><span class="flag">🇮🇷</span><span class="currency-name" data-en="Iranian Rial" data-ru="Иранский риал" data-tk="Eýran rialy" data-ar="ريال إيراني" data-fa="ریال ایران" data-zh="伊朗里亚尔">Iranian Rial</span><span class="currency-code">IRR</span></div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>🇮🇷 <span data-en="Rials (IRR)" data-ru="Риалы (IRR)" data-tk="Rial (IRR)" data-ar="ريالات (IRR)" data-fa="ریال (IRR)" data-zh="里亚尔（IRR）">Rials (IRR)</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                </div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>🇮🇷 <span data-en="Rials (IRR)" data-ru="Риалы (IRR)" data-tk="Rial (IRR)" data-ar="ريالات (IRR)" data-fa="ریال (IRR)" data-zh="里亚尔（IRR）">Rials (IRR)</span></div>
+                </div>
+                <div class="tmt-center">🕌 <strong data-en="Recommendation:" data-ru="Рекомендация:" data-tk="Maslahat:" data-ar="توصية:" data-fa="توصیه:" data-zh="建议：">Recommendation:</strong> <span data-en="Use Islamic finance for large amounts" data-ru="Используйте исламское финансирование для крупных сумм" data-tk="Uly mukdarlar üçin yslam maliýesini ulanyň" data-ar="استخدم التمويل الإسلامي للمبالغ الكبيرة" data-fa="برای مقادیر بزرگ از مالی اسلامی استفاده کنید" data-zh="大额使用伊斯兰金融">Use Islamic finance for large amounts</span></div>
+                <a href="https://nobitex.ir/" target="_blank" class="btn-action" data-en="🇮🇷 Nobitex (Iran) →" data-ru="🇮🇷 Nobitex (Иран) →" data-tk="🇮🇷 Nobitex (Eýran) →" data-ar="🇮🇷 Nobitex (إيران) ←" data-fa="🇮🇷 Nobitex (ایران) ←" data-zh="🇮🇷 Nobitex（伊朗）→">🇮🇷 Nobitex (Iran) →</a>
+                <a href="islamic.html" class="btn-small" data-en="🕌 Islamic Finance" data-ru="🕌 Исламское финансирование" data-tk="🕌 Yslam maliýe" data-ar="🕌 التمويل الإسلامي" data-fa="🕌 مالی اسلامی" data-zh="🕌 伊斯兰金融">🕌 Islamic Finance</a>
             </div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇷🇺 Рубли (RUB)</div>
-            </div>
-            <div>
-                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=RUB" target="_blank" class="btn-action">🇷🇺 Купить USDT за рубли →</a>
-                <a href="https://p2p.binance.com/ru/trade/buy/USDT?fiat=RUB" target="_blank" class="btn-action">🇷🇺 Продать USDT за рубли →</a>
-                <a href="https://www.bybit.com/ru-RU/fiat/trade/usdt/RUB" target="_blank" class="btn-small">Bybit P2P</a>
+
+            <!-- KYRGYZ SOM -->
+            <div class="currency-card">
+                <div class="currency-header"><span class="flag">🇰🇬</span><span class="currency-name" data-en="Kyrgyz Som" data-ru="Кыргызский сом" data-tk="Gyrgyz somy" data-ar="سوم قيرغيزستاني" data-fa="سوم قرقیزستان" data-zh="吉尔吉斯斯坦索姆">Kyrgyz Som</span><span class="currency-code">KGS</span></div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>🇰🇬 <span data-en="Som (KGS)" data-ru="Сомы (KGS)" data-tk="Som (KGS)" data-ar="سوم (KGS)" data-fa="سوم (KGS)" data-zh="索姆（KGS）">Som (KGS)</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                </div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>🇰🇬 <span data-en="Som (KGS)" data-ru="Сомы (KGS)" data-tk="Som (KGS)" data-ar="سوم (KGS)" data-fa="سوم (KGS)" data-zh="索姆（KGS）">Som (KGS)</span></div>
+                </div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=KGS" target="_blank" class="btn-action" data-en="🇰🇬 Buy USDT with Som →" data-ru="🇰🇬 Купить USDT за сомы →" data-tk="🇰🇬 USDT-ni som bilen satyn al →" data-ar="🇰🇬 شراء USDT بالسوم ←" data-fa="🇰🇬 خرید USDT با سوم ←" data-zh="🇰🇬 用索姆购买 USDT →">🇰🇬 Buy USDT with Som →</a>
                 <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
             </div>
-        </div>
 
-        <!-- ============================================== -->
-        <!-- 6. ИРАНСКИЙ РИАЛ (IRR) -->
-        <!-- ============================================== -->
-        <div class="currency-card">
-            <div class="currency-header"><span class="flag">🇮🇷</span><span class="currency-name">Иранский риал</span><span class="currency-code">IRR</span></div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇮🇷 Риалы (IRR)</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
-            </div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇮🇷 Риалы (IRR)</div>
-            </div>
-            <div class="tmt-center"><strong>🕌 Рекомендация:</strong> Используйте <a href="islamic.html" style="color:#d4a843;">исламское финансирование</a> для крупных сумм</div>
-            <div>
-                <a href="https://nobitex.ir/" target="_blank" class="btn-action">🇮🇷 Nobitex (Иран) →</a>
-                <a href="https://excoino.com/" target="_blank" class="btn-action">🇮🇷 Excoino →</a>
+            <!-- TAJIK SOMONI -->
+            <div class="currency-card">
+                <div class="currency-header"><span class="flag">🇹🇯</span><span class="currency-name" data-en="Tajik Somoni" data-ru="Таджикский сомони" data-tk="Tojik somonisi" data-ar="سوموني طاجيكستاني" data-fa="سومونی تاجیکستان" data-zh="塔吉克斯坦索莫尼">Tajik Somoni</span><span class="currency-code">TJS</span></div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>🇹🇯 <span data-en="Somoni (TJS)" data-ru="Сомони (TJS)" data-tk="Somoni (TJS)" data-ar="سوموني (TJS)" data-fa="سومونی (TJS)" data-zh="索莫尼（TJS）">Somoni (TJS)</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                </div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>🇹🇯 <span data-en="Somoni (TJS)" data-ru="Сомони (TJS)" data-tk="Somoni (TJS)" data-ar="سوموني (TJS)" data-fa="سومونی (TJS)" data-zh="索莫尼（TJS）">Somoni (TJS)</span></div>
+                </div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=TJS" target="_blank" class="btn-action" data-en="🇹🇯 Buy USDT with Somoni →" data-ru="🇹🇯 Купить USDT за сомони →" data-tk="🇹🇯 USDT-ni somoni bilen satyn al →" data-ar="🇹🇯 شراء USDT بالسوموني ←" data-fa="🇹🇯 خرید USDT با سومونی ←" data-zh="🇹🇯 用索莫尼购买 USDT →">🇹🇯 Buy USDT with Somoni →</a>
                 <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
             </div>
-        </div>
 
-        <!-- ============================================== -->
-        <!-- 7. КЫРГЫЗСКИЙ СОМ (KGS) -->
-        <!-- ============================================== -->
-        <div class="currency-card">
-            <div class="currency-header"><span class="flag">🇰🇬</span><span class="currency-name">Кыргызский сом</span><span class="currency-code">KGS</span></div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇰🇬 Сомы (KGS)</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
-            </div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇰🇬 Сомы (KGS)</div>
-            </div>
-            <div>
-                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=KGS" target="_blank" class="btn-action">🇰🇬 Купить USDT за сомы →</a>
-                <a href="https://p2p.binance.com/ru/trade/buy/USDT?fiat=KGS" target="_blank" class="btn-action">🇰🇬 Продать USDT за сомы →</a>
+            <!-- UAE DIRHAM -->
+            <div class="currency-card">
+                <div class="currency-header"><span class="flag">🇦🇪</span><span class="currency-name" data-en="UAE Dirham" data-ru="Дирхам ОАЭ" data-tk="BAE Dirhamy" data-ar="درهم إماراتي" data-fa="درهم امارات" data-zh="阿联酋迪拉姆">UAE Dirham</span><span class="currency-code">AED</span></div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>🇦🇪 <span data-en="Dirhams (AED)" data-ru="Дирхамы (AED)" data-tk="Dirham (AED)" data-ar="دراهم (AED)" data-fa="درهم (AED)" data-zh="迪拉姆（AED）">Dirhams (AED)</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                </div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>🇦🇪 <span data-en="Dirhams (AED)" data-ru="Дирхамы (AED)" data-tk="Dirham (AED)" data-ar="دراهم (AED)" data-fa="درهم (AED)" data-zh="迪拉姆（AED）">Dirhams (AED)</span></div>
+                </div>
+                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=AED" target="_blank" class="btn-action" data-en="🇦🇪 Buy USDT with Dirhams →" data-ru="🇦🇪 Купить USDT за дирхамы →" data-tk="🇦🇪 USDT-ni dirham bilen satyn al →" data-ar="🇦🇪 شراء USDT بالدراهم ←" data-fa="🇦🇪 خرید USDT با درهم ←" data-zh="🇦🇪 用迪拉姆购买 USDT →">🇦🇪 Buy USDT with Dirhams →</a>
                 <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
             </div>
-        </div>
 
-        <!-- ============================================== -->
-        <!-- 8. ТАДЖИКСКИЙ СОМОНИ (TJS) -->
-        <!-- ============================================== -->
-        <div class="currency-card">
-            <div class="currency-header"><span class="flag">🇹🇯</span><span class="currency-name">Таджикский сомони</span><span class="currency-code">TJS</span></div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇹🇯 Сомони (TJS)</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
-            </div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇹🇯 Сомони (TJS)</div>
-            </div>
-            <div>
-                <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=TJS" target="_blank" class="btn-action">🇹🇯 Купить USDT за сомони →</a>
-                <a href="https://p2p.binance.com/ru/trade/buy/USDT?fiat=TJS" target="_blank" class="btn-action">🇹🇯 Продать USDT за сомони →</a>
-                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
+            <!-- USD / EUR -->
+            <div class="currency-card">
+                <div class="currency-header"><span class="flag">🌍</span><span class="currency-name" data-en="Dollar / Euro" data-ru="Доллар / Евро" data-tk="Dollar / Ýewro" data-ar="دولار / يورو" data-fa="دلار / یورو" data-zh="美元/欧元">Dollar / Euro</span><span class="currency-code">USD / EUR</span></div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>💵 <span data-en="USD" data-ru="USD" data-tk="USD" data-ar="دولار" data-fa="دلار" data-zh="美元">USD</span> / 💶 <span data-en="EUR" data-ru="EUR" data-tk="EUR" data-ar="يورو" data-fa="یورو" data-zh="欧元">EUR</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                </div>
+                <div class="exchange-row">
+                    <div class="exchange-from"><strong data-en="📤 You give" data-ru="📤 Отдаёте" data-tk="📤 Berýärsiňiz" data-ar="📤 تقدم" data-fa="📤 می‌دهید" data-zh="📤 您送出">📤 You give</strong><br>💰 <span data-en="TMT token" data-ru="TMT токен" data-tk="TMT tokeny" data-ar="رمز TMT" data-fa="توکن TMT" data-zh="TMT 代币">TMT token</span></div>
+                    <div class="exchange-arrow">→</div>
+                    <div class="exchange-to"><strong data-en="📥 You receive" data-ru="📥 Получаете" data-tk="📥 Alýarsyňyz" data-ar="📥 تستلم" data-fa="📥 دریافت می‌کنید" data-zh="📥 您收到">📥 You receive</strong><br>💵 <span data-en="USD" data-ru="USD" data-tk="USD" data-ar="دولار" data-fa="دلار" data-zh="美元">USD</span> / 💶 <span data-en="EUR" data-ru="EUR" data-tk="EUR" data-ar="يورو" data-fa="یورو" data-zh="欧元">EUR</span></div>
+                </div>
+                <div class="tmt-center">✈️ <strong data-en="For tourists:" data-ru="Для туристов:" data-tk="Syýahatçylar üçin:" data-ar="للسياح:" data-fa="برای گردشگران:" data-zh="对于游客：">For tourists:</strong> <span data-en="Fastest way — via Bitget or Bybit" data-ru="Самый быстрый способ — через Bitget или Bybit" data-tk="Iň çalt usul — Bitget ýa-da Bybit arkaly" data-ar="أسرع طريقة — عبر Bitget أو Bybit" data-fa="سریع‌ترین راه — از طریق Bitget یا Bybit" data-zh="最快方式——通过 Bitget 或 Bybit">Fastest way — via Bitget or Bybit</span></div>
+                <a href="https://bitget.com" target="_blank" class="btn-action" data-en="💳 Bitget: Card → USDT → TMT" data-ru="💳 Bitget: Карта → USDT → TMT" data-tk="💳 Bitget: Karta → USDT → TMT" data-ar="💳 Bitget: بطاقة ← USDT ← TMT" data-fa="💳 Bitget: کارت ← USDT ← TMT" data-zh="💳 Bitget：卡 → USDT → TMT">💳 Bitget: Card → USDT → TMT</a>
+                <a href="https://www.bybit.com/fiat/trade/usdt/USD" target="_blank" class="btn-small" data-en="Bybit" data-ru="Bybit" data-tk="Bybit" data-ar="Bybit" data-fa="Bybit" data-zh="Bybit">Bybit</a>
             </div>
         </div>
 
-        <!-- ============================================== -->
-        <!-- 9. ДИРХАМ ОАЭ (AED) -->
-        <!-- ============================================== -->
-        <div class="currency-card">
-            <div class="currency-header"><span class="flag">🇦🇪</span><span class="currency-name">Дирхам ОАЭ</span><span class="currency-code">AED</span></div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>🇦🇪 Дирхамы (AED)</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
-            </div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>🇦🇪 Дирхамы (AED)</div>
-            </div>
-            <div>
-                <a href="https://www.binance.com/ru/p2p/AED" target="_blank" class="btn-action">🇦🇪 P2P Дирхамы ↔ USDT →</a>
-                <a href="https://www.bybit.com/fiat/trade/usdt/AED" target="_blank" class="btn-small">Bybit AED</a>
-                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">USDT → TMT</a>
-            </div>
-        </div>
-
-        <!-- ============================================== -->
-        <!-- 10. ДОПОЛНИТЕЛЬНО: USD / EUR (ДЛЯ ТУРИЗМА) -->
-        <!-- ============================================== -->
-        <div class="currency-card">
-            <div class="currency-header"><span class="flag">🌍</span><span class="currency-name">Доллар / Евро</span><span class="currency-code">USD / EUR</span></div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💵 USD / 💶 EUR</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>💰 TMT токен</div>
-            </div>
-            <div class="exchange-row">
-                <div class="exchange-from"><strong>📤 Отдаёте</strong><br>💰 TMT токен</div>
-                <div class="exchange-arrow">→</div>
-                <div class="exchange-to"><strong>📥 Получаете</strong><br>💵 USD / 💶 EUR</div>
-            </div>
-            <div class="tmt-center"><strong>✈️ Для туристов:</strong> Самый быстрый способ — через Bitget или Bybit</div>
-            <div>
-                <a href="https://bitget.com" target="_blank" class="btn-action">💳 Bitget: Карта → USDT → TMT</a>
-                <a href="https://www.bybit.com/fiat/trade/usdt/USD" target="_blank" class="btn-action">💳 Bybit: Карта → USDT → TMT</a>
-                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">Jupiter: USDT → TMT</a>
-            </div>
-        </div>
-
-        <!-- ==================== ДОПОЛНИТЕЛЬНЫЕ СЦЕНАРИИ ==================== -->
+        <!-- ==================== SCENARIOS ==================== -->
         <div class="info-box" style="margin-top: 1rem;">
-            <h3 style="color:#e8d8a8;">📌 Готовые схемы для разных ситуаций</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                <div><strong>✈️ Туристам</strong><br>Манаты → TMT → Дирхамы (ОАЭ) → оплата отеля</div>
-                <div><strong>📦 Предпринимателям</strong><br>Манаты → TMT → Юани → оплата товаров из Китая</div>
-                <div><strong>🏦 Взаиморасчёты внутри ЦА</strong><br>Манаты → TMT → Сумы / Тенге / Сомы / Сомони</div>
-                <div><strong>🕌 Иран</strong><br>Манаты → TMT → Риалы (через исламские обменники)</div>
+            <h3 style="color:#e8d8a8;" data-en="📌 Ready-made scenarios for different situations" data-ru="📌 Готовые схемы для разных ситуаций" data-tk="�2 Dürli ýagdaýlar üçin taýýar shemalar" data-ar="📌 سيناريوهات جاهزة لمواقف مختلفة" data-fa="📌 سناریوهای آماده برای موقعیت‌های مختلف" data-zh="📌 针对不同情况的现成方案">📌 Ready-made scenarios for different situations</h3>
+            <div class="scenario-grid">
+                <div><strong>✈️ <span data-en="For tourists" data-ru="Туристам" data-tk="Syýahatçylar üçin" data-ar="للسياح" data-fa="برای گردشگران" data-zh="对于游客">For tourists</span></strong><br><span data-en="Manats → TMT → Dirhams (UAE) → hotel payment" data-ru="Манаты → TMT → Дирхамы (ОАЭ) → оплата отеля" data-tk="Manat → TMT → Dirham (BAE) → myhmanhana tölegi" data-ar="مانات ← TMT ← دراهم (الإمارات) ← دفع الفندق" data-fa="منات ← TMT ← درهم (امارات) ← پرداخت هتل" data-zh="马纳特 → TMT → 迪拉姆（阿联酋）→ 酒店支付">Manats → TMT → Dirhams (UAE) → hotel payment</span></div>
+                <div><strong>📦 <span data-en="For entrepreneurs" data-ru="Предпринимателям" data-tk="Telekeçiler üçin" data-ar="لرجال الأعمال" data-fa="برای کارآفرینان" data-zh="对于企业家">For entrepreneurs</span></strong><br><span data-en="Manats → TMT → Yuan → payment for Chinese goods" data-ru="Манаты → TMT → Юани → оплата товаров из Китая" data-tk="Manat → TMT → Ýuan → Hytaý harytlary üçin töleg" data-ar="مانات ← TMT ← يوان ← دفع ثمن السلع الصينية" data-fa="منات ← TMT ← یوان ← پرداخت کالاهای چینی" data-zh="马纳特 → TMT → 元 → 支付中国商品">Manats → TMT → Yuan → payment for Chinese goods</span></div>
+                <div><strong>🏦 <span data-en="Intra-Central Asia settlements" data-ru="Взаиморасчёты внутри ЦА" data-tk="Merkezi Aziýa içindäki hasaplaşyklar" data-ar="التسويات داخل آسيا الوسطى" data-fa="تسویه‌های درون آسیای مرکزی" data-zh="中亚内部结算">Intra-Central Asia settlements</span></strong><br><span data-en="Manats → TMT → Som / Tenge / Som / Somoni" data-ru="Манаты → TMT → Сумы / Тенге / Сомы / Сомони" data-tk="Manat → TMT → Som / Tenge / Som / Somoni" data-ar="مانات ← TMT ← سوم / تينغ / سوم / سوموني" data-fa="منات ← TMT ← سوم / تنگه / سوم / سومونی" data-zh="马纳特 → TMT → 索姆/坚戈/索姆/索莫尼">Manats → TMT → Som / Tenge / Som / Somoni</span></div>
+                <div><strong>🕌 <span data-en="Iran" data-ru="Иран" data-tk="Eýran" data-ar="إيران" data-fa="ایران" data-zh="伊朗">Iran</span></strong><br><span data-en="Manats → TMT → Rials (via Islamic exchanges)" data-ru="Манаты → TMT → Риалы (через исламские обменники)" data-tk="Manat → TMT → Rial (yslam biržalary arkaly)" data-ar="مانات ← TMT ← ريالات (عبر البورصات الإسلامية)" data-fa="منات ← TMT ← ریال (از طریق صرافی‌های اسلامی)" data-zh="马纳特 → TMT → 里亚尔（通过伊斯兰交易所）">Manats → TMT → Rials (via Islamic exchanges)</span></div>
             </div>
         </div>
 
-        <!-- ==================== ФИНАЛЬНЫЙ ШАГ ==================== -->
+        <!-- ==================== FINAL STEP ==================== -->
         <div class="info-box">
-            <p><strong>🎯 ФИНАЛЬНЫЙ ШАГ ДЛЯ ЛЮБОЙ ВАЛЮТЫ:</strong> После получения TMT токена вы можете обменять его обратно на нужную валюту по той же схеме.</p>
-            <p>📌 <strong>Контракт TMT:</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
-            <p>🔄 <strong>Универсальный обменник:</strong> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter (USDC ↔ TMT)</a> | <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium (USDC ↔ TMT)</a></p>
+            <p>🎯 <strong data-en="FINAL STEP FOR ANY CURRENCY:" data-ru="ФИНАЛЬНЫЙ ШАГ ДЛЯ ЛЮБОЙ ВАЛЮТЫ:" data-tk="ISLENDIK WALÝUTA ÜÇIN JEMLEJI ÄDIM:" data-ar="الخطوة النهائية لأي عملة:" data-fa="مرحله نهایی برای هر ارزی:" data-zh="任何货币的最后一步：">FINAL STEP FOR ANY CURRENCY:</strong> <span data-en="After receiving TMT token, you can exchange it back to your desired currency using the same scheme." data-ru="После получения TMT токена вы можете обменять его обратно на нужную валюту по той же схеме." data-tk="TMT tokenyny alanyňyzdan soň, ony şol shema bilen islenýän walýuta çalşyp bilersiňiz." data-ar="بعد استلام رمز TMT، يمكنك استبداله مرة أخرى بالعملة التي تريدها باستخدام نفس المخطط." data-fa="پس از دریافت توکن TMT، می‌توانید آن را با استفاده از همان طرح به ارز مورد نظر خود تبدیل کنید." data-zh="收到 TMT 代币后，您可以使用相同的方案将其兑换回您想要的货币。">After receiving TMT token, you can exchange it back to your desired currency using the same scheme.</span></p>
+            <p>📌 <strong data-en="TMT Contract:" data-ru="Контракт TMT:" data-tk="TMT şertnamasy:" data-ar="عقد TMT:" data-fa="قرارداد TMT:" data-zh="TMT 合约：">TMT Contract:</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <p>🔄 <strong data-en="Universal exchanger:" data-ru="Универсальный обменник:" data-tk="Universal çalşygy:" data-ar="مبادل عالمي:" data-fa="تبدیل‌کننده جهانی:" data-zh="通用兑换器：">Universal exchanger:</strong> <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter (USDC ↔ TMT)</a> | <a href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" style="color:#d4a843;">Raydium (USDC ↔ TMT)</a></p>
         </div>
 
         <div class="footer">
-            © 2025 TMT — Контракт: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2<br>
-            Всегда делайте тестовый перевод на маленькую сумму. Курсы на P2P могут отличаться.
+            © 2025 TMT — Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2<br>
+            <span data-en="Always do a test transfer with a small amount first. Beware of scammers." data-ru="Всегда делайте тестовый перевод на маленькую сумму. Будьте осторожны с мошенниками." data-tk="Elmydama ilki bilen az mukdarda synag geçiriň. Aldawçylardan özüňizi goraň." data-ar="قم دائمًا بإجراء تحويل تجريبي بمبلغ صغير أولاً. احذر من المحتالين." data-fa="همیشه ابتدا یک انتقال آزمایشی با مبلغ کم انجام دهید. مراقب کلاهبرداران باشید." data-zh="始终先进行小额测试转账。谨防诈骗。">Always do a test transfer with a small amount first. Beware of scammers.</span>
         </div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Set HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Handle RTL for Arabic and Farsi
+            if (lang === 'ar' || lang === 'fa') {
+                document.body.style.direction = 'rtl';
+                document.querySelector('.container').style.direction = 'rtl';
+            } else {
+                document.body.style.direction = 'ltr';
+                document.querySelector('.container').style.direction = 'ltr';
+            }
+        }
+
+        // Add click handlers to language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+        
+        // Set English as default
+        setLanguage('en');
+    </script>
 </body>
 </html>
