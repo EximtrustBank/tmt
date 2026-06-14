@@ -2,58 +2,208 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>TMT Trading — Copy Trading, Grid Bots, DCA, DEX Aggregator</title>
+    <meta name="description" content="Advanced trading tools for TMT token: Copy Trading, Grid Trading Bot, DCA Bot, DEX Aggregator, Limit Orders with TWAP. All on Solana.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%); color: #fff; line-height: 1.6; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #d0d8d0;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .lang-btn.active {
+            background: #d4a843;
+            color: #0a1a0f;
+        }
+
         .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffd700; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #ffd700; }
-        .back-link { color: #ffec80; text-decoration: none; }
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
-        .nav a:hover { background: #ffd700; color: #0a2e1c; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.15); }
-        .card h2 { color: #ffd700; margin-bottom: 1rem; }
-        .card-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .btn { background: #ffd700; color: #0a2e1c; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
+
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .card h2 { color: #e8d8a8; margin-bottom: 1rem; font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem; }
+        .card-icon { font-size: 2rem; }
+        .stat { display: flex; justify-content: space-between; margin: 0.8rem 0; padding: 0.5rem 0; border-bottom: 1px solid rgba(212,168,67,0.2); }
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; transition: 0.2s; border: none; cursor: pointer; }
+        .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.3rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1>📈 TMT Trading Hub</h1>
-            <a href="index.html" class="back-link">← Back to Main Page</a>
+            <h1 data-en="📈 TMT Trading Hub" data-ru="📈 TMT Торговый центр" data-tk="📈 TMT Söwda merkezi" data-ar="📈 مركز تداول TMT" data-fa="📈 مرکز معاملات TMT" data-zh="📈 TMT 交易中心">📈 TMT Trading Hub</h1>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
+
         <div class="nav">
-            <a href="index.html">🏠 Home</a>
-            <a href="ecosystem.html">🌿 Ecosystem</a>
-            <a href="defi-hub.html">💰 DeFi Hub</a>
-            <a href="trading.html" style="background:#ffd700; color:#0a2e1c;">📈 Trading</a>
-            <a href="earn.html">💸 Earn</a>
-            <a href="rwa.html">🏔️ RWA</a>
-            <a href="payments.html">💳 Payments</a>
-            <a href="social.html">🎮 Social</a>
-            <a href="dao.html">🗳️ DAO</a>
-            <a href="islamic.html">🕌 Islamic</a>
-            <a href="whitepaper.html">📄 WP</a>
+            <a href="index.html" data-en="🏠 Home" data-ru="🏠 Главная" data-tk="🏠 Baş sahypa" data-ar="🏠 الرئيسية" data-fa="🏠 صفحه اصلی" data-zh="🏠 主页">🏠 Home</a>
+            <a href="ecosystem.html" data-en="🌿 Ecosystem" data-ru="🌿 Экосистема" data-tk="🌿 Ekosistema" data-ar="🌿 النظام البيئي" data-fa="🌿 اکوسیستم" data-zh="🌿 生态系统">🌿 Ecosystem</a>
+            <a href="defi-hub.html" data-en="💰 DeFi Hub" data-ru="💰 DeFi Hub" data-tk="💰 DeFi merkezi" data-ar="💰 مركز التمويل اللامركزي" data-fa="💰 مرکز دیفای" data-zh="💰 DeFi 中心">💰 DeFi Hub</a>
+            <a href="trading.html" style="background:#d4a843; color:#0a1a0f;" data-en="📈 Trading" data-ru="📈 Торговля" data-tk="📈 Söwda" data-ar="📈 تداول" data-fa="📈 معامله" data-zh="📈 交易">📈 Trading</a>
+            <a href="earn.html" data-en="💸 Earn" data-ru="💸 Заработок" data-tk="💸 Gazanç" data-ar="💸 كسب" data-fa="💸 درآمد" data-zh="💸 赚取">💸 Earn</a>
+            <a href="rwa.html" data-en="🏔️ RWA" data-ru="🏔️ RWA" data-tk="🏔️ Hakyky aktiwler" data-ar="🏔️ الأصول الحقيقية" data-fa="🏔️ دارایی‌های واقعی" data-zh="🏔️ 现实世界资产">🏔️ RWA</a>
+            <a href="rwa2.html" data-en="🏔️ RWA+" data-ru="🏔️ RWA+" data-tk="🏔️ RWA+" data-ar="🏔️ RWA+" data-fa="🏔️ RWA+" data-zh="🏔️ RWA+">🏔️ RWA+</a>
+            <a href="payments.html" data-en="💳 Payments" data-ru="💳 Платежи" data-tk="💳 Tölegler" data-ar="💳 المدفوعات" data-fa="💳 پرداخت‌ها" data-zh="💳 支付">💳 Payments</a>
+            <a href="social.html" data-en="🎮 Social" data-ru="🎮 Социальные" data-tk="🎮 Sosial" data-ar="🎮 اجتماعي" data-fa="🎮 اجتماعی" data-zh="🎮 社交">🎮 Social</a>
+            <a href="dao.html" data-en="🗳️ DAO" data-ru="🗳️ DAO" data-tk="🗳️ DAO" data-ar="🗳️ منظمة مستقلة" data-fa="🗳️ سازمان خودگردان" data-zh="🗳️ 去中心化自治组织">🗳️ DAO</a>
+            <a href="card.html" data-en="💳 Card" data-ru="💳 Карта" data-tk="💳 Karta" data-ar="💳 بطاقة" data-fa="💳 کارت" data-zh="💳 卡片">💳 Card</a>
+            <a href="bridge.html" data-en="🌉 Bridge" data-ru="🌉 Мост" data-tk="🌉 Köpri" data-ar="🌉 جسر" data-fa="🌉 پل" data-zh="🌉 跨链桥">🌉 Bridge</a>
+            <a href="currency.html" data-en="💱 Currency" data-ru="💱 Валюты" data-tk="💱 Walýutalar" data-ar="💱 عملات" data-fa="💱 ارزها" data-zh="💱 货币">💱 Currency</a>
+            <a href="islamic.html" data-en="🕌 Islamic" data-ru="🕌 Исламское" data-tk="🕌 Yslam" data-ar="🕌 إسلامي" data-fa="🕌 اسلامی" data-zh="🕌 伊斯兰">🕌 Islamic</a>
+            <a href="whitepaper.html" data-en="📄 WP" data-ru="📄 WP" data-tk="📄 WP" data-ar="📄 الورقة البيضاء" data-fa="📄 وایت‌پیپر" data-zh="📄 白皮书">📄 WP</a>
         </div>
 
         <div class="grid-3">
-            <div class="card"><div class="card-icon">🔄</div><h2>Copy Trading</h2><p>Автоматически копируйте сделки топ-трейдеров с доходностью до 200% APY.</p><div class="stat"><span>Top трейдеров</span><span>47</span></div><div class="stat"><span>Скопировано сделок</span><span>12,847</span></div><a href="#" class="btn">Start Copy Trading →</a></div>
-            <div class="card"><div class="card-icon">📊</div><h2>Grid Trading Bot</h2><p>Автоматическая торговля в ценовом диапазоне. Прибыль на волатильности.</p><div class="stat"><span>Активных сеток</span><span>1,234</span></div><div class="stat"><span>Средняя доходность</span><span>15% / мес</span></div><a href="#" class="btn">Create Grid Bot →</a></div>
-            <div class="card"><div class="card-icon">📉</div><h2>DCA Bot</h2><p>Усреднение цены. Автоматические покупки TMT по заданному графику.</p><div class="stat"><span>Активных DCA</span><span>3,892</span></div><div class="stat"><span>Средняя цена покупки</span><span>$0.041</span></div><a href="#" class="btn">Setup DCA →</a></div>
-            <div class="card"><div class="card-icon">🔄</div><h2>DEX Aggregator</h2><p>Лучшая цена из 20+ DEX на Solana (Jupiter, Raydium, Orca, Meteora).</p><div class="stat"><span>Объём за 24ч</span><span>$1.2B</span></div><div class="stat"><span>Экономия комиссий</span><span>23%</span></div><a href="https://jup.ag" target="_blank" class="btn">Open Aggregator →</a></div>
-            <div class="card"><div class="card-icon">⏱️</div><h2>Limit Orders with TWAP</h2><p>Крупные ордера с разбивкой по времени. Снижение проскальзывания.</p><div class="stat"><span>Исполнено ордеров</span><span>45,892</span></div><div class="stat"><span>Средний размер</span><span>125,000 TMT</span></div><a href="#" class="btn">Place Order →</a></div>
+            <!-- Copy Trading Card -->
+            <div class="card">
+                <h2><span class="card-icon">🔄</span> <span data-en="Copy Trading" data-ru="Копи-трейдинг" data-tk="Köçüriçi söwda" data-ar="نسخ التداول" data-fa="کپی تریدینگ" data-zh="跟单交易">Copy Trading</span></h2>
+                <p data-en="Automatically copy top traders' trades with up to 200% APY." data-ru="Автоматически копируйте сделки топ-трейдеров с доходностью до 200% APY." data-tk="200% APY çenli girdeji bilen ýokary treýderleriň söwdalaryny awtomatiki usulda göçüriň." data-ar="قم بنسخ صفقات كبار المتداولين تلقائيًا بعائد يصل إلى 200% سنويًا." data-fa="به طور خودکار معاملات معامله‌گران برتر را با بازده سالانه تا ۲۰۰٪ کپی کنید." data-zh="自动复制顶级交易员的交易，年化收益率高达 200%。">Automatically copy top traders' trades with up to 200% APY.</p>
+                <div class="stat"><span data-en="Top Traders" data-ru="Топ трейдеров" data-tk="Iň gowy treýderler" data-ar="كبار المتداولين" data-fa="معامله‌گران برتر" data-zh="顶级交易员">Top Traders</span><span>47</span></div>
+                <div class="stat"><span data-en="Copied Trades" data-ru="Скопировано сделок" data-tk="Göçürilen söwdalar" data-ar="الصفقات المنسوخة" data-fa="معاملات کپی شده" data-zh="已跟单交易">Copied Trades</span><span>12,847</span></div>
+                <a href="#" class="btn" data-en="Start Copy Trading →" data-ru="Начать копи-трейдинг →" data-tk="Köçüriçi söwdany başla →" data-ar="ابدأ نسخ التداول ←" data-fa="شروع کپی تریدینگ ←" data-zh="开始跟单交易 →">Start Copy Trading →</a>
+            </div>
+
+            <!-- Grid Trading Bot Card -->
+            <div class="card">
+                <h2><span class="card-icon">📊</span> <span data-en="Grid Trading Bot" data-ru="Grid Trading Bot" data-tk="Grid söwda boty" data-ar="روبوت التداول الشبكي" data-fa="ربات معاملات گرید" data-zh="网格交易机器人">Grid Trading Bot</span></h2>
+                <p data-en="Automated trading within a price range. Profit from volatility." data-ru="Автоматическая торговля в ценовом диапазоне. Прибыль на волатильности." data-tk="Bahalar aralygynda awtomatiki söwda. Wolatililikden girdeji alyň." data-ar="تداول آلي ضمن نطاق سعري. الربح من التقلبات." data-fa="معاملات خودکار در محدوده قیمتی. سود از نوسانات." data-zh="在价格区间内自动交易。从波动中获利。">Automated trading within a price range. Profit from volatility.</p>
+                <div class="stat"><span data-en="Active Grids" data-ru="Активных сеток" data-tk="Işjeýn gridler" data-ar="الشبكات النشطة" data-fa="گریدهای فعال" data-zh="活跃网格">Active Grids</span><span>1,234</span></div>
+                <div class="stat"><span data-en="Avg. Monthly Return" data-ru="Средняя доходность / мес" data-tk="Ortaça aýlyk girdeji" data-ar="متوسط العائد الشهري" data-fa="بازده متوسط ماهانه" data-zh="平均月回报率">Avg. Monthly Return</span><span>15%</span></div>
+                <a href="#" class="btn" data-en="Create Grid Bot →" data-ru="Создать Grid Bot →" data-tk="Grid Bot döret →" data-ar="إنشاء روبوت شبكي ←" data-fa="ایجاد ربات گرید ←" data-zh="创建网格机器人 →">Create Grid Bot →</a>
+            </div>
+
+            <!-- DCA Bot Card -->
+            <div class="card">
+                <h2><span class="card-icon">📉</span> <span data-en="DCA Bot" data-ru="DCA Bot" data-tk="DCA boty" data-ar="بوت متوسط التكلفة" data-fa="ربات DCA" data-zh="定投机器人">DCA Bot</span></h2>
+                <p data-en="Price averaging. Automatic TMT purchases on a schedule." data-ru="Усреднение цены. Автоматические покупки TMT по заданному графику." data-tk="Bahany ortaça almak. TMT-ni belli bir tertip boýunça awtomatiki satyn almak." data-ar="متوسط السعر. شراء تلقائي لـ TMT وفقًا لجدول زمني." data-fa="میانگین قیمت. خرید خودکار TMT بر اساس برنامه زمان‌بندی شده." data-zh="价格平均。按计划自动购买 TMT。">Price averaging. Automatic TMT purchases on a schedule.</p>
+                <div class="stat"><span data-en="Active DCAs" data-ru="Активных DCA" data-tk="Işjeýn DCA-lar" data-ar="متوسطات التكلفة النشطة" data-fa="DCAهای فعال" data-zh="活跃定投">Active DCAs</span><span>3,892</span></div>
+                <div class="stat"><span data-en="Avg. Purchase Price" data-ru="Средняя цена покупки" data-tk="Ortaça satyn alyş bahasy" data-ar="متوسط سعر الشراء" data-fa="میانگین قیمت خرید" data-zh="平均购买价格">Avg. Purchase Price</span><span>$0.041</span></div>
+                <a href="#" class="btn" data-en="Setup DCA →" data-ru="Настроить DCA →" data-tk="DCA gurnama →" data-ar="إعداد DCA ←" data-fa="راه‌اندازی DCA ←" data-zh="设置定投 →">Setup DCA →</a>
+            </div>
+
+            <!-- DEX Aggregator Card -->
+            <div class="card">
+                <h2><span class="card-icon">🔄</span> <span data-en="DEX Aggregator" data-ru="DEX Агрегатор" data-tk="DEX aggregatory" data-ar="مجمّع البورصات اللامركزية" data-fa="تجمیع‌کننده DEX" data-zh="去中心化交易所聚合器">DEX Aggregator</span></h2>
+                <p data-en="Best price from 20+ DEXes on Solana (Jupiter, Raydium, Orca, Meteora)." data-ru="Лучшая цена из 20+ DEX на Solana (Jupiter, Raydium, Orca, Meteora)." data-tk="Solana-daky 20+ DEX-den iň gowy baha (Jupiter, Raydium, Orca, Meteora)." data-ar="أفضل سعر من أكثر من 20 بورصة لامركزية على Solana (Jupiter، Raydium، Orca، Meteora)." data-fa="بهترین قیمت از بیش از ۲۰ صرافی غیرمتمرکز در Solana (Jupiter، Raydium، Orca، Meteora)." data-zh="来自 Solana 上 20 多个去中心化交易所的最佳价格（Jupiter、Raydium、Orca、Meteora）。">Best price from 20+ DEXes on Solana (Jupiter, Raydium, Orca, Meteora).</p>
+                <div class="stat"><span data-en="24h Volume" data-ru="Объём за 24ч" data-tk="24 sagatlyk göwrüm" data-ar="حجم 24 ساعة" data-fa="حجم ۲۴ ساعته" data-zh="24小时交易量">24h Volume</span><span>$1.2B</span></div>
+                <div class="stat"><span data-en="Fee Savings" data-ru="Экономия комиссий" data-tk="Kommisiýa tygşytlamak" data-ar="توفير الرسوم" data-fa="صرفه‌جویی در کارمزد" data-zh="节省费用">Fee Savings</span><span>23%</span></div>
+                <a href="https://jup.ag" target="_blank" class="btn" data-en="Open Aggregator →" data-ru="Открыть агрегатор →" data-tk="Aggregator aç →" data-ar="فتح المجمّع ←" data-fa="باز کردن تجمیع‌کننده ←" data-zh="打开聚合器 →">Open Aggregator →</a>
+            </div>
+
+            <!-- Limit Orders with TWAP Card -->
+            <div class="card">
+                <h2><span class="card-icon">⏱️</span> <span data-en="Limit Orders with TWAP" data-ru="Лимитные ордера с TWAP" data-tk="TWAP bilen limit buýruklar" data-ar="أوامر محدودة مع TWAP" data-fa="سفارشات محدود با TWAP" data-zh="时间加权平均价格限价单">Limit Orders with TWAP</span></h2>
+                <p data-en="Large orders split over time. Reduce slippage." data-ru="Крупные ордера с разбивкой по времени. Снижение проскальзывания." data-tk="Uly buýruklar wagta bölünýär. Slippage-i azaldýar." data-ar="أوامر كبيرة مقسمة على الوقت. تقليل الانزلاق." data-fa="سفارشات بزرگ تقسیم شده در طول زمان. کاهش لغزش." data-zh="大额订单随时间拆分。减少滑点。">Large orders split over time. Reduce slippage.</p>
+                <div class="stat"><span data-en="Orders Executed" data-ru="Исполнено ордеров" data-tk="Ýerine ýetirilen buýruklar" data-ar="الأوامر المنفذة" data-fa="سفارشات اجرا شده" data-zh="已执行订单">Orders Executed</span><span>45,892</span></div>
+                <div class="stat"><span data-en="Avg. Order Size" data-ru="Средний размер" data-tk="Ortaça buýrugyň ululygy" data-ar="متوسط حجم الأمر" data-fa="میانگین اندازه سفارش" data-zh="平均订单规模">Avg. Order Size</span><span>125,000 TMT</span></div>
+                <a href="#" class="btn" data-en="Place Order →" data-ru="Разместить ордер →" data-tk="Buýruk goý →" data-ar="وضع أمر ←" data-fa="ثبت سفارش ←" data-zh="下单 →">Place Order →</a>
+            </div>
         </div>
-        <div class="footer">© 2025 TMT Trading Hub — Advanced Trading Tools</div>
+
+        <div class="footer">
+            © 2025 TMT Trading Hub — Advanced Trading Tools on Solana<br>
+            <span data-en="Contract:" data-ru="Контракт:" data-tk="Şertnama:" data-ar="العقد:" data-fa="قرارداد:" data-zh="合约：">Contract:</span> Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+        </div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Set HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Handle RTL for Arabic and Farsi
+            if (lang === 'ar' || lang === 'fa') {
+                document.body.style.direction = 'rtl';
+                document.querySelector('.container').style.direction = 'rtl';
+            } else {
+                document.body.style.direction = 'ltr';
+                document.querySelector('.container').style.direction = 'ltr';
+            }
+        }
+
+        // Add click handlers to language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+        
+        // Set English as default
+        setLanguage('en');
+    </script>
 </body>
 </html>
