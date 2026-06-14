@@ -2,48 +2,207 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMT Bridge — Cross-Chain Token Transfers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TMT Bridge — Cross-Chain to Solana | 40+ Bridges</title>
+    <meta name="description" content="Bridge any asset to Solana then swap to TMT token. Over 40 cross-chain bridges: Wormhole, deBridge, Jupiter, Mayan, Stargate, Across, Relay, Symbiosis, Celer, Allbridge, RocketX, Rango, ChangeNOW and more.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
             line-height: 1.6;
+            min-height: 100vh;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 80px; height: 80px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #ffd700; }
-        .logo img { width: 75%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #ffd700; }
-        .bridge-box { background: rgba(0,0,0,0.4); border-radius: 32px; padding: 2rem; margin: 2rem 0; text-align: center; }
-        .chain-select { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; flex-wrap: wrap; }
-        .chain { background: rgba(255,215,0,0.2); padding: 0.8rem 1.5rem; border-radius: 40px; cursor: pointer; }
-        .chain.active { background: #ffd700; color: #0a2e1c; }
-        .amount-input { padding: 1rem; font-size: 1.5rem; background: rgba(0,0,0,0.5); border: 1px solid #ffd700; border-radius: 16px; color: white; text-align: center; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
-        .card { background: rgba(255,255,255,0.1); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); }
-        .btn { background: #ffd700; color: #0a2e1c; padding: 1rem 2rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 1.2rem; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; box-shadow: 0 0 12px rgba(212,168,67,0.15); }
+        .logo img { width: 80%; border-radius: 50%; }
+        h1 { font-size: 2rem; color: #e8d8a8; letter-spacing: -0.5px; }
+        .back-link { color: #d4a843; text-decoration: none; transition: 0.2s; }
+        .back-link:hover { color: #e8d8a8; }
+
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); backdrop-filter: blur(4px); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.85rem; transition: 0.2s; border: 1px solid rgba(212,168,67,0.25); }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; border-color: #d4a843; }
+
+        .info-box {
+            background: rgba(25,45,30,0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+
+        .section-title { font-size: 1.5rem; color: #e8d8a8; margin: 1.5rem 0 1rem; border-left: 3px solid #d4a843; padding-left: 1rem; }
+        .grid-3, .grid-4 { display: grid; gap: 1.2rem; margin: 1.2rem 0; }
+        .grid-3 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+
+        .bridge-card {
+            background: rgba(20,35,25,0.65);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 1.2rem;
+            border: 1px solid rgba(212,168,67,0.2);
+            transition: all 0.2s ease;
+        }
+        .bridge-card:hover { transform: translateY(-3px); border-color: rgba(212,168,67,0.5); background: rgba(30,50,38,0.75); }
+
+        .bridge-name { font-size: 1.25rem; color: #e8d8a8; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+        .badge { font-size: 0.7rem; background: rgba(212,168,67,0.2); padding: 0.2rem 0.6rem; border-radius: 30px; color: #d4a843; }
+        .bridge-desc { font-size: 0.85rem; margin: 0.6rem 0; color: #b0c0b0; }
+        .bridge-stats { font-size: 0.75rem; margin: 0.5rem 0; color: #8a9a8a; }
+        .btn-bridge { background: #d4a843; color: #0a1a0f; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 0.85rem; transition: 0.2s; margin-top: 0.5rem; }
+        .btn-bridge:hover { background: #e8c060; transform: scale(1.02); }
+        .btn-small { background: transparent; border: 1px solid #d4a843; color: #d4a843; padding: 0.25rem 0.8rem; border-radius: 30px; text-decoration: none; font-size: 0.75rem; display: inline-block; margin-left: 0.5rem; }
+        .btn-small:hover { background: rgba(212,168,67,0.2); }
+
+        .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
+        .footer { text-align: center; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.75rem; color: #8a9a8a; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; }
+            .section-title { font-size: 1.2rem; }
+            .grid-3, .grid-4 { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header"><div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div><h1>🌉 TMT Cross-Chain Bridge</h1><a href="index.html" class="back-link">← Back to Main</a></div>
-        <div class="nav"><a href="index.html">🏠 Home</a><a href="ecosystem.html">🌿 Ecosystem</a><a href="defi-hub.html">💰 DeFi Hub</a><a href="rwa.html">🏔️ RWA</a><a href="dao.html">🗳️ DAO</a><a href="card.html">💳 Card</a><a href="bridge.html" class="active">🌉 Bridge</a><a href="whitepaper.html">📄 WP</a></div>
-
-        <div class="bridge-box"><h2>Bridge TMT to 10+ Blockchains</h2><div class="chain-select"><div class="chain active">🌿 Solana</div><div class="chain">⟳ Ethereum</div><div class="chain">🟡 BSC</div><div class="chain">🔷 Arbitrum</div><div class="chain">🔶 Optimism</div><div class="chain">🟣 Polygon</div><div class="chain">🔴 Avalanche</div></div><input type="text" placeholder="0.00 TMT" class="amount-input"><div style="margin-top: 1rem;">≈ 0.00 USD</div><a href="#" class="btn" style="margin-top: 2rem;">🌉 Bridge Now</a></div>
-
-        <div class="grid-3">
-            <div class="card"><h2>🪄 Wormhole</h2><p>Powered by Wormhole — the most secure cross-chain messaging protocol. Finality in 15 seconds.</p><a href="https://wormholebridge.com" target="_blank">Bridge via Wormhole →</a></div>
-            <div class="card"><h2>🚪 Portal Bridge</h2><p>Support for 20+ chains including Solana, Ethereum, BSC, Polygon, Avalanche, Arbitrum, Optimism.</p><a href="https://www.portalbridge.com" target="_blank">Open Portal →</a></div>
-            <div class="card"><h2>🔗 deBridge</h2><p>Fast and cheap bridging between Solana and EVM chains. Low fees, high security.</p><a href="https://debridge.finance" target="_blank">Open deBridge →</a></div>
+        <div class="header">
+            <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
+            <h1>🌉 Cross-Chain to TMT on Solana</h1>
+            <p>Bridge from any chain → Solana → Swap to TMT</p>
+            <a href="index.html" class="back-link">← Back to Main Page</a>
         </div>
 
-        <div class="card"><h2>📊 Bridge Statistics</h2><div class="stat"><span>Total Bridged Volume</span><span>$187.4M</span></div><div class="stat"><span>Active Bridged Chains</span><span>14</span></div><div class="stat"><span>Avg. Bridge Time</span><span>15-30 seconds</span></div><div class="stat"><span>Total Bridged TMT</span><span>892M TMT</span></div></div>
+        <div class="nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="ecosystem.html">🌿 Ecosystem</a>
+            <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="trading.html">📈 Trading</a>
+            <a href="earn.html">💸 Earn</a>
+            <a href="rwa.html">🏔️ RWA</a>
+            <a href="payments.html">💳 Payments</a>
+            <a href="social.html">🎮 Social</a>
+            <a href="dao.html">🗳️ DAO</a>
+            <a href="card.html">💳 Card</a>
+            <a href="bridge.html" style="background:#d4a843; color:#0a1a0f;">🌉 Bridge</a>
+            <a href="islamic.html">🕌 Islamic</a>
+            <a href="whitepaper.html">📄 WP</a>
+        </div>
 
-        <div class="footer">© 2025 TMT Bridge — Powered by Wormhole & deBridge</div>
+        <!-- Info Box -->
+        <div class="info-box">
+            <h2 style="color:#e8d8a8; margin-bottom: 0.5rem;">✨ How to get TMT from any chain</h2>
+            <p>1️⃣ Choose a bridge below → Bridge any asset (USDC, USDT, ETH, SOL, BTC, BNB) to <strong>Solana</strong><br>
+            2️⃣ Swap your bridged asset to <strong>TMT</strong> on <a href="https://jup.ag/swap/USDC-TMT" target="_blank" style="color:#d4a843;">Jupiter</a> or <a href="https://raydium.io/swap" target="_blank" style="color:#d4a843;">Raydium</a><br>
+            🚀 All bridges lead to Solana → then to TMT token</p>
+        </div>
+
+        <!-- ==================== TOP TIER BRIDGES (1-10) ==================== -->
+        <h2 class="section-title">🏆 Top 10 Most Popular Bridges to Solana</h2>
+        <div class="grid-3">
+            <div class="bridge-card"><div class="bridge-name">🌀 Jupiter</div><div class="bridge-desc">Solana's #1 DEX aggregator + bridge aggregator. Finds the best route automatically. Built into Phantom wallet.</div><div class="bridge-stats">💰 TVL: $487M | ⚡ Speed: 10-30s</div><a href="https://jup.ag/bridge" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Best for beginners</span></div>
+            <div class="bridge-card"><div class="bridge-name">🪄 Wormhole (Portal)</div><div class="bridge-desc">The most widely used Solana bridge. Connects 30+ chains including Ethereum, BNB, Tron, Arbitrum, Base, Polygon.</div><div class="bridge-stats">💰 TVL: $62.59B | ⚡ Speed: 2-5 min</div><a href="https://portalbridge.com" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">30+ chains</span></div>
+            <div class="bridge-card"><div class="bridge-name">⚡ deBridge (DLN)</div><div class="bridge-desc">Fastest intent-based protocol. Zero-TVL design — no pool to hack. Native token delivery in seconds.</div><div class="bridge-stats">💰 Volume: $20B+ | ⚡ Speed: 10-30s</div><a href="https://app.debridge.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Fastest</span></div>
+            <div class="bridge-card"><div class="bridge-name">🌊 Mayan Finance</div><div class="bridge-desc">Solver-based cross-chain swap. Optimized for Solana ↔ EVM. Near-instant settlement.</div><div class="bridge-stats">💰 7d Volume: $76.9M | ⚡ Speed: 12-60s</div><a href="https://mayan.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Low slippage</span></div>
+            <div class="bridge-card"><div class="bridge-name">🔷 Stargate (LayerZero)</div><div class="bridge-desc">Unified liquidity pools. Native asset transfers across 40+ chains. Hydra mechanism for deep liquidity.</div><div class="bridge-stats">💰 7d Volume: $61.4M | ⚡ Speed: 1-2 min</div><a href="https://stargate.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Native assets</span></div>
+            <div class="bridge-card"><div class="bridge-name">⚡ Across Protocol</div><div class="bridge-desc">Intent-based bridge with relayers. Near-instant transfers, especially for Ethereum L2s.</div><div class="bridge-stats">💰 7d Volume: $66.8M | ⚡ Speed: 6-30s</div><a href="https://across.to" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Fast L2</span></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Relay</div><div class="bridge-desc">80+ networks, gas-on-arrival faucet. Treats dozens of rollups as one liquidity layer.</div><div class="bridge-stats">💰 7d Volume: $287.6M | ⚡ Speed: 10-30s</div><a href="https://relay.link" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Gas included</span></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Symbiosis Finance</div><div class="bridge-desc">One-click swaps across EVM and non-EVM chains (Bitcoin, Tron, Solana). 30+ networks.</div><div class="bridge-stats">💰 7d Volume: $25M | ⚡ Speed: ~2 min</div><a href="https://symbiosis.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Cross-token</span></div>
+            <div class="bridge-card"><div class="bridge-name">🔗 Celer cBridge</div><div class="bridge-desc">40+ chains, $14B+ volume. Active bug bounty, insurance fund, non-custodial.</div><div class="bridge-stats">💰 7d Volume: $13.7M | ⚡ Speed: <1 min</div><a href="https://cbridge.celer.network" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Audited</span></div>
+        </div>
+
+        <!-- ==================== AGGREGATORS & NO-KYC (11-20) ==================== -->
+        <h2 class="section-title">🔄 Aggregators & No-KYC Bridges</h2>
+        <div class="grid-3">
+            <div class="bridge-card"><div class="bridge-name">🚀 RocketX</div><div class="bridge-desc">Aggregates 500+ exchanges, 200+ chains. No account, no KYC. Private Swaps mode unlinks wallets.</div><div class="bridge-stats">💰 Volume: $2B+ | ⚡ Speed: 30-90s</div><a href="https://rocketx.exchange" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">No KYC</span></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Rango Exchange</div><div class="bridge-desc">73+ chains including Bitcoin, Cosmos, TON. Aggregates DEXs and bridges for best price.</div><div class="bridge-stats">💰 Swaps: 4.8M+ | ⚡ Speed: 30-90s</div><a href="https://rango.exchange" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Best price</span></div>
+            <div class="bridge-card"><div class="bridge-name">💱 ChangeNOW</div><div class="bridge-desc">110+ chains, 1,500+ assets. No account needed. AML check only for flagged transactions.</div><div class="bridge-stats">⚡ Speed: 5-30 min</div><a href="https://changenow.io" target="_blank" class="btn-bridge">Exchange →</a> <span class="badge">No signup</span></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 LI.FI / Jumper</div><div class="bridge-desc">Cross-chain aggregator. Compares routes across 30+ bridges, finds best price.</div><div class="bridge-stats">⚡ Speed: Varies by route</div><a href="https://jumper.exchange" target="_blank" class="btn-bridge">Aggregate →</a> <span class="badge">Compare routes</span></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Squid Router (Axelar)</div><div class="bridge-desc">Axelar-powered cross-chain swaps. EVM + Cosmos + Solana support.</div><div class="bridge-stats">⚡ Speed: 1-3 min</div><a href="https://app.squidrouter.com" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Axelar</span></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Allbridge Core</div><div class="bridge-desc">Stablecoin-focused bridge. USDC/USDT between 20+ chains including Solana, NEAR, Tron.</div><div class="bridge-stats">💰 TVL: $3.7M | ⚡ Speed: 3-8 min</div><a href="https://core.allbridge.io" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Stablecoins</span></div>
+        </div>
+
+        <!-- ==================== EVM LAYER 2 BRIDGES (21-28) ==================== -->
+        <h2 class="section-title">⚡ Ethereum L2 Bridges</h2>
+        <div class="grid-3">
+            <div class="bridge-card"><div class="bridge-name">🔄 Orbiter Finance</div><div class="bridge-desc">Specialist L2 bridge. Extremely low fees for Arbitrum, Optimism, zkSync, Base, Linea.</div><div class="bridge-stats">⚡ Speed: 10-30s</div><a href="https://www.orbiter.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">Lowest fees</span></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Hop Protocol</div><div class="bridge-desc">L2-to-L2 transfers with bonders. Fast exits from rollups to Ethereum.</div><div class="bridge-stats">⚡ Speed: 30-90s</div><a href="https://app.hop.exchange" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">L2 specialist</span></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Arbitrum Bridge</div><div class="bridge-desc">Official bridge for Arbitrum. ETH ↔ Arbitrum transfers.</div><div class="bridge-stats">💰 7d Volume: $54.3M</div><a href="https://bridge.arbitrum.io" target="_blank" class="btn-bridge">Bridge →</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Optimism Gateway</div><div class="bridge-desc">Official Optimism bridge. ETH and standard ERC-20s.</div><div class="bridge-stats">💰 7d Volume: $22.1M</div><a href="https://app.optimism.io/bridge" target="_blank" class="btn-bridge">Bridge →</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Base Bridge</div><div class="bridge-desc">Official bridge for Base (Coinbase L2). ETH and USDC transfers.</div><a href="https://bridge.base.org" target="_blank" class="btn-bridge">Bridge →</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 zkSync Bridge</div><div class="bridge-desc">Official zkSync Era bridge. ETH and ERC-20 tokens.</div><a href="https://bridge.zksync.io" target="_blank" class="btn-bridge">Bridge →</a></div>
+        </div>
+
+        <!-- ==================== BITCOIN & CROSS-ECOSYSTEM (29-35) ==================== -->
+        <h2 class="section-title">₿ Bitcoin & Cross-Ecosystem Bridges</h2>
+        <div class="grid-3">
+            <div class="bridge-card"><div class="bridge-name">₿ Thorchain / THORSwap</div><div class="bridge-desc">Native cross-chain swaps. BTC, ETH, SOL, BNB — direct no wrapping.</div><div class="bridge-stats">⚡ Speed: 2-5 min</div><a href="https://thorswap.finance" target="_blank" class="btn-bridge">Bridge →</a> <span class="badge">BTC native</span></div>
+            <div class="bridge-card"><div class="bridge-name">₿ RenBridge</div><div class="bridge-desc">Bitcoin to Solana via renBTC. Wrapped representation.</div><a href="https://bridge.renproject.io" target="_blank" class="btn-bridge">Bridge →</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Interport Finance</div><div class="bridge-desc">70+ chains, cross-chain limit orders. Solana support.</div><div class="bridge-stats">💰 7d Volume: $19.7M</div><a href="https://interport.fi" target="_blank" class="btn-bridge">Bridge →</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Cashmere</div><div class="bridge-desc">19+ chains including Solana. Cross-chain DEX aggregator.</div><div class="bridge-stats">💰 7d Volume: $21M</div><a href="https://cashmere.exchange" target="_blank" class="btn-bridge">Bridge →</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Rhino.fi</div><div class="bridge-desc">20+ chains. Aggregates bridges for best route.</div><div class="bridge-stats">💰 7d Volume: $39.9M</div><a href="https://rhino.fi" target="_blank" class="btn-bridge">Bridge →</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Hyperliquid Bridge</div><div class="bridge-desc">Arbitrum ↔ Hyperliquid for perp trading.</div><div class="bridge-stats">💰 7d Volume: $344.6M</div><a href="https://hyperliquid.xyz/bridge" target="_blank" class="btn-bridge">Bridge →</a></div>
+        </div>
+
+        <!-- ==================== ADDITIONAL RELIABLE BRIDGES (36-45) ==================== -->
+        <h2 class="section-title">🔗 More Trusted Bridges to Solana</h2>
+        <div class="grid-4">
+            <div class="bridge-card"><div class="bridge-name">🔄 Unit5</div><div class="bridge-desc">5 chains, $63.56M TVL</div><a href="https://unit5.io" target="_blank" class="btn-small">Bridge</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Aster</div><div class="bridge-desc">9 chains, $18.03M TVL</div><a href="https://aster.io" target="_blank" class="btn-small">Bridge</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Orderly Bridge</div><div class="bridge-desc">18 chains, $8.27M TVL</div><a href="https://orderly.network" target="_blank" class="btn-small">Bridge</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Wan Bridge</div><div class="bridge-desc">36 chains</div><a href="https://wanbridge.org" target="_blank" class="btn-small">Bridge</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 SoDEX Bridge</div><div class="bridge-desc">11 chains</div><a href="https://sodex.link" target="_blank" class="btn-small">Bridge</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Neony Bridge</div><div class="bridge-desc">Solana bridge</div><a href="https://neony.io" target="_blank" class="btn-small">Bridge</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 Symbiosis BNB→SOL</div><div class="bridge-desc">BNB to Solana native</div><a href="https://symbiosis.finance" target="_blank" class="btn-small">Bridge</a></div>
+            <div class="bridge-card"><div class="bridge-name">🔄 deBridge EVM→SOL</div><div class="bridge-desc">ETH/BNB/Matic to SOL</div><a href="https://app.debridge.finance" target="_blank" class="btn-small">Bridge</a></div>
+        </div>
+
+        <!-- ==================== CEX OPTIONS (NO BRIDGE NEEDED) ==================== -->
+        <h2 class="section-title">🏦 Centralized Exchanges (Simplest Option)</h2>
+        <div class="grid-3">
+            <div class="bridge-card"><div class="bridge-name">🟡 Binance</div><div class="bridge-desc">Deposit fiat/crypto → Buy SOL or USDC → Withdraw to Solana wallet → Swap to TMT.</div><a href="https://binance.com" target="_blank" class="btn-bridge">Go →</a> <span class="badge">Fast for >$100k</span></div>
+            <div class="bridge-card"><div class="bridge-name">⚡ Bybit</div><div class="bridge-desc">Buy SOL/USDT directly with card → Withdraw to Solana.</div><a href="https://bybit.com" target="_blank" class="btn-bridge">Go →</a> <span class="badge">No KYC for small amounts</span></div>
+            <div class="bridge-card"><div class="bridge-name">🟣 MEXC</div><div class="bridge-desc">SOL/TMT pair available. Direct fiat on-ramp.</div><a href="https://mexc.com" target="_blank" class="btn-bridge">Go →</a> <span class="badge">SOL/TMT direct</span></div>
+            <div class="bridge-card"><div class="bridge-name">💎 Bitget</div><div class="bridge-desc">Buy USDT with card → Withdraw to Solana.</div><a href="https://bitget.com" target="_blank" class="btn-bridge">Go →</a></div>
+            <div class="bridge-card"><div class="bridge-name">🌀 KuCoin</div><div class="bridge-desc">SOL/USDT trading. Fiat on-ramp available.</div><a href="https://kucoin.com" target="_blank" class="btn-bridge">Go →</a></div>
+            <div class="bridge-card"><div class="bridge-name">🌐 OKX</div><div class="bridge-desc">Built-in cross-chain bridge + exchange.</div><a href="https://okx.com" target="_blank" class="btn-bridge">Go →</a></div>
+        </div>
+
+        <!-- Quick Stats Table -->
+        <div class="info-box">
+            <h2 style="color:#e8d8a8; margin-bottom: 1rem;">📊 Bridge Selection Guide</h2>
+            <div class="stat"><span>🏆 Most widely used</span><span>Wormhole — 30+ chains, $62B TVL</span></div>
+            <div class="stat"><span>⚡ Fastest</span><span>deBridge / Jupiter / Mayan — 10-30 seconds</span></div>
+            <div class="stat"><span>💰 Cheapest for small amounts</span><span>Relay / Symbiosis / deBridge</span></div>
+            <div class="stat"><span>🛡️ Most secure (no TVL)</span><span>deBridge (zero-TVL design)</span></div>
+            <div class="stat"><span>🌉 Most chains</span><span>RocketX (200+), Rango (73+), Stargate (40+)</span></div>
+            <div class="stat"><span>₿ Bitcoin to Solana</span><span>Thorchain, RenBridge, RocketX</span></div>
+            <div class="stat"><span>📱 Easiest UX</span><span>Jupiter (built into Phantom wallet)</span></div>
+        </div>
+
+        <!-- Final Step -->
+        <div class="info-box">
+            <h2 style="color:#e8d8a8; margin-bottom: 0.5rem;">📌 Final Step — Swap to TMT</h2>
+            <p>Once your funds arrive on Solana, swap them to <strong>TMT token</strong> on:</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-bridge">🔄 Jupiter → Swap to TMT</a>
+                <a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="btn-bridge">⚡ Raydium → Swap to TMT</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">TMT Contract: <code style="background:#1a2a1a; padding: 0.2rem 0.5rem; border-radius: 8px;">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+        </div>
+
+        <div class="footer">
+            © 2025 TMT Bridge — Cross-Chain to Solana | TMT Token: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2<br>
+            Always verify bridge URLs. Do a small test transfer first. DYOR.
+        </div>
     </div>
 </body>
 </html>
