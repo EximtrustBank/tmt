@@ -2,59 +2,243 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMT DeFi Hub — Staking · Farming · Lending</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TMT DeFi Hub — Staking, Yield Farming, Lending, Leveraged Yield</title>
+    <meta name="description" content="Earn passive income with TMT token. Stake TMT (8-15% APY), yield farming (up to 25% APY), lending/borrowing, leveraged yield (up to 60% APY). All on Solana.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%);
-            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
             line-height: 1.6;
+            min-height: 100vh;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #d0d8d0;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .lang-btn.active {
+            background: #d4a843;
+            color: #0a1a0f;
+        }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 80px; height: 80px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #ffd700; }
-        .logo img { width: 75%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #ffd700; }
-        .back-link { color: #ffec80; text-decoration: none; }
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
-        .nav a:hover, .nav a.active { background: #ffd700; color: #0a2e1c; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); }
-        .card h2 { color: #ffd700; margin-bottom: 1rem; font-size: 1.4rem; }
-        .apy-badge { background: #00a86b; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 40px; font-size: 0.8rem; margin-bottom: 1rem; }
-        .stat { display: flex; justify-content: space-between; margin: 0.8rem 0; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .btn { background: #ffd700; color: #0a2e1c; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
-        .btn-outline { background: transparent; border: 1px solid #ffd700; color: #ffd700; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
+        .logo img { width: 80%; border-radius: 50%; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
+
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
+
+        .grid-2, .grid-3 { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .card h2 { color: #e8d8a8; margin-bottom: 1rem; font-size: 1.3rem; border-left: 3px solid #d4a843; padding-left: 0.8rem; }
+
+        .apy-badge { background: #00a86b; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 40px; font-size: 0.8rem; margin-bottom: 1rem; font-weight: bold; }
+        .stat { display: flex; justify-content: space-between; margin: 0.8rem 0; padding: 0.5rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
+
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 1rem; transition: 0.2s; border: none; cursor: pointer; font-size: 0.9rem; }
+        .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .btn-outline { background: transparent; border: 1px solid #d4a843; color: #d4a843; }
+        .btn-outline:hover { background: rgba(212,168,67,0.15); }
+
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.3rem; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1>💰 TMT DeFi Hub</h1>
-            <a href="index.html" class="back-link">← Back to Main</a>
+            <h1 data-en="💰 TMT DeFi Hub" data-ru="💰 TMT DeFi Hub" data-tk="💰 TMT DeFi merkezi" data-ar="💰 مركز التمويل اللامركزي TMT" data-fa="💰 مرکز دیفای TMT" data-zh="💰 TMT DeFi 中心">💰 TMT DeFi Hub</h1>
+            <p data-en="Earn passive income with TMT token. Stake, farm, lend, borrow, leverage." data-ru="Зарабатывайте пассивный доход с токеном TMT. Стейкинг, фарминг, кредитование, плечо." data-tk="TMT tokeny bilen passiw girdeji alyň. Staking, farming, kredit, leverage." data-ar="اربح دخلاً سلبياً مع رمز TMT. تجميد، زراعة، إقراض، اقتراض، رافعة مالية." data-fa="با توکن TMT درآمد غیرفعال کسب کنید. استیکینگ، فارمینگ، وام، اهرم." data-zh="使用 TMT 代币赚取被动收入。质押、挖矿、借贷、杠杆。">Earn passive income with TMT token. Stake, farm, lend, borrow, leverage.</p>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
+
         <div class="nav">
-            <a href="index.html">🏠 Home</a><a href="ecosystem.html">🌿 Ecosystem</a><a href="defi-hub.html" class="active">💰 DeFi Hub</a><a href="rwa.html">🏔️ RWA</a><a href="dao.html">🗳️ DAO</a><a href="card.html">💳 Card</a><a href="bridge.html">🌉 Bridge</a><a href="whitepaper.html">📄 WP</a>
+            <a href="index.html" data-en="🏠 Home" data-ru="🏠 Главная" data-tk="🏠 Baş sahypa" data-ar="🏠 الرئيسية" data-fa="🏠 صفحه اصلی" data-zh="🏠 主页">🏠 Home</a>
+            <a href="ecosystem.html" data-en="🌿 Ecosystem" data-ru="🌿 Экосистема" data-tk="🌿 Ekosistema" data-ar="🌿 النظام البيئي" data-fa="🌿 اکوسیستم" data-zh="🌿 生态系统">🌿 Ecosystem</a>
+            <a href="defi-hub.html" style="background:#d4a843; color:#0a1a0f;" data-en="💰 DeFi Hub" data-ru="💰 DeFi Hub" data-tk="💰 DeFi merkezi" data-ar="💰 مركز التمويل اللامركزي" data-fa="💰 مرکز دیفای" data-zh="💰 DeFi 中心">💰 DeFi Hub</a>
+            <a href="trading.html" data-en="📈 Trading" data-ru="📈 Торговля" data-tk="📈 Söwda" data-ar="📈 تداول" data-fa="📈 معامله" data-zh="📈 交易">📈 Trading</a>
+            <a href="earn.html" data-en="💸 Earn" data-ru="💸 Заработок" data-tk="💸 Gazanç" data-ar="💸 كسب" data-fa="💸 درآمد" data-zh="💸 赚取">💸 Earn</a>
+            <a href="rwa.html" data-en="🏔️ RWA" data-ru="🏔️ RWA" data-tk="🏔️ Hakyky aktiwler" data-ar="🏔️ الأصول الحقيقية" data-fa="🏔️ دارایی‌های واقعی" data-zh="🏔️ 现实世界资产">🏔️ RWA</a>
+            <a href="rwa2.html" data-en="🏔️ RWA+" data-ru="🏔️ RWA+" data-tk="🏔️ RWA+" data-ar="🏔️ RWA+" data-fa="🏔️ RWA+" data-zh="🏔️ RWA+">🏔️ RWA+</a>
+            <a href="payments.html" data-en="💳 Payments" data-ru="💳 Платежи" data-tk="💳 Tölegler" data-ar="💳 المدفوعات" data-fa="💳 پرداخت‌ها" data-zh="💳 支付">💳 Payments</a>
+            <a href="social.html" data-en="🎮 Social" data-ru="🎮 Социальные" data-tk="🎮 Sosial" data-ar="🎮 اجتماعي" data-fa="🎮 اجتماعی" data-zh="🎮 社交">🎮 Social</a>
+            <a href="dao.html" data-en="🗳️ DAO" data-ru="🗳️ DAO" data-tk="🗳️ DAO" data-ar="🗳️ منظمة مستقلة" data-fa="🗳️ سازمان خودگردان" data-zh="🗳️ 去中心化自治组织">🗳️ DAO</a>
+            <a href="card.html" data-en="💳 Card" data-ru="💳 Карта" data-tk="💳 Karta" data-ar="💳 بطاقة" data-fa="💳 کارت" data-zh="💳 卡片">💳 Card</a>
+            <a href="bridge.html" data-en="🌉 Bridge" data-ru="🌉 Мост" data-tk="🌉 Köpri" data-ar="🌉 جسر" data-fa="🌉 پل" data-zh="🌉 跨链桥">🌉 Bridge</a>
+            <a href="currency.html" data-en="💱 Currency" data-ru="💱 Валюты" data-tk="💱 Walýutalar" data-ar="💱 عملات" data-fa="💱 ارزها" data-zh="💱 货币">💱 Currency</a>
+            <a href="islamic.html" data-en="🕌 Islamic" data-ru="🕌 Исламское" data-tk="🕌 Yslam" data-ar="🕌 إسلامي" data-fa="🕌 اسلامی" data-zh="🕌 伊斯兰">🕌 Islamic</a>
+            <a href="whitepaper.html" data-en="📄 WP" data-ru="📄 WP" data-tk="📄 WP" data-ar="📄 الورقة البيضاء" data-fa="📄 وایت‌پیپر" data-zh="📄 白皮书">📄 WP</a>
         </div>
 
+        <!-- ==================== STAKING CARD ==================== -->
         <div class="grid-2">
-            <div class="card"><h2>🔒 Staking TMT</h2><div class="apy-badge">APY: 8% – 15%</div><div class="stat"><span>Lock 30 days</span><span>8% APY</span></div><div class="stat"><span>Lock 90 days</span><span>10% APY</span></div><div class="stat"><span>Lock 180 days</span><span>12% APY</span></div><div class="stat"><span>Lock 365 days</span><span>15% APY</span></div><div class="stat"><span>Total Staked</span><span>12.5B TMT</span></div><div class="stat"><span>Your Rewards</span><span>0 TMT</span></div><a href="#" class="btn">🔒 Stake Now</a> <a href="#" class="btn-outline btn">📤 Unstake</a></div>
+            <div class="card">
+                <h2>🔒 <span data-en="Staking TMT" data-ru="Стейкинг TMT" data-tk="TMT staking" data-ar="تجميد TMT" data-fa="استیکینگ TMT" data-zh="质押 TMT">Staking TMT</span></h2>
+                <div class="apy-badge" data-en="APY: 8% – 15%" data-ru="APY: 8% – 15%" data-tk="APY: 8% – 15%" data-ar="APY: 8% – 15%" data-fa="APY: ۸٪ – ۱۵٪" data-zh="年化收益率：8% – 15%">APY: 8% – 15%</div>
+                <div class="stat"><span data-en="Lock 30 days" data-ru="Блокировка 30 дней" data-tk="30 gün blokirlenýär" data-ar="قفل 30 يومًا" data-fa="قفل ۳۰ روزه" data-zh="锁定 30 天">Lock 30 days</span><span>8% APY</span></div>
+                <div class="stat"><span data-en="Lock 90 days" data-ru="Блокировка 90 дней" data-tk="90 gün blokirlenýär" data-ar="قفل 90 يومًا" data-fa="قفل ۹۰ روزه" data-zh="锁定 90 天">Lock 90 days</span><span>10% APY</span></div>
+                <div class="stat"><span data-en="Lock 180 days" data-ru="Блокировка 180 дней" data-tk="180 gün blokirlenýär" data-ar="قفل 180 يومًا" data-fa="قفل ۱۸۰ روزه" data-zh="锁定 180 天">Lock 180 days</span><span>12% APY</span></div>
+                <div class="stat"><span data-en="Lock 365 days" data-ru="Блокировка 365 дней" data-tk="365 gün blokirlenýär" data-ar="قفل 365 يومًا" data-fa="قفل ۳۶۵ روزه" data-zh="锁定 365 天">Lock 365 days</span><span>15% APY</span></div>
+                <div class="stat"><span data-en="Total Staked" data-ru="Всего застейкано" data-tk="Jemi staking edilen" data-ar="إجمالي المجمّد" data-fa="کل استیک شده" data-zh="总质押量">Total Staked</span><span>12.5B TMT</span></div>
+                <div class="stat"><span data-en="Your Rewards" data-ru="Ваши награды" data-tk="Siziň baýraklaryňyz" data-ar="مكافآتك" data-fa="جوایز شما" data-zh="您的奖励">Your Rewards</span><span>0 TMT</span></div>
+                <a href="#" class="btn" data-en="🔒 Stake Now" data-ru="🔒 Застейкать" data-tk="🔒 Staking et" data-ar="🔒 قم بالتجميد الآن" data-fa="🔒 استیک کنید" data-zh="🔒 立即质押">🔒 Stake Now</a>
+                <a href="#" class="btn-outline btn" data-en="📤 Unstake" data-ru="📤 Анстейкать" data-tk="📤 Stakingden çykar" data-ar="📤 إلغاء التجميد" data-fa="📤 خارج کردن از استیک" data-zh="📤 解除质押">📤 Unstake</a>
+            </div>
 
-            <div class="card"><h2>🌾 Yield Farming</h2><div class="apy-badge">APY: up to 25%</div><div class="stat"><span>TMT/USDC (Raydium)</span><span>18.5% APY</span></div><div class="stat"><span>TMT/SOL (Meteora)</span><span>22.3% APY</span></div><div class="stat"><span>TMT/USDT (Jupiter)</span><span>25.1% APY</span></div><div class="stat"><span>Your LP Value</span><span>0 USD</span></div><div class="stat"><span>Earned Fees</span><span>0 TMT</span></div><a href="#" class="btn">🌾 Add Liquidity</a> <a href="#" class="btn-outline btn">💧 Remove</a></div>
-
-            <div class="card"><h2>🏦 Lending & Borrowing</h2><div class="apy-badge">Supply APY: 5% | Borrow APY: 8%</div><div class="stat"><span>Supply TMT</span><span>5% APY</span></div><div class="stat"><span>Borrow USDC (collateral TMT)</span><span>8% APY</span></div><div class="stat"><span>Borrow SOL (collateral TMT)</span><span>7.5% APY</span></div><div class="stat"><span>Collateral Ratio</span><span>150%</span></div><div class="stat"><span>Liquidation Penalty</span><span>5%</span></div><a href="#" class="btn">🏦 Supply TMT</a> <a href="#" class="btn-outline btn">📉 Borrow</a></div>
-
-            <div class="card"><h2>📈 Leveraged Yield</h2><div class="apy-badge">APY: up to 60%</div><div class="stat"><span>TMT/USDC 2x Leverage</span><span>35% APY</span></div><div class="stat"><span>TMT/SOL 3x Leverage</span><span>52% APY</span></div><div class="stat"><span>TMT/USDT 5x Leverage</span><span>60% APY</span></div><div class="stat"><span>Liquidation Threshold</span><span>85%</span></div><a href="#" class="btn">⚡ Open Position</a></div>
+            <!-- ==================== YIELD FARMING CARD ==================== -->
+            <div class="card">
+                <h2>🌾 <span data-en="Yield Farming" data-ru="Yield Farming" data-tk="Yield Farming" data-ar="الزراعة" data-fa="فارمینگ" data-zh="流动性挖矿">Yield Farming</span></h2>
+                <div class="apy-badge" data-en="APY: up to 25%" data-ru="APY: до 25%" data-tk="APY: 25% çenli" data-ar="APY: يصل إلى 25%" data-fa="APY: تا ۲۵٪" data-zh="年化收益率：最高 25%">APY: up to 25%</div>
+                <div class="stat"><span data-en="TMT/USDC (Raydium)" data-ru="TMT/USDC (Raydium)" data-tk="TMT/USDC (Raydium)" data-ar="TMT/USDC (Raydium)" data-fa="TMT/USDC (Raydium)" data-zh="TMT/USDC（Raydium）">TMT/USDC (Raydium)</span><span>18.5% APY</span></div>
+                <div class="stat"><span data-en="TMT/SOL (Meteora)" data-ru="TMT/SOL (Meteora)" data-tk="TMT/SOL (Meteora)" data-ar="TMT/SOL (Meteora)" data-fa="TMT/SOL (Meteora)" data-zh="TMT/SOL（Meteora）">TMT/SOL (Meteora)</span><span>22.3% APY</span></div>
+                <div class="stat"><span data-en="TMT/USDT (Jupiter)" data-ru="TMT/USDT (Jupiter)" data-tk="TMT/USDT (Jupiter)" data-ar="TMT/USDT (Jupiter)" data-fa="TMT/USDT (Jupiter)" data-zh="TMT/USDT（Jupiter）">TMT/USDT (Jupiter)</span><span>25.1% APY</span></div>
+                <div class="stat"><span data-en="Your LP Value" data-ru="Ваша LP стоимость" data-tk="Siziň LP bahaňyz" data-ar="قيمة LP الخاصة بك" data-fa="ارزش LP شما" data-zh="您的 LP 价值">Your LP Value</span><span>0 USD</span></div>
+                <div class="stat"><span data-en="Earned Fees" data-ru="Заработанные комиссии" data-tk="Gazanylan komissiýalar" data-ar="الرسوم المكتسبة" data-fa="کارمزدهای کسب شده" data-zh="赚取的费用">Earned Fees</span><span>0 TMT</span></div>
+                <a href="#" class="btn" data-en="🌾 Add Liquidity" data-ru="🌾 Добавить ликвидность" data-tk="🌾 Likwidlik goş" data-ar="🌾 أضف سيولة" data-fa="🌾 اضافه کردن نقدینگی" data-zh="🌾 添加流动性">🌾 Add Liquidity</a>
+                <a href="#" class="btn-outline btn" data-en="💧 Remove" data-ru="💧 Убрать" data-tk="💧 Aýyr" data-ar="💧 إزالة" data-fa="💧 حذف" data-zh="💧 移除">💧 Remove</a>
+            </div>
         </div>
 
-        <div class="card"><h2>📊 DeFi Dashboard</h2><div class="stat"><span>Total Value Locked (TVL)</span><span>$487.3M</span></div><div class="stat"><span>Daily Active Users</span><span>1,247</span></div><div class="stat"><span>Total Staked TMT</span><span>12.5B TMT</span></div><div class="stat"><span>Total Borrowed</span><span>$89.2M</span></div><div class="stat"><span>Protocol Fees (24h)</span><span>$12,450</span></div></div>
+        <!-- ==================== LENDING & LEVERAGED YIELD ==================== -->
+        <div class="grid-2">
+            <div class="card">
+                <h2>🏦 <span data-en="Lending & Borrowing" data-ru="Кредитование и Займы" data-tk="Kredit we Karz" data-ar="الإقراض والاقتراض" data-fa="وام و قرض" data-zh="借贷">Lending & Borrowing</span></h2>
+                <div class="apy-badge" data-en="Supply APY: 5% | Borrow APY: 8%" data-ru="Supply APY: 5% | Borrow APY: 8%" data-tk="Supply APY: 5% | Borrow APY: 8%" data-ar="عائد الإقراض: 5% | عائد الاقتراض: 8%" data-fa="نرخ سود تأمین: ۵٪ | نرخ سود قرض: ۸٪" data-zh="供应年化收益率：5% | 借款年化收益率：8%">Supply APY: 5% | Borrow APY: 8%</div>
+                <div class="stat"><span data-en="Supply TMT" data-ru="Предложить TMT" data-tk="TMT bermek" data-ar="تقديم TMT" data-fa="تأمین TMT" data-zh="供应 TMT">Supply TMT</span><span>5% APY</span></div>
+                <div class="stat"><span data-en="Borrow USDC (collateral TMT)" data-ru="Занять USDC (залог TMT)" data-tk="USDC karz al (TMT girew)" data-ar="اقتراض USDC (ضمان TMT)" data-fa="قرض USDC (وثیقه TMT)" data-zh="借入 USDC（抵押品 TMT）">Borrow USDC (collateral TMT)</span><span>8% APY</span></div>
+                <div class="stat"><span data-en="Borrow SOL (collateral TMT)" data-ru="Занять SOL (залог TMT)" data-tk="SOL karz al (TMT girew)" data-ar="اقتراض SOL (ضمان TMT)" data-fa="قرض SOL (وثیقه TMT)" data-zh="借入 SOL（抵押品 TMT）">Borrow SOL (collateral TMT)</span><span>7.5% APY</span></div>
+                <div class="stat"><span data-en="Collateral Ratio" data-ru="Коэффициент залога" data-tk="Girew derejesi" data-ar="نسبة الضمان" data-fa="نسبت وثیقه" data-zh="抵押品比率">Collateral Ratio</span><span>150%</span></div>
+                <div class="stat"><span data-en="Liquidation Penalty" data-ru="Штраф ликвидации" data-tk="Likwidasiýa jezasy" data-ar="غرامة التصفية" data-fa="جریمه تصفیه" data-zh="清算罚金">Liquidation Penalty</span><span>5%</span></div>
+                <a href="#" class="btn" data-en="🏦 Supply TMT" data-ru="🏦 Предложить TMT" data-tk="🏦 TMT bermek" data-ar="🏦 تقديم TMT" data-fa="🏦 تأمین TMT" data-zh="🏦 供应 TMT">🏦 Supply TMT</a>
+                <a href="#" class="btn-outline btn" data-en="📉 Borrow" data-ru="📉 Занять" data-tk="📉 Karz al" data-ar="📉 اقتراض" data-fa="📉 قرض" data-zh="📉 借入">📉 Borrow</a>
+            </div>
 
-        <div class="footer">© 2025 TMT DeFi Hub — Powered by Solana Token-2022</div>
+            <div class="card">
+                <h2>📈 <span data-en="Leveraged Yield" data-ru="Кредитное плечо" data-tk="Kredit pleçosy" data-ar="العائد بالرافعة المالية" data-fa="بازده اهرمی" data-zh="杠杆收益">Leveraged Yield</span></h2>
+                <div class="apy-badge" data-en="APY: up to 60%" data-ru="APY: до 60%" data-tk="APY: 60% çenli" data-ar="APY: يصل إلى 60%" data-fa="APY: تا ۶۰٪" data-zh="年化收益率：最高 60%">APY: up to 60%</div>
+                <div class="stat"><span data-en="TMT/USDC 2x Leverage" data-ru="TMT/USDC 2x плечо" data-tk="TMT/USDC 2x pleço" data-ar="رافعة مالية 2x لـ TMT/USDC" data-fa="اهرم ۲x TMT/USDC" data-zh="TMT/USDC 2 倍杠杆">TMT/USDC 2x Leverage</span><span>35% APY</span></div>
+                <div class="stat"><span data-en="TMT/SOL 3x Leverage" data-ru="TMT/SOL 3x плечо" data-tk="TMT/SOL 3x pleço" data-ar="رافعة مالية 3x لـ TMT/SOL" data-fa="اهرم ۳x TMT/SOL" data-zh="TMT/SOL 3 倍杠杆">TMT/SOL 3x Leverage</span><span>52% APY</span></div>
+                <div class="stat"><span data-en="TMT/USDT 5x Leverage" data-ru="TMT/USDT 5x плечо" data-tk="TMT/USDT 5x pleço" data-ar="رافعة مالية 5x لـ TMT/USDT" data-fa="اهرم ۵x TMT/USDT" data-zh="TMT/USDT 5 倍杠杆">TMT/USDT 5x Leverage</span><span>60% APY</span></div>
+                <div class="stat"><span data-en="Liquidation Threshold" data-ru="Порог ликвидации" data-tk="Likwidasiýa çegi" data-ar="حد التصفية" data-fa="آستانه تصفیه" data-zh="清算阈值">Liquidation Threshold</span><span>85%</span></div>
+                <a href="#" class="btn" data-en="⚡ Open Position" data-ru="⚡ Открыть позицию" data-tk="⚡ Pozisiýa aç" data-ar="⚡ فتح مركز" data-fa="⚡ باز کردن موقعیت" data-zh="⚡ 开仓">⚡ Open Position</a>
+            </div>
+        </div>
+
+        <!-- ==================== DASHBOARD ==================== -->
+        <div class="card">
+            <h2>📊 <span data-en="DeFi Dashboard" data-ru="DeFi Дашборд" data-tk="DeFi tablisa" data-ar="لوحة معلومات DeFi" data-fa="داشبورد دیفای" data-zh="DeFi 仪表板">DeFi Dashboard</span></h2>
+            <div class="stat"><span data-en="Total Value Locked (TVL)" data-ru="Общая заблокированная стоимость (TVL)" data-tk="Jemi blokirlenen baha (TVL)" data-ar="إجمالي القيمة المقفلة (TVL)" data-fa="ارزش کل قفل شده (TVL)" data-zh="总锁定价值（TVL）">Total Value Locked (TVL)</span><span>$487.3M</span></div>
+            <div class="stat"><span data-en="Daily Active Users" data-ru="Активных пользователей в день" data-tk="Günde işjeýn ulanyjylar" data-ar="المستخدمين النشطين يوميًا" data-fa="کاربران فعال روزانه" data-zh="日活跃用户">Daily Active Users</span><span>1,247</span></div>
+            <div class="stat"><span data-en="Total Staked TMT" data-ru="Всего застейкано TMT" data-tk="Jemi staking edilen TMT" data-ar="إجمالي TMT المجمّد" data-fa="کل TMT استیک شده" data-zh="TMT 总质押量">Total Staked TMT</span><span>12.5B TMT</span></div>
+            <div class="stat"><span data-en="Total Borrowed" data-ru="Всего занято" data-tk="Jemi karz alnan" data-ar="إجمالي المقترض" data-fa="کل قرض گرفته شده" data-zh="总借款额">Total Borrowed</span><span>$89.2M</span></div>
+            <div class="stat"><span data-en="Protocol Fees (24h)" data-ru="Комиссии протокола (24ч)" data-tk="Protokol komissiýalary (24s)" data-ar="رسوم البروتوكول (24 ساعة)" data-fa="کارمزد پروتکل (۲۴ ساعت)" data-zh="协议费用（24小时）">Protocol Fees (24h)</span><span>$12,450</span></div>
+        </div>
+
+        <!-- ==================== HOW TO START ==================== -->
+        <div class="card">
+            <h2>🚀 <span data-en="How to start earning with TMT?" data-ru="Как начать зарабатывать с TMT?" data-tk="TMT bilen nädip girdeji gazanyp başlamaly?" data-ar="كيف تبدأ في الربح مع TMT؟" data-fa="چگونه با TMT شروع به کسب درآمد کنیم؟" data-zh="如何开始使用 TMT 赚钱？">How to start earning with TMT?</span></h2>
+            <div class="stat"><span>1️⃣</span><span data-en="Get TMT token (via how-to-buy.html or bridge.html)" data-ru="Получить TMT токен (через how-to-buy.html или bridge.html)" data-tk="TMT tokenyny alyň (how-to-buy.html ýa-da bridge.html arkaly)" data-ar="احصل على رمز TMT (عبر how-to-buy.html أو bridge.html)" data-fa="توکن TMT را دریافت کنید (از طریق how-to-buy.html یا bridge.html)" data-zh="获取 TMT 代币（通过 how-to-buy.html 或 bridge.html）">Get TMT token (via how-to-buy.html or bridge.html)</span></div>
+            <div class="stat"><span>2️⃣</span><span data-en="Connect your Phantom wallet to DeFi Hub" data-ru="Подключите ваш Phantom кошелёк к DeFi Hub" data-tk="Phantom jübiňizi DeFi Hub-a birikdiriň" data-ar="قم بتوصيل محفظة Phantom الخاصة بك بـ DeFi Hub" data-fa="کیف پول Phantom خود را به DeFi Hub متصل کنید" data-zh="将您的 Phantom 钱包连接到 DeFi Hub">Connect your Phantom wallet to DeFi Hub</span></div>
+            <div class="stat"><span>3️⃣</span><span data-en="Choose a product (Staking / Farming / Lending)" data-ru="Выберите продукт (Стейкинг / Фарминг / Кредитование)" data-tk="Önüm saýlaň (Staking / Farming / Kredit)" data-ar="اختر منتجًا (تجميد / زراعة / إقراض)" data-fa="محصول را انتخاب کنید (استیکینگ / فارمینگ / وام)" data-zh="选择产品（质押/挖矿/借贷）">Choose a product (Staking / Farming / Lending)</span></div>
+            <div class="stat"><span>4️⃣</span><span data-en="Deposit TMT and start earning daily rewards" data-ru="Внесите TMT и начните получать ежедневные награды" data-tk="TMT goýuň we gündelik baýraklary alyp başlaň" data-ar="قم بإيداع TMT وابدأ في كسب المكافآت اليومية" data-fa="TMT را واریز کنید و شروع به کسب جوایز روزانه کنید" data-zh="存入 TMT 并开始赚取每日奖励">Deposit TMT and start earning daily rewards</span></div>
+        </div>
+
+        <div class="footer">
+            © 2025 TMT DeFi Hub — Powered by Solana Token-2022<br>
+            <span data-en="Contract:" data-ru="Контракт:" data-tk="Şertnama:" data-ar="العقد:" data-fa="قرارداد:" data-zh="合约：">Contract:</span> Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+        </div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Set HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Handle RTL for Arabic and Farsi
+            if (lang === 'ar' || lang === 'fa') {
+                document.body.style.direction = 'rtl';
+                document.querySelector('.container').style.direction = 'rtl';
+            } else {
+                document.body.style.direction = 'ltr';
+                document.querySelector('.container').style.direction = 'ltr';
+            }
+        }
+
+        // Add click handlers to language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+        
+        // Set English as default
+        setLanguage('en');
+    </script>
 </body>
 </html>
