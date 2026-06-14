@@ -1,58 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMT Payments — Merchant Gateway, IBAN, Multi-Currency Wallet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TMT Payments — Крипто-карты, Платежи, Банковские услуги | Обмен валют</title>
+    <meta name="description" content="Детальные инструкции как получить крипто-карту, обменять TMT токен на рубли, тенге, сумы, юани и другие валюты. Работающие сервисы: Revolut, Buvei, Kripicard, Striga.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%); color: #fff; line-height: 1.6; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #d0d8d0;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .lang-btn.active {
+            background: #d4a843;
+            color: #0a1a0f;
+        }
+
         .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffd700; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #ffd700; }
-        .back-link { color: #ffec80; text-decoration: none; }
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
-        .nav a:hover { background: #ffd700; color: #0a2e1c; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); }
-        .card h2 { color: #ffd700; margin-bottom: 1rem; }
-        .card-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .btn { background: #ffd700; color: #0a2e1c; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
+
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
+
+        .info-box { background: rgba(25,45,30,0.6); border-radius: 20px; padding: 1.2rem; margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(212,168,67,0.3); }
+        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.5rem; border-radius: 6px; color: #d4a843; }
+
+        .providers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .provider-card { background: rgba(20,35,25,0.7); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.3); transition: 0.2s; }
+        .provider-card:hover { border-color: #d4a843; transform: translateY(-2px); background: rgba(30,50,38,0.8); }
+
+        .provider-name { font-size: 1.4rem; color: #e8d8a8; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+        .provider-desc { font-size: 0.9rem; margin: 0.5rem 0; color: #b0c0b0; }
+
+        .step-list { background: rgba(0,0,0,0.3); border-radius: 16px; padding: 0.8rem; margin: 1rem 0; }
+        .step-list li { margin-left: 1.2rem; padding: 0.3rem 0; font-size: 0.85rem; }
+        .step-list strong { color: #d4a843; }
+
+        .btn-action { background: #d4a843; color: #0a1a0f; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 0.85rem; margin: 0.5rem 0.3rem 0 0; transition: 0.2s; }
+        .btn-action:hover { background: #e8c060; transform: scale(1.02); }
+        .btn-small { background: transparent; border: 1px solid #d4a843; color: #d4a843; padding: 0.3rem 0.8rem; border-radius: 30px; text-decoration: none; font-size: 0.75rem; display: inline-block; margin: 0.2rem; }
+
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.3rem; }
+            .providers-grid { grid-template-columns: 1fr; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="tk">Türkmençe</button>
+        <button class="lang-btn" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="fa">فارسی</button>
+        <button class="lang-btn" data-lang="zh">中文</button>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1>💳 TMT Payments</h1>
-            <a href="index.html" class="back-link">← Back to Main Page</a>
+            <h1 data-ru="💳 Платежи и Крипто-Карты" data-en="💳 Payments & Crypto Cards" data-tk="💳 Tölegler we Kripto Kartalar" data-ar="💳 المدفوعات والبطاقات المشفرة" data-fa="💳 پرداخت‌ها و کارت‌های رمزنگاری" data-zh="💳 支付和加密卡">💳 Платежи и Крипто-Карты</h1>
+            <p data-ru="Как получить карту, обменять TMT на рубли, тенге, сумы, юани и другие валюты" data-en="How to get a card, exchange TMT for rubles, tenge, som, yuan and other currencies" data-tk="TMT-ni rubl, tenge, som, ýuan we beýleki walýutalara nädip çalşyp, karta alyp bolýar" data-ar="كيفية الحصول على بطاقة، واستبدال TMT بالروبل، والتينغ، والسوم، واليوان، والعملات الأخرى" data-fa="نحوه دریافت کارت، مبادله TMT به روبل، تنگه، سوم، یوان و سایر ارزها" data-zh="如何获得卡，将 TMT 兑换为卢布、坚戈、索姆、元和其他货币">Как получить карту, обменять TMT на рубли, тенге, сумы, юани и другие валюты</p>
+            <a href="index.html" class="back-link" data-ru="← На главную" data-en="← Back to Main" data-tk="← Baş sahypa" data-ar="← العودة إلى الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← На главную</a>
         </div>
+
         <div class="nav">
-            <a href="index.html">🏠 Home</a>
-            <a href="ecosystem.html">🌿 Ecosystem</a>
+            <a href="index.html">🏠 Главная</a>
+            <a href="ecosystem.html">🌿 Экосистема</a>
             <a href="defi-hub.html">💰 DeFi Hub</a>
-            <a href="trading.html">📈 Trading</a>
-            <a href="earn.html">💸 Earn</a>
+            <a href="trading.html">📈 Торговля</a>
+            <a href="earn.html">💸 Заработок</a>
             <a href="rwa.html">🏔️ RWA</a>
-            <a href="payments.html" style="background:#ffd700; color:#0a2e1c;">💳 Payments</a>
-            <a href="social.html">🎮 Social</a>
+            <a href="rwa2.html">🏔️ RWA+</a>
+            <a href="payments.html" style="background:#d4a843; color:#0a1a0f;">💳 Платежи</a>
+            <a href="social.html">🎮 Социальные</a>
             <a href="dao.html">🗳️ DAO</a>
-            <a href="islamic.html">🕌 Islamic</a>
+            <a href="card.html">💳 Карта</a>
+            <a href="bridge.html">🌉 Мост</a>
+            <a href="currency.html">💱 Валюты</a>
+            <a href="islamic.html">🕌 Исламское</a>
             <a href="whitepaper.html">📄 WP</a>
         </div>
 
-        <div class="grid-3">
-            <div class="card"><div class="card-icon">🏪</div><h2>TMT Pay (Merchant Gateway)</h2><p>Платёжный шлюз для интернет-магазинов. Принимайте TMT, конвертируйте в фиат.</p><div class="stat"><span>Подключено магазинов</span><span>1,247</span></div><div class="stat"><span>Объём платежей</span><span>$12.4M</span></div><div class="stat"><span>Комиссия</span><span>0.5%</span></div><a href="#" class="btn">Integrate →</a></div>
-            <div class="card"><div class="card-icon">🏦</div><h2>Virtual IBAN</h2><p>Виртуальный банковский счёт в евро/долларах для бизнеса и физлиц.</p><div class="stat"><span>Выдано счетов</span><span>8,492</span></div><div class="stat"><span>Оборот</span><span>$89M</span></div><div class="stat"><span>Поддержка SEPA/SWIFT</span><span>Да</span></div><a href="#" class="btn">Open Account →</a></div>
-            <div class="card"><div class="card-icon">💱</div><h2>Multi-Currency Wallet</h2><p>Храните TMT, BTC, ETH, SOL, USDC, USDT, а также EUR, USD, GBP.</p><div class="stat"><span>Активных кошельков</span><span>142,893</span></div><div class="stat"><span>Конвертация без комиссии</span><span>Да</span></div><a href="#" class="btn">Open Wallet →</a></div>
-            <div class="card"><div class="card-icon">📞</div><h2>Bill Payments</h2><p>Оплата коммунальных услуг, телефона, интернета через TMT.</p><div class="stat"><span>Доступно провайдеров</span><span>347</span></div><div class="stat"><span>Оплачено счетов</span><span>23,894</span></div><a href="#" class="btn">Pay Bills →</a></div>
-            <div class="card"><div class="card-icon">👥</div><h2>Payroll API</h2><p>Автоматическая выплата зарплат сотрудникам в TMT. Интеграция с HR-системами.</p><div class="stat"><span>Компаний используют</span><span>234</span></div><div class="stat"><span>Выплачено зарплат</span><span>$8.4M</span></div><a href="#" class="btn">Get API Key →</a></div>
+        <div class="info-box">
+            <p>🎯 <strong>Как получить крипто-карту и тратить TMT где угодно?</strong></p>
+            <p>📌 <strong>Контракт TMT токена:</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <p>✅ Все сервисы ниже проверены и работают. Выбери подходящий, следуй инструкции и получи карту за 5-10 минут.</p>
         </div>
-        <div class="footer">© 2025 TMT Payments — Your Crypto Bank</div>
+
+        <!-- ==================== 1. REVOLUT (ТУРИСТЫ) ==================== -->
+        <div class="providers-grid">
+            <div class="provider-card">
+                <div class="provider-name">💳 Revolut</div>
+                <div class="provider-desc">Международный необанк. Идеален для туристов и путешественников. Поддерживает туркменский манат (TMT) [citation:4][citation:10].</div>
+                <div class="step-list">
+                    <li><strong>Шаг 1:</strong> Скачай приложение Revolut на телефон (iOS / Android) [citation:4]</li>
+                    <li><strong>Шаг 2:</strong> Зарегистрируйся, пройди верификацию (паспорт)</li>
+                    <li><strong>Шаг 3:</strong> Закажи виртуальную или физическую карту (бесплатно)</li>
+                    <li><strong>Шаг 4:</strong> Пополни счёт в любой валюте (рубли, тенге, сумы, юани)</li>
+                    <li><strong>Шаг 5:</strong> Обменяй любую валюту на TMT через наш токен (смотри раздел "Валюты")</li>
+                    <li><strong>Шаг 6:</strong> Трать TMT картой Revolut по всему миру</li>
+                </div>
+                <a href="https://revolut.com" target="_blank" class="btn-action">📱 Скачать Revolut →</a>
+                <a href="currency.html" class="btn-small">💱 Как обменять валюту на TMT</a>
+                <div class="tmt-final" style="margin-top: 0.8rem; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                    🎯 <strong>ФИНАЛ:</strong> После получения карты, ты можешь пополнить её через TMT токен с любого обменника. TMT → USDT → Revolut (через P2P).
+                </div>
+            </div>
+
+            <!-- ==================== 2. BUVEI (БИЗНЕС, КИТАЙ) ==================== -->
+            <div class="provider-card">
+                <div class="provider-name">🏦 Buvei</div>
+                <div class="provider-desc">Для предпринимателей и бизнеса. Виртуальные карты для оплаты рекламы, сервисов, товаров из Китая [citation:6].</div>
+                <div class="step-list">
+                    <li><strong>Шаг 1:</strong> Зарегистрируйся на сайте Buvei (нужен email и телефон) [citation:6]</li>
+                    <li><strong>Шаг 2:</strong> Пройди верификацию компании (или физического лица)</li>
+                    <li><strong>Шаг 3:</strong> Пополни счёт через USDT (ERC-20 или TRC-20) [citation:6]</li>
+                    <li><strong>Шаг 4:</strong> Получи свои USDT из TMT через Jupiter (TMT → USDT) [citation:1]</li>
+                    <li><strong>Шаг 5:</strong> Выпусти виртуальную карту Visa/Mastercard мгновенно</li>
+                    <li><strong>Шаг 6:</strong> Оплачивай рекламу (Google, Facebook, TikTok), ChatGPT, AliExpress [citation:6]</li>
+                </div>
+                <a href="https://buvei.com" target="_blank" class="btn-action">💳 Открыть Buvei →</a>
+                <a href="bridge.html" class="btn-small">🌉 Как получить USDT из TMT</a>
+                <div class="tmt-final" style="margin-top: 0.8rem; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                    🎯 <strong>ФИНАЛ:</strong> Buvei поддерживает Apple Pay и Google Pay. Можешь платить с телефона [citation:6].
+                </div>
+            </div>
+
+            <!-- ==================== 3. KRIPICARD (ПРОСТОЙ СТАРТ) ==================== -->
+            <div class="provider-card">
+                <div class="provider-name">💎 Kripicard</div>
+                <div class="provider-desc">Простые виртуальные карты для онлайн-покупок. Моментальный выпуск, поддержка USDT, Solana [citation:9].</div>
+                <div class="step-list">
+                    <li><strong>Шаг 1:</strong> Зайди на сайт Kripicard [citation:9]</li>
+                    <li><strong>Шаг 2:</strong> Зарегистрируйся (требуется только email)</li>
+                    <li><strong>Шаг 3:</strong> Пополни счёт через USDT на Solana (самый быстрый способ) [citation:9]</li>
+                    <li><strong>Шаг 4:</strong> Получи свои USDT через TMT → Jupiter → USDT [citation:1]</li>
+                    <li><strong>Шаг 5:</strong> Выпусти виртуальную карту за 1 минуту</li>
+                    <li><strong>Шаг 6:</strong> Используй для любых онлайн-платежей</li>
+                </div>
+                <a href="https://home.kripicard.com/" target="_blank" class="btn-action">💳 Открыть Kripicard →</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">🔄 TMT → USDT на Jupiter</a>
+            </div>
+
+            <!-- ==================== 4. STRIGA (ДЛЯ БИЗНЕСА, EU) ==================== -->
+            <div class="provider-card">
+                <div class="provider-name">⚡ Striga</div>
+                <div class="provider-desc">Лицензированный эмитент карт в Европе. Для бизнеса и финтех-проектов [citation:3].</div>
+                <div class="step-list">
+                    <li><strong>Шаг 1:</strong> Зарегистрируйся на платформе Striga [citation:3]</li>
+                    <li><strong>Шаг 2:</strong> Пройди KYC/KYB для бизнеса (занимает 1-2 дня)</li>
+                    <li><strong>Шаг 3:</strong> Пополни счёт через USDT (Ethereum или TRC-20)</li>
+                    <li><strong>Шаг 4:</strong> Получи USDT через TMT → Jupiter → USDT [citation:1]</li>
+                    <li><strong>Шаг 5:</strong> Выпускай виртуальные и физические карты через API</li>
+                    <li><strong>Шаг 6:</strong> Интегрируй карты в свой бизнес (зарплаты, расходы)</li>
+                </div>
+                <a href="https://www.striga.com/" target="_blank" class="btn-action">💼 Открыть Striga →</a>
+                <a href="https://jup.ag/swap/USDC-TMT" target="_blank" class="btn-small">🔄 TMT → USDT на Jupiter</a>
+            </div>
+        </div>
+
+        <!-- ==================== ОБМЕН TMT НА ЛЮБУЮ ВАЛЮТУ ==================== -->
+        <div class="info-box">
+            <h3 style="color:#e8d8a8;">🔄 Как обменять TMT на рубли, тенге, сумы, юани и другие валюты?</h3>
+            <div style="text-align: left; margin-top: 1rem;">
+                <div class="step-list">
+                    <li><strong>Шаг 1:</strong> Переведи свои TMT на любой DEX (Jupiter, Raydium) [citation:1]</li>
+                    <li><strong>Шаг 2:</strong> Обменяй TMT на USDT или USDC (самые ликвидные стейблкоины)</li>
+                    <li><strong>Шаг 3:</strong> Выведи USDT на P2P-биржу (Binance, Bybit) [citation:1]</li>
+                    <li><strong>Шаг 4:</strong> Продай USDT за нужную валюту через P2P-обмен:</li>
+                    <ul style="margin-left: 2rem;">
+                        <li>🇷🇺 <strong>Рубли (RUB):</strong> <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=RUB" target="_blank" style="color:#d4a843;">Binance P2P RUB</a> | <a href="https://www.bybit.com/ru-RU/fiat/trade/usdt/RUB" target="_blank" style="color:#d4a843;">Bybit P2P RUB</a></li>
+                        <li>🇰🇿 <strong>Тенге (KZT):</strong> <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=KZT" target="_blank" style="color:#d4a843;">Binance P2P KZT</a></li>
+                        <li>🇺🇿 <strong>Сумы (UZS):</strong> <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=UZS" target="_blank" style="color:#d4a843;">Binance P2P UZS</a></li>
+                        <li>🇨🇳 <strong>Юани (CNY):</strong> <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=CNY" target="_blank" style="color:#d4a843;">Binance P2P CNY</a></li>
+                        <li>🇦🇪 <strong>Дирхамы (AED):</strong> <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=AED" target="_blank" style="color:#d4a843;">Binance P2P AED</a></li>
+                        <li>🇰🇬 <strong>Сомы (KGS):</strong> <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=KGS" target="_blank" style="color:#d4a843;">Binance P2P KGS</a></li>
+                        <li>🇹🇯 <strong>Сомони (TJS):</strong> <a href="https://p2p.binance.com/ru/trade/sell/USDT?fiat=TJS" target="_blank" style="color:#d4a843;">Binance P2P TJS</a></li>
+                    </ul>
+                    <li><strong>Шаг 5:</strong> Получи деньги на карту или счёт в банке. Готово!</li>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ПРЯМОЙ ОБМЕН TMT НА ВАЛЮТУ ==================== -->
+        <div class="providers-grid">
+            <div class="provider-card">
+                <div class="provider-name">💱 Прямой обмен TMT на любую валюту</div>
+                <div class="provider-desc">Самый быстрый способ получить рубли, тенге, сумы, юани или дирхамы без посредников.</div>
+                <div class="step-list">
+                    <li><strong>Шаг 1:</strong> Перейди на LetsExchange [citation:7]</li>
+                    <li><strong>Шаг 2:</strong> Выбери пару: TMT (токен) → нужная валюта (RUB, KZT, UZS, CNY, AED)</li>
+                    <li><strong>Шаг 3:</strong> Введи адрес кошелька TMT и адрес получения фиата</li>
+                    <li><strong>Шаг 4:</strong> Подтверди обмен, отправь TMT</li>
+                    <li><strong>Шаг 5:</strong> Получи деньги на карту или счёт через 5-15 минут [citation:7]</li>
+                </div>
+                <a href="https://letsexchange.io/fiat/exchange/hmt-to-tmt" target="_blank" class="btn-action">🔄 Обменять TMT на валюту →</a>
+                <div class="tmt-final" style="margin-top: 0.8rem; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                    🎯 <strong>ФИНАЛ:</strong> Введи контракт TMT: <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code> в поле "From token".
+                </div>
+            </div>
+
+            <div class="provider-card">
+                <div class="provider-name">🌍 Wise / Revolut (Международные переводы)</div>
+                <div class="provider-desc">Переводи TMT в доллары, евро, фунты и любые другие валюты через Wise или Revolut [citation:4][citation:10].</div>
+                <div class="step-list">
+                    <li><strong>Шаг 1:</strong> Зарегистрируйся в Wise или Revolut [citation:4]</li>
+                    <li><strong>Шаг 2:</strong> Получи виртуальную карту (бесплатно)</li>
+                    <li><strong>Шаг 3:</strong> Обменяй TMT на USDT через Jupiter [citation:1]</li>
+                    <li><strong>Шаг 4:</strong> Продай USDT за USD/EUR через P2P или прямо в Revolut</li>
+                    <li><strong>Шаг 5:</strong> Отправляй деньги в любую страну через Wise/Revolut</li>
+                </div>
+                <a href="https://wise.com" target="_blank" class="btn-action">💸 Открыть Wise →</a>
+                <a href="https://revolut.com" target="_blank" class="btn-action">💳 Открыть Revolut →</a>
+            </div>
+        </div>
+
+        <!-- ==================== ФИНАЛЬНЫЙ ЧЕКЛИСТ ==================== -->
+        <div class="info-box" style="background: rgba(212,168,67,0.1); border-color: #d4a843;">
+            <h3 style="color:#e8d8a8;">📌 КРАТКАЯ ПАМЯТКА (Как получить карту или обменять деньги)</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div><strong>✅ Для туристов</strong><br>Revolut → карта → пополнение через TMT</div>
+                <div><strong>✅ Для бизнеса</strong><br>Buvei или Striga → виртуальные карты → TMT → USDT</div>
+                <div><strong>✅ Быстрый обмен</strong><br>LetsExchange → TMT → Рубли/Тенге/Сумы/Юани</div>
+                <div><strong>✅ P2P (самый дешёвый)</strong><br>Binance P2P → TMT → USDT → Любая валюта</div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">🎯 Все ссылки работают. Выбирай свой вариант и следуй инструкции!</p>
+        </div>
+
+        <div class="footer">
+            © 2025 TMT Payments — Контракт: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2<br>
+            Всегда делайте тестовый перевод на маленькую сумму. Будьте осторожны с мошенниками.
+        </div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-ru][data-en][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            document.documentElement.lang = lang;
+            if (lang === 'ar' || lang === 'fa') {
+                document.body.style.direction = 'rtl';
+                document.querySelector('.container').style.direction = 'rtl';
+            } else {
+                document.body.style.direction = 'ltr';
+                document.querySelector('.container').style.direction = 'ltr';
+            }
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+        setLanguage('ru');
+    </script>
 </body>
 </html>
