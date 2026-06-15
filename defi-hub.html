@@ -3,154 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>TMT DeFi Hub — Stake TMT & Earn Passive Income</title>
-    <meta name="description" content="Stake TMT tokens and earn guaranteed APY from 0.5% to 16% depending on your stake. Simple, transparent, and automated.">
+    <title>TMT Staking & DeFi Hub</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
             color: #d0d8d0;
             line-height: 1.6;
             min-height: 100vh;
         }
 
-        .lang-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(10px);
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            z-index: 100;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            border: 1px solid rgba(212,168,67,0.3);
-        }
-        .lang-btn {
-            background: transparent;
-            border: none;
-            color: #d0d8d0;
-            cursor: pointer;
-            padding: 0.3rem 0.8rem;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: all 0.2s;
-            font-size: 0.85rem;
-        }
-        .lang-btn.active {
-            background: #d4a843;
-            color: #0a1a0f;
-        }
-
-        .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
         .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
         h1 { font-size: 1.8rem; color: #e8d8a8; }
         .back-link { color: #d4a843; text-decoration: none; }
 
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
-        .nav a:hover { background: #d4a843; color: #0a1a0f; }
-
-        .info-box { background: rgba(25,45,30,0.6); border-radius: 20px; padding: 1.2rem; margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(212,168,67,0.3); }
-        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.5rem; border-radius: 6px; color: #d4a843; }
-
-        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(212,168,67,0.25); }
         .card h2 { color: #e8d8a8; margin-bottom: 1rem; font-size: 1.3rem; border-left: 3px solid #d4a843; padding-left: 0.8rem; }
 
         .apy-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
         .apy-table th, .apy-table td { padding: 0.8rem; text-align: left; border-bottom: 1px solid rgba(212,168,67,0.2); }
         .apy-table th { color: #e8d8a8; }
-        .apy-table tr:hover { background: rgba(212,168,67,0.1); }
 
-        .btn { background: #d4a843; color: #0a1a0f; padding: 0.7rem 1.5rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 1rem; transition: 0.2s; }
+        .staking-preview {
+            background: linear-gradient(135deg, rgba(212,168,67,0.1), rgba(0,0,0,0.3));
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            text-align: center;
+            border: 1px dashed #d4a843;
+        }
+
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.7rem 1.5rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; transition: 0.2s; border: none; cursor: pointer; }
         .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .btn-secondary { background: transparent; border: 1px solid #d4a843; color: #d4a843; }
 
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; margin: 1rem 0; }
-        .video-container iframe, .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 20px; }
+        .stat { display: flex; justify-content: space-between; margin: 0.8rem 0; padding: 0.5rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
 
         .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
 
         @media (max-width: 768px) {
             h1 { font-size: 1.3rem; }
             .apy-table th, .apy-table td { padding: 0.5rem; font-size: 0.8rem; }
-            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
-            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
-    <div class="lang-switch">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="ru">RU</button>
-        <button class="lang-btn" data-lang="tk">Tk</button>
-        <button class="lang-btn" data-lang="ar">AR</button>
-        <button class="lang-btn" data-lang="fa">FA</button>
-        <button class="lang-btn" data-lang="zh">ZH</button>
-    </div>
-
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1 data-en="💰 TMT Staking & DeFi Hub" data-ru="💰 TMT Стейкинг и DeFi Hub" data-tk="💰 TMT Staking we DeFi merkezi" data-ar="💰 مركز تجميد TMT والتمويل اللامركزي" data-fa="💰 مرکز استیکینگ و دیفای TMT" data-zh="💰 TMT 质押和 DeFi 中心">💰 TMT Staking & DeFi Hub</h1>
-            <p data-en="Earn guaranteed passive income by staking TMT tokens" data-ru="Зарабатывайте гарантированный пассивный доход, стейкая TMT токены" data-tk="TMT tokenlaryny staking edip, kepillendirilen passiw girdeji alyň" data-ar="اربح دخلاً سلبياً مضموناً عن طريق تجميد رموز TMT" data-fa="با استیکینگ توکن‌های TMT درآمد غیرفعال تضمینی کسب کنید" data-zh="通过质押 TMT 代币赚取有保证的被动收入">Earn guaranteed passive income by staking TMT tokens</p>
-            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
-        </div>
-
-        <div class="nav">
-            <a href="index.html">🏠 Home</a>
-            <a href="ecosystem.html">🌿 Ecosystem</a>
-            <a href="defi-hub.html" style="background:#d4a843; color:#0a1a0f;">💰 DeFi Hub</a>
-            <a href="trading.html">📈 Trading</a>
-            <a href="earn.html">💸 Earn</a>
-            <a href="rwa.html">🏔️ RWA</a>
-            <a href="payments.html">💳 Payments</a>
-            <a href="social.html">🎮 Social</a>
-            <a href="dao.html">🗳️ DAO</a>
-            <a href="card.html">💳 Card</a>
-            <a href="bridge.html">🌉 Bridge</a>
-            <a href="currency.html">💱 Currency</a>
-            <a href="islamic.html">🕌 Islamic</a>
-            <a href="whitepaper.html">📄 WP</a>
+            <h1>💰 TMT Staking & DeFi Hub</h1>
+            <p>Earn passive income by staking TMT tokens</p>
+            <a href="index.html" class="back-link">← Back to Main Page</a>
         </div>
 
         <!-- Контракт и информация -->
-        <div class="info-box">
-            <p>🎯 <strong data-en="TMT Token Contract (Solana):" data-ru="Контракт TMT токена (Solana):" data-tk="TMT Token şertnamasy (Solana):" data-ar="عقد رمز TMT (Solana):" data-fa="قرارداد توکن TMT (Solana):" data-zh="TMT 代币合约（Solana）：">TMT Token Contract (Solana):</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
-            <p>✅ <span data-en="Staking rewards are paid automatically every 30 days directly to your wallet" data-ru="Награды за стейкинг выплачиваются автоматически каждые 30 дней прямо на ваш кошелёк" data-tk="Staking baýraklary her 30 günde awtomatiki usulda göni jübiňize tölenýär" data-ar="تتم مكافآت التجميد تلقائيًا كل 30 يومًا مباشرة إلى محفظتك" data-fa="پاداش‌های استیکینگ هر ۳۰ روز به طور خودکار مستقیماً به کیف پول شما پرداخت می‌شود" data-zh="质押奖励每 30 天自动直接支付到您的钱包">Staking rewards are paid automatically every 30 days directly to your wallet</span></p>
+        <div class="card">
+            <p>🎯 <strong>TMT Token Contract (Solana):</strong> <code style="background:#0a1a0f; padding:0.2rem 0.5rem; border-radius:6px; color:#d4a843;">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <p>✅ Staking rewards are paid automatically every 30 days directly to your wallet</p>
         </div>
 
-        <!-- ВИДЕО-ИНСТРУКЦИЯ - РАБОТАЕТ С GITHUB -->
+        <!-- Видео-инструкция -->
         <div class="card">
-            <h2 data-en="📺 How to Swap TMT — Video Tutorial" data-ru="📺 Как обменять TMT — видео-инструкция" data-tk="📺 TMT-ni nädip çalşmaly — Wideo görkezme" data-ar="📺 كيفية استبدال TMT — فيديو تعليمي" data-fa="📺 نحوه مبادله TMT — آموزش ویدئویی" data-zh="📺 如何兑换 TMT — 视频教程">📺 How to Swap TMT — Video Tutorial</h2>
-            <p data-en="Watch this short video to see how to swap TMT on Jupiter (jup.ag) — the best aggregator on Solana." data-ru="Посмотрите это короткое видео, чтобы увидеть, как обменять TMT на Jupiter (jup.ag) — лучшем агрегаторе на Solana." data-tk="Solana-daky iň gowy agregator Jupiter (jup.ag) -da TMT-ni nädip çalşmalydygyny görmek üçin bu gysga wideony görüň." data-ar="شاهد هذا الفيديو القصير لترى كيفية استبدال TMT على Jupiter (jup.ag) - أفضل مجمع في Solana." data-fa="این ویدیوی کوتاه را تماشا کنید تا نحوه مبادله TMT را در Jupiter (jup.ag) - بهترین تجمیع‌کننده در Solana - ببینید." data-zh="观看这个简短视频，了解如何在 Jupiter（jup.ag）上兑换 TMT——Solana 上最好的聚合器。">Watch this short video to see how to swap TMT on Jupiter (jup.ag) — the best aggregator on Solana.</p>
-            
-            <!-- ВИДЕО С GITHUB - РАБОТАЕТ -->
-            <div class="video-container">
-                <video width="100%" controls poster="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png">
+            <h2>📺 How to Swap TMT — Video Tutorial</h2>
+            <p>Watch this short video to see how to swap TMT on Jupiter (jup.ag) — the best aggregator on Solana.</p>
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; margin: 1rem 0;">
+                <video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" controls poster="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png">
                     <source src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/swap-demo.mp4" type="video/mp4">
-                    <p data-en="Your browser doesn't support HTML5 video." data-ru="Ваш браузер не поддерживает HTML5 видео." data-tk="Brauzeriňiz HTML5 wideosyny goldamaýar." data-ar="متصفحك لا يدعم فيديو HTML5." data-fa="مرورگر شما از ویدیوی HTML5 پشتیبانی نمی‌کند." data-zh="您的浏览器不支持 HTML5 视频。">Your browser doesn't support HTML5 video.</p>
                 </video>
             </div>
-            <p style="font-size: 0.85rem; text-align: center; margin-top: 0.5rem;">
-                📌 <span data-en="Video successfully uploaded to GitHub. Click play to watch the demo." data-ru="Видео успешно загружено на GitHub. Нажмите воспроизведение, чтобы посмотреть демо." data-tk="Wideo GitHub-a üstünlikli ýüklendi. Demony görmek üçin oýnat düwmesine basyň." data-ar="تم تحميل الفيديو بنجاح إلى GitHub. انقر فوق تشغيل لمشاهدة العرض التوضيحي." data-fa="ویدیو با موفقیت در GitHub آپلود شد. برای تماشای دمو، پخش را کلیک کنید." data-zh="视频已成功上传到 GitHub。点击播放观看演示。">Video successfully uploaded to GitHub. Click play to watch the demo.</span>
-            </p>
         </div>
 
         <!-- Таблица доходности -->
         <div class="card">
-            <h2 data-en="📊 TMT Staking APY (Annual Percentage Yield)" data-ru="📊 Доходность стейкинга TMT (APY)" data-tk="📊 TMT Staking APY (Ýyllyk göterim girdejisi)" data-ar="📊 عائد التجميد السنوي لـ TMT (APY)" data-fa="📊 بازده سالانه استیکینگ TMT (APY)" data-zh="📊 TMT 质押年化收益率（APY）">📊 TMT Staking APY (Annual Percentage Yield)</h2>
-            <p data-en="Higher stake = higher reward. Choose your tier and start earning today." data-ru="Чем больше сумма — тем выше доходность. Выберите свой уровень и начните зарабатывать сегодня." data-tk="Näçe köp pul bolsa, şonça-da köp girdeji. Öz derejäňizi saýlaň we şu günden girdeji gazanyp başlaň." data-ar="كلما زاد المبلغ، زاد العائد. اختر مستواك وابدأ في الربح اليوم." data-fa="هرچه مقدار بیشتر باشد، بازده بالاتر است. سطح خود را انتخاب کنید و امروز شروع به کسب درآمد کنید." data-zh="质押越多，收益越高。选择您的等级，今天就开始赚钱。">Higher stake = higher reward. Choose your tier and start earning today.</p>
+            <h2>📊 TMT Staking APY (Annual Percentage Yield)</h2>
+            <p>Higher stake = higher reward. Choose your tier and start earning today.</p>
             <table class="apy-table">
-                <thead>
-                    <tr><th data-en="Stake Amount (TMT)" data-ru="Сумма стейка (TMT)" data-tk="Staking mukdary (TMT)" data-ar="مبلغ التجميد (TMT)" data-fa="مقدار استیک (TMT)" data-zh="质押金额（TMT）">Stake Amount (TMT)</th><th data-en="Lock Period" data-ru="Период блокировки" data-tk="Blokirleme döwri" data-ar="فترة القفل" data-fa="دوره قفل" data-zh="锁定周期">Lock Period</th><th data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</th></tr>
-                </thead>
+                <thead><tr><th>Stake Amount (TMT)</th><th>Lock Period</th><th>APY</th></tr></thead>
                 <tbody>
                     <tr><td>1,000 TMT</td><td>30 days</td><td><strong>0.5%</strong></td></tr>
                     <tr><td>10,000 TMT</td><td>30 days</td><td><strong>1%</strong></td></tr>
@@ -165,72 +98,47 @@
                     <tr><td>100,000,000,000 TMT</td><td>365 days</td><td><strong>16%</strong></td></tr>
                 </tbody>
             </table>
-            <div class="info-box" style="margin-top: 1rem; background: rgba(212,168,67,0.1);">
-                <p>📅 <strong data-en="Monthly payout example:" data-ru="Пример ежемесячной выплаты:" data-tk="Aýlyk töleg mysaly:" data-ar="مثال الدفع الشهري:" data-fa="مثال پرداخت ماهانه:" data-zh="每月支付示例：">Monthly payout example:</strong> <span data-en="If you stake 100,000 TMT at 8% APY, you receive ~667 TMT every month." data-ru="Если вы стейкаете 100,000 TMT под 8% годовых, вы получаете ~667 TMT каждый месяц." data-tk="8% APY bilen 100,000 TMT staking etseňiz, her aýda ~667 TMT alarsyňyz." data-ar="إذا قمت بتجميد 100,000 TMT بنسبة 8% سنويًا، فستتلقى ~667 TMT كل شهر." data-fa="اگر ۱۰۰,۰۰۰ TMT را با ۸٪ APY استیک کنید، هر ماه ~۶۶۷ TMT دریافت می‌کنید." data-zh="如果您以 8% 的年化收益率质押 100,000 TMT，您每月将收到约 667 TMT。">If you stake 100,000 TMT at 8% APY, you receive ~667 TMT every month.</span></p>
+            <div style="margin-top: 1rem; background: rgba(212,168,67,0.1); padding: 0.8rem; border-radius: 16px; text-align: center;">
+                <p>📅 <strong>Monthly payout example:</strong> If you stake 100,000 TMT at 8% APY, you receive ~667 TMT every month.</p>
             </div>
         </div>
 
-        <!-- Как обменять или застейкать TMT -->
+        <!-- Стейкинг-виджет (ЗАГЛУШКА) -->
         <div class="card">
-            <h2 data-en="🚀 How to Swap or Stake TMT" data-ru="🚀 Как обменять или застейкать TMT" data-tk="🚀 TMT-ni nädip çalşmaly ýa-da staking etmeli" data-ar="🚀 كيفية استبدال أو تجميد TMT" data-fa="🚀 نحوه مبادله یا استیکینگ TMT" data-zh="🚀 如何兑换或质押 TMT">🚀 How to Swap or Stake TMT</h2>
-            <p data-en="Follow these simple steps to get TMT and start earning:" data-ru="Следуйте этим простым шагам, чтобы получить TMT и начать зарабатывать:" data-tk="TMT almak we girdeji gazanyp başlamak üçin bu ýönekeý ädimleri ýerine ýetiriň:" data-ar="اتبع هذه الخطوات البسيطة للحصول على TMT والبدء في الربح:" data-fa="این مراحل ساده را برای دریافت TMT و شروع کسب درآمد دنبال کنید:" data-zh="按照这些简单的步骤获取 TMT 并开始赚钱：">Follow these simple steps to get TMT and start earning:</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; margin: 1rem 0;">
-                <div style="flex: 1; min-width: 150px;"><strong>1️⃣</strong> <span data-en="Get TMT tokens" data-ru="Получите TMT токены" data-tk="TMT tokenlaryny alyň" data-ar="احصل على رموز TMT" data-fa="توکن‌های TMT را دریافت کنید" data-zh="获取 TMT 代币">Get TMT tokens</span><br><small data-en="via bridge or buy" data-ru="через мост или покупку" data-tk="most ýa-da satyn almak arkaly" data-ar="عبر الجسر أو الشراء" data-fa="از طریق پل یا خرید" data-zh="通过跨链桥或购买">via bridge or buy</small></div>
-                <div style="flex: 1; min-width: 150px;"><strong>2️⃣</strong> <span data-en="Connect Phantom wallet" data-ru="Подключите Phantom кошелёк" data-tk="Phantom jübiňizi birikdiriň" data-ar="قم بتوصيل محفظة Phantom" data-fa="کیف پول Phantom را وصل کنید" data-zh="连接 Phantom 钱包">Connect Phantom wallet</span></div>
-                <div style="flex: 1; min-width: 150px;"><strong>3️⃣</strong> <span data-en="Go to Jupiter (jup.ag)" data-ru="Перейдите на Jupiter (jup.ag)" data-tk="Jupiter (jup.ag) giriň" data-ar="انتقل إلى Jupiter (jup.ag)" data-fa="به Jupiter (jup.ag) بروید" data-zh="前往 Jupiter（jup.ag）">Go to Jupiter (jup.ag)</span></div>
-                <div style="flex: 1; min-width: 150px;"><strong>4️⃣</strong> <span data-en="Swap or stake to earn" data-ru="Обменяйте или стейкайте для заработка" data-tk="Girdeji gazanmak üçin çalşyň ýa-da staking ediň" data-ar="قم بالتبادل أو التجميد لكسب الربح" data-fa="برای کسب درآمد مبادله یا استیک کنید" data-zh="兑换或质押以赚取收益">Swap or stake to earn</span></div>
+            <h2>🔒 TMT Staking — Coming Soon</h2>
+            <p>We are finalizing the staking smart contract. In the meantime, you can:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
+                <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 16px; padding: 1rem; text-align: center;">
+                    <div style="font-size: 2rem;">1️⃣</div>
+                    <strong>Buy TMT</strong>
+                    <small style="display: block; margin-top: 0.3rem;">via bridge or exchange</small>
+                </div>
+                <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 16px; padding: 1rem; text-align: center;">
+                    <div style="font-size: 2rem;">2️⃣</div>
+                    <strong>Connect Phantom</strong>
+                    <small style="display: block; margin-top: 0.3rem;">to your wallet</small>
+                </div>
+                <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 16px; padding: 1rem; text-align: center;">
+                    <div style="font-size: 2rem;">3️⃣</div>
+                    <strong>Stake & Earn</strong>
+                    <small style="display: block; margin-top: 0.3rem;">monthly rewards automatically</small>
+                </div>
             </div>
-            <div style="text-align: center; margin-top: 1rem;">
-                <a href="https://jup.ag/swap/SOL-TMT" target="_blank" class="btn" data-en="🔄 Swap on Jupiter (Best Price)" data-ru="🔄 Обменять на Jupiter (Лучшая цена)" data-tk="🔄 Jupiter-da çalşyň (Iň gowy baha)" data-ar="🔄 التبادل في Jupiter (أفضل سعر)" data-fa="🔄 مبادله در Jupiter (بهترین قیمت)" data-zh="🔄 在 Jupiter 上兑换（最佳价格）">🔄 Swap on Jupiter (Best Price)</a>
-                <a href="#" class="btn" data-en="🔒 Start Staking (Coming Soon)" data-ru="🔒 Начать стейкинг (Скоро)" data-tk="🔒 Staking-i başla (Ýakyn wagtda)" data-ar="🔒 ابدأ التجميد (قريبًا)" data-fa="🔒 شروع استیکینگ (به زودی)" data-zh="🔒 开始质押（即将推出）">🔒 Start Staking (Coming Soon)</a>
+            <div class="staking-preview">
+                <p style="margin-bottom: 1rem;">🚀 <strong>Staking pool is being prepared</strong></p>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Leave your email to get notified when staking goes live:</p>
+                <form onsubmit="alert('✅ You have been added to the waitlist! We will notify you when staking is live.'); return false;" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
+                    <input type="email" placeholder="Your email address" required style="padding: 0.7rem 1rem; border-radius: 40px; border: 1px solid #d4a843; background: rgba(0,0,0,0.4); color: white; min-width: 250px;">
+                    <button type="submit" class="btn">Notify Me</button>
+                </form>
             </div>
-        </div>
-
-        <!-- Информация о комиссиях -->
-        <div class="card">
-            <h2 data-en="💰 Understanding Fees" data-ru="💰 Понимание комиссий" data-tk="💰 Komissiýalary düşünmek" data-ar="💰 فهم الرسوم" data-fa="💰 درک کارمزدها" data-zh="💰 了解费用">💰 Understanding Fees</h2>
-            <div class="stat"><span data-en="Network Fee (Solana)" data-ru="Комиссия сети (Solana)" data-tk="Tor komissiýasy (Solana)" data-ar="رسوم الشبكة (Solana)" data-fa="کارمزد شبکه (Solana)" data-zh="网络费用（Solana）">Network Fee (Solana)</span><span>~0.000008 SOL</span></div>
-            <div class="stat"><span data-en="Platform Fee (Jupiter)" data-ru="Комиссия платформы (Jupiter)" data-tk="Platforma komissiýasy (Jupiter)" data-ar="رسوم المنصة (Jupiter)" data-fa="کارمزد پلتفرم (Jupiter)" data-zh="平台费用（Jupiter）">Platform Fee (Jupiter)</span><span data-en="Free" data-ru="Бесплатно" data-tk="Mugt" data-ar="مجاني" data-fa="رایگان" data-zh="免费">Free</span></div>
-            <div class="stat"><span data-en="MEV Protection" data-ru="Защита MEV" data-tk="MEV gorag" data-ar="حماية MEV" data-fa="محافظت MEV" data-zh="MEV 保护">MEV Protection</span><span data-en="On (Ultra Mode)" data-ru="Включена (Ultra Mode)" data-tk="Işjeň (Ultra Mode)" data-ar="نشط (الوضع الفائق)" data-fa="فعال (حالت فوق العاده)" data-zh="开启（超强模式）">On (Ultra Mode)</span></div>
+            <p style="font-size: 0.8rem; text-align: center; margin-top: 1rem;">⚠️ The staking interface will be available once the pool is created. Check back soon!</p>
         </div>
 
         <div class="footer">
-            © 2025 TMT DeFi Hub — Powered by Solana Token-2022<br>
-            <span data-en="Contract:" data-ru="Контракт:" data-tk="Şertnama:" data-ar="العقد:" data-fa="قرارداد:" data-zh="合约：">Contract:</span> Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+            © 2025 TMT Staking & DeFi Hub — Powered by Solana<br>
+            Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
         </div>
     </div>
-
-    <script>
-        function setLanguage(lang) {
-            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
-                if (lang === 'en') el.innerText = el.getAttribute('data-en');
-                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
-                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
-                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
-                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
-                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
-            });
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                if (btn.getAttribute('data-lang') === lang) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-            document.documentElement.lang = lang;
-            if (lang === 'ar' || lang === 'fa') {
-                document.body.style.direction = 'rtl';
-                document.querySelector('.container').style.direction = 'rtl';
-            } else {
-                document.body.style.direction = 'ltr';
-                document.querySelector('.container').style.direction = 'ltr';
-            }
-        }
-
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
-        });
-        setLanguage('en');
-    </script>
 </body>
 </html>
