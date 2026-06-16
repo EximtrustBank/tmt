@@ -10,225 +10,200 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: radial-gradient(ellipse at 20% 30%, #0a2a1a, #051408);
-            color: #e0e0e0;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
             line-height: 1.6;
             min-height: 100vh;
         }
 
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #d0d8d0;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .lang-btn.active {
+            background: #d4a843;
+            color: #0a1a0f;
+        }
+
         .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2b1a; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #c9a03d; box-shadow: 0 0 15px rgba(201,160,61,0.2); }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #e8d5a8; letter-spacing: -0.5px; }
-        .back-link { color: #c9a03d; text-decoration: none; }
-        .back-link:hover { color: #e8d5a8; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
 
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(30,40,30,0.6); backdrop-filter: blur(4px); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: #e0e0e0; font-size: 0.85rem; transition: 0.2s; border: 1px solid rgba(201,160,61,0.2); }
-        .nav a:hover { background: #c9a03d; color: #0a1a0f; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
 
-        .card-item {
-            background: rgba(20,35,22,0.65);
-            backdrop-filter: blur(12px);
-            border-radius: 28px;
-            padding: 1.5rem;
-            border: 1px solid rgba(201,160,61,0.25);
-            transition: all 0.25s ease;
-        }
-        .card-item:hover { border-color: rgba(201,160,61,0.55); background: rgba(25,45,28,0.75); }
+        .card-item { background: rgba(20,35,25,0.65); backdrop-filter: blur(10px); border-radius: 28px; padding: 1.5rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; margin-bottom: 1.5rem; }
+        .card-item:hover { border-color: #d4a843; background: rgba(30,50,38,0.75); }
 
         .providers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .provider-card { background: rgba(20,35,22,0.65); border-radius: 28px; padding: 1.5rem; border: 1px solid rgba(201,160,61,0.25); transition: all 0.2s; }
-        .provider-card:hover { transform: translateY(-4px); border-color: #c9a03d; }
-        .provider-name { font-size: 1.4rem; color: #e8d5a8; margin-bottom: 0.5rem; }
+        .provider-card { background: rgba(20,35,25,0.65); border-radius: 28px; padding: 1.5rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .provider-card:hover { transform: translateY(-4px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .provider-name { font-size: 1.4rem; color: #e8d8a8; margin-bottom: 0.5rem; }
         .provider-desc { font-size: 0.9rem; margin: 0.8rem 0; }
         .feature-list { list-style: none; margin: 1rem 0; }
         .feature-list li { padding: 0.3rem 0; display: flex; align-items: center; gap: 0.5rem; }
-        .feature-list li::before { content: "✓"; color: #c9a03d; font-weight: bold; }
-        .btn-card { background: #c9a03d; color: #0a1a0f; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; transition: 0.2s; margin-top: 0.5rem; }
-        .btn-card:hover { background: #e0b853; transform: scale(1.02); }
-        .btn-outline { background: transparent; border: 1px solid #c9a03d; color: #e8d5a8; }
-        .btn-outline:hover { background: rgba(201,160,61,0.15); }
+        .feature-list li::before { content: "✓"; color: #d4a843; font-weight: bold; }
+        .btn-card { background: #d4a843; color: #0a1a0f; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; transition: 0.2s; margin-top: 0.5rem; }
+        .btn-card:hover { background: #e8c060; transform: scale(1.02); }
 
-        h2, h3 { color: #e8d5a8; margin-bottom: 1rem; }
-        .stat { display: flex; justify-content: space-between; margin: 0.8rem 0; padding: 0.5rem 0; border-bottom: 1px solid rgba(201,160,61,0.2); }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(201,160,61,0.2); font-size: 0.8rem; }
+        h2, h3 { color: #e8d8a8; margin-bottom: 1rem; }
+        .stat { display: flex; justify-content: space-between; margin: 0.8rem 0; padding: 0.5rem 0; border-bottom: 1px solid rgba(212,168,67,0.2); }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.8rem; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 1.5rem; }
+            h1 { font-size: 1.3rem; }
             .providers-grid { grid-template-columns: 1fr; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1>💳 TMT Crypto Card</h1>
-            <p>Virtual & Physical Debit Cards | Spend Crypto Anywhere</p>
-            <a href="index.html" class="back-link">← Back to Main Page</a>
+            <h1 data-en="💳 TMT Crypto Card" data-ru="💳 TMT Крипто-Карта" data-tk="💳 TMT Kripto Karta" data-ar="💳 بطاقة TMT المشفرة" data-fa="💳 کارت رمزنگاری TMT" data-zh="💳 TMT 加密卡">💳 TMT Crypto Card</h1>
+            <p data-en="Virtual & Physical Debit Cards | Spend Crypto Anywhere" data-ru="Виртуальные и физические дебетовые карты | Тратьте крипту где угодно" data-tk="Wirtual we fiziki debet kartalary | Kriptony islendik ýerde sarp ediň" data-ar="بطاقات الخصم الافتراضية والمادية | أنفق العملات المشفرة في أي مكان" data-fa="کارت‌های نقدی مجازی و فیزیکی | رمزارز را هر جا خرج کنید" data-zh="虚拟和实体借记卡 | 在任何地方消费加密货币">Virtual & Physical Debit Cards | Spend Crypto Anywhere</p>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
 
         <div class="nav">
             <a href="index.html">🏠 Home</a>
             <a href="ecosystem.html">🌿 Ecosystem</a>
             <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="lending.html">🏦 Lending</a>
             <a href="trading.html">📈 Trading</a>
             <a href="earn.html">💸 Earn</a>
             <a href="rwa.html">🏔️ RWA</a>
+            <a href="rwa2.html">🏔️ RWA+</a>
             <a href="payments.html">💳 Payments</a>
             <a href="social.html">🎮 Social</a>
             <a href="dao.html">🗳️ DAO</a>
-            <a href="card.html" style="background:#c9a03d; color:#0a1a0f;">💳 Card</a>
+            <a href="card.html" style="background:#d4a843; color:#0a1a0f;">💳 Card</a>
             <a href="bridge.html">🌉 Bridge</a>
+            <a href="currency.html">💱 Currency</a>
             <a href="islamic.html">🕌 Islamic</a>
             <a href="whitepaper.html">📄 WP</a>
         </div>
 
-        <!-- Introduction -->
-        <div class="card-item" style="text-align: center; margin-bottom: 1.5rem;">
-            <h2>✨ Choose a Card Provider</h2>
-            <p>Below are trusted services where you can instantly open virtual and physical crypto debit cards.<br>
-            Click "Open Card" → Register → Complete KYC → Get your card in minutes.</p>
+        <div class="card-item" style="text-align:center;">
+            <h2 data-en="✨ Choose a Card Provider" data-ru="✨ Выберите провайдера карты" data-tk="✨ Karta üpjünçisini saýlaň" data-ar="✨ اختر مزود بطاقة" data-fa="✨ ارائه‌دهنده کارت را انتخاب کنید" data-zh="✨ 选择卡提供商">✨ Choose a Card Provider</h2>
+            <p data-en="Below are trusted services where you can instantly open virtual and physical crypto debit cards.<br>Click 'Open Card' → Register → Complete KYC → Get your card in minutes." data-ru="Ниже представлены проверенные сервисы, где вы можете мгновенно открыть виртуальные и физические крипто-дебетовые карты.<br>Нажмите 'Открыть карту' → Зарегистрируйтесь → Пройдите KYC → Получите карту за минуты." data-tk="Aşakda wirtual we fiziki kripto debet kartalaryny derrew açyp biljek ygtybarly hyzmatlar.<br>'Karta aç' basyň → Hasap açyň → KYC geçiň → Kartany minutda alyň." data-ar="فيما يلي خدمات موثوقة حيث يمكنك فتح بطاقات الخصم المشفرة الافتراضية والمادية على الفور.<br>انقر على 'فتح البطاقة' ← سجل ← أكمل KYC ← احصل على بطاقتك في دقائق." data-fa="در زیر خدمات معتبری وجود دارد که می‌توانید بلافاصله کارت‌های نقدی رمزنگاری مجازی و فیزیکی باز کنید.<br>روی 'باز کردن کارت' کلیک کنید ← ثبت‌نام کنید ← KYC را کامل کنید ← کارت خود را در چند دقیقه دریافت کنید." data-zh="以下是值得信赖的服务，您可以在其中即时开立虚拟和实体加密借记卡。<br>点击“开卡”→ 注册 → 完成 KYC → 几分钟内获得您的卡。">Below are trusted services where you can instantly open virtual and physical crypto debit cards.<br>Click 'Open Card' → Register → Complete KYC → Get your card in minutes.</p>
         </div>
 
-        <!-- Card Providers Grid - WORKING LINKS -->
         <div class="providers-grid">
-            <!-- Kripicard -->
             <div class="provider-card">
-                <div class="provider-name">💳 Kripicard</div>
-                <div class="provider-desc">Instant virtual crypto cards for online payments. Supports USDT, Bitcoin, Ethereum, Solana, and 10+ other cryptocurrencies.</div>
+                <div class="provider-name">💳 Revolut</div>
+                <div class="provider-desc" data-en="International neobank. Perfect for tourists and travelers." data-ru="Международный необанк. Идеален для туристов." data-tk="Halkara neobank. Syýahatçylar üçin ajaýyp." data-ar="بنك رقمي دولي. مثالي للسياح." data-fa="نئوبانک بین‌المللی. عالی برای گردشگران." data-zh="国际数字银行。非常适合游客。">International neobank. Perfect for tourists and travelers.</p>
                 <ul class="feature-list">
-                    <li>Instant issuance</li>
-                    <li>Works with Visa/Mastercard merchants</li>
-                    <li>No traditional banking required</li>
-                    <li>Mobile app coming 2026</li>
+                    <li data-en="Virtual & physical cards" data-ru="Виртуальные и физические карты" data-tk="Wirtual we fiziki kartalar" data-ar="بطاقات افتراضية ومادية" data-fa="کارت‌های مجازی و فیزیکی" data-zh="虚拟和实体卡">Virtual & physical cards</li>
+                    <li data-en="Apple Pay & Google Pay" data-ru="Apple Pay и Google Pay" data-tk="Apple Pay we Google Pay" data-ar="Apple Pay و Google Pay" data-fa="Apple Pay و Google Pay" data-zh="Apple Pay 和 Google Pay">Apple Pay & Google Pay</li>
+                    <li data-en="Supports Turkmen manat" data-ru="Поддерживает туркменский манат" data-tk="Türkmen manadyny goldaýar" data-ar="يدعم المانات التركماني" data-fa="از منات ترکمنستان پشتیبانی می‌کند" data-zh="支持土库曼马纳特">Supports Turkmen manat</li>
                 </ul>
-                <a href="https://home.kripicard.com/" target="_blank" class="btn-card">Open Card →</a>
-                <span style="display: block; margin-top: 0.5rem; font-size: 0.7rem; color: #aaa;">Trusted by 10,000+ users</span>
+                <a href="https://revolut.com" target="_blank" class="btn-card" data-en="💳 Open Revolut →" data-ru="💳 Открыть Revolut →" data-tk="💳 Revolut aç →" data-ar="💳 فتح Revolut ←" data-fa="💳 باز کردن Revolut ←" data-zh="💳 打开 Revolut →">💳 Open Revolut →</a>
             </div>
 
-            <!-- Buvei -->
             <div class="provider-card">
                 <div class="provider-name">🏦 Buvei</div>
-                <div class="provider-desc">Virtual card platform for business and personal use. High approval rates for global payments. Supports USDT deposits.</div>
+                <div class="provider-desc" data-en="For businesses and entrepreneurs. Virtual cards for advertising and services." data-ru="Для предпринимателей и бизнеса. Виртуальные карты для рекламы и сервисов." data-tk="Telekeçiler we biznes üçin. Reklama we hyzmatlar üçin wirtual kartalar." data-ar="للشركات ورجال الأعمال. بطاقات افتراضية للإعلان والخدمات." data-fa="برای کسب و کارها و کارآفرینان. کارت‌های مجازی برای تبلیغات و خدمات." data-zh="适用于企业和企业家。用于广告和服务的虚拟卡。">For businesses and entrepreneurs. Virtual cards for advertising and services.</p>
                 <ul class="feature-list">
-                    <li>Unlimited virtual cards</li>
-                    <li>Apple Pay & Google Pay integration</li>
-                    <li>Multi-currency support</li>
-                    <li>Enterprise API available</li>
+                    <li data-en="Unlimited virtual cards" data-ru="Неограниченные виртуальные карты" data-tk="Çäklendirilmedik wirtual kartalar" data-ar="بطاقات افتراضية غير محدودة" data-fa="کارت‌های مجازی نامحدود" data-zh="无限虚拟卡">Unlimited virtual cards</li>
+                    <li data-en="Apple Pay & Google Pay" data-ru="Apple Pay и Google Pay" data-tk="Apple Pay we Google Pay" data-ar="Apple Pay و Google Pay" data-fa="Apple Pay و Google Pay" data-zh="Apple Pay 和 Google Pay">Apple Pay & Google Pay</li>
+                    <li data-en="Business API" data-ru="API для бизнеса" data-tk="Biznes API" data-ar="API للأعمال" data-fa="API کسب و کار" data-zh="企业 API">Business API</li>
                 </ul>
-                <a href="https://buvei.com/" target="_blank" class="btn-card">Open Card →</a>
-                <span style="display: block; margin-top: 0.5rem; font-size: 0.7rem; color: #aaa;">Business & personal accounts</span>
+                <a href="https://buvei.com" target="_blank" class="btn-card" data-en="🏦 Open Buvei →" data-ru="🏦 Открыть Buvei →" data-tk="🏦 Buvei aç →" data-ar="🏦 فتح Buvei ←" data-fa="🏦 باز کردن Buvei ←" data-zh="🏦 打开 Buvei →">🏦 Open Buvei →</a>
             </div>
 
-            <!-- NEXTBank (NexType) -->
             <div class="provider-card">
-                <div class="provider-name">🏛️ NEXTBank</div>
-                <div class="provider-desc">Licensed crypto card issuer with institutional backing (J.P. Morgan, Barclays). 136,000+ cards already issued.</div>
+                <div class="provider-name">💎 Kripicard</div>
+                <div class="provider-desc" data-en="Simple virtual cards for online purchases. Supports USDT, Solana." data-ru="Простые виртуальные карты для онлайн-покупок. Поддерживает USDT, Solana." data-tk="Onlaýn satyn almak üçin ýönekeý wirtual kartalar. USDT, Solana goldaýar." data-ar="بطاقات افتراضية بسيطة للمشتريات عبر الإنترنت. يدعم USDT، Solana." data-fa="کارت‌های مجازی ساده برای خریدهای آنلاین. از USDT، Solana پشتیبانی می‌کند." data-zh="用于在线购物的简单虚拟卡。支持 USDT、Solana。">Simple virtual cards for online purchases. Supports USDT, Solana.</p>
                 <ul class="feature-list">
-                    <li>Physical & virtual cards</li>
-                    <li>Multi-currency settlement</li>
-                    <li>Licensed in EU, Canada, US</li>
-                    <li>Corporate and personal plans</li>
+                    <li data-en="Instant issuance" data-ru="Моментальный выпуск" data-tk="Derrew çykaryş" data-ar="إصدار فوري" data-fa="صدور فوری" data-zh="即时发行">Instant issuance</li>
+                    <li data-en="10+ cryptocurrencies" data-ru="10+ криптовалют" data-tk="10+ kriptowalýuta" data-ar="10+ عملات مشفرة" data-fa="۱۰+ رمزارز" data-zh="10+ 加密货币">10+ cryptocurrencies</li>
+                    <li data-en="No traditional banking required" data-ru="Не требует традиционного банкинга" data-tk="Adaty bank talap edilmeýär" data-ar="لا يتطلب خدمات مصرفية تقليدية" data-fa="نیازی به بانکداری سنتی ندارد" data-zh="无需传统银行服务">No traditional banking required</li>
                 </ul>
-                <a href="https://nextype.finance/NEXTBank" target="_blank" class="btn-card">Open Card →</a>
-                <span style="display: block; margin-top: 0.5rem; font-size: 0.7rem; color: #aaa;">Institutional-grade security</span>
+                <a href="https://home.kripicard.com/" target="_blank" class="btn-card" data-en="💎 Open Kripicard →" data-ru="💎 Открыть Kripicard →" data-tk="💎 Kripicard aç →" data-ar="💎 فتح Kripicard ←" data-fa="💎 باز کردن Kripicard ←" data-zh="💎 打开 Kripicard →">💎 Open Kripicard →</a>
             </div>
 
-            <!-- Striga -->
             <div class="provider-card">
                 <div class="provider-name">⚡ Striga</div>
-                <div class="provider-desc">White-label crypto card issuer. Get branded virtual cards via their partners. EU-licensed VASP.</div>
+                <div class="provider-desc" data-en="Licensed card issuer in Europe. For businesses and fintech." data-ru="Лицензированный эмитент карт в Европе. Для бизнеса и финтеха." data-tk="Europe-da ygtyýarly karta çykaryjy. Biznes we fintech üçin." data-ar="مُصدر بطاقات مرخص في أوروبا. للشركات والتكنولوجيا المالية." data-fa="صادرکننده کارت دارای مجوز در اروپا. برای کسب و کار و فینتک." data-zh="欧洲持牌卡发行商。适用于企业和金融科技。">Licensed card issuer in Europe. For businesses and fintech.</p>
                 <ul class="feature-list">
-                    <li>Virtual & physical cards</li>
-                    <li>SEPA & on-chain transfers</li>
-                    <li>Built-in KYC/AML</li>
-                    <li>Launch in under 6 weeks</li>
+                    <li data-en="Virtual & physical cards" data-ru="Виртуальные и физические карты" data-tk="Wirtual we fiziki kartalar" data-ar="بطاقات افتراضية ومادية" data-fa="کارت‌های مجازی و فیزیکی" data-zh="虚拟和实体卡">Virtual & physical cards</li>
+                    <li data-en="SEPA & on-chain transfers" data-ru="SEPA и ончейн-переводы" data-tk="SEPA we zynjyr içi geçirmeler" data-ar="SEPA والتحويلات على السلسلة" data-fa="SEPA و انتقالات زنجیره‌ای" data-zh="SEPA 和链上转账">SEPA & on-chain transfers</li>
+                    <li data-en="Built-in KYC/AML" data-ru="Встроенный KYC/AML" data-tk="Gurlan KYC/AML" data-ar="KYC/AML مدمج" data-fa="KYC/AML داخلی" data-zh="内置 KYC/AML">Built-in KYC/AML</li>
                 </ul>
-                <a href="https://www.striga.com/" target="_blank" class="btn-card">Learn More →</a>
-                <span style="display: block; margin-top: 0.5rem; font-size: 0.7rem; color: #aaa;">For fintechs and individuals</span>
-            </div>
-
-            <!-- OrbitX -->
-            <div class="provider-card">
-                <div class="provider-name">🪐 OrbitX (Circle)</div>
-                <div class="provider-desc">Powered by Circle. Issue programmable Visa cards linked to USDC. Multi-currency IBANs included.</div>
-                <ul class="feature-list">
-                    <li>Virtual cards + physical cards</li>
-                    <li>USD, EUR, GBP, AED accounts</li>
-                    <li>Stablecoin-backed spending</li>
-                    <li>API for developers</li>
-                </ul>
-                <a href="https://orbittx.io/" target="_blank" class="btn-card">Open Card →</a>
-                <span style="display: block; margin-top: 0.5rem; font-size: 0.7rem; color: #aaa;">Trusted by Circle Alliance</span>
-            </div>
-
-            <!-- VALUT.NET -->
-            <div class="provider-card">
-                <div class="provider-name">💎 VALUT.NET</div>
-                <div class="provider-desc">White-label virtual card platform. Cards issued in 2-15 seconds. Mastercard & Visa BINs.</div>
-                <ul class="feature-list">
-                    <li>Instant virtual cards</li>
-                    <li>Top-up in 5 seconds</li>
-                    <li>Full API integration</li>
-                    <li>Customizable pricing</li>
-                </ul>
-                <a href="https://valut.net/en" target="_blank" class="btn-card">Open Card →</a>
-                <span style="display: block; margin-top: 0.5rem; font-size: 0.7rem; color: #aaa;">Launch cards under your brand</span>
-            </div>
-
-            <!-- Infini -->
-            <div class="provider-card">
-                <div class="provider-name">🤖 Infini</div>
-                <div class="provider-desc">AI-driven financial platform. Mass virtual card issuance via API. Perfect for teams and businesses.</div>
-                <ul class="feature-list">
-                    <li>Bulk card issuance</li>
-                    <li>AI-powered operations</li>
-                    <li>Employee expense management</li>
-                    <li>Automated payments</li>
-                </ul>
-                <a href="https://infini.finance/" target="_blank" class="btn-card">Open Card →</a>
-                <span style="display: block; margin-top: 0.5rem; font-size: 0.7rem; color: #aaa;">For teams and enterprises</span>
+                <a href="https://www.striga.com/" target="_blank" class="btn-card" data-en="⚡ Open Striga →" data-ru="⚡ Открыть Striga →" data-tk="⚡ Striga aç →" data-ar="⚡ فتح Striga ←" data-fa="⚡ باز کردن Striga ←" data-zh="⚡ 打开 Striga →">⚡ Open Striga →</a>
             </div>
         </div>
 
-        <!-- Comparison Table -->
         <div class="card-item">
-            <h2>📊 Quick Comparison</h2>
-            <div class="stat"><span>🏆 Best for individuals</span><span>Kripicard / Buvei</span></div>
-            <div class="stat"><span>🏦 Best for business</span><span>NEXTBank / OrbitX</span></div>
-            <div class="stat"><span>⚡ Fastest issuance</span><span>VALUT.NET (2-15 seconds)</span></div>
-            <div class="stat"><span>🔒 Most regulated</span><span>NEXTBank (MAS, FinCEN, FINTRAC)</span></div>
-            <div class="stat"><span>💳 Crypto support</span><span>Kripicard — 10+ chains including Solana</span></div>
-            <div class="stat"><span>📱 Mobile payments</span><span>Buvei — Apple Pay & Google Pay</span></div>
-        </div>
-
-        <!-- TMT Card Program Status -->
-        <div class="card-item">
-            <h2>🚀 TMT Card Program (Coming Soon)</h2>
-            <p>We are actively working on launching our own branded card program through licensed partners.</p>
-            <div class="stat"><span>Status</span><span>In development</span></div>
-            <div class="stat"><span>Expected launch</span><span>Q4 2026</span></div>
-            <div class="stat"><span>Cashback</span><span>3% in TMT (planned)</span></div>
-            <div class="stat"><span>Fees</span><span>$0 issuance, $0 monthly (planned)</span></div>
-            <button class="btn-outline btn-card" style="background: transparent;" onclick="alert('📧 Leave your email to get notified when TMT Card launches: card@eximtrustbank.io')">📬 Notify me when ready</button>
-        </div>
-
-        <!-- How to get a card - step by step -->
-        <div class="card-item">
-            <h2>📋 How to Get a Crypto Card (3 Steps)</h2>
-            <div class="stat"><span>1️⃣</span><span>Choose a provider from the list above</span></div>
-            <div class="stat"><span>2️⃣</span><span>Register and complete KYC verification (passport/ID)</span></div>
-            <div class="stat"><span>3️⃣</span><span>Fund your account with crypto (USDT, SOL, BTC) → Issue card → Start spending</span></div>
-            <p style="margin-top: 1rem; font-size: 0.85rem;">⚠️ Most cards work globally wherever Visa/Mastercard is accepted. Some services may have regional restrictions.</p>
+            <h2 data-en="📊 Quick Comparison" data-ru="📊 Быстрое сравнение" data-tk="📊 Çalt deňeşdirme" data-ar="📊 مقارنة سريعة" data-fa="📊 مقایسه سریع" data-zh="📊 快速比较">📊 Quick Comparison</h2>
+            <div class="stat"><span data-en="🏆 Best for individuals" data-ru="🏆 Лучший для частных лиц" data-tk="🏆 Şahsyýetler üçin iň gowusy" data-ar="🏆 الأفضل للأفراد" data-fa="🏆 بهترین برای افراد" data-zh="🏆 最适合个人">🏆 Best for individuals</span><span data-en="Revolut / Kripicard" data-ru="Revolut / Kripicard" data-tk="Revolut / Kripicard" data-ar="Revolut / Kripicard" data-fa="Revolut / Kripicard" data-zh="Revolut / Kripicard">Revolut / Kripicard</span></div>
+            <div class="stat"><span data-en="🏦 Best for business" data-ru="🏦 Лучший для бизнеса" data-tk="🏦 Biznes üçin iň gowusy" data-ar="🏦 الأفضل للأعمال" data-fa="🏦 بهترین برای کسب و کار" data-zh="🏦 最适合企业">🏦 Best for business</span><span data-en="Buvei / Striga" data-ru="Buvei / Striga" data-tk="Buvei / Striga" data-ar="Buvei / Striga" data-fa="Buvei / Striga" data-zh="Buvei / Striga">Buvei / Striga</span></div>
+            <div class="stat"><span data-en="⚡ Fastest issuance" data-ru="⚡ Самый быстрый выпуск" data-tk="⚡ Iň çalt çykaryş" data-ar="⚡ أسرع إصدار" data-fa="⚡ سریع‌ترین صدور" data-zh="⚡ 最快发行">⚡ Fastest issuance</span><span data-en="Kripicard (1 minute)" data-ru="Kripicard (1 минута)" data-tk="Kripicard (1 minut)" data-ar="Kripicard (دقيقة واحدة)" data-fa="Kripicard (۱ دقیقه)" data-zh="Kripicard（1 分钟）">Kripicard (1 minute)</span></div>
+            <div class="stat"><span data-en="📱 Mobile payments" data-ru="📱 Мобильные платежи" data-tk="📱 Mobil tölegler" data-ar="📱 المدفوعات عبر الهاتف المحمول" data-fa="📱 پرداخت‌های موبایل" data-zh="📱 移动支付">📱 Mobile payments</span><span data-en="Revolut / Buvei" data-ru="Revolut / Buvei" data-tk="Revolut / Buvei" data-ar="Revolut / Buvei" data-fa="Revolut / Buvei" data-zh="Revolut / Buvei">Revolut / Buvei</span></div>
         </div>
 
         <div class="footer">
-            © 2025 TMT Card — Your Gateway to Crypto Spending<br>
-            Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+            © 2025 TMT Card — Your Gateway to Crypto Spending | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
         </div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            document.documentElement.lang = lang;
+            if (lang === 'ar' || lang === 'fa') { document.body.style.direction = 'rtl'; document.querySelector('.container').style.direction = 'rtl'; }
+            else { document.body.style.direction = 'ltr'; document.querySelector('.container').style.direction = 'ltr'; }
+        }
+        document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))); });
+        setLanguage('en');
+    </script>
 </body>
-</html>
+            </html>
