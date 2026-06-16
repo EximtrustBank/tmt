@@ -2,59 +2,166 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>TMT Social — Quests, Leaderboard, NFT Marketplace, Social Feed</title>
+    <meta name="description" content="TMT Social & Gamification: Quest Board, Leaderboard, NFT Marketplace, Social Feed, Referral 2.0.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%); color: #fff; line-height: 1.6; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
+            line-height: 1.6;
+        }
+        .lang-switch {
+            position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem; border-radius: 40px; z-index: 100; display: flex; flex-wrap: wrap; gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent; border: none; color: #d0d8d0; cursor: pointer; padding: 0.3rem 0.8rem;
+            border-radius: 30px; font-weight: bold; transition: all 0.2s; font-size: 0.85rem;
+        }
+        .lang-btn.active { background: #d4a843; color: #0a1a0f; }
         .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffd700; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #ffd700; }
-        .back-link { color: #ffec80; text-decoration: none; }
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
-        .nav a:hover { background: #ffd700; color: #0a2e1c; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); }
-        .card h2 { color: #ffd700; margin-bottom: 1rem; }
-        .card-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .btn { background: #ffd700; color: #0a2e1c; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
-        .quest-item { background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 16px; margin: 0.5rem 0; display: flex; justify-content: space-between; }
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .card h2 { color: #e8d8a8; margin-bottom: 1rem; font-size: 1.2rem; }
+        .card-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .quest-item { background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 12px; margin: 0.4rem 0; display: flex; justify-content: space-between; }
+        .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 0.5rem; transition: 0.2s; }
+        .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.3rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1>🎮 TMT Social & Gamification</h1>
-            <a href="index.html" class="back-link">← Back to Main Page</a>
+            <h1 data-en="🎮 TMT Social & Gamification" data-ru="🎮 TMT Социальные и Гейминг" data-tk="🎮 TMT Sosial we Oýunlaşdyrma" data-ar="🎮 TMT الاجتماعية والألعاب" data-fa="🎮 اجتماعی و بازی‌سازی TMT" data-zh="🎮 TMT 社交与游戏化">🎮 TMT Social & Gamification</h1>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
+
         <div class="nav">
             <a href="index.html">🏠 Home</a>
             <a href="ecosystem.html">🌿 Ecosystem</a>
             <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="lending.html">🏦 Lending</a>
             <a href="trading.html">📈 Trading</a>
             <a href="earn.html">💸 Earn</a>
             <a href="rwa.html">🏔️ RWA</a>
+            <a href="rwa2.html">🏔️ RWA+</a>
             <a href="payments.html">💳 Payments</a>
-            <a href="social.html" style="background:#ffd700; color:#0a2e1c;">🎮 Social</a>
+            <a href="social.html" style="background:#d4a843; color:#0a1a0f;">🎮 Social</a>
             <a href="dao.html">🗳️ DAO</a>
+            <a href="card.html">💳 Card</a>
+            <a href="bridge.html">🌉 Bridge</a>
+            <a href="currency.html">💱 Currency</a>
             <a href="islamic.html">🕌 Islamic</a>
             <a href="whitepaper.html">📄 WP</a>
         </div>
 
         <div class="grid-3">
-            <div class="card"><div class="card-icon">🎯</div><h2>Quest Board</h2><p>Выполняйте задания и получайте награды в TMT.</p><div class="quest-item"><span>🔁 Сделать swap на $100</span><span>+50 TMT</span></div><div class="quest-item"><span>🌉 Сделать bridge на Solana</span><span>+100 TMT</span></div><div class="quest-item"><span>💰 Застейкать 10,000 TMT</span><span>+250 TMT</span></div><div class="quest-item"><span>👥 Пригласить друга</span><span>+500 TMT</span></div><a href="#" class="btn">View All Quests →</a></div>
-            <div class="card"><div class="card-icon">🏆</div><h2>Leaderboard</h2><p>Топ пользователей по объёму торгов, стейкингу и активности.</p><div class="stat"><span>1. Whale.eth</span><span>$12.4M</span></div><div class="stat"><span>2. DiamondHands</span><span>$8.2M</span></div><div class="stat"><span>3. TMTMaxi</span><span>$5.1M</span></div><div class="stat"><span>4. SolanaKing</span><span>$3.8M</span></div><div class="stat"><span>5. DeFiGuru</span><span>$2.9M</span></div><a href="#" class="btn">View Full Leaderboard →</a></div>
-            <div class="card"><div class="card-icon">🖼️</div><h2>NFT Marketplace</h2><p>Покупайте и продавайте NFT за TMT. Эксклюзивные коллекции.</p><div class="stat"><span>Всего NFT</span><span>12,847</span></div><div class="stat"><span>Объём торгов</span><span>$3.4M</span></div><div class="stat"><span>Продавцов</span><span>2,384</span></div><a href="#" class="btn">Explore NFTs →</a></div>
-            <div class="card"><div class="card-icon">📱</div><h2>Social Feed</h2><p>Лента активностей пользователей. Комментируйте, лайкайте, подписывайтесь.</p><div class="stat"><span>Постов в день</span><span>4,892</span></div><div class="stat"><span>Активных пользователей</span><span>12,847</span></div><a href="#" class="btn">Open Feed →</a></div>
-            <div class="card"><div class="card-icon">👥</div><h2>Referral 2.0 (3 levels)</h2><p>Многоуровневая реферальная программа. Зарабатывайте до 5% в 3 уровня.</p><div class="stat"><span>Level 1 (прямые)</span><span>3%</span></div><div class="stat"><span>Level 2</span><span>1.5%</span></div><div class="stat"><span>Level 3</span><span>0.5%</span></div><div class="stat"><span>Ваша реферальная ссылка</span><span>tmt.cc/ref/yourname</span></div><a href="#" class="btn">Invite Friends →</a></div>
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h2 data-en="Quest Board" data-ru="Квесты" data-tk="Quest tagtasy" data-ar="لوحة المهام" data-fa="تابلو کوئست" data-zh="任务板">Quest Board</h2>
+                <p data-en="Complete tasks and earn TMT rewards." data-ru="Выполняйте задания и получайте награды в TMT." data-tk="Tabşyryklary ýerine ýetiriň we TMT baýraklaryny alyň." data-ar="أكمل المهام واربح مكافآت TMT." data-fa="وظایف را کامل کنید و جوایز TMT کسب کنید." data-zh="完成任务并赚取 TMT 奖励。">Complete tasks and earn TMT rewards.</p>
+                <div class="quest-item"><span data-en="🔄 Make a $100 swap" data-ru="🔄 Сделать swap на $100" data-tk="🔄 100$ çalşyk et" data-ar="🔄 قم بتبادل بقيمة 100$" data-fa="🔄 مبادله ۱۰۰$ انجام دهید" data-zh="🔄 进行 100 美元兑换">🔄 Make a $100 swap</span><span>+50 TMT</span></div>
+                <div class="quest-item"><span data-en="🌉 Bridge to Solana" data-ru="🌉 Сделать bridge на Solana" data-tk="🌉 Solana köpri et" data-ar="🌉 قم بالجسر إلى Solana" data-fa="🌉 پل به Solana" data-zh="🌉 跨链到 Solana">🌉 Bridge to Solana</span><span>+100 TMT</span></div>
+                <div class="quest-item"><span data-en="💰 Stake 10,000 TMT" data-ru="💰 Застейкать 10,000 TMT" data-tk="💰 10,000 TMT staking et" data-ar="💰 قم بتجميد 10,000 TMT" data-fa="💰 ۱۰,۰۰۰ TMT استیک کنید" data-zh="💰 质押 10,000 TMT">💰 Stake 10,000 TMT</span><span>+250 TMT</span></div>
+                <div class="quest-item"><span data-en="👥 Invite a friend" data-ru="👥 Пригласить друга" data-tk="👥 Dost çagyrmak" data-ar="👥 ادع صديقًا" data-fa="👥 دعوت از دوست" data-zh="👥 邀请朋友">👥 Invite a friend</span><span>+500 TMT</span></div>
+                <a href="#" class="btn" data-en="View All Quests →" data-ru="Все квесты →" data-tk="Ähli questleri gör →" data-ar="عرض جميع المهام ←" data-fa="مشاهده همه کوئست‌ها ←" data-zh="查看所有任务 →">View All Quests →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🏆</div>
+                <h2 data-en="Leaderboard" data-ru="Таблица лидеров" data-tk="Liderler tablisasy" data-ar="لوحة المتصدرين" data-fa="تابلو رهبران" data-zh="排行榜">Leaderboard</h2>
+                <p data-en="Top users by volume and activity." data-ru="Топ пользователей по объёму и активности." data-tk="Göwrüm we işjeňlik boýunça iň gowy ulanyjylar." data-ar="أفضل المستخدمين من حيث الحجم والنشاط." data-fa="کاربران برتر بر اساس حجم و فعالیت." data-zh="按交易量和活跃度排名的顶级用户。">Top users by volume and activity.</p>
+                <div class="stat"><span>1. Whale.eth</span><span>$12.4M</span></div>
+                <div class="stat"><span>2. DiamondHands</span><span>$8.2M</span></div>
+                <div class="stat"><span>3. TMTMaxi</span><span>$5.1M</span></div>
+                <div class="stat"><span>4. SolanaKing</span><span>$3.8M</span></div>
+                <div class="stat"><span>5. DeFiGuru</span><span>$2.9M</span></div>
+                <a href="#" class="btn" data-en="View Full Leaderboard →" data-ru="Полная таблица →" data-tk="Doly tablisany gör →" data-ar="عرض لوحة المتصدرين الكاملة ←" data-fa="مشاهده کامل تابلو رهبران ←" data-zh="查看完整排行榜 →">View Full Leaderboard →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🖼️</div>
+                <h2 data-en="NFT Marketplace" data-ru="NFT Маркетплейс" data-tk="NFT bazary" data-ar="سوق NFT" data-fa="بازار NFT" data-zh="NFT 市场">NFT Marketplace</h2>
+                <p data-en="Buy and sell NFTs with TMT." data-ru="Покупайте и продавайте NFT за TMT." data-tk="NFT-leri TMT bilen satyn alyň we satyň." data-ar="شراء وبيع NFT باستخدام TMT." data-fa="NFT را با TMT خرید و فروش کنید." data-zh="使用 TMT 买卖 NFT。">Buy and sell NFTs with TMT.</p>
+                <div class="stat"><span data-en="Total NFTs" data-ru="Всего NFT" data-tk="Jemi NFT" data-ar="إجمالي NFT" data-fa="کل NFT" data-zh="NFT 总数">Total NFTs</span><span>12,847</span></div>
+                <div class="stat"><span data-en="Volume" data-ru="Объём" data-tk="Göwrüm" data-ar="الحجم" data-fa="حجم" data-zh="交易量">Volume</span><span>$3.4M</span></div>
+                <div class="stat"><span data-en="Sellers" data-ru="Продавцов" data-tk="Satýanlar" data-ar="البائعين" data-fa="فروشندگان" data-zh="卖家">Sellers</span><span>2,384</span></div>
+                <a href="#" class="btn" data-en="Explore NFTs →" data-ru="Изучить NFT →" data-tk="NFT-leri öwren →" data-ar="استكشاف NFT ←" data-fa="کاوش NFT ←" data-zh="探索 NFT →">Explore NFTs →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h2 data-en="Social Feed" data-ru="Социальная лента" data-tk="Sosial lenta" data-ar="التغذية الاجتماعية" data-fa="خوراک اجتماعی" data-zh="社交动态">Social Feed</h2>
+                <p data-en="User activity feed. Like, comment, follow." data-ru="Лента активностей пользователей. Комментируйте, лайкайте, подписывайтесь." data-tk="Ulanyjylaryň işjeňlik lentasy. Teswir ýazyň, haladyň, abuna ýazylyň." data-ar="خلاصة نشاط المستخدم. علق، أعجب، تابع." data-fa="خوراک فعالیت کاربران. لایک، نظر، دنبال کنید." data-zh="用户活动动态。点赞、评论、关注。">User activity feed. Like, comment, follow.</p>
+                <div class="stat"><span data-en="Posts per day" data-ru="Постов в день" data-tk="Günde postlar" data-ar="المشاركات في اليوم" data-fa="پست در روز" data-zh="每日帖子">Posts per day</span><span>4,892</span></div>
+                <div class="stat"><span data-en="Active users" data-ru="Активных пользователей" data-tk="Işjeýn ulanyjylar" data-ar="المستخدمين النشطين" data-fa="کاربران فعال" data-zh="活跃用户">Active users</span><span>12,847</span></div>
+                <a href="#" class="btn" data-en="Open Feed →" data-ru="Открыть ленту →" data-tk="Lentany aç →" data-ar="فتح الخلاصة ←" data-fa="باز کردن خوراک ←" data-zh="打开动态 →">Open Feed →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h2 data-en="Referral 2.0" data-ru="Рефералы 2.0" data-tk="Referal 2.0" data-ar="الإحالة 2.0" data-fa="ارجاع ۲.۰" data-zh="推荐计划 2.0">Referral 2.0</h2>
+                <p data-en="Multi-level referral program. Earn up to 5%." data-ru="Многоуровневая реферальная программа. Зарабатывайте до 5%." data-tk="Köp derejeli referal programmasy. 5% çenli girdeji alyň." data-ar="برنامج إحالة متعدد المستويات. اربح حتى 5%." data-fa="برنامه ارجاع چند سطحی. تا ۵٪ درآمد کسب کنید." data-zh="多级推荐计划。赚取高达 5%。">Multi-level referral program. Earn up to 5%.</p>
+                <div class="stat"><span data-en="Level 1 (direct)" data-ru="Уровень 1 (прямые)" data-tk="1-nji dereje (göni)" data-ar="المستوى 1 (مباشر)" data-fa="سطح ۱ (مستقیم)" data-zh="第 1 级（直接）">Level 1 (direct)</span><span>3%</span></div>
+                <div class="stat"><span data-en="Level 2" data-ru="Уровень 2" data-tk="2-nji dereje" data-ar="المستوى 2" data-fa="سطح ۲" data-zh="第 2 级">Level 2</span><span>1.5%</span></div>
+                <div class="stat"><span data-en="Level 3" data-ru="Уровень 3" data-tk="3-nji dereje" data-ar="المستوى 3" data-fa="سطح ۳" data-zh="第 3 级">Level 3</span><span>0.5%</span></div>
+                <a href="#" class="btn" data-en="Invite Friends →" data-ru="Пригласить друзей →" data-tk="Dostlary çagyrmak →" data-ar="دعوة الأصدقاء ←" data-fa="دعوت دوستان ←" data-zh="邀请朋友 →">Invite Friends →</a>
+            </div>
         </div>
-        <div class="footer">© 2025 TMT Social — Join the Community</div>
+
+        <div class="footer">© 2025 TMT Social — Join the Community | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</div>
     </div>
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            document.documentElement.lang = lang;
+            if (lang === 'ar' || lang === 'fa') { document.body.style.direction = 'rtl'; document.querySelector('.container').style.direction = 'rtl'; }
+            else { document.body.style.direction = 'ltr'; document.querySelector('.container').style.direction = 'ltr'; }
+        }
+        document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))); });
+        setLanguage('en');
+    </script>
 </body>
 </html>
