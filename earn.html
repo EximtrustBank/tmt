@@ -6,55 +6,149 @@
     <title>TMT Earn — Liquid Staking, Restaking, Vaults, Options, Perpetuals</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%); color: #fff; line-height: 1.6; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
+            line-height: 1.6;
+        }
+        .lang-switch {
+            position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem; border-radius: 40px; z-index: 100; display: flex; flex-wrap: wrap; gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent; border: none; color: #d0d8d0; cursor: pointer; padding: 0.3rem 0.8rem;
+            border-radius: 30px; font-weight: bold; transition: all 0.2s; font-size: 0.85rem;
+        }
+        .lang-btn.active { background: #d4a843; color: #0a1a0f; }
         .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffd700; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #ffd700; }
-        .back-link { color: #ffec80; text-decoration: none; }
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
-        .nav a:hover { background: #ffd700; color: #0a2e1c; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.15); }
-        .card h2 { color: #ffd700; margin-bottom: 1rem; }
-        .card-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .card h2 { color: #e8d8a8; margin-bottom: 0.5rem; font-size: 1.2rem; }
         .apy { color: #00ff88; font-size: 1.3rem; font-weight: bold; }
-        .btn { background: #ffd700; color: #0a2e1c; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+        .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.4rem 0.8rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 0.5rem; transition: 0.2s; }
+        .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.3rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1>💸 TMT Earn — Passive Income</h1>
-            <a href="index.html" class="back-link">← Back to Main Page</a>
+            <h1 data-en="💸 TMT Earn — Passive Income" data-ru="💸 TMT Заработок — Пассивный доход" data-tk="💸 TMT Gazanç — Passiw girdeji" data-ar="💸 TMT كسب — دخل سلبي" data-fa="💸 TMT درآمد — درآمد غیرفعال" data-zh="💸 TMT 赚取——被动收入">💸 TMT Earn — Passive Income</h1>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
+
         <div class="nav">
             <a href="index.html">🏠 Home</a>
             <a href="ecosystem.html">🌿 Ecosystem</a>
             <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="lending.html">🏦 Lending</a>
             <a href="trading.html">📈 Trading</a>
-            <a href="earn.html" style="background:#ffd700; color:#0a2e1c;">💸 Earn</a>
+            <a href="earn.html" style="background:#d4a843; color:#0a1a0f;">💸 Earn</a>
             <a href="rwa.html">🏔️ RWA</a>
+            <a href="rwa2.html">🏔️ RWA+</a>
             <a href="payments.html">💳 Payments</a>
             <a href="social.html">🎮 Social</a>
             <a href="dao.html">🗳️ DAO</a>
+            <a href="card.html">💳 Card</a>
+            <a href="bridge.html">🌉 Bridge</a>
+            <a href="currency.html">💱 Currency</a>
             <a href="islamic.html">🕌 Islamic</a>
             <a href="whitepaper.html">📄 WP</a>
         </div>
 
         <div class="grid-3">
-            <div class="card"><div class="card-icon">💧</div><h2>Liquid Staking</h2><p>Ставьте TMT, получайте stTMT и используйте в других протоколах.</p><div class="stat"><span>APY</span><span class="apy">7.5%</span></div><div class="stat"><span>Застейкано TMT</span><span>8.2B TMT</span></div><div class="stat"><span>stTMT в обращении</span><span>7.9B stTMT</span></div><a href="#" class="btn">Liquid Stake →</a></div>
-            <div class="card"><div class="card-icon">🔄</div><h2>Restaking</h2><p>Переиспользуйте stTMT для дополнительного дохода до 12% APY.</p><div class="stat"><span>APY</span><span class="apy">12%</span></div><div class="stat"><span>Зарестейкано</span><span>3.4B stTMT</span></div><div class="stat"><span>Экономическая безопасность</span><span>$167M</span></div><a href="#" class="btn">Restake →</a></div>
-            <div class="card"><div class="card-icon">🏦</div><h2>Automated Vaults</h2><p>Автоматические стратегии: арбитраж, LP-менеджмент, gamma-нейтральные.</p><div class="stat"><span>APY</span><span class="apy">15-35%</span></div><div class="stat"><span>TVL в Vaults</span><span>$245M</span></div><div class="stat"><span>Активных стратегий</span><span>12</span></div><a href="#" class="btn">Explore Vaults →</a></div>
-            <div class="card"><div class="card-icon">📈</div><h2>Options Trading</h2><p>Покупайте/продавайте опционы Call/Put на TMT и другие активы.</p><div class="stat"><span>Объём опционов</span><span>$42M</span></div><div class="stat"><span>Открытых позиций</span><span>1,847</span></div><a href="#" class="btn">Trade Options →</a></div>
-            <div class="card"><div class="card-icon">⚡</div><h2>Perpetuals (50x)</h2><p>Бессрочные фьючерсы на TMT/SOL/BTC/ETH с плечом до 50x.</p><div class="stat"><span>Открытый интерес</span><span>$89M</span></div><div class="stat"><span>24h объём</span><span>$234M</span></div><div class="stat"><span>Funding rate</span><span>0.01%</span></div><a href="#" class="btn">Trade Perps →</a></div>
+            <div class="card">
+                <h2>💧 Liquid Staking</h2>
+                <p data-en="Stake TMT, get stTMT and use in other protocols." data-ru="Ставьте TMT, получайте stTMT и используйте в других протоколах." data-tk="TMT-ni staking ediň, stTMT alyň we beýleki protokollarda ulanyň." data-ar="قم بتجميد TMT، واحصل على stTMT واستخدمها في بروتوكولات أخرى." data-fa="TMT را استیک کنید، stTMT دریافت کنید و در پروتکل‌های دیگر استفاده کنید." data-zh="质押 TMT，获得 stTMT 并在其他协议中使用。">Stake TMT, get stTMT and use in other protocols.</p>
+                <div class="stat"><span data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</span><span class="apy">7.5%</span></div>
+                <div class="stat"><span data-en="Staked TMT" data-ru="Застейкано TMT" data-tk="Staking edilen TMT" data-ar="TMT المجمّد" data-fa="TMT استیک شده" data-zh="已质押 TMT">Staked TMT</span><span>8.2B TMT</span></div>
+                <a href="#" class="btn" data-en="Liquid Stake →" data-ru="Ликвидный стейкинг →" data-tk="Likwid staking et →" data-ar="التجميد السائل ←" data-fa="استیک مایع ←" data-zh="流动性质押 →">Liquid Stake →</a>
+            </div>
+
+            <div class="card">
+                <h2>🔄 Restaking</h2>
+                <p data-en="Reuse stTMT for additional yield up to 12% APY." data-ru="Переиспользуйте stTMT для дополнительного дохода до 12% APY." data-tk="stTMT-ni 12% APY çenli goşmaça girdeji üçin gaýtadan ulanyň." data-ar="أعد استخدام stTMT للحصول على عائد إضافي يصل إلى 12% APY." data-fa="از stTMT برای بازده اضافی تا ۱۲٪ APY استفاده مجدد کنید." data-zh="重新使用 stTMT 以获得高达 12% 的额外收益。">Reuse stTMT for additional yield up to 12% APY.</p>
+                <div class="stat"><span data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</span><span class="apy">12%</span></div>
+                <div class="stat"><span data-en="Restaked" data-ru="Зарестейкано" data-tk="Gaýtadan staking edilen" data-ar="المعاد تجميده" data-fa="دوباره استیک شده" data-zh="已再质押">Restaked</span><span>3.4B stTMT</span></div>
+                <a href="#" class="btn" data-en="Restake →" data-ru="Рестейкинг →" data-tk="Gaýtadan staking et →" data-ar="إعادة التجميد ←" data-fa="ریاستیک ←" data-zh="再质押 →">Restake →</a>
+            </div>
+
+            <div class="card">
+                <h2>🏦 Automated Vaults</h2>
+                <p data-en="Automated strategies: arbitrage, LP management, gamma-neutral." data-ru="Автоматические стратегии: арбитраж, LP-менеджмент, гамма-нейтральные." data-tk="Awtomatiki strategiýalar: arbitraž, LP dolandyryş, gamma-neýtral." data-ar="استراتيجيات آلية: المراجحة، إدارة LP، غاما محايدة." data-fa="استراتژی‌های خودکار: آربیتراژ، مدیریت LP، گاما خنثی." data-zh="自动化策略：套利、LP 管理、伽马中性。">Automated strategies: arbitrage, LP management, gamma-neutral.</p>
+                <div class="stat"><span data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</span><span class="apy">15-35%</span></div>
+                <div class="stat"><span data-en="TVL" data-ru="TVL" data-tk="TVL" data-ar="TVL" data-fa="TVL" data-zh="总锁定价值">TVL</span><span>$245M</span></div>
+                <a href="#" class="btn" data-en="Explore Vaults →" data-ru="Изучить Vaults →" data-tk="Vaultlary öwren →" data-ar="استكشاف الخزائن ←" data-fa="کاوش والتها ←" data-zh="探索金库 →">Explore Vaults →</a>
+            </div>
+
+            <div class="card">
+                <h2>📈 Options Trading</h2>
+                <p data-en="Buy/sell Call/Put options on TMT and other assets." data-ru="Покупайте/продавайте опционы Call/Put на TMT и другие активы." data-tk="TMT we beýleki aktiwler üçin Call/Put opsionlaryny satyn alyň/satyň." data-ar="شراء/بيع خيارات الاتصال/البيع على TMT والأصول الأخرى." data-fa="خرید/فروش اختیار خرید/فروش بر روی TMT و سایر دارایی‌ها." data-zh="买卖 TMT 和其他资产的看涨/看跌期权。">Buy/sell Call/Put options on TMT and other assets.</p>
+                <div class="stat"><span data-en="Volume" data-ru="Объём" data-tk="Göwrüm" data-ar="الحجم" data-fa="حجم" data-zh="交易量">Volume</span><span>$42M</span></div>
+                <div class="stat"><span data-en="Open Positions" data-ru="Открытых позиций" data-tk="Açyk pozisiýalar" data-ar="المراكز المفتوحة" data-fa="موقعیت‌های باز" data-zh="未平仓头寸">Open Positions</span><span>1,847</span></div>
+                <a href="#" class="btn" data-en="Trade Options →" data-ru="Торговать опционами →" data-tk="Opsion söwdasy →" data-ar="تداول الخيارات ←" data-fa="معامله اختیار ←" data-zh="交易期权 →">Trade Options →</a>
+            </div>
+
+            <div class="card">
+                <h2>⚡ Perpetuals (50x)</h2>
+                <p data-en="Perpetual futures on TMT/SOL/BTC/ETH with up to 50x leverage." data-ru="Бессрочные фьючерсы на TMT/SOL/BTC/ETH с плечом до 50x." data-tk="50x çenli pleço bilen TMT/SOL/BTC/ETH üçin perpetual fýuçersler." data-ar="العقود الآجلة الدائمة على TMT/SOL/BTC/ETH برافعة مالية تصل إلى 50x." data-fa="قراردادهای آتی دائمی روی TMT/SOL/BTC/ETH با اهرم تا ۵۰x." data-zh="TMT/SOL/BTC/ETH 的永续期货，杠杆高达 50 倍。">Perpetual futures on TMT/SOL/BTC/ETH with up to 50x leverage.</p>
+                <div class="stat"><span data-en="Open Interest" data-ru="Открытый интерес" data-tk="Açyk gyzyklanma" data-ar="الفائدة المفتوحة" data-fa="بهره باز" data-zh="未平仓合约">Open Interest</span><span>$89M</span></div>
+                <div class="stat"><span data-en="24h Volume" data-ru="24h объём" data-tk="24s göwrüm" data-ar="حجم 24 ساعة" data-fa="حجم ۲۴ ساعته" data-zh="24小时交易量">24h Volume</span><span>$234M</span></div>
+                <a href="#" class="btn" data-en="Trade Perps →" data-ru="Торговать перпетуалами →" data-tk="Perpetual söwdasy →" data-ar="تداول العقود الدائمة ←" data-fa="معامله پرپچوال ←" data-zh="交易永续合约 →">Trade Perps →</a>
+            </div>
         </div>
-        <div class="footer">© 2025 TMT Earn — Maximize Your Yields</div>
+
+        <div class="footer">© 2025 TMT Earn — Maximize Your Yields | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            document.documentElement.lang = lang;
+            if (lang === 'ar' || lang === 'fa') { document.body.style.direction = 'rtl'; document.querySelector('.container').style.direction = 'rtl'; }
+            else { document.body.style.direction = 'ltr'; document.querySelector('.container').style.direction = 'ltr'; }
+        }
+        document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))); });
+        setLanguage('en');
+    </script>
 </body>
 </html>
