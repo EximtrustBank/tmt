@@ -2,116 +2,290 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMT Whitepaper — Technical Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TMT Whitepaper v3.0 — Ecosystem Overview</title>
+    <meta name="description" content="Turkmen New Manat (TMT) Whitepaper. Complete ecosystem: Staking, Lending, Deposits, RWA, DAO, Islamic Finance, and more.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f0;
-            color: #1a1a1a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
             line-height: 1.7;
+            min-height: 100vh;
         }
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; background: white; box-shadow: 0 0 30px rgba(0,0,0,0.1); }
-        .header { text-align: center; margin-bottom: 2rem; border-bottom: 2px solid #ffd700; padding-bottom: 1rem; }
-        .logo { width: 80px; height: 80px; margin: 0 auto 1rem; background: #0a2e1c; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .logo img { width: 70%; }
-        h1 { font-size: 2rem; color: #0a2e1c; }
-        h2 { color: #0a2e1c; margin: 1.5rem 0 1rem; border-left: 4px solid #ffd700; padding-left: 1rem; }
-        h3 { color: #145c2e; margin: 1rem 0 0.5rem; }
-        .back-link { color: #0a2e1c; text-decoration: none; display: inline-block; margin-top: 1rem; }
-        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; margin: 1rem 0; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.8rem; }
-        code { background: #f0f0f0; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; }
-        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-        th, td { border: 1px solid #ddd; padding: 0.8rem; text-align: left; }
-        th { background: #0a2e1c; color: white; }
+
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #d0d8d0;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .lang-btn.active {
+            background: #d4a843;
+            color: #0a1a0f;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
+        .logo img { width: 80%; border-radius: 50%; }
+        h1 { font-size: 2rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
+
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
+
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(212,168,67,0.25); }
+        .card h2 { color: #e8d8a8; margin-bottom: 1rem; font-size: 1.4rem; border-left: 3px solid #d4a843; padding-left: 0.8rem; }
+        .card h3 { color: #e8d8a8; margin: 1rem 0 0.5rem; font-size: 1.1rem; }
+
+        .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+
+        .apy-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .apy-table th, .apy-table td { padding: 0.5rem; text-align: left; border-bottom: 1px solid rgba(212,168,67,0.2); font-size: 0.9rem; }
+        .apy-table th { color: #e8d8a8; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+
     <div class="container">
-        <div class="header"><div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div><h1>Turkmen New Manat (TMT)</h1><h2 style="border-left: none; text-align: center; margin: 0;">Whitepaper v2.0</h2><p>June 2026</p><a href="index.html" class="back-link">← Back to Main Page</a></div>
-
-        <h2>1. Abstract</h2>
-        <p>Turkmen New Manat (TMT) is a next-generation digital asset built on the Solana blockchain using the advanced Token-2022 program. TMT represents a modernized, programmable equivalent of the Turkmen national currency, optimized for high-speed decentralized finance (DeFi), cross-border settlements, and real-world asset (RWA) tokenization.</p>
-
-        <h2>2. Token Specifications</h2>
-        <table><thead><tr><th>Parameter</th><th>Value</th></tr></thead><tbody>
-            <tr><td><strong>Token Name</strong></td><td>Turkmen New Manat</td></tr>
-            <tr><td><strong>Symbol</strong></td><td>TMT</td></tr>
-            <tr><td><strong>Blockchain</strong></td><td>Solana</td></tr>
-            <tr><td><strong>Token Program</strong></td><td>Token-2022 (TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb)</td></tr>
-            <tr><td><strong>Mint ID</strong></td><td><code>Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></td></tr>
-            <tr><td><strong>Decimals</strong></td><td>5</td></tr>
-            <tr><td><strong>Total Supply</strong></td><td>100,000,000,000,000 (10¹⁴ TMT)</td></tr>
-            <tr><td><strong>Mint Authority</strong></td><td>Revoked (permanent supply)</td></tr>
-            <tr><td><strong>Freeze Authority</strong></td><td>Revoked</td></tr>
-        </tbody></table>
-
-        <h2>3. Token-2022 Advanced Features</h2>
-        <p>TMT utilizes Solana's Token-2022 program, which provides enterprise-grade features:</p>
-        <ul><li><strong>Confidential Transfers:</strong> Zero-knowledge proofs for private transactions</li>
-        <li><strong>Transfer Hooks:</strong> Automated KYC/AML compliance checks on every transfer</li>
-        <li><strong>Transfer Fees:</strong> Optional fee mechanism for ecosystem funding</li>
-        <li><strong>Permanent Supply:</strong> Mint authority revoked — no inflation ever</li>
-        <li><strong>On-chain Metadata:</strong> Token name, symbol, logo, and description stored on-chain</li>
-        <li><strong>Memo Field:</strong> Institutional compliance with transfer references</li></ul>
-
-        <h2>4. Tokenomics</h2>
-        <p>The total supply of 100 trillion TMT is fixed and fully distributed at launch. Distribution:</p>
-        <ul><li><strong>Community & Ecosystem (60%):</strong> Airdrops, staking rewards, liquidity incentives</li>
-        <li><strong>Development Fund (20%):</strong> Protocol development, security audits, infrastructure</li>
-        <li><strong>Marketing & Listings (10%):</strong> CEX listings, marketing campaigns, partnerships</li>
-        <li><strong>Team & Advisors (10%):</strong> 4-year vesting with 1-year cliff</li></ul>
-
-        <h2>5. Use Cases & Ecosystem</h2>
-        <ul><li><strong>DeFi Hub:</strong> Staking (8-15% APY), yield farming (up to 25% APY), lending/borrowing</li>
-        <li><strong>RWA Tokenization:</strong> Gold, silver, platinum, real estate, oil & gas tokenized on Solana</li>
-        <li><strong>DAO Governance:</strong> Community voting on protocol parameters, treasury allocation</li>
-        <li><strong>TMT Crypto Card:</strong> Visa/Mastercard debit card with 3% cashback</li>
-        <li><strong>Cross-Chain Bridge:</strong> TMT available on Ethereum, BSC, Arbitrum, Optimism, Polygon, Avalanche</li>
-        <li><strong>Payment Gateway:</strong> E-commerce plugin for merchants</li></ul>
-
-        <h2>6. Buy TMT with Turkmen Manats</h2>
-        <p>Due to the non-convertible nature of Turkmen manats, TMT cannot be purchased directly. Instead, use a two-step process:</p>
-        <ol><li>Buy USDT or USDC with manats via Bitget (card payment) or Binance P2P</li>
-        <li>Swap USDT → TMT on Jupiter or Raydium</li></ol>
-        <p>Detailed instructions available at <a href="how-to-buy.html">how-to-buy.html</a>.</p>
-
-        <h2>7. Roadmap</h2>
-        <table><thead><tr><th>Phase</th><th>Timeline</th><th>Milestones</th></tr></thead><tbody>
-            <tr><td><strong>Phase 1</strong></td><td>Q1-Q2 2025</td><td>Token launch on Meteora · Website & Whitepaper · DEX listings (Jupiter, Raydium) · First 1,000 holders</td></tr>
-            <tr><td><strong>Phase 2</strong></td><td>Q3-Q4 2025</td><td>Staking & Farming launch · Gold tokenization (RWA) · DAO creation · First governance vote</td></tr>
-            <tr><td><strong>Phase 3</strong></td><td>Q1-Q2 2026</td><td>Cross-chain bridge (Wormhole) · TMT Debit Card beta · Real estate tokenization</td></tr>
-            <tr><td><strong>Phase 4</strong></td><td>Q3-Q4 2026</td><td>CEX listings (Bitget, Bybit, KuCoin) · Oil & gas tokenization · 100,000+ holders</td></tr>
-            <tr><td><strong>Phase 5</strong></td><td>2027+</td><td>Full DAO control · Institutional adoption · Multiple RWA partnerships</td></tr>
-        </tbody></table>
-
-        <h2>8. Security & Audits</h2>
-        <p>Smart contract security is paramount. TMT has undergone multiple audits:</p>
-        <ul><li><strong>OtterSec:</strong> Full audit of Token-2022 implementation (March 2025) — PASSED</li>
-        <li><strong>Halborn:</strong> Infrastructure and wallet security audit (April 2025) — PASSED</li>
-        <li><strong>CertiK:</strong> Formal verification of transfer hooks (May 2025) — PASSED</li>
-        <li><strong>Bug Bounty Program:</strong> Up to $50,000 for critical vulnerability reports</li></ul>
-
-        <h2>9. Legal & Compliance</h2>
-        <div class="warning">
-            <strong>⚠️ Important Legal Notice:</strong><br>
-            TMT is an experimental crypto asset created by a decentralized community of enthusiasts. It is <strong>NOT</strong> an official central bank digital currency (CBDC) of Turkmenistan or any other nation. TMT does not represent any government-backed currency or claim any official status. Users are responsible for understanding and complying with their local laws regarding digital assets.
+        <div class="header">
+            <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
+            <h1 data-en="📄 TMT Whitepaper v3.0" data-ru="📄 TMT Белая книга v3.0" data-tk="📄 TMT Ak kitap v3.0" data-ar="📄 الورقة البيضاء TMT v3.0" data-fa="📄 وایت‌پیپر TMT v3.0" data-zh="📄 TMT 白皮书 v3.0">📄 TMT Whitepaper v3.0</h1>
+            <p data-en="Complete Ecosystem Overview" data-ru="Полный обзор экосистемы" data-tk="Doly ekosistema syny" data-ar="نظرة عامة كاملة على النظام البيئي" data-fa="بررسی کامل اکوسیستم" data-zh="完整生态系统概览">Complete Ecosystem Overview</p>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
 
-        <h2>10. Team</h2>
-        <p>TMT is a community-driven project with no central authority. Development is coordinated through the TMT DAO, with contributions from developers, designers, and marketers worldwide. The project was initiated by the EximtrustBank team, who have since transferred control to the DAO.</p>
+        <div class="nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="ecosystem.html">🌿 Ecosystem</a>
+            <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="lending.html">🏦 Lending</a>
+            <a href="trading.html">📈 Trading</a>
+            <a href="earn.html">💸 Earn</a>
+            <a href="rwa.html">🏔️ RWA</a>
+            <a href="rwa2.html">🏔️ RWA+</a>
+            <a href="payments.html">💳 Payments</a>
+            <a href="social.html">🎮 Social</a>
+            <a href="dao.html">🗳️ DAO</a>
+            <a href="card.html">💳 Card</a>
+            <a href="bridge.html">🌉 Bridge</a>
+            <a href="currency.html">💱 Currency</a>
+            <a href="islamic.html">🕌 Islamic</a>
+            <a href="whitepaper.html" style="background:#d4a843; color:#0a1a0f;">📄 WP</a>
+        </div>
 
-        <h2>11. Contract & Links</h2>
-        <ul><li><strong>Mint ID:</strong> <code>Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></li>
-        <li><strong>Solscan:</strong> <a href="https://solscan.io/token/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2">https://solscan.io/token/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</a></li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/EximtrustBank/tmt">https://github.com/EximtrustBank/tmt</a></li>
-        <li><strong>Website:</strong> <a href="https://eximtrustbank.github.io/tmt/">https://eximtrustbank.github.io/tmt/</a></li>
-        <li><strong>Telegram:</strong> <a href="https://t.me/eximtrustbank">https://t.me/eximtrustbank</a></li>
-        <li><strong>Email:</strong> otc@eximtrustbank.io</li></ul>
+        <!-- ==================== 1. ABSTRACT ==================== -->
+        <div class="card">
+            <h2 data-en="1. Abstract" data-ru="1. Аннотация" data-tk="1. Gysgaça beýan" data-ar="1. الملخص" data-fa="۱. چکیده" data-zh="1. 摘要">1. Abstract</h2>
+            <p data-en="Turkmen New Manat (TMT) is a next-generation digital asset built on Solana's Token-2022 program. TMT is not just a token — it's a complete financial ecosystem designed for the digital economy of Central Asia and beyond. The ecosystem includes DeFi Hub (staking, farming, lending), TMT BANK 50+ (deposit program), RWA tokenization, cross-chain bridge, crypto card, DAO governance, Islamic finance, and multi-currency exchange." 
+               data-ru="Turkmen New Manat (TMT) — это цифровой актив нового поколения, построенный на программе Token-2022 Solana. TMT — это не просто токен, это полноценная финансовая экосистема для цифровой экономики Центральной Азии и за её пределами. Экосистема включает DeFi Hub (стейкинг, фарминг, кредитование), TMT BANK 50+ (депозитная программа), RWA-токенизацию, кросс-чейн мост, крипто-карту, DAO-управление, исламское финансирование и мультивалютный обмен.">
+            </p>
+        </div>
 
-        <div class="footer">© 2025 Turkmen New Manat (TMT) — Decentralized token on Solana Token-2022.<br>Version 2.0 — Last updated June 13, 2026</div>
+        <!-- ==================== 2. TOKEN SPECIFICATIONS ==================== -->
+        <div class="card">
+            <h2 data-en="2. Token Specifications" data-ru="2. Спецификации токена" data-tk="2. Token spesifikasiýalary" data-ar="2. مواصفات الرمز" data-fa="۲. مشخصات توکن" data-zh="2. 代币规格">2. Token Specifications</h2>
+            <div class="stat"><span data-en="Token Name" data-ru="Название" data-tk="Ady" data-ar="الاسم" data-fa="نام" data-zh="名称">Token Name</span><span>Turkmen New Manat</span></div>
+            <div class="stat"><span data-en="Symbol" data-ru="Символ" data-tk="Nyşany" data-ar="الرمز" data-fa="نماد" data-zh="符号">Symbol</span><span>TMT</span></div>
+            <div class="stat"><span data-en="Blockchain" data-ru="Блокчейн" data-tk="Blokçeýn" data-ar="سلسلة الكتل" data-fa="بلاکچین" data-zh="区块链">Blockchain</span><span>Solana</span></div>
+            <div class="stat"><span data-en="Token Program" data-ru="Программа" data-tk="Programma" data-ar="البرنامج" data-fa="برنامه" data-zh="程序">Token Program</span><span>Token-2022</span></div>
+            <div class="stat"><span data-en="Mint ID" data-ru="Mint ID" data-tk="Mint ID" data-ar="معرف الصك" data-fa="شناسه ضرب" data-zh="铸造 ID">Mint ID</span><span style="font-size:0.8rem; word-break:break-all;">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</span></div>
+            <div class="stat"><span data-en="Decimals" data-ru="Десятичные" data-tk="Onluk" data-ar="الكسور العشرية" data-fa="اعشار" data-zh="小数位">Decimals</span><span>5</span></div>
+            <div class="stat"><span data-en="Total Supply" data-ru="Общее предложение" data-tk="Jemi üpjünçilik" data-ar="العرض الكلي" data-fa="کل عرضه" data-zh="总供应量">Total Supply</span><span>100,000,000,000,000</span></div>
+            <div class="stat"><span data-en="Mint Authority" data-ru="Администратор минта" data-tk="Mint ygtyýary" data-ar="سلطة الصك" data-fa="اختیار ضرب" data-zh="铸造权限">Mint Authority</span><span data-en="Revoked" data-ru="Отозван" data-tk="Yzyna alnan" data-ar="ملغى" data-fa="لغو شد" data-zh="已撤销">Revoked</span></div>
+        </div>
+
+        <!-- ==================== 3. ECOSYSTEM OVERVIEW ==================== -->
+        <div class="card">
+            <h2 data-en="3. Ecosystem Overview" data-ru="3. Обзор экосистемы" data-tk="3. Ekosistema syny" data-ar="3. نظرة عامة على النظام البيئي" data-fa="۳. بررسی اکوسیستم" data-zh="3. 生态系统概览">3. Ecosystem Overview</h2>
+            <div class="stat"><span data-en="DeFi Hub" data-ru="DeFi Hub" data-tk="DeFi merkezi" data-ar="مركز التمويل اللامركزي" data-fa="مرکز دیفای" data-zh="DeFi 中心">DeFi Hub</span><span data-en="Staking (8-16% APY), Farming, Lending" data-ru="Стейкинг (8-16% APY), Фарминг, Кредитование" data-tk="Staking (8-16% APY), Farming, Karz" data-ar="تجميد (8-16% APY)، زراعة، إقراض" data-fa="استیکینگ (۸-۱۶٪ APY)، فارمینگ، وام" data-zh="质押（8-16% 年化）、挖矿、借贷">Staking (8-16% APY), Farming, Lending</span></div>
+            <div class="stat"><span data-en="TMT BANK 50+" data-ru="TMT BANK 50+" data-tk="TMT BANK 50+" data-ar="TMT BANK 50+" data-fa="TMT BANK 50+" data-zh="TMT BANK 50+">TMT BANK 50+</span><span data-en="Deposits up to 24% APY" data-ru="Депозиты до 24% APY" data-tk="24% APY çenli goýumlar" data-ar="ودائع تصل إلى 24% APY" data-fa="سپرده تا ۲۴٪ APY" data-zh="存款最高 24% 年化">Deposits up to 24% APY</span></div>
+            <div class="stat"><span data-en="Lending" data-ru="Кредитование" data-tk="Karz" data-ar="الإقراض" data-fa="وام" data-zh="贷款">Lending</span><span data-en="6 products — P2P, Jupiter Lend, Collateralized, Fixed P2P, Kamino, Direct" data-ru="6 продуктов — P2P, Jupiter Lend, Под залог, P2P с фикс, Kamino, Прямые" data-tk="6 önüm — P2P, Jupiter Lend, Girewli, Sabit P2P, Kamino, Göni" data-ar="6 منتجات — P2P، Jupiter Lend، بضمان، P2P بسعر ثابت، Kamino، مباشر" data-fa="۶ محصول — P2P، Jupiter Lend، با وثیقه، P2P با نرخ ثابت، Kamino، مستقیم" data-zh="6 种产品——P2P、Jupiter Lend、抵押贷款、固定利率 P2P、Kamino、直接贷款">6 products — P2P, Jupiter Lend, Collateralized, Fixed P2P, Kamino, Direct</span></div>
+            <div class="stat"><span data-en="RWA Tokenization" data-ru="RWA Токенизация" data-tk="RWA Tokenizasiýa" data-ar="ترميز الأصول الحقيقية" data-fa="توکن‌سازی دارایی واقعی" data-zh="现实世界资产代币化">RWA Tokenization</span><span data-en="Gold, Silver, Platinum, Real Estate, Oil, Gas" data-ru="Золото, Серебро, Платина, Недвижимость, Нефть, Газ" data-tk="Altyn, Kümüş, Platina, Gozgalmaýan emläk, Nebit, Gaz" data-ar="الذهب، الفضة، البلاتين، العقارات، النفط، الغاز" data-fa="طلا، نقره، پلاتین، املاک، نفت، گاز" data-zh="黄金、白银、铂金、房地产、石油、天然气">Gold, Silver, Platinum, Real Estate, Oil, Gas</span></div>
+            <div class="stat"><span data-en="Cross-Chain Bridge" data-ru="Кросс-чейн мост" data-tk="Zynjyrara köpri" data-ar="جسر عبر السلاسل" data-fa="پل زنجیره‌ای" data-zh="跨链桥">Cross-Chain Bridge</span><span data-en="10+ chains" data-ru="10+ сетей" data-tk="10+ tor" data-ar="10+ سلاسل" data-fa="۱۰+ زنجیره" data-zh="10+ 条链">10+ chains</span></div>
+            <div class="stat"><span data-en="DAO Governance" data-ru="DAO управление" data-tk="DAO dolandyryş" data-ar="حوكمة DAO" data-fa="حاکمیت DAO" data-zh="DAO 治理">DAO Governance</span><span data-en="Community voting" data-ru="Голосование сообщества" data-tk="Jemgyýetçilik ses berme" data-ar="تصويت المجتمع" data-fa="رای‌دهی جامعه" data-zh="社区投票">Community voting</span></div>
+            <div class="stat"><span data-en="Islamic Finance" data-ru="Исламское финансирование" data-tk="Yslam maliýe" data-ar="التمويل الإسلامي" data-fa="مالی اسلامی" data-zh="伊斯兰金融">Islamic Finance</span><span data-en="Murabaha, Mudarabah, Ijara, Sukuk, Qard al-Hasan, Istisna" data-ru="Мурабаха, Мудараба, Иджара, Сукук, Кард аль-Хасан, Истисна" data-tk="Murabaha, Mudarabah, Ijara, Sukuk, Qard al-Hasan, Istisna" data-ar="مرابحة، مضاربة، إجارة، صكوك، قرض الحسن، استصناع" data-fa="مرابحه، مضاربه، اجاره، صکوک، قرض الحسنه، استصناع" data-zh="穆拉巴哈、穆达拉巴、伊贾拉、苏库克、卡尔德·哈桑、伊斯蒂斯纳">Murabaha, Mudarabah, Ijara, Sukuk, Qard al-Hasan, Istisna</span></div>
+            <div class="stat"><span data-en="Multi-Currency Exchange" data-ru="Мультивалютный обмен" data-tk="Köp walýutaly çalşyk" data-ar="تبادل متعدد العملات" data-fa="تبادل چند ارزی" data-zh="多币种兑换">Multi-Currency Exchange</span><span data-en="12 currencies supported" data-ru="12 валют" data-tk="12 walýuta" data-ar="12 عملة" data-fa="۱۲ ارز" data-zh="支持 12 种货币">12 currencies supported</span></div>
+        </div>
+
+        <!-- ==================== 4. DEFI HUB ==================== -->
+        <div class="card">
+            <h2 data-en="4. DeFi Hub" data-ru="4. DeFi Hub" data-tk="4. DeFi merkezi" data-ar="4. مركز التمويل اللامركزي" data-fa="۴. مرکز دیفای" data-zh="4. DeFi 中心">4. DeFi Hub</h2>
+            <h3 data-en="4.1 Staking (TMT)" data-ru="4.1 Стейкинг (TMT)" data-tk="4.1 Staking (TMT)" data-ar="4.1 تجميد (TMT)" data-fa="۴.۱ استیکینگ (TMT)" data-zh="4.1 质押（TMT）">4.1 Staking (TMT)</h3>
+            <table class="apy-table">
+                <thead><tr><th data-en="Amount" data-ru="Сумма" data-tk="Mukdary" data-ar="المبلغ" data-fa="مقدار" data-zh="金额">Amount</th><th data-en="Lock" data-ru="Блокировка" data-tk="Blokirleme" data-ar="القفل" data-fa="قفل" data-zh="锁定">Lock</th><th data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化">APY</th></tr></thead>
+                <tbody>
+                    <tr><td>1,000 – 9,999</td><td>30 days</td><td>0.5%</td></tr>
+                    <tr><td>10,000 – 99,999</td><td>30 days</td><td>1.0%</td></tr>
+                    <tr><td>100,000 – 999,999</td><td>90 days</td><td>1.5%</td></tr>
+                    <tr><td>1,000,000 – 9,999,999</td><td>90 days</td><td>2.0%</td></tr>
+                    <tr><td>10,000,000 – 49,999,999</td><td>180 days</td><td>6.0%</td></tr>
+                    <tr><td>50,000,000 – 99,999,999</td><td>180 days</td><td>7.0%</td></tr>
+                    <tr><td>100,000,000 – 999,999,999</td><td>365 days</td><td>8.0%</td></tr>
+                    <tr><td>1,000,000,000 – 9,999,999,999</td><td>365 days</td><td>10.0%</td></tr>
+                    <tr><td>10,000,000,000 – 49,999,999,999</td><td>365 days</td><td>12.0%</td></tr>
+                    <tr><td>50,000,000,000 – 99,999,999,999</td><td>365 days</td><td>14.0%</td></tr>
+                    <tr><td>100,000,000,000+</td><td>365 days</td><td>16.0%</td></tr>
+                </tbody>
+            </table>
+            <h3 data-en="4.2 TMT BANK 50+ (Deposits)" data-ru="4.2 TMT BANK 50+ (Депозиты)" data-tk="4.2 TMT BANK 50+ (Goýumlar)" data-ar="4.2 TMT BANK 50+ (الودائع)" data-fa="۴.۲ TMT BANK 50+ (سپرده‌ها)" data-zh="4.2 TMT BANK 50+（存款）">4.2 TMT BANK 50+ (Deposits)</h3>
+            <p data-en="Deposit wallet: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9" data-ru="Кошелёк для депозитов: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9" data-tk="Goýum jübi: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9" data-ar="محفظة الإيداع: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9" data-fa="کیف پول سپرده: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9" data-zh="存款钱包：F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9">Deposit wallet: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9</p>
+            <table class="apy-table">
+                <thead><tr><th data-en="Product" data-ru="Продукт" data-tk="Önüm" data-ar="المنتج" data-fa="محصول" data-zh="产品">Product</th><th data-en="Term" data-ru="Срок" data-tk="Möhlet" data-ar="المدة" data-fa="مدت" data-zh="期限">Term</th><th data-en="Min" data-ru="Мин." data-tk="Iň az" data-ar="الحد الأدنى" data-fa="حداقل" data-zh="最低">Min</th><th data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化">APY</th></tr></thead>
+                <tbody>
+                    <tr><td>Ýaşlar depoziti</td><td>6-9 months</td><td>1,000</td><td>10-14%</td></tr>
+                    <tr><td>Pension depoziti</td><td>12 months</td><td>10,000</td><td>13.6%</td></tr>
+                    <tr><td>Durnukly depozit</td><td>12 months</td><td>100,000</td><td>18%</td></tr>
+                    <tr><td>Garaşsyzlyk depoziti</td><td>12 months</td><td>1,000,000</td><td>20%</td></tr>
+                    <tr><td>Aýal-gyzlar depoziti</td><td>12 months</td><td>10,000,000</td><td>24%</td></tr>
+                </tbody>
+            </table>
+            <h3 data-en="4.3 TMT Premium Deposits" data-ru="4.3 TMT Премиум Депозиты" data-tk="4.3 TMT Premium goýumlar" data-ar="4.3 ودائع TMT الممتازة" data-fa="۴.۳ سپرده‌های ممتاز TMT" data-zh="4.3 TMT 高级存款">4.3 TMT Premium Deposits</h3>
+            <table class="apy-table">
+                <thead><tr><th data-en="Product" data-ru="Продукт" data-tk="Önüm" data-ar="المنتج" data-fa="محصول" data-zh="产品">Product</th><th data-en="Term" data-ru="Срок" data-tk="Möhlet" data-ar="المدة" data-fa="مدت" data-zh="期限">Term</th><th data-en="Min" data-ru="Мин." data-tk="Iň az" data-ar="الحد الأدنى" data-fa="حداقل" data-zh="最低">Min</th><th data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化">APY</th></tr></thead>
+                <tbody>
+                    <tr><td>Start</td><td>30 days</td><td>100</td><td>4%</td></tr>
+                    <tr><td>Standart</td><td>90 days</td><td>5,000</td><td>6%</td></tr>
+                    <tr><td>Premium</td><td>180 days</td><td>50,000</td><td>8%</td></tr>
+                    <tr><td>VIP</td><td>365 days</td><td>500,000</td><td>10%</td></tr>
+                    <tr><td>Institutional</td><td>365 days</td><td>5,000,000</td><td>12%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ==================== 5. LENDING ==================== -->
+        <div class="card">
+            <h2 data-en="5. Lending (6 Products)" data-ru="5. Кредитование (6 продуктов)" data-tk="5. Karz (6 önüm)" data-ar="5. الإقراض (6 منتجات)" data-fa="۵. وام (۶ محصول)" data-zh="5. 贷款（6 种产品）">5. Lending (6 Products)</h2>
+            <div class="stat"><span data-en="1️⃣ P2P Lending" data-ru="1️⃣ P2P Кредитование" data-tk="1️⃣ P2P Karz" data-ar="1️⃣ الإقراض من نظير إلى نظير" data-fa="۱️⃣ وام P2P" data-zh="1️⃣ P2P 贷款">1️⃣ P2P Lending</span><span data-en="Yield: 6-15%" data-ru="Доход: 6-15%" data-tk="Girdeji: 6-15%" data-ar="العائد: 6-15%" data-fa="بازده: ۶-۱۵٪" data-zh="收益：6-15%">Yield: 6-15%</span></div>
+            <div class="stat"><span data-en="2️⃣ Jupiter Lend" data-ru="2️⃣ Jupiter Lend" data-tk="2️⃣ Jupiter Lend" data-ar="2️⃣ Jupiter Lend" data-fa="۲️⃣ Jupiter Lend" data-zh="2️⃣ Jupiter Lend">2️⃣ Jupiter Lend</span><span data-en="Yield: 1.7-4.9%" data-ru="Доход: 1.7-4.9%" data-tk="Girdeji: 1.7-4.9%" data-ar="العائد: 1.7-4.9%" data-fa="بازده: ۱.۷-۴.۹٪" data-zh="收益：1.7-4.9%">Yield: 1.7-4.9%</span></div>
+            <div class="stat"><span data-en="3️⃣ Collateralized Lending" data-ru="3️⃣ Кредитование под залог" data-tk="3️⃣ Girewli karz" data-ar="3️⃣ الإقراض بضمان" data-fa="۳️⃣ وام با وثیقه" data-zh="3️⃣ 抵押贷款">3️⃣ Collateralized Lending</span><span data-en="Yield: 9-20%" data-ru="Доход: 9-20%" data-tk="Girdeji: 9-20%" data-ar="العائد: 9-20%" data-fa="بازده: ۹-۲۰٪" data-zh="收益：9-20%">Yield: 9-20%</span></div>
+            <div class="stat"><span data-en="4️⃣ Fixed-Rate P2P" data-ru="4️⃣ P2P с фикс" data-tk="4️⃣ Sabit tölän mukdarly P2P" data-ar="4️⃣ P2P بسعر ثابت" data-fa="۴️⃣ P2P با نرخ ثابت" data-zh="4️⃣ 固定利率 P2P">4️⃣ Fixed-Rate P2P</span><span data-en="Yield: 6.5-14%" data-ru="Доход: 6.5-14%" data-tk="Girdeji: 6.5-14%" data-ar="العائد: 6.5-14%" data-fa="بازده: ۶.۵-۱۴٪" data-zh="收益：6.5-14%">Yield: 6.5-14%</span></div>
+            <div class="stat"><span data-en="5️⃣ Kamino Multiply" data-ru="5️⃣ Kamino Multiply" data-tk="5️⃣ Kamino Multiply" data-ar="5️⃣ Kamino Multiply" data-fa="۵️⃣ Kamino Multiply" data-zh="5️⃣ Kamino 倍增">5️⃣ Kamino Multiply</span><span data-en="Yield: 8.2-27%" data-ru="Доход: 8.2-27%" data-tk="Girdeji: 8.2-27%" data-ar="العائد: 8.2-27%" data-fa="بازده: ۸.۲-۲۷٪" data-zh="收益：8.2-27%">Yield: 8.2-27%</span></div>
+            <div class="stat"><span data-en="6️⃣ TMT BANK Direct" data-ru="6️⃣ Прямые кредиты TMT BANK" data-tk="6️⃣ TMT BANK göni karzlar" data-ar="6️⃣ قروض TMT BANK المباشرة" data-fa="۶️⃣ وام‌های مستقیم TMT BANK" data-zh="6️⃣ TMT BANK 直接贷款">6️⃣ TMT BANK Direct</span><span data-en="Yield: 10-20%" data-ru="Доход: 10-20%" data-tk="Girdeji: 10-20%" data-ar="العائد: 10-20%" data-fa="بازده: ۱۰-۲۰٪" data-zh="收益：10-20%">Yield: 10-20%</span></div>
+            <p data-en="Lending wallet: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9" data-ru="Кошелёк для кредитов: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9" data-tk="Karz jübi: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9" data-ar="محفظة الإقراض: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9" data-fa="کیف پول وام: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9" data-zh="贷款钱包：F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9">Lending wallet: F9vGgzKayqAUcbedagXzMhgXUfs5ranRftwGASALRvK9</p>
+        </div>
+
+        <!-- ==================== 6. RWA ==================== -->
+        <div class="card">
+            <h2 data-en="6. Real World Assets (RWA)" data-ru="6. Реальные активы (RWA)" data-tk="6. Hakyky aktiwler (RWA)" data-ar="6. الأصول الحقيقية (RWA)" data-fa="۶. دارایی‌های واقعی (RWA)" data-zh="6. 现实世界资产（RWA）">6. Real World Assets (RWA)</h2>
+            <div class="stat"><span>🥇 Gold</span><span>1 oz ≈ 85,650 TMT</span></div>
+            <div class="stat"><span>🥈 Silver</span><span>1 oz ≈ 1,375 TMT</span></div>
+            <div class="stat"><span>🔷 Platinum</span><span>1 oz ≈ 28,550 TMT</span></div>
+            <div class="stat"><span>🏠 Real Estate</span><span>Dubai, London, NYC</span></div>
+            <div class="stat"><span>🛢️ Oil & Gas</span><span>Tokenized futures</span></div>
+        </div>
+
+        <!-- ==================== 7. TOKENOMICS ==================== -->
+        <div class="card">
+            <h2 data-en="7. Tokenomics" data-ru="7. Токеномика" data-tk="7. Tokenomika" data-ar="7. علم الرموز" data-fa="۷. توکنومیکس" data-zh="7. 代币经济学">7. Tokenomics</h2>
+            <div class="stat"><span data-en="Community & Ecosystem" data-ru="Сообщество и экосистема" data-tk="Jemgyýet we ekosistema" data-ar="المجتمع والنظام البيئي" data-fa="جامعه و اکوسیستم" data-zh="社区和生态系统">Community & Ecosystem</span><span>60%</span></div>
+            <div class="stat"><span data-en="Development Fund" data-ru="Фонд развития" data-tk="Ösüş gaznasy" data-ar="صندوق التطوير" data-fa="صندوق توسعه" data-zh="发展基金">Development Fund</span><span>20%</span></div>
+            <div class="stat"><span data-en="Marketing & Listings" data-ru="Маркетинг и листинги" data-tk="Marketing we listler" data-ar="التسويق والإدراج" data-fa="بازاریابی و لیستینگ" data-zh="营销和上市">Marketing & Listings</span><span>10%</span></div>
+            <div class="stat"><span data-en="Team & Advisors (vested)" data-ru="Команда и советники (вестинг)" data-tk="Topar we maslahatçylar (vesting)" data-ar="الفريق والمستشارون (مستحق)" data-fa="تیم و مشاوران (قفل)" data-zh="团队和顾问（归属）">Team & Advisors (vested)</span><span>10%</span></div>
+        </div>
+
+        <!-- ==================== 8. ROADMAP ==================== -->
+        <div class="card">
+            <h2 data-en="8. Roadmap" data-ru="8. Дорожная карта" data-tk="8. Ýol kartasy" data-ar="8. خريطة الطريق" data-fa="۸. نقشه راه" data-zh="8. 路线图">8. Roadmap</h2>
+            <div class="stat"><span data-en="Q1-Q2 2025" data-ru="Q1-Q2 2025" data-tk="Q1-Q2 2025" data-ar="Q1-Q2 2025" data-fa="Q1-Q2 ۲۰۲۵" data-zh="2025年Q1-Q2">Q1-Q2 2025</span><span data-en="Token launch, Website, DEX listings" data-ru="Запуск токена, Сайт, Листинги на DEX" data-tk="Token çykarylyşy, Web sahypa, DEX listleri" data-ar="إطلاق الرمز، الموقع، إدراج البورصات اللامركزية" data-fa="راه‌اندازی توکن، وب‌سایت، لیستینگ DEX" data-zh="代币上线、网站、DEX 上市">Token launch, Website, DEX listings</span></div>
+            <div class="stat"><span data-en="Q3-Q4 2025" data-ru="Q3-Q4 2025" data-tk="Q3-Q4 2025" data-ar="Q3-Q4 2025" data-fa="Q3-Q4 ۲۰۲۵" data-zh="2025年Q3-Q4">Q3-Q4 2025</span><span data-en="Staking, Farming, DAO, RWA pilot" data-ru="Стейкинг, Фарминг, DAO, Пилот RWA" data-tk="Staking, Farming, DAO, RWA pilot" data-ar="التجميد، الزراعة، DAO، نموذج RWA" data-fa="استیکینگ، فارمینگ، DAO، آزمایشی RWA" data-zh="质押、挖矿、DAO、RWA 试点">Staking, Farming, DAO, RWA pilot</span></div>
+            <div class="stat"><span data-en="Q1-Q2 2026" data-ru="Q1-Q2 2026" data-tk="Q1-Q2 2026" data-ar="Q1-Q2 2026" data-fa="Q1-Q2 ۲۰۲۶" data-zh="2026年Q1-Q2">Q1-Q2 2026</span><span data-en="Lending, TMT BANK 50+, Bridge, Islamic Finance" data-ru="Кредитование, TMT BANK 50+, Мост, Исламское финансирование" data-tk="Karz, TMT BANK 50+, Köpri, Yslam maliýe" data-ar="الإقراض، TMT BANK 50+، الجسر، التمويل الإسلامي" data-fa="وام، TMT BANK 50+، پل، مالی اسلامی" data-zh="贷款、TMT BANK 50+、跨链桥、伊斯兰金融">Lending, TMT BANK 50+, Bridge, Islamic Finance</span></div>
+            <div class="stat"><span data-en="Q3-Q4 2026" data-ru="Q3-Q4 2026" data-tk="Q3-Q4 2026" data-ar="Q3-Q4 2026" data-fa="Q3-Q4 ۲۰۲۶" data-zh="2026年Q3-Q4">Q3-Q4 2026</span><span data-en="TMT Card, CEX listings, 100k holders" data-ru="TMT Карта, Листинги на CEX, 100k держателей" data-tk="TMT Karta, CEX listleri, 100k eýe" data-ar="بطاقة TMT، إدراج البورصات المركزية، 100k حامل" data-fa="کارت TMT، لیستینگ CEX، ۱۰۰k دارنده" data-zh="TMT 卡、CEX 上市、10 万持有者">TMT Card, CEX listings, 100k holders</span></div>
+        </div>
+
+        <!-- ==================== 9. SECURITY ==================== -->
+        <div class="card">
+            <h2 data-en="9. Security & Audits" data-ru="9. Безопасность и аудиты" data-tk="9. Howpsuzlyk we audity" data-ar="9. الأمن والتدقيق" data-fa="۹. امنیت و حسابرسی" data-zh="9. 安全和审计">9. Security & Audits</h2>
+            <div class="stat"><span>OtterSec</span><span>✅ PASSED</span></div>
+            <div class="stat"><span>Halborn</span><span>✅ PASSED</span></div>
+            <div class="stat"><span>CertiK</span><span>✅ PASSED</span></div>
+            <div class="stat"><span>Bug Bounty</span><span>Up to $50,000</span></div>
+        </div>
+
+        <!-- ==================== 10. LEGAL ==================== -->
+        <div class="card">
+            <h2 data-en="10. Legal & Compliance" data-ru="10. Юридическая информация" data-tk="10. Hukuk we compliance" data-ar="10. الشؤون القانونية والامتثال" data-fa="۱۰. حقوقی و انطباق" data-zh="10. 法律与合规">10. Legal & Compliance</h2>
+            <p style="font-size:0.9rem; background:rgba(255,100,100,0.1); padding:0.8rem; border-radius:12px;">
+                ⚠️ <span data-en="TMT is an experimental crypto asset created by a decentralized community. It is NOT an official central bank digital currency (CBDC) of Turkmenistan or any other nation. Users are responsible for understanding and complying with their local laws." 
+                      data-ru="TMT — экспериментальный крипто-актив, созданный децентрализованным сообществом. Он НЕ является официальной цифровой валютой центрального банка Туркменистана или любого другого государства. Пользователи несут ответственность за понимание и соблюдение местных законов.">
+                    TMT is an experimental crypto asset created by a decentralized community. It is NOT an official central bank digital currency (CBDC) of Turkmenistan or any other nation. Users are responsible for understanding and complying with their local laws.</span>
+            </p>
+            <div class="stat"><span data-en="Contract" data-ru="Контракт" data-tk="Şertnama" data-ar="العقد" data-fa="قرارداد" data-zh="合约">Contract</span><span style="font-size:0.8rem; word-break:break-all;">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</span></div>
+            <div class="stat"><span data-en="Website" data-ru="Сайт" data-tk="Web sahypa" data-ar="الموقع" data-fa="وب‌سایت" data-zh="网站">Website</span><span><a href="https://eximtrustbank.github.io/tmt/" target="_blank" style="color:#d4a843;">eximtrustbank.github.io/tmt</a></span></div>
+        </div>
+
+        <div class="footer">
+            © 2025 Turkmen New Manat (TMT) — Decentralized token on Solana Token-2022.<br>
+            Version 3.0 — Last updated June 16, 2026
+        </div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            document.documentElement.lang = lang;
+            if (lang === 'ar' || lang === 'fa') {
+                document.body.style.direction = 'rtl';
+                document.querySelector('.container').style.direction = 'rtl';
+            } else {
+                document.body.style.direction = 'ltr';
+                document.querySelector('.container').style.direction = 'ltr';
+            }
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+        setLanguage('en');
+    </script>
 </body>
 </html>
