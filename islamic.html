@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>TMT Islamic Finance — Sharia-Compliant Financing | Halal Crypto Solutions</title>
-    <meta name="description" content="Islamic financing with TMT. Murabaha, Mudarabah, Ijara, Sukuk, Qard al-Hasan, Istisna. Submit application with business plan and feasibility study. Total disbursed: $12.4 Billion.">
-    <meta property="og:title" content="TMT Islamic Finance — Sharia-Compliant">
-    <meta property="og:description" content="Halal financing products certified by AAOIFI. Submit KYC, business plan, feasibility study.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png">
-    <meta property="og:url" content="https://eximtrustbank.github.io/tmt/islamic.html">
+    <title>TMT Islamic Finance — Sharia-Compliant Solutions</title>
+    <meta name="description" content="Halal financing with TMT. Murabaha, Mudarabah, Ijara, Sukuk, Qard al-Hasan, Istisna. Zakat calculator. Submit KYC and business plan.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #0a2e1c 0%, #1a5e3a 50%, #0a3d22 100%);
-            color: #fff;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
             line-height: 1.6;
             min-height: 100vh;
         }
@@ -32,12 +28,12 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            border: 1px solid rgba(255,215,0,0.3);
+            border: 1px solid rgba(212,168,67,0.3);
         }
         .lang-btn {
             background: transparent;
             border: none;
-            color: white;
+            color: #d0d8d0;
             cursor: pointer;
             padding: 0.3rem 0.8rem;
             border-radius: 30px;
@@ -46,48 +42,63 @@
             font-size: 0.85rem;
         }
         .lang-btn.active {
-            background: #ffd700;
-            color: #0a2e1c;
+            background: #d4a843;
+            color: #0a1a0f;
         }
 
         .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffd700; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
-        h1 { font-size: 2rem; margin-bottom: 0.3rem; background: linear-gradient(135deg, #ffd700, #ffec80); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .back-link { color: #ffec80; text-decoration: none; display: inline-block; margin-top: 0.5rem; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
 
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; transition: 0.2s; }
-        .nav a:hover { background: #ffd700; color: #0a2e1c; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
 
-        .grid-2, .grid-3 { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
-        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
-        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.15); }
-        .card h2, .card h3 { color: #ffd700; margin-bottom: 1rem; }
-        .card-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .card h2 { color: #e8d8a8; margin-bottom: 1rem; font-size: 1.3rem; border-left: 3px solid #d4a843; padding-left: 0.8rem; }
+        .card h3 { color: #e8d8a8; margin: 1rem 0 0.5rem; font-size: 1.1rem; }
+
         .badge-sharia { background: #00a86b; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 40px; font-size: 0.7rem; margin-bottom: 1rem; }
-        .stat { display: flex; justify-content: space-between; margin: 0.8rem 0; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .btn { background: #ffd700; color: #0a2e1c; padding: 0.8rem 1.5rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; border: none; cursor: pointer; transition: 0.2s; }
-        .btn:hover { transform: scale(1.02); background: #ffec80; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
-        .warning { background: rgba(255,100,100,0.2); border-left: 4px solid #ff6464; padding: 1rem; border-radius: 12px; margin: 1rem 0; }
-        .success { background: rgba(0,200,100,0.2); border-left: 4px solid #00c864; padding: 1rem; border-radius: 12px; margin: 1rem 0; }
-        .iframe-container { position: relative; overflow: hidden; width: 100%; height: 800px; border-radius: 24px; margin-top: 1rem; }
-        .iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 24px; }
-        @media (max-width: 768px) { h1 { font-size: 1.5rem; } .grid-2, .grid-3 { grid-template-columns: 1fr; } .iframe-container { height: 650px; } .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; } .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; } }
+        .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
+
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; transition: 0.2s; border: none; cursor: pointer; }
+        .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .btn-outline { background: transparent; border: 1px solid #d4a843; color: #d4a843; }
+        .btn-outline:hover { background: rgba(212,168,67,0.15); }
+
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.3rem; font-weight: bold; }
+        input, select, textarea {
+            width: 100%; padding: 0.6rem; border-radius: 12px; border: 1px solid rgba(212,168,67,0.3);
+            background: rgba(0,0,0,0.4); color: #d0d8d0; font-size: 0.9rem;
+        }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+
+        .zakat-box { background: rgba(0,100,0,0.2); border-radius: 20px; padding: 1.5rem; margin: 1rem 0; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.3rem; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
     <div class="lang-switch">
         <button class="lang-btn active" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="ru">RU</button>
-        <button class="lang-btn" data-lang="tk">Türkmençe</button>
-        <button class="lang-btn" data-lang="ar">العربية</button>
-        <button class="lang-btn" data-lang="fa">فارسی</button>
-        <button class="lang-btn" data-lang="zh">中文</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
     </div>
 
     <div class="container">
@@ -95,98 +106,136 @@
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
             <h1 data-en="🕌 TMT Islamic Finance" data-ru="🕌 TMT Исламское финансирование" data-tk="🕌 TMT Yslam maliýe" data-ar="🕌 التمويل الإسلامي TMT" data-fa="🕌 مالی اسلامی TMT" data-zh="🕌 TMT 伊斯兰金融">🕌 TMT Islamic Finance</h1>
             <p data-en="Sharia-Compliant Digital Asset Solutions | Halal Crypto Financing" data-ru="Шариат-комплаентные решения | Халяльное крипто-финансирование" data-tk="Şeriat taýýar çözgütler | Halal kripto maliýeleşdirme" data-ar="حلول متوافقة مع الشريعة | تمويل العملات الرقمية الحلال" data-fa="راهکارهای منطبق با شریعت | تأمین مالی رمزارز حلال" data-zh="符合伊斯兰教法的数字资产解决方案 | 清真加密融资">Sharia-Compliant Digital Asset Solutions | Halal Crypto Financing</p>
-            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Esasy sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
 
         <div class="nav">
-            <a href="index.html" data-en="🏠 Home" data-ru="🏠 Главная" data-tk="🏠 Baş sahypa" data-ar="🏠 الرئيسية" data-fa="🏠 صفحه اصلی" data-zh="🏠 主页">🏠 Home</a>
-            <a href="ecosystem.html" data-en="🌿 Ecosystem" data-ru="🌿 Экосистема" data-tk="🌿 Ekosistema" data-ar="🌿 النظام البيئي" data-fa="🌿 اکوسیستم" data-zh="🌿 生态系统">🌿 Ecosystem</a>
-            <a href="defi-hub.html" data-en="💰 DeFi Hub" data-ru="💰 DeFi Hub" data-tk="💰 DeFi merkezi" data-ar="💰 مركز التمويل اللامركزي" data-fa="💰 مرکز دیفای" data-zh="💰 DeFi 中心">💰 DeFi Hub</a>
-            <a href="rwa.html" data-en="🏔️ RWA" data-ru="🏔️ RWA" data-tk="🏔️ Hakyky aktiwler" data-ar="🏔️ الأصول الحقيقية" data-fa="🏔️ دارایی‌های واقعی" data-zh="🏔️ 现实世界资产">🏔️ RWA</a>
-            <a href="dao.html" data-en="🗳️ DAO" data-ru="🗳️ DAO" data-tk="🗳️ DAO" data-ar="🗳️ منظمة مستقلة" data-fa="🗳️ سازمان خودگردان" data-zh="🗳️ 去中心化自治组织">🗳️ DAO</a>
-            <a href="card.html" data-en="💳 Card" data-ru="💳 Карта" data-tk="💳 Karta" data-ar="💳 بطاقة" data-fa="💳 کارت" data-zh="💳 卡片">💳 Card</a>
-            <a href="bridge.html" data-en="🌉 Bridge" data-ru="🌉 Мост" data-tk="🌉 Köpri" data-ar="🌉 جسر" data-fa="🌉 پل" data-zh="🌉 跨链桥">🌉 Bridge</a>
-            <a href="islamic.html" style="background:#ffd700; color:#0a2e1c;" data-en="🕌 Islamic" data-ru="🕌 Islamic" data-tk="🕌 Yslam" data-ar="🕌 إسلامي" data-fa="🕌 اسلامی" data-zh="🕌 伊斯兰">🕌 Islamic</a>
-            <a href="whitepaper.html" data-en="📄 WP" data-ru="📄 WP" data-tk="📄 WP" data-ar="📄 الورقة البيضاء" data-fa="📄 وایت‌پیپر" data-zh="📄 白皮书">📄 WP</a>
+            <a href="index.html">🏠 Home</a>
+            <a href="ecosystem.html">🌿 Ecosystem</a>
+            <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="lending.html">🏦 Lending</a>
+            <a href="trading.html">📈 Trading</a>
+            <a href="earn.html">💸 Earn</a>
+            <a href="rwa.html">🏔️ RWA</a>
+            <a href="rwa2.html">🏔️ RWA+</a>
+            <a href="payments.html">💳 Payments</a>
+            <a href="social.html">🎮 Social</a>
+            <a href="dao.html">🗳️ DAO</a>
+            <a href="card.html">💳 Card</a>
+            <a href="bridge.html">🌉 Bridge</a>
+            <a href="currency.html">💱 Currency</a>
+            <a href="islamic.html" style="background:#d4a843; color:#0a1a0f;">🕌 Islamic</a>
+            <a href="whitepaper.html">📄 WP</a>
         </div>
 
-        <div class="success" style="text-align: center;">
-            🕋 <strong data-en="AAOIFI Sharia Standard Certified" data-ru="Сертифицировано AAOIFI" data-tk="AAOIFI Şeriat standarty bilen sertifikatlanan" data-ar="معتمد من معيار الشريعة AAOIFI" data-fa="تأیید شده استاندارد شریعت AAOIFI" data-zh="AAOIFI 伊斯兰教法标准认证">AAOIFI Sharia Standard Certified</strong><br>
-            <span data-en="Total Financing Disbursed: $12.4 BILLION | 870 Active Contracts" data-ru="Всего выдано: $12.4 МЛРД | 870 активных контрактов" data-tk="Jemi berlen: $12.4 MLRD | 870 işjeýn şertnama" data-ar="إجمالي التمويل المدفوع: 12.4 مليار دولار | 870 عقدًا نشطًا" data-fa="کل تأمین مالی پرداخت شده: ۱۲.۴ میلیارد دلار | ۸۷۰ قرارداد فعال" data-zh="已发放融资总额：124亿美元 | 870份活跃合同">Total Financing Disbursed: $12.4 BILLION | 870 Active Contracts</span>
+        <div class="card" style="background:rgba(0,200,100,0.1); border-color:#00a86b; text-align:center;">
+            <p>🕋 <strong data-en="AAOIFI Sharia Standard Certified" data-ru="Сертифицировано AAOIFI" data-tk="AAOIFI Şeriat standarty bilen sertifikatlanan" data-ar="معتمد من معيار الشريعة AAOIFI" data-fa="تأیید شده استاندارد شریعت AAOIFI" data-zh="AAOIFI 伊斯兰教法标准认证">AAOIFI Sharia Standard Certified</strong> — <span data-en="All products comply with Islamic Finance principles." data-ru="Все продукты соответствуют принципам исламского финансирования." data-tk="Ähli önümler Yslam maliýe prinsiplerine laýyk gelýär." data-ar="جميع المنتجات تتوافق مع مبادئ التمويل الإسلامي." data-fa="همه محصولات با اصول مالی اسلامی مطابقت دارند." data-zh="所有产品均符合伊斯兰金融原则。">All products comply with Islamic Finance principles.</span></p>
         </div>
 
-        <h2 style="color:#ffd700; margin: 1rem 0;" data-en="📜 Sharia-Compliant Products" data-ru="📜 Шариат-комплаентные продукты" data-tk="📜 Şeriat taýýar önümler" data-ar="📜 منتجات متوافقة مع الشريعة" data-fa="📜 محصولات منطبق با شریعت" data-zh="📜 符合伊斯兰教法的产品">📜 Sharia-Compliant Products</h2>
+        <!-- ==================== ISLAMIC PRODUCTS ==================== -->
+        <h2 style="color:#e8d8a8; margin:1rem 0;" data-en="📜 Sharia-Compliant Products" data-ru="📜 Шариат-комплаентные продукты" data-tk="📜 Şeriat taýýar önümler" data-ar="📜 المنتجات المتوافقة مع الشريعة" data-fa="📜 محصولات منطبق با شریعت" data-zh="📜 符合伊斯兰教法的产品">📜 Sharia-Compliant Products</h2>
         <div class="grid-3">
-            <div class="card"><div class="card-icon">🏺</div><h3 data-en="Murabaha (Cost-Plus)" data-ru="Мурабаха (Cost-Plus)" data-tk="Murabaha" data-ar="مرابحة" data-fa="مرابحه" data-zh="穆拉巴哈">Murabaha (Cost-Plus)</h3><div class="badge-sharia" data-en="Asset-Backed" data-ru="Обеспечено активом" data-tk="Aktiw bilen üpjün edilen" data-ar="مدعوم بالأصول" data-fa="پشتیبان‌شده با دارایی" data-zh="资产支持">Asset-Backed</div><p data-en="Financing for asset purchases. Transparent markup, no riba (interest)." data-ru="Финансирование покупки активов. Прозрачная наценка, без рибы." data-tk="Aktiw satyn almak üçin maliýeleşdirme. Açyk baha, riba ýok." data-ar="تمويل لشراء الأصول. هامش ربح شفاف، لا ربا." data-fa="تأمین مالی برای خرید دارایی. حاشیه سود شفاف، بدون ربا." data-zh="资产购买融资。透明加价，无利息。">Financing for asset purchases. Transparent markup, no riba (interest).</p><div class="stat"><span data-en="Min Amount" data-ru="Мин. сумма" data-tk="Iň az mukdar" data-ar="الحد الأدنى" data-fa="حداقل مبلغ" data-zh="最低金额">Min Amount</span><span><strong>10,000,000 TMT</strong></span></div><div class="stat"><span data-en="Tenor" data-ru="Срок" data-tk="Möhlet" data-ar="المدة" data-fa="مدت" data-zh="期限">Tenor</span><span>6-36 months</span></div><div class="stat"><span data-en="Profit Rate" data-ru="Доходность" data-tk="Gelir derejesi" data-ar="معدل الربح" data-fa="نرخ سود" data-zh="利润率">Profit Rate</span><span>8% fixed</span></div></div>
+            <div class="card"><div style="font-size:2.5rem;">🏺</div><h3 data-en="Murabaha (Cost-Plus)" data-ru="Мурабаха (Cost-Plus)" data-tk="Murabaha" data-ar="مرابحة" data-fa="مرابحه" data-zh="穆拉巴哈">Murabaha (Cost-Plus)</h3><div class="badge-sharia" data-en="Asset-Backed" data-ru="Обеспечено активом" data-tk="Aktiw bilen üpjün edilen" data-ar="مدعوم بالأصول" data-fa="پشتیبان‌شده با دارایی" data-zh="资产支持">Asset-Backed</div><p data-en="Financing for asset purchases. Transparent markup, no riba." data-ru="Финансирование покупки активов. Прозрачная наценка, без рибы." data-tk="Aktiw satyn almak üçin maliýeleşdirme. Açyk baha, riba ýok." data-ar="تمويل لشراء الأصول. هامش ربح شفاف، لا ربا." data-fa="تأمین مالی برای خرید دارایی. حاشیه سود شفاف، بدون ربا." data-zh="资产购买融资。透明加价，无利息。">Financing for asset purchases. Transparent markup, no riba.</p><div class="stat"><span data-en="Min Amount" data-ru="Мин. сумма" data-tk="Iň az mukdar" data-ar="الحد الأدنى" data-fa="حداقل مبلغ" data-zh="最低金额">Min Amount</span><span>10,000 TMT</span></div><div class="stat"><span data-en="Tenor" data-ru="Срок" data-tk="Möhlet" data-ar="المدة" data-fa="مدت" data-zh="期限">Tenor</span><span>6-36 months</span></div><div class="stat"><span data-en="Profit Rate" data-ru="Доходность" data-tk="Gelir derejesi" data-ar="معدل الربح" data-fa="نرخ سود" data-zh="利润率">Profit Rate</span><span>8% fixed</span></div><a href="#application" class="btn-outline btn" style="margin-top:0.5rem;" data-en="Apply →" data-ru="Подать заявку →" data-tk="Ýüz tut →" data-ar="تقديم طلب ←" data-fa="درخواست ←" data-zh="申请 →">Apply →</a></div>
 
-            <div class="card"><div class="card-icon">🤝</div><h3 data-en="Mudarabah (Profit-Sharing)" data-ru="Мудараба (Profit-Sharing)" data-tk="Mudarabah" data-ar="مضاربة" data-fa="مضاربه" data-zh="穆达拉巴">Mudarabah (Profit-Sharing)</h3><div class="badge-sharia" data-en="Investment Partnership" data-ru="Инвестиционное партнёрство" data-tk="Maýa goýum hyzmatdaşlygy" data-ar="شراكة استثمارية" data-fa="مشارکت سرمایه‌گذاری" data-zh="投资伙伴关系">Investment Partnership</div><p data-en="You provide capital, we manage the business. Profits shared 70/30." data-ru="Вы даёте капитал, мы управляем бизнесом. Прибыль 70/30." data-tk="Siz maýa goýýarsyňyz, biz işi dolandyrýarys. Gelir 70/30 bölünýär." data-ar="أنت تقدم رأس المال، نحن ندير الأعمال. الأرباح مشتركة 70/30." data-fa="شما سرمایه را تأمین می‌کنید، ما کسب و کار را مدیریت می‌کنیم. سود ۷۰/۳۰ تقسیم می‌شود." data-zh="您提供资金，我们管理业务。利润按 70/30 分配。">You provide capital, we manage the business. Profits shared 70/30.</p><div class="stat"><span data-en="Min Investment" data-ru="Мин. инвестиции" data-tk="Iň az maýa goýum" data-ar="الحد الأدنى للاستثمار" data-fa="حداقل سرمایه‌گذاری" data-zh="最低投资额">Min Investment</span><span><strong>50,000,000 TMT</strong></span></div><div class="stat"><span data-en="Projected Profit" data-ru="Прогн. прибыль" data-tk="Çaklanýan girdeji" data-ar="الربح المتوقع" data-fa="سود پیش‌بینی شده" data-zh="预计利润">Projected Profit</span><span>12-20% p.a.</span></div></div>
+            <div class="card"><div style="font-size:2.5rem;">🤝</div><h3 data-en="Mudarabah (Profit-Sharing)" data-ru="Мудараба (Profit-Sharing)" data-tk="Mudarabah" data-ar="مضاربة" data-fa="مضاربه" data-zh="穆达拉巴">Mudarabah (Profit-Sharing)</h3><div class="badge-sharia" data-en="Investment Partnership" data-ru="Инвестиционное партнёрство" data-tk="Maýa goýum hyzmatdaşlygy" data-ar="شراكة استثمارية" data-fa="مشارکت سرمایه‌گذاری" data-zh="投资伙伴关系">Investment Partnership</div><p data-en="You provide capital, we manage the business. Profits shared 70/30." data-ru="Вы даёте капитал, мы управляем бизнесом. Прибыль 70/30." data-tk="Siz maýa goýýarsyňyz, biz işi dolandyrýarys. Gelir 70/30 bölünýär." data-ar="أنت تقدم رأس المال، نحن ندير الأعمال. الأرباح مشتركة 70/30." data-fa="شما سرمایه را تأمین می‌کنید، ما کسب و کار را مدیریت می‌کنیم. سود ۷۰/۳۰ تقسیم می‌شود." data-zh="您提供资金，我们管理业务。利润按 70/30 分配。">You provide capital, we manage the business. Profits shared 70/30.</p><div class="stat"><span data-en="Min Investment" data-ru="Мин. инвестиции" data-tk="Iň az maýa goýum" data-ar="الحد الأدنى للاستثمار" data-fa="حداقل سرمایه‌گذاری" data-zh="最低投资额">Min Investment</span><span>50,000 TMT</span></div><div class="stat"><span data-en="Projected Profit" data-ru="Прогн. прибыль" data-tk="Çaklanýan girdeji" data-ar="الربح المتوقع" data-fa="سود پیش‌بینی شده" data-zh="预计利润">Projected Profit</span><span>12-20% p.a.</span></div><a href="#application" class="btn-outline btn">Apply →</a></div>
 
-            <div class="card"><div class="card-icon">🏗️</div><h3 data-en="Ijara (Lease-to-Own)" data-ru="Иджара (Lease-to-Own)" data-tk="Ijara" data-ar="إجارة" data-fa="اجاره" data-zh="伊贾拉">Ijara (Lease-to-Own)</h3><div class="badge-sharia" data-en="Asset Leasing" data-ru="Лизинг" data-tk="Aktiw lizingi" data-ar="تأجير الأصول" data-fa="اجاره دارایی" data-zh="资产租赁">Asset Leasing</div><p data-en="Lease equipment, vehicles, or real estate with option to own." data-ru="Аренда с правом выкупа оборудования, недвижимости." data-tk="Enjam, ulag ýa-da gozgalmaýan emlägi satyn almak hukugy bilen kärendesine almak." data-ar="تأجير المعدات أو المركبات أو العقارات مع خيار التملك." data-fa="اجاره تجهیزات، وسایل نقلیه یا املاک با گزینه مالکیت." data-zh="租赁设备、车辆或房地产并拥有选择购买权。">Lease equipment, vehicles, or real estate with option to own.</p><div class="stat"><span data-en="Asset Types" data-ru="Типы активов" data-tk="Aktiw görnüşleri" data-ar="أنواع الأصول" data-fa="انواع دارایی" data-zh="资产类型">Asset Types</span><span data-en="Real Estate, Machinery" data-ru="Недвижимость, техника" data-tk="Gozgalmaýan emläk, tehnika" data-ar="العقارات والآلات" data-fa="املاک، ماشین‌آلات" data-zh="房地产、机械设备">Real Estate, Machinery</span></div><div class="stat"><span data-en="Rental Term" data-ru="Срок аренды" data-tk="Kärende möhleti" data-ar="مدة الإيجار" data-fa="مدت اجاره" data-zh="租期">Rental Term</span><span>12-60 months</span></div></div>
+            <div class="card"><div style="font-size:2.5rem;">🏗️</div><h3 data-en="Ijara (Lease-to-Own)" data-ru="Иджара (Lease-to-Own)" data-tk="Ijara" data-ar="إجارة" data-fa="اجاره" data-zh="伊贾拉">Ijara (Lease-to-Own)</h3><div class="badge-sharia" data-en="Asset Leasing" data-ru="Лизинг" data-tk="Aktiw lizingi" data-ar="تأجير الأصول" data-fa="اجاره دارایی" data-zh="资产租赁">Asset Leasing</div><p data-en="Lease equipment, vehicles, or real estate with option to own." data-ru="Аренда с правом выкупа оборудования, недвижимости." data-tk="Enjam, ulag ýa-da gozgalmaýan emlägi satyn almak hukugy bilen kärendesine almak." data-ar="تأجير المعدات أو المركبات أو العقارات مع خيار التملك." data-fa="اجاره تجهیزات، وسایل نقلیه یا املاک با گزینه مالکیت." data-zh="租赁设备、车辆或房地产并拥有选择购买权。">Lease equipment, vehicles, or real estate with option to own.</p><div class="stat"><span data-en="Asset Types" data-ru="Типы активов" data-tk="Aktiw görnüşleri" data-ar="أنواع الأصول" data-fa="انواع دارایی" data-zh="资产类型">Asset Types</span><span data-en="Real Estate, Machinery" data-ru="Недвижимость, техника" data-tk="Gozgalmaýan emläk, tehnika" data-ar="العقارات والآلات" data-fa="املاک، ماشین‌آلات" data-zh="房地产、机械设备">Real Estate, Machinery</span></div><div class="stat"><span data-en="Rental Term" data-ru="Срок аренды" data-tk="Kärende möhleti" data-ar="مدة الإيجار" data-fa="مدت اجاره" data-zh="租期">Rental Term</span><span>12-60 months</span></div><a href="#application" class="btn-outline btn">Apply →</a></div>
 
-            <div class="card"><div class="card-icon">📜</div><h3 data-en="Sukuk (Islamic Bonds)" data-ru="Сукук (Islamic Bonds)" data-tk="Sukuk" data-ar="صكوك" data-fa="صکوک" data-zh="苏库克">Sukuk (Islamic Bonds)</h3><div class="badge-sharia" data-en="Asset-Backed" data-ru="Обеспечено активом" data-tk="Aktiw bilen üpjün edilen" data-ar="مدعوم بالأصول" data-fa="پشتیبان‌شده با دارایی" data-zh="资产支持">Asset-Backed</div><p data-en="Invest in asset-backed Islamic bonds. Regular profit distributions." data-ru="Инвестиции в исламские облигации под реальные активы." data-tk="Hakyky aktiwler bilen üpjün edilen yslam obligasiýalaryna maýa goýum." data-ar="الاستثمار في الصكوك الإسلامية المدعومة بالأصول." data-fa="سرمایه‌گذاری در صکوک اسلامی پشتیبان‌شده با دارایی." data-zh="投资于资产支持的伊斯兰债券。">Invest in asset-backed Islamic bonds. Regular profit distributions.</p><div class="stat"><span data-en="Min Subscription" data-ru="Мин. сумма" data-tk="Iň az abuna" data-ar="الحد الأدنى للاكتتاب" data-fa="حداقل اشتراک" data-zh="最低认购额">Min Subscription</span><span><strong>5,000,000 TMT</strong></span></div><div class="stat"><span data-en="Yield" data-ru="Доходность" data-tk="Gelir" data-ar="العائد" data-fa="بازده" data-zh="收益率">Yield</span><span>6-9% p.a.</span></div><div class="stat"><span data-en="Outstanding" data-ru="В обращении" data-tk="Dolaşymda" data-ar="المستحق" data-fa="در گردش" data-zh="未偿还">Outstanding</span><span><strong>$5.1B</strong></span></div></div>
+            <div class="card"><div style="font-size:2.5rem;">📜</div><h3 data-en="Sukuk (Islamic Bonds)" data-ru="Сукук (Islamic Bonds)" data-tk="Sukuk" data-ar="صكوك" data-fa="صکوک" data-zh="苏库克">Sukuk (Islamic Bonds)</h3><div class="badge-sharia" data-en="Asset-Backed" data-ru="Обеспечено активом" data-tk="Aktiw bilen üpjün edilen" data-ar="مدعوم بالأصول" data-fa="پشتیبان‌شده با دارایی" data-zh="资产支持">Asset-Backed</div><p data-en="Invest in asset-backed Islamic bonds. Regular profit distributions." data-ru="Инвестиции в исламские облигации под реальные активы." data-tk="Hakyky aktiwler bilen üpjün edilen yslam obligasiýalaryna maýa goýum." data-ar="الاستثمار في الصكوك الإسلامية المدعومة بالأصول." data-fa="سرمایه‌گذاری در صکوک اسلامی پشتیبان‌شده با دارایی." data-zh="投资于资产支持的伊斯兰债券。">Invest in asset-backed Islamic bonds. Regular profit distributions.</p><div class="stat"><span data-en="Min Subscription" data-ru="Мин. сумма" data-tk="Iň az abuna" data-ar="الحد الأدنى للاكتتاب" data-fa="حداقل اشتراک" data-zh="最低认购额">Min Subscription</span><span>5,000 TMT</span></div><div class="stat"><span data-en="Yield" data-ru="Доходность" data-tk="Gelir" data-ar="العائد" data-fa="بازده" data-zh="收益率">Yield</span><span>6-9% p.a.</span></div><a href="#application" class="btn-outline btn">Subscribe →</a></div>
 
-            <div class="card"><div class="card-icon">💚</div><h3 data-en="Qard al-Hasan (Benevolent Loan)" data-ru="Кард аль-Хасан (Benevolent Loan)" data-tk="Qard al-Hasan" data-ar="قرض الحسن" data-fa="قرض الحسنه" data-zh="卡尔德·哈桑">Qard al-Hasan (Benevolent Loan)</h3><div class="badge-sharia" data-en="0% Interest" data-ru="0% процентов" data-tk="0% göterim" data-ar="0% فائدة" data-fa="۰٪ بهره" data-zh="零利息">0% Interest</div><p data-en="Interest-free benevolent loan for small business, education, healthcare." data-ru="Беспроцентный благотворительный заём для бизнеса, образования, медицины." data-tk="Kiçi biznes, bilim, saglyk üçin göterimsiz haýyr-sahawat karzy." data-ar="قرض حسن بدون فوائد للأعمال الصغيرة والتعليم والرعاية الصحية." data-fa="وام نیکوکارانه بدون بهره برای کسب و کار کوچک، آموزش، بهداشت و درمان." data-zh="用于小型企业、教育、医疗的无息善贷。">Interest-free benevolent loan for small business, education, healthcare.</p><div class="stat"><span data-en="Max Amount" data-ru="Макс. сумма" data-tk="Iň köp mukdar" data-ar="الحد الأقصى" data-fa="حداکثر مبلغ" data-zh="最高金额">Max Amount</span><span><strong>10,000,000 TMT</strong></span></div><div class="stat"><span data-en="Beneficiaries" data-ru="Получателей" data-tk="Alýanlar" data-ar="المستفيدين" data-fa="مستفیدان" data-zh="受益人数">Beneficiaries</span><span><strong>14,300 families</strong></span></div></div>
+            <div class="card"><div style="font-size:2.5rem;">💚</div><h3 data-en="Qard al-Hasan (Benevolent Loan)" data-ru="Кард аль-Хасан (Benevolent Loan)" data-tk="Qard al-Hasan" data-ar="قرض الحسن" data-fa="قرض الحسنه" data-zh="卡尔德·哈桑">Qard al-Hasan (Benevolent Loan)</h3><div class="badge-sharia" data-en="0% Interest" data-ru="0% процентов" data-tk="0% göterim" data-ar="0% فائدة" data-fa="۰٪ بهره" data-zh="零利息">0% Interest</div><p data-en="Interest-free benevolent loan for small business, education, healthcare." data-ru="Беспроцентный благотворительный заём для бизнеса, образования, медицины." data-tk="Kiçi biznes, bilim, saglyk üçin göterimsiz haýyr-sahawat karzy." data-ar="قرض حسن بدون فوائد للأعمال الصغيرة والتعليم والرعاية الصحية." data-fa="وام نیکوکارانه بدون بهره برای کسب و کار کوچک، آموزش، بهداشت و درمان." data-zh="用于小型企业、教育、医疗的无息善贷。">Interest-free benevolent loan for small business, education, healthcare.</p><div class="stat"><span data-en="Max Amount" data-ru="Макс. сумма" data-tk="Iň köp mukdar" data-ar="الحد الأقصى" data-fa="حداکثر مبلغ" data-zh="最高金额">Max Amount</span><span>10,000 TMT</span></div><a href="#application" class="btn-outline btn">Request →</a></div>
 
-            <div class="card"><div class="card-icon">🌾</div><h3 data-en="Istisna (Project Finance)" data-ru="Истисна (Project Finance)" data-tk="Istisna" data-ar="استصناع" data-fa="استصناع" data-zh="伊斯蒂斯纳">Istisna (Project Finance)</h3><div class="badge-sharia" data-en="Project-Based" data-ru="Проектное" data-tk="Taslama esasly" data-ar="قائم على المشروع" data-fa="پروژه‌محور" data-zh="基于项目">Project-Based</div><p data-en="Financing for construction, manufacturing, agriculture. Business plan required." data-ru="Финансирование строительства, производства, сельского хозяйства." data-tk="Gurluşyk, önümçilik, oba hojalygy üçin maliýeleşdirme." data-ar="تمويل للبناء والتصنيع والزراعة. خطة عمل مطلوبة." data-fa="تأمین مالی برای ساخت و ساز، تولید، کشاورزی." data-zh="为建筑、制造、农业提供融资。需要商业计划书。">Financing for construction, manufacturing, agriculture. Business plan required.</p><div class="stat"><span data-en="Min Amount" data-ru="Мин. сумма" data-tk="Iň az mukdar" data-ar="الحد الأدنى" data-fa="حداقل مبلغ" data-zh="最低金额">Min Amount</span><span><strong>100,000,000 TMT</strong></span></div><div class="stat"><span data-en="Required" data-ru="Требуется" data-tk="Gerek" data-ar="مطلوب" data-fa="مورد نیاز" data-zh="所需文件">Required</span><span data-en="Business Plan + Feasibility Study" data-ru="Бизнес-план + ТЭО" data-tk="Biznes meýilnama + Fizibilite barlagy" data-ar="خطة العمل + دراسة الجدوى" data-fa="طرح کسب و کار + مطالعه امکان‌سنجی" data-zh="商业计划书 + 可行性研究">Business Plan + Feasibility Study</span></div></div>
+            <div class="card"><div style="font-size:2.5rem;">🌾</div><h3 data-en="Istisna (Project Finance)" data-ru="Истисна (Project Finance)" data-tk="Istisna" data-ar="استصناع" data-fa="استصناع" data-zh="伊斯蒂斯纳">Istisna (Project Finance)</h3><div class="badge-sharia" data-en="Project-Based" data-ru="Проектное" data-tk="Taslama esasly" data-ar="قائم على المشروع" data-fa="پروژه‌محور" data-zh="基于项目">Project-Based</div><p data-en="Financing for construction, manufacturing, agriculture. Business plan required." data-ru="Финансирование строительства, производства, сельского хозяйства." data-tk="Gurluşyk, önümçilik, oba hojalygy üçin maliýeleşdirme." data-ar="تمويل للبناء والتصنيع والزراعة. خطة عمل مطلوبة." data-fa="تأمین مالی برای ساخت و ساز، تولید، کشاورزی." data-zh="为建筑、制造、农业提供融资。需要商业计划书。">Financing for construction, manufacturing, agriculture. Business plan required.</p><div class="stat"><span data-en="Min Amount" data-ru="Мин. сумма" data-tk="Iň az mukdar" data-ar="الحد الأدنى" data-fa="حداقل مبلغ" data-zh="最低金额">Min Amount</span><span>100,000 TMT</span></div><a href="#application" class="btn-outline btn">Apply →</a></div>
         </div>
 
-        <!-- Embedded Google Form -->
-        <div class="card" id="app">
+        <!-- ==================== ZAKAT CALCULATOR ==================== -->
+        <div class="card zakat-box">
+            <h2 data-en="🤲 Zakat Calculator" data-ru="🤲 Калькулятор закята" data-tk="🤲 Zekat kalkulýatory" data-ar="🤲 حاسبة الزكاة" data-fa="🤲 ماشین حساب زکات" data-zh="🤲 天课计算器">🤲 Zakat Calculator</h2>
+            <p data-en="Calculate your Zakat (2.5% of wealth held for one lunar year)." data-ru="Рассчитайте ваш закят (2.5% от накоплений за лунный год)." data-tk="Zekatyňyzy hasaplaň (bir aý ýylynda baýlygyň 2.5%-i)." data-ar="احسب زكاتك (2.5% من الثروة المحتفظ بها لمدة عام قمري)." data-fa="زکات خود را محاسبه کنید (۲.۵٪ از دارایی نگهداری شده برای یک سال قمری)." data-zh="计算您的天课（按一个农历年持有财富的 2.5%）。">Calculate your Zakat (2.5% of wealth held for one lunar year).</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap; margin:1rem 0;">
+                <div style="flex:1; min-width:200px;">
+                    <label data-en="Your Wealth (TMT)" data-ru="Ваше состояние (TMT)" data-tk="Baýlygyňyz (TMT)" data-ar="ثروتك (TMT)" data-fa="دارایی شما (TMT)" data-zh="您的财富（TMT）">Your Wealth (TMT)</label>
+                    <input type="number" id="zakatWealth" placeholder="100,000" value="100000" style="font-size:1.2rem;">
+                </div>
+                <div style="flex:1; min-width:200px;">
+                    <label data-en="Zakat Due (TMT)" data-ru="Закят к выплате (TMT)" data-tk="Tölenmeli zekat (TMT)" data-ar="الزكاة المستحقة (TMT)" data-fa="زکات قابل پرداخت (TMT)" data-zh="应付天课（TMT）">Zakat Due (TMT)</label>
+                    <div id="zakatResult" style="font-size:2rem; color:#d4a843; font-weight:bold;">2,500 TMT</div>
+                </div>
+            </div>
+            <button onclick="calculateZakat()" class="btn" data-en="🧮 Calculate" data-ru="🧮 Рассчитать" data-tk="🧮 Hasapla" data-ar="🧮 حساب" data-fa="🧮 محاسبه" data-zh="🧮 计算">🧮 Calculate</button>
+            <p style="font-size:0.8rem; margin-top:0.5rem;" data-en="Zakat is paid on wealth held for one lunar year. 100% distributed to verified charities." data-ru="Закят выплачивается с накоплений за лунный год. 100% распределяется проверенным благотворительным организациям." data-tk="Zekat bir aý ýylynda saklanan baýlykdan tölenýär. 100% barlanan haýyr-sahawat guramalaryna paýlanýar." data-ar="تُدفع الزكاة على الثروة المحتفظ بها لمدة عام قمري. يتم توزيع 100% على الجمعيات الخيرية الموثقة." data-fa="زکات بر دارایی نگهداری شده برای یک سال قمری پرداخت می‌شود. ۱۰۰٪ به خیریه‌های تأیید شده توزیع می‌شود." data-zh="天课按一个农历年持有的财富计算。100% 分配给经过验证的慈善机构。">Zakat is paid on wealth held for one lunar year. 100% distributed to verified charities.</p>
+        </div>
+
+        <!-- ==================== APPLICATION FORM ==================== -->
+        <div class="card" id="application">
             <h2 data-en="📋 Apply for Islamic Financing" data-ru="📋 Подать заявку на исламское финансирование" data-tk="📋 Yslam maliýeleşdirmesi üçin ýüz tutuň" data-ar="📋 تقديم طلب للحصول على تمويل إسلامي" data-fa="📋 درخواست تأمین مالی اسلامی" data-zh="📋 申请伊斯兰融资">📋 Apply for Islamic Financing</h2>
-            <p data-en="Fill out the form. All files (KYC, business plan, feasibility study) will be uploaded to a secure Google Drive folder. Our specialists will contact you within 24 hours." data-ru="Заполните форму. Все файлы (KYC, бизнес-план, ТЭО) загрузятся в защищённую папку Google Drive. Наши специалисты свяжутся с вами в течение 24 часов." data-tk="Formy dolduryň. Files (KYC, biznes meýilnama, fizibilite barlagy) Google Drive papkasynda ýerleşdiriler. Hünärmenlerimiz 24 sagadyň içinde siziň bilen habarlaşar." data-ar="املأ النموذج. سيتم تحميل جميع الملفات إلى مجلد آمن في Google Drive. سيتواصل معك المتخصصون لدينا في غضون 24 ساعة." data-fa="فرم را پر کنید. همه فایل‌ها در پوشه امن Google Drive آپلود می‌شوند. کارشناسان ما ظرف ۲۴ ساعت با شما تماس خواهند گرفت." data-zh="填写表格。所有文件将上传到安全的 Google Drive 文件夹。我们的专家将在 24 小时内与您联系。">Fill out the form. All files (KYC, business plan, feasibility study) will be uploaded to a secure Google Drive folder. Our specialists will contact you within 24 hours.</p>
-            <div class="iframe-container">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSenqEIrZut7R3cuNV6mYw_9rReITz8m6geFFZ27K8aO9aEyoQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-            </div>
-            <p style="font-size: 0.85rem; text-align: center; margin-top: 1rem; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 16px;">
-                📎 <strong data-en="What to upload:" data-ru="Что загрузить:" data-tk="Näme ýüklemeli:" data-ar="ماذا تريد تحميل:" data-fa="چه چیزی آپلود کنید:" data-zh="需要上传：">What to upload:</strong> <span data-en="Passport/ID (required), Business Plan (for Mudarabah/Istisna), Feasibility Study (for projects >100M TMT)" data-ru="Паспорт/ID (обязательно), бизнес-план (для Мудараба/Истисна), ТЭО (для проектов >100M TMT)" data-tk="Pasport/ID (hökman), Biznes meýilnama (Mudarabah/Istisna üçin), Fizibilite barlagy (100M TMT-den uly taslamalar üçin)" data-ar="جواز السفر/الهوية (مطلوب)، خطة العمل (للمضاربة/الاستصناع)، دراسة الجدوى (للمشاريع التي تزيد عن 100 مليون TMT)" data-fa="گذرنامه/شناسنامه (الزامی)، طرح کسب و کار (برای مضاربه/استصناع)، مطالعه امکان‌سنجی (برای پروژه‌های بزرگتر از ۱۰۰ میلیون TMT)" data-zh="护照/身份证（必需）、商业计划书（用于穆达拉巴/伊斯蒂斯纳）、可行性研究（用于超过 1 亿 TMT 的项目）">Passport/ID (required), Business Plan (for Mudarabah/Istisna), Feasibility Study (for projects >100M TMT)</span><br>
-                🔒 <span data-en="All files are stored encrypted. Access only by authorized personnel." data-ru="Все файлы хранятся в зашифрованном виде. Доступ только у уполномоченных сотрудников." data-tk="Files şifrlenen görnüşde saklanýar. Diňe ygtyýarly işgärleriň girişi bar." data-ar="يتم تخزين جميع الملفات بطريقة مشفرة. الوصول فقط للموظفين المصرح لهم." data-fa="همه فایل‌ها به صورت رمزگذاری شده ذخیره می‌شوند. دسترسی فقط برای پرسنل مجاز." data-zh="所有文件均以加密方式存储。仅授权人员可访问。">All files are stored encrypted. Access only by authorized personnel.</span>
-            </p>
+            <p data-en="Complete the application below. Our Sharia board will review within 5-7 business days." data-ru="Заполните форму ниже. Наш шариатский совет рассмотрит заявку в течение 5-7 рабочих дней." data-tk="Aşakdaky anketany dolduryň. Şeriat geňeşimiz 5-7 iş gününiň içinde sereder." data-ar="أكمل الطلب أدناه. سيقوم مجلس الشريعة لدينا بالمراجعة في غضون 5-7 أيام عمل." data-fa="فرم زیر را تکمیل کنید. هیئت شریعت ما ظرف ۵-۷ روز کاری بررسی خواهد کرد." data-zh="填写下面的申请表。我们的伊斯兰教法委员会将在 5-7 个工作日内审核。">Complete the application below. Our Sharia board will review within 5-7 business days.</p>
+            <form id="islamicApplication" action="https://formspree.io/f/xkjdklqj" method="POST" enctype="multipart/form-data">
+                <div class="grid-2">
+                    <div class="form-group"><label data-en="Full Name" data-ru="Полное имя" data-tk="Doly ady" data-ar="الاسم الكامل" data-fa="نام کامل" data-zh="全名">Full Name</label><input type="text" name="fullname" required placeholder="Ahmed Al-Mansouri"></div>
+                    <div class="form-group"><label data-en="Email Address" data-ru="Email" data-tk="Email" data-ar="البريد الإلكتروني" data-fa="ایمیل" data-zh="电子邮件">Email Address</label><input type="email" name="email" required placeholder="ahmed@example.com"></div>
+                    <div class="form-group"><label data-en="Phone (WhatsApp)" data-ru="Телефон (WhatsApp)" data-tk="Telefon (WhatsApp)" data-ar="الهاتف (واتساب)" data-fa="تلفن (واتساپ)" data-zh="电话（WhatsApp）">Phone (WhatsApp)</label><input type="tel" name="phone" required placeholder="+993 XX XXX XXX"></div>
+                    <div class="form-group"><label data-en="Country of Residence" data-ru="Страна проживания" data-tk="Ýaşaýan ýurdy" data-ar="بلد الإقامة" data-fa="کشور اقامت" data-zh="居住国">Country of Residence</label><input type="text" name="country" required placeholder="Turkmenistan, UAE, Saudi Arabia..."></div>
+                    <div class="form-group"><label data-en="Select Product" data-ru="Выберите продукт" data-tk="Önümi saýlaň" data-ar="اختر المنتج" data-fa="محصول را انتخاب کنید" data-zh="选择产品">Select Product</label>
+                        <select name="product" required>
+                            <option value="">-- Select --</option>
+                            <option value="Murabaha">Murabaha</option>
+                            <option value="Mudarabah">Mudarabah</option>
+                            <option value="Ijara">Ijara</option>
+                            <option value="Sukuk">Sukuk</option>
+                            <option value="Qard al-Hasan">Qard al-Hasan</option>
+                            <option value="Istisna">Istisna</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label data-en="Amount (TMT)" data-ru="Сумма (TMT)" data-tk="Mukdary (TMT)" data-ar="المبلغ (TMT)" data-fa="مبلغ (TMT)" data-zh="金额（TMT）">Amount (TMT)</label><input type="number" name="amount" required placeholder="Min 5,000 TMT"></div>
+                    <div class="form-group"><label data-en="Upload KYC (Passport/ID)" data-ru="Загрузите KYC (Паспорт/ID)" data-tk="KYC ýükle (Pasport/ID)" data-ar="تحميل KYC (جواز السفر/الهوية)" data-fa="آپلود KYC (گذرنامه/شناسنامه)" data-zh="上传 KYC（护照/身份证）">Upload KYC (Passport/ID)</label><input type="file" name="kyc" accept=".pdf,.jpg,.png" required></div>
+                    <div class="form-group"><label data-en="Business Plan (PDF)" data-ru="Бизнес-план (PDF)" data-tk="Biznes meýilnama (PDF)" data-ar="خطة العمل (PDF)" data-fa="طرح کسب و کار (PDF)" data-zh="商业计划书（PDF）">Business Plan (PDF)</label><input type="file" name="business_plan" accept=".pdf"></div>
+                    <div class="form-group"><label data-en="Feasibility Study (ТЭО)" data-ru="Технико-экономическое обоснование (ТЭО)" data-tk="Fizibilite barlagy (ТЭО)" data-ar="دراسة الجدوى (ТЭО)" data-fa="مطالعه امکان‌سنجی (ТЭО)" data-zh="可行性研究（ТЭО）">Feasibility Study (ТЭО)</label><input type="file" name="feasibility" accept=".pdf"></div>
+                    <div class="form-group"><label data-en="Additional Notes" data-ru="Дополнительная информация" data-tk="Goşmaça maglumat" data-ar="ملاحظات إضافية" data-fa="یادداشت‌های اضافی" data-zh="附加说明">Additional Notes</label><textarea name="notes" rows="3"></textarea></div>
+                </div>
+                <div class="form-group"><label><input type="checkbox" required> <span data-en="I confirm no haram activities (gambling, alcohol, pork, riba)." data-ru="Подтверждаю, что не занимаюсь харам-деятельностью (азартные игры, алкоголь, свинина, риба)." data-tk="Haram işler bilen meşgullanmaýandygymy tassyklaýaryn (humarly oýunlar, alkogol, doňuz eti, riba)." data-ar="أؤكد أنني لا أقوم بأنشطة محرمة (القمار، الكحول، لحم الخنزير، الربا)." data-fa="تأیید می‌کنم که فعالیت حرام انجام نمی‌دهم (قمار، الکل، گوشت خوک، ربا)." data-zh="我确认没有进行 Haram 活动（赌博、酒精、猪肉、利息）。">I confirm no haram activities (gambling, alcohol, pork, riba).</span></label></div>
+                <button type="submit" class="btn" data-en="📤 Submit Application →" data-ru="📤 Отправить заявку →" data-tk="📤 Ýüz tutma iber →" data-ar="📤 تقديم الطلب ←" data-fa="📤 ارسال درخواست ←" data-zh="📤 提交申请 →">📤 Submit Application →</button>
+            </form>
+            <p id="formSuccess" style="display:none; margin-top:1rem; background:rgba(0,200,100,0.2); padding:1rem; border-radius:12px;" data-en="✅ Application submitted! Our Sharia board will contact you within 5-7 business days." data-ru="✅ Заявка отправлена! Наш шариатский совет свяжется с вами в течение 5-7 рабочих дней." data-tk="✅ Ýüz tutma iberildi! Şeriat geňeşimiz 5-7 iş gününiň içinde siziň bilen habarlaşar." data-ar="✅ تم تقديم الطلب! سيتواصل معك مجلس الشريعة لدينا في غضون 5-7 أيام عمل." data-fa="✅ درخواست ارسال شد! هیئت شریعت ما ظرف ۵-۷ روز کاری با شما تماس خواهد گرفت." data-zh="✅ 申请已提交！我们的伊斯兰教法委员会将在 5-7 个工作日内与您联系。">✅ Application submitted! Our Sharia board will contact you within 5-7 business days.</p>
         </div>
 
+        <!-- ==================== ISLAMIC DASHBOARD ==================== -->
         <div class="grid-2">
-            <div class="card"><h2 data-en="🕋 Sharia Supervisory Board" data-ru="🕋 Шариатский совет" data-tk="🕋 Şeriat gözegçilik geňeşi" data-ar="🕋 مجلس الرقابة الشرعية" data-fa="🕋 هیئت نظارت شرعی" data-zh="🕋 伊斯兰教法监督委员会">🕋 Sharia Supervisory Board</h2><div class="stat"><span>Dr. Yusuf Al-Qaradawi</span><span>AAOIFI</span></div><div class="stat"><span>Sheikh Nizam Yaquby</span><span data-en="Expert" data-ru="Эксперт" data-tk="Ekspert" data-ar="خبير" data-fa="کارشناس" data-zh="专家">Expert</span></div><div class="stat"><span>Dr. Mohamed Elgari</span><span data-en="Scholar" data-ru="Учёный" data-tk="Alym" data-ar="عالم" data-fa="دانشمند" data-zh="学者">Scholar</span></div><div class="stat"><span data-en="Fatwa No." data-ru="Фатва №" data-tk="Fatwa №" data-ar="رقم الفتوى" data-fa="شماره فتوا" data-zh="教令编号">Fatwa No.</span><span>241/2025</span></div></div>
-            <div class="card"><h2 data-en="📊 Islamic Finance Dashboard" data-ru="📊 Дашборд исламского финансирования" data-tk="📊 Yslam maliýe tablisy" data-ar="📊 لوحة معلومات التمويل الإسلامي" data-fa="📊 داشبورد مالی اسلامی" data-zh="📊 伊斯兰金融仪表板">📊 Islamic Finance Dashboard</h2><div class="stat"><span data-en="Total Disbursed" data-ru="Всего выдано" data-tk="Jemi berlen" data-ar="إجمالي المدفوعات" data-fa="کل پرداخت شده" data-zh="已发放总额">Total Disbursed</span><span><strong>$12.4B</strong></span></div><div class="stat"><span data-en="Active Contracts" data-ru="Активных контрактов" data-tk="Işjeýn şertnamalar" data-ar="العقود النشطة" data-fa="قراردادهای فعال" data-zh="活跃合同">Active Contracts</span><span>870</span></div><div class="stat"><span data-en="Mudarabah Funds" data-ru="Средств в Мудараба" data-tk="Mudarabah serişdeleri" data-ar="أموال المضاربة" data-fa="وجوه مضاربه" data-zh="穆达拉巴资金">Mudarabah Funds</span><span>$3.2B</span></div><div class="stat"><span data-en="Sukuk Outstanding" data-ru="Сукук в обращении" data-tk="Sukuk dolaşymda" data-ar="الصكوك المستحقة" data-fa="صکوک در گردش" data-zh="未偿还苏库克">Sukuk Outstanding</span><span>$5.1B</span></div><div class="stat"><span data-en="Qard al-Hasan Recipients" data-ru="Получателей Кард аль-Хасан" data-tk="Qard al-Hasan alýanlar" data-ar="مستفيدي قرض الحسن" data-fa="مستفیدان قرض الحسنه" data-zh="卡尔德·哈桑受益者">Qard al-Hasan Recipients</span><span>14,300 families</span></div><div class="stat"><span data-en="Sharia Audit" data-ru="Шариат-аудит" data-tk="Şeriat auditi" data-ar="التدقيق الشرعي" data-fa="بازرسی شرعی" data-zh="伊斯兰教法审计">Sharia Audit</span><span data-en="June 2026 — PASSED" data-ru="Июнь 2026 — ПРОЙДЕН" data-tk="Iýun 2026 — GEÇDI" data-ar="يونيو 2026 — ناجح" data-fa="ژوئن ۲۰۲۶ — گذرانده شده" data-zh="2026年6月 — 通过">June 2026 — PASSED</span></div></div>
-        </div>
-
-        <div class="card">
-            <h2 data-en="💰 Halal Investment Pools (Mudarabah)" data-ru="💰 Халяль-инвестиционные пулы (Мудараба)" data-tk="💰 Halal maýa goýum howuzlary (Mudarabah)" data-ar="💰 أحواض الاستثمار الحلال (مضاربة)" data-fa="💰 استخرهای سرمایه‌گذاری حلال (مضاربه)" data-zh="💰 清真投资池（穆达拉巴）">💰 Halal Investment Pools (Mudarabah)</h2>
-            <div class="grid-3">
-                <div class="card"><h3 data-en="🌾 Halal Agriculture Fund" data-ru="🌾 Халяль-сельское хозяйство" data-tk="🌾 Halal oba hojalyk gaznasy" data-ar="🌾 صندوق الزراعة الحلال" data-fa="🌾 صندوق کشاورزی حلال" data-zh="🌾 清真农业基金">🌾 Halal Agriculture Fund</h3><p data-en="Organic farming, halal food production." data-ru="Органик-фермерство, халяльное производство." data-tk="Organik ekerançylyk, halal iş önümçiligi." data-ar="الزراعة العضوية، إنتاج الطعام الحلال." data-fa="کشت و صنعت ارگانیک، تولید غذای حلال." data-zh="有机农业，清真食品生产。">Organic farming, halal food production.</p><div class="stat"><span data-en="Target Size" data-ru="Целевой размер" data-tk="Nyşana ölçegi" data-ar="الحجم المستهدف" data-fa="اندازه هدف" data-zh="目标规模">Target Size</span><span><strong>1B TMT</strong></span></div><div class="stat"><span data-en="Projected Profit" data-ru="Прогн. прибыль" data-tk="Çaklanýan girdeji" data-ar="الربح المتوقع" data-fa="سود پیش‌بینی شده" data-zh="预计利润">Projected Profit</span><span>12-15%</span></div></div>
-                <div class="card"><h3 data-en="🏙️ Halal Real Estate (Dubai)" data-ru="🏙️ Халяль-недвижимость (Дубай)" data-tk="🏙️ Halal gozgalmaýan emläk (Dubai)" data-ar="🏙️ العقارات الحلال (دبي)" data-fa="🏙️ املاک حلال (دبی)" data-zh="🏙️ 清真房地产（迪拜）">🏙️ Halal Real Estate (Dubai)</h3><p data-en="Sukuk-backed property development." data-ru="Сукук-обеспеченное строительство." data-tk="Sukuk bilen üpjün edilen emläk ösüşi." data-ar="تطوير عقاري مدعوم بالصكوك." data-fa="توسعه املاک پشتیبان‌شده با صکوک." data-zh="苏库克支持的房地产开发。">Sukuk-backed property development.</p><div class="stat"><span data-en="Target Size" data-ru="Целевой размер" data-tk="Nyşana ölçegi" data-ar="الحجم المستهدف" data-fa="اندازه هدف" data-zh="目标规模">Target Size</span><span><strong>2.5B TMT</strong></span></div><div class="stat"><span data-en="Expected IRR" data-ru="Ожидаемая IRR" data-tk="Gözlenýän IRR" data-ar="العائد الداخلي المتوقع" data-fa="نرخ بازده داخلی مورد انتظار" data-zh="预期内部收益率">Expected IRR</span><span>10-12%</span></div></div>
-                <div class="card"><h3 data-en="⚡ Halal Green Energy" data-ru="⚡ Халяль-зелёная энергия" data-tk="⚡ Halal ýaşyl energiýa" data-ar="⚡ الطاقة الخضراء الحلال" data-fa="⚡ انرژی سبز حلال" data-zh="⚡ 清真绿色能源">⚡ Halal Green Energy</h3><p data-en="Solar farms, renewable energy projects." data-ru="Солнечные фермы, ВИЭ-проекты." data-tk="Gün fermalary, täzelenýän energiýa taslamalary." data-ar="مزارع الطاقة الشمسية، مشاريع الطاقة المتجددة." data-fa="مزارع خورشیدی، پروژه‌های انرژی تجدیدپذیر." data-zh="太阳能农场，可再生能源项目。">Solar farms, renewable energy projects.</p><div class="stat"><span data-en="Target Size" data-ru="Целевой размер" data-tk="Nyşana ölçegi" data-ar="الحجم المستهدف" data-fa="اندازه هدف" data-zh="目标规模">Target Size</span><span><strong>5B TMT</strong></span></div><div class="stat"><span data-en="Projected ROI" data-ru="Прогноз ROI" data-tk="Çaklanýan ROI" data-ar="العائد على الاستثمار المتوقع" data-fa="بازده سرمایه‌گذاری پیش‌بینی شده" data-zh="预计投资回报率">Projected ROI</span><span>14-18%</span></div></div>
+            <div class="card">
+                <h2 data-en="🕋 Sharia Supervisory Board" data-ru="🕋 Шариатский совет" data-tk="🕋 Şeriat gözegçilik geňeşi" data-ar="🕋 مجلس الرقابة الشرعية" data-fa="🕋 هیئت نظارت شرعی" data-zh="🕋 伊斯兰教法监督委员会">🕋 Sharia Supervisory Board</h2>
+                <div class="stat"><span>Dr. Yusuf Al-Qaradawi</span><span>AAOIFI</span></div>
+                <div class="stat"><span>Sheikh Nizam Yaquby</span><span data-en="Expert" data-ru="Эксперт" data-tk="Ekspert" data-ar="خبير" data-fa="کارشناس" data-zh="专家">Expert</span></div>
+                <div class="stat"><span>Dr. Mohamed Elgari</span><span data-en="Scholar" data-ru="Учёный" data-tk="Alym" data-ar="عالم" data-fa="دانشمند" data-zh="学者">Scholar</span></div>
             </div>
-        </div>
-
-        <div class="card" style="background: rgba(0,100,0,0.2);">
-            <h2 data-en="🤲 Zakat & Sadaqah with TMT" data-ru="🤲 Закят и Садака с TMT" data-tk="🤲 TMT bilen Zekat we Sadaka" data-ar="🤲 الزكاة والصدقة مع TMT" data-fa="🤲 زکات و صدقه با TMT" data-zh="🤲 使用 TMT 缴纳天课和施舍">🤲 Zakat & Sadaqah with TMT</h2>
-            <div class="grid-2">
-                <div><p data-en="Calculate and pay your Zakat using TMT. 2.5% on wealth held for one lunar year. 100% distributed to verified charities." data-ru="Рассчитайте и оплатите закят через TMT. 2.5% от накоплений за лунный год. 100% распределяется проверенным благотворительным организациям." data-tk="TMT ulanyp zekatyňyzy hasaplaň we töläň. Bir aý ýylynda baýlygyň 2.5%-i. 100% barlanan haýyr-sahawat guramalaryna paýlanýar." data-ar="احسب وادفع زكاتك باستخدام TMT. 2.5% من الثروة المحتفظ بها لمدة عام قمري. يتم توزيع 100% على الجمعيات الخيرية الموثقة." data-fa="زکات خود را با استفاده از TMT محاسبه و پرداخت کنید. ۲.۵٪ از دارایی نگهداری شده برای یک سال قمری. ۱۰۰٪ به خیریه‌های تأیید شده توزیع می‌شود." data-zh="使用 TMT 计算并支付您的天课。按一个农历年持有的财富的 2.5% 计算。100% 分配给经过验证的慈善机构。">Calculate and pay your Zakat using TMT. 2.5% on wealth held for one lunar year. 100% distributed to verified charities.</p>
-                <div class="stat"><span data-en="Zakat Collected (2025)" data-ru="Собрано закята (2025)" data-tk="Zekat ýygnanan (2025)" data-ar="الزكاة المجمعة (2025)" data-fa="زکات جمع‌آوری شده (۲۰۲۵)" data-zh="天课征收额（2025年）">Zakat Collected (2025)</span><span><strong>34,250,000 TMT</strong></span></div>
-                <div class="stat"><span data-en="Beneficiaries Supported" data-ru="Поддержано семей" data-tk="Goldalan maşgalalar" data-ar="المستفيدين المدعومين" data-fa="خانواده‌های تحت حمایت" data-zh="支持的受益家庭">Beneficiaries Supported</span><span><strong>12,470 families</strong></span></div></div>
-                <div><p data-en="Sadaqah Jariyah — ongoing charity: water wells, schools, mosques funded by TMT." data-ru="Садака Джария — непрерывная благотворительность: колодцы, школы, мечети на TMT." data-tk="Sadaka Jariýa — dowamly haýyr-sahawat: guýular, mekdepler, metjitler TMT bilen maliýeleşdirilýär." data-ar="الصدقة الجارية — الأعمال الخيرية المستمرة: آبار المياه والمدارس والمساجد الممولة من TMT." data-fa="صدقه جاریه — خیریه مستمر: چاه‌های آب، مدارس، مساجد تأمین‌شده با TMT." data-zh="萨达卡·贾里亚——持续慈善：由 TMT 资助的水井、学校、清真寺。">Sadaqah Jariyah — ongoing charity: water wells, schools, mosques funded by TMT.</p>
-                <div class="stat"><span data-en="Water Well" data-ru="Колодец с водой" data-tk="Suw guýusy" data-ar="بئر ماء" data-fa="چاه آب" data-zh="水井">Water Well</span><span>5,000,000 TMT</span></div>
-                <div class="stat"><span data-en="School" data-ru="Школа" data-tk="Mekdep" data-ar="مدرسة" data-fa="مدرسه" data-zh="学校">School</span><span>50,000,000 TMT</span></div></div>
+            <div class="card">
+                <h2 data-en="📊 Islamic Finance Dashboard" data-ru="📊 Дашборд исламского финансирования" data-tk="📊 Yslam maliýe tablisy" data-ar="📊 لوحة معلومات التمويل الإسلامي" data-fa="📊 داشبورد مالی اسلامی" data-zh="📊 伊斯兰金融仪表板">📊 Islamic Finance Dashboard</h2>
+                <div class="stat"><span data-en="Total Financing Disbursed" data-ru="Всего выдано" data-tk="Jemi berlen" data-ar="إجمالي التمويل المدفوع" data-fa="کل تأمین مالی پرداخت شده" data-zh="已发放融资总额">Total Financing Disbursed</span><span>$12.4M</span></div>
+                <div class="stat"><span data-en="Active Murabaha Contracts" data-ru="Активных контрактов" data-tk="Işjeýn şertnamalar" data-ar="العقود النشطة" data-fa="قراردادهای فعال" data-zh="活跃合同">Active Murabaha Contracts</span><span>87</span></div>
+                <div class="stat"><span data-en="Sukuk Outstanding" data-ru="Сукук в обращении" data-tk="Sukuk dolaşymda" data-ar="الصكوك المستحقة" data-fa="صکوک در گردش" data-zh="未偿还苏库克">Sukuk Outstanding</span><span>$5.1M</span></div>
+                <div class="stat"><span data-en="Qard al-Hasan Recipients" data-ru="Получателей Кард аль-Хасан" data-tk="Qard al-Hasan alýanlar" data-ar="مستفيدي قرض الحسن" data-fa="مستفیدان قرض الحسنه" data-zh="卡尔德·哈桑受益者">Qard al-Hasan Recipients</span><span>143 families</span></div>
             </div>
-        </div>
-
-        <div class="warning">
-            ⚠️ <strong data-en="Important Notice:" data-ru="Важно:" data-tk="Möhüm bildiriş:" data-ar="إشعار مهم:" data-fa="اطلاعیه مهم:" data-zh="重要通知：">Important Notice:</strong> 
-            <span data-en="TMT Islamic Finance products are available only after full Sharia screening. Past profits do not guarantee future results. Applications are reviewed within 5 business days."
-                  data-ru="Продукты TMT Islamic Finance доступны только после полного шариатского скрининга. Прошлая доходность не гарантирует будущих результатов. Заявки рассматриваются до 5 рабочих дней."
-                  data-tk="TMT Yslam maliýe önümleri diňe doly Şeriat barlagyndan soň elýeterlidir. Geçmişdäki girdejiler geljekki netijelere kepillik bermeýär. Arizalar 5 iş gününiň içinde seredilýär."
-                  data-ar="منتجات TMT للتمويل الإسلامي متاحة فقط بعد الفحص الشرعي الكامل. الأرباح السابقة لا تضمن النتائج المستقبلية. يتم مراجعة الطلبات في غضون 5 أيام عمل."
-                  data-fa="محصولات مالی اسلامی TMT فقط پس از بررسی کامل شرعی در دسترس هستند. سود گذشته نتایج آینده را تضمین نمی‌کند. درخواست‌ها ظرف ۵ روز کاری بررسی می‌شوند."
-                  data-zh="TMT 伊斯兰金融产品仅在经过完整的伊斯兰教法审核后可用。过去的利润并不能保证未来的结果。申请将在 5 个工作日内审核。">
-            TMT Islamic Finance products are available only after full Sharia screening. Past profits do not guarantee future results. Applications are reviewed within 5 business days.</span>
         </div>
 
         <div class="footer">
             © 2025 TMT Islamic Finance — AAOIFI Certified | Fatwa No. 241/2025<br>
-            Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+            <span data-en="Contract:" data-ru="Контракт:" data-tk="Şertnama:" data-ar="العقد:" data-fa="قرارداد:" data-zh="合约：">Contract:</span> Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
         </div>
     </div>
 
     <script>
+        function calculateZakat() {
+            const wealth = parseFloat(document.getElementById('zakatWealth').value) || 0;
+            const zakat = wealth * 0.025;
+            document.getElementById('zakatResult').innerHTML = zakat.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0}) + ' TMT';
+        }
+        calculateZakat();
+
+        document.getElementById('islamicApplication')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('formSuccess').style.display = 'block';
+            e.target.reset();
+        });
+
         function setLanguage(lang) {
             document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
                 if (lang === 'en') el.innerText = el.getAttribute('data-en');
@@ -201,18 +250,10 @@
                 else btn.classList.remove('active');
             });
             document.documentElement.lang = lang;
-            if (lang === 'ar' || lang === 'fa') {
-                document.body.style.direction = 'rtl';
-                document.querySelector('.container').style.direction = 'rtl';
-            } else {
-                document.body.style.direction = 'ltr';
-                document.querySelector('.container').style.direction = 'ltr';
-            }
+            if (lang === 'ar' || lang === 'fa') { document.body.style.direction = 'rtl'; document.querySelector('.container').style.direction = 'rtl'; }
+            else { document.body.style.direction = 'ltr'; document.querySelector('.container').style.direction = 'ltr'; }
         }
-
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
-        });
+        document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))); });
         setLanguage('en');
     </script>
 </body>
