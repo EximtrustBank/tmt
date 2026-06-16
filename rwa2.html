@@ -6,54 +6,140 @@
     <title>TMT RWA — Private Equity, Art, Carbon Credits</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0a2e1c 0%, #145c2e 50%, #0a3d22 100%); color: #fff; line-height: 1.6; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
+            line-height: 1.6;
+        }
+        .lang-switch {
+            position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem; border-radius: 40px; z-index: 100; display: flex; flex-wrap: wrap; gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent; border: none; color: #d0d8d0; cursor: pointer; padding: 0.3rem 0.8rem;
+            border-radius: 30px; font-weight: bold; transition: all 0.2s; font-size: 0.85rem;
+        }
+        .lang-btn.active { background: #d4a843; color: #0a1a0f; }
         .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffd700; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #ffd700; }
-        .back-link { color: #ffec80; text-decoration: none; }
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
-        .nav a:hover { background: #ffd700; color: #0a2e1c; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); }
-        .card h2 { color: #ffd700; margin-bottom: 1rem; }
-        .card-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .btn { background: #ffd700; color: #0a2e1c; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .card h2 { color: #e8d8a8; margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.4rem 0.8rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 0.5rem; transition: 0.2s; }
+        .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.3rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1>🏔️ TMT RWA — Premium Assets</h1>
-            <a href="index.html" class="back-link">← Back to Main Page</a>
+            <h1 data-en="🏔️ TMT RWA — Premium Assets" data-ru="🏔️ TMT RWA — Премиум-активы" data-tk="🏔️ TMT RWA — Premium aktiwler" data-ar="🏔️ TMT RWA — الأصول الممتازة" data-fa="🏔️ TMT RWA — دارایی‌های ممتاز" data-zh="🏔️ TMT RWA——优质资产">🏔️ TMT RWA — Premium Assets</h1>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
+
         <div class="nav">
             <a href="index.html">🏠 Home</a>
             <a href="ecosystem.html">🌿 Ecosystem</a>
             <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="lending.html">🏦 Lending</a>
             <a href="trading.html">📈 Trading</a>
             <a href="earn.html">💸 Earn</a>
             <a href="rwa.html">🏔️ RWA</a>
-            <a href="rwa2.html" style="background:#ffd700; color:#0a2e1c;">🏔️ RWA 2</a>
+            <a href="rwa2.html" style="background:#d4a843; color:#0a1a0f;">🏔️ RWA+</a>
             <a href="payments.html">💳 Payments</a>
             <a href="social.html">🎮 Social</a>
             <a href="dao.html">🗳️ DAO</a>
+            <a href="card.html">💳 Card</a>
+            <a href="bridge.html">🌉 Bridge</a>
+            <a href="currency.html">💱 Currency</a>
             <a href="islamic.html">🕌 Islamic</a>
             <a href="whitepaper.html">📄 WP</a>
         </div>
 
         <div class="grid-3">
-            <div class="card"><div class="card-icon">🏢</div><h2>Private Equity Tokenization</h2><p>Инвестируйте в доли стартапов и закрытых фондов от $10,000 TMT.</p><div class="stat"><span>Доступно фондов</span><span>23</span></div><div class="stat"><span>Средняя доходность</span><span>18% IRR</span></div><div class="stat"><span>Минимальная сумма</span><span>50,000 TMT</span></div><a href="#" class="btn">Browse Funds →</a></div>
-            <div class="card"><div class="card-icon">🎨</div><h2>Art & Collectibles</h2><p>Токенизация произведений искусства. Долевое владение картинами, скульптурами.</p><div class="stat"><span>Доступно произведений</span><span>87</span></div><div class="stat"><span>Общая стоимость</span><span>$12.4M</span></div><div class="stat"><span>Минимальная доля</span><span>5,000 TMT</span></div><a href="#" class="btn">Explore Art →</a></div>
-            <div class="card"><div class="card-icon">🌍</div><h2>Carbon Credits</h2><p>Торговля углеродными кредитами. Поддерживайте экологию и получайте доход.</p><div class="stat"><span>Доступно кредитов</span><span>2.4M тонн</span></div><div class="stat"><span>Цена за тонну</span><span>50 TMT</span></div><div class="stat"><span>Объём торгов</span><span>$8.2M</span></div><a href="#" class="btn">Trade Carbon →</a></div>
-            <div class="card"><div class="card-icon">🛢️</div><h2>Commodity Tokenization</h2><p>Токенизация нефти, газа, пшеницы, кофе, какао, сахара.</p><div class="stat"><span>Доступно товаров</span><span>12</span></div><div class="stat"><span>Общая ликвидность</span><span>$45M</span></div><a href="#" class="btn">Trade Commodities →</a></div>
+            <div class="card">
+                <h2>🏢 Private Equity Tokenization</h2>
+                <p data-en="Invest in startup shares and closed funds from $10,000 TMT." data-ru="Инвестируйте в доли стартапов и закрытые фонды от 10,000 TMT." data-tk="Başlangyç paýlaryna we ýapyk gaznalara 10,000 TMT-den maýa goýuň." data-ar="استثمر في أسهم الشركات الناشئة والصناديق المغلقة من 10,000 TMT." data-fa="در سهام استارتاپ‌ها و صندوق‌های بسته از ۱۰,۰۰۰ TMT سرمایه‌گذاری کنید." data-zh="从 10,000 TMT 起投资于初创公司和封闭式基金。">Invest in startup shares and closed funds from $10,000 TMT.</p>
+                <div class="stat"><span data-en="Available Funds" data-ru="Доступно фондов" data-tk="Bar bolan gaznalar" data-ar="الصناديق المتاحة" data-fa="صندوق‌های موجود" data-zh="可用基金">Available Funds</span><span>23</span></div>
+                <div class="stat"><span data-en="Avg. IRR" data-ru="Средняя IRR" data-tk="Ortaça IRR" data-ar="متوسط IRR" data-fa="میانگین IRR" data-zh="平均内部收益率">Avg. IRR</span><span>18%</span></div>
+                <a href="#" class="btn" data-en="Browse Funds →" data-ru="Просмотреть фонды →" data-tk="Gaznalara seret →" data-ar="استعراض الصناديق ←" data-fa="مشاهده صندوق‌ها ←" data-zh="浏览基金 →">Browse Funds →</a>
+            </div>
+
+            <div class="card">
+                <h2>🎨 Art & Collectibles</h2>
+                <p data-en="Tokenized art. Fractional ownership of paintings and sculptures." data-ru="Токенизация искусства. Долевое владение картинами и скульптурами." data-tk="Tokenizirlenen sungat. Suratlar we heýkelleriň paýlaýyn eýeçiligi." data-ar="الفن المرمّز. الملكية الجزئية للوحات والمنحوتات." data-fa="هنر توکن‌سازی شده. مالکیت کسری نقاشی‌ها و مجسمه‌ها." data-zh="代币化艺术。绘画和雕塑的分式所有权。">Tokenized art. Fractional ownership of paintings and sculptures.</p>
+                <div class="stat"><span data-en="Available Works" data-ru="Доступно произведений" data-tk="Bar bolan eserler" data-ar="الأعمال المتاحة" data-fa="آثار موجود" data-zh="可用作品">Available Works</span><span>87</span></div>
+                <div class="stat"><span data-en="Total Value" data-ru="Общая стоимость" data-tk="Jemi bahasy" data-ar="القيمة الإجمالية" data-fa="ارزش کل" data-zh="总价值">Total Value</span><span>$12.4M</span></div>
+                <a href="#" class="btn" data-en="Explore Art →" data-ru="Изучить искусство →" data-tk="Sungaty öwren →" data-ar="استكشاف الفن ←" data-fa="کاوش هنر ←" data-zh="探索艺术 →">Explore Art →</a>
+            </div>
+
+            <div class="card">
+                <h2>🌍 Carbon Credits</h2>
+                <p data-en="Trade carbon credits. Support the environment and earn." data-ru="Торгуйте углеродными кредитами. Поддерживайте экологию и зарабатывайте." data-tk="Uglerod kreditleri bilen söwda ediň. Ekologiýany goldaň we girdeji alyň." data-ar="تداول ائتمانات الكربون. ادعم البيئة واربح." data-fa="اعتبارات کربن را معامله کنید. از محیط زیست حمایت کنید و کسب درآمد کنید." data-zh="交易碳信用。支持环境并赚取收益。">Trade carbon credits. Support the environment and earn.</p>
+                <div class="stat"><span data-en="Available Credits" data-ru="Доступно кредитов" data-tk="Bar bolan kreditler" data-ar="الائتمانات المتاحة" data-fa="اعتبارات موجود" data-zh="可用信用额">Available Credits</span><span>2.4M tons</span></div>
+                <div class="stat"><span data-en="Price per ton" data-ru="Цена за тонну" data-tk="Tonna başyna baha" data-ar="السعر للطن" data-fa="قیمت هر تن" data-zh="每吨价格">Price per ton</span><span>50 TMT</span></div>
+                <a href="#" class="btn" data-en="Trade Carbon →" data-ru="Торговать углеродом →" data-tk="Uglerod söwdasy →" data-ar="تداول الكربون ←" data-fa="معامله کربن ←" data-zh="交易碳信用 →">Trade Carbon →</a>
+            </div>
+
+            <div class="card">
+                <h2>🛢️ Commodity Tokenization</h2>
+                <p data-en="Tokenized oil, gas, wheat, coffee, cocoa, sugar." data-ru="Токенизация нефти, газа, пшеницы, кофе, какао, сахара." data-tk="Nebit, gaz, bugdaý, kofe, kakao, şekeriň tokenizasiýasy." data-ar="ترميز النفط والغاز والقمح والبن والكاكاو والسكر." data-fa="توکن‌سازی نفت، گاز، گندم، قهوه، کاکائو، شکر." data-zh="代币化石油、天然气、小麦、咖啡、可可、糖。">Tokenized oil, gas, wheat, coffee, cocoa, sugar.</p>
+                <div class="stat"><span data-en="Available Commodities" data-ru="Доступно товаров" data-tk="Bar bolan harytlar" data-ar="السلع المتاحة" data-fa="کالاهای موجود" data-zh="可用商品">Available Commodities</span><span>12</span></div>
+                <div class="stat"><span data-en="Total Liquidity" data-ru="Общая ликвидность" data-tk="Jemi likwidlik" data-ar="إجمالي السيولة" data-fa="نقدینگی کل" data-zh="总流动性">Total Liquidity</span><span>$45M</span></div>
+                <a href="#" class="btn" data-en="Trade Commodities →" data-ru="Торговать товарами →" data-tk="Haryt söwdasy →" data-ar="تداول السلع ←" data-fa="معامله کالاها ←" data-zh="交易大宗商品 →">Trade Commodities →</a>
+            </div>
         </div>
-        <div class="footer">© 2025 TMT RWA — Tokenized Real World Assets</div>
+
+        <div class="footer">© 2025 TMT RWA — Tokenized Real World Assets | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            document.documentElement.lang = lang;
+            if (lang === 'ar' || lang === 'fa') { document.body.style.direction = 'rtl'; document.querySelector('.container').style.direction = 'rtl'; }
+            else { document.body.style.direction = 'ltr'; document.querySelector('.container').style.direction = 'ltr'; }
+        }
+        document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))); });
+        setLanguage('en');
+    </script>
 </body>
 </html>
