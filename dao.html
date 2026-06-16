@@ -8,47 +8,144 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #fff;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
             line-height: 1.6;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .lang-switch {
+            position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem; border-radius: 40px; z-index: 100; display: flex; flex-wrap: wrap; gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent; border: none; color: #d0d8d0; cursor: pointer; padding: 0.3rem 0.8rem;
+            border-radius: 30px; font-weight: bold; transition: all 0.2s; font-size: 0.85rem;
+        }
+        .lang-btn.active { background: #d4a843; color: #0a1a0f; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 80px; height: 80px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #ffd700; }
-        .logo img { width: 75%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #ffd700; }
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
-        .nav a:hover, .nav a.active { background: #ffd700; color: #0a2e1c; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
+        .logo img { width: 80%; border-radius: 50%; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); }
-        .card h2 { color: #ffd700; margin-bottom: 1rem; }
-        .proposal { background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 16px; margin: 1rem 0; }
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.25); }
+        .card:hover { border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .card h2 { color: #e8d8a8; margin-bottom: 1rem; font-size: 1.2rem; }
+        .proposal { background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 16px; margin: 1rem 0; }
         .vote-bar { background: #1e3a8a; height: 8px; border-radius: 4px; margin: 0.5rem 0; }
         .vote-for { background: #00a86b; width: 67%; height: 100%; border-radius: 4px; }
         .vote-against { background: #dc143c; width: 33%; height: 100%; border-radius: 4px; }
-        .btn { background: #ffd700; color: #0a2e1c; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-right: 0.5rem; font-weight: bold; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+        .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.4rem 0.8rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-right: 0.3rem; transition: 0.2s; border: none; cursor: pointer; }
+        .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.3rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+
     <div class="container">
-        <div class="header"><div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div><h1>🗳️ TMT DAO Governance</h1><a href="index.html" class="back-link">← Back to Main</a></div>
-        <div class="nav"><a href="index.html">🏠 Home</a><a href="ecosystem.html">🌿 Ecosystem</a><a href="defi-hub.html">💰 DeFi Hub</a><a href="rwa.html">🏔️ RWA</a><a href="dao.html" class="active">🗳️ DAO</a><a href="card.html">💳 Card</a><a href="bridge.html">🌉 Bridge</a><a href="whitepaper.html">📄 WP</a></div>
-
-        <div class="grid-2">
-            <div class="card"><h2>📊 DAO Dashboard</h2><div class="stat"><span>TMT Locked in DAO</span><span>8.2B TMT</span></div><div class="stat"><span>Active Delegates</span><span>127</span></div><div class="stat"><span>Your Voting Power</span><span>0 TMT</span></div><div class="stat"><span>Treasury Balance</span><span>$42.7M</span></div><a href="#" class="btn">Delegate Votes</a> <a href="#" class="btn">Lock TMT for Voting</a></div>
-
-            <div class="card"><h2>🏦 Treasury Proposals</h2><div class="proposal"><strong>#12: Increase Staking Rewards to 15%</strong><p>Proposed by: Whale.eth | Status: Active</p><div class="vote-bar"><div class="vote-for"></div></div><p>For: 67% (5.2M TMT) | Against: 33% (2.6M TMT)</p><a href="#" class="btn">✅ Vote For</a><a href="#" class="btn">❌ Vote Against</a></div>
-            <div class="proposal"><strong>#13: Allocate $500k for CEX Listing</strong><p>Proposed by: TMT Foundation | Status: Active</p><div class="vote-bar"><div class="vote-for" style="width:82%"></div></div><p>For: 82% (6.1M TMT) | Against: 18% (1.3M TMT)</p><a href="#" class="btn">✅ Vote For</a><a href="#" class="btn">❌ Vote Against</a></div>
-            <div class="proposal"><strong>#14: Add TMT/USDC Farm on Meteora</strong><p>Proposed by: DeFiGuy | Status: Voting ends in 3 days</p><a href="#" class="btn">✅ Vote For</a><a href="#" class="btn">❌ Vote Against</a></div></div>
-
-            <div class="card"><h2>📜 Past Proposals</h2><div class="proposal">✅ #9: Bridge to Ethereum — PASSED (89%)<br>✅ #10: Gold Tokenization Launch — PASSED (94%)<br>✅ #11: Reduce Protocol Fees from 0.3% to 0.1% — PASSED (76%)<br>❌ #8: Increase Total Supply — REJECTED (91% against)</div></div>
-
-            <div class="card"><h2>🗳️ Create Proposal</h2><p>Require 1M TMT locked for 30 days to create a proposal.</p><a href="#" class="btn">+ New Proposal</a></div>
+        <div class="header">
+            <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
+            <h1 data-en="🗳️ TMT DAO Governance" data-ru="🗳️ TMT DAO Управление" data-tk="🗳️ TMT DAO Dolandyryş" data-ar="🗳️ حوكمة TMT DAO" data-fa="🗳️ حاکمیت TMT DAO" data-zh="🗳️ TMT DAO 治理">🗳️ TMT DAO Governance</h1>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
 
-        <div class="footer">© 2025 TMT DAO — Community-Driven Governance on Solana</div>
+        <div class="nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="ecosystem.html">🌿 Ecosystem</a>
+            <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="lending.html">🏦 Lending</a>
+            <a href="trading.html">📈 Trading</a>
+            <a href="earn.html">💸 Earn</a>
+            <a href="rwa.html">🏔️ RWA</a>
+            <a href="rwa2.html">🏔️ RWA+</a>
+            <a href="payments.html">💳 Payments</a>
+            <a href="social.html">🎮 Social</a>
+            <a href="dao.html" style="background:#d4a843; color:#0a1a0f;">🗳️ DAO</a>
+            <a href="card.html">💳 Card</a>
+            <a href="bridge.html">🌉 Bridge</a>
+            <a href="currency.html">💱 Currency</a>
+            <a href="islamic.html">🕌 Islamic</a>
+            <a href="whitepaper.html">📄 WP</a>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h2 data-en="📊 DAO Dashboard" data-ru="📊 DAO Дашборд" data-tk="📊 DAO tablisa" data-ar="📊 لوحة معلومات DAO" data-fa="📊 داشبورد DAO" data-zh="📊 DAO 仪表板">📊 DAO Dashboard</h2>
+                <div class="stat"><span data-en="TMT Locked in DAO" data-ru="TMT заблокировано в DAO" data-tk="DAO-da blokirlenen TMT" data-ar="TMT المقفل في DAO" data-fa="TMT قفل شده در DAO" data-zh="DAO 中锁定的 TMT">TMT Locked in DAO</span><span>8.2B TMT</span></div>
+                <div class="stat"><span data-en="Active Delegates" data-ru="Активных делегатов" data-tk="Işjeýn delegatlar" data-ar="المندوبين النشطين" data-fa="نمایندگان فعال" data-zh="活跃代表">Active Delegates</span><span>127</span></div>
+                <div class="stat"><span data-en="Your Voting Power" data-ru="Ваша сила голоса" data-tk="Siziň ses güýjiňiz" data-ar="قوة التصويت الخاصة بك" data-fa="قدرت رأی شما" data-zh="您的投票权">Your Voting Power</span><span>0 TMT</span></div>
+                <div class="stat"><span data-en="Treasury Balance" data-ru="Баланс казначейства" data-tk="Hazyna balansy" data-ar="رصيد الخزانة" data-fa="موجودی خزانه" data-zh="金库余额">Treasury Balance</span><span>$42.7M</span></div>
+                <a href="#" class="btn" data-en="Delegate Votes" data-ru="Делегировать голоса" data-tk="Sesleri delegir et" data-ar="تفويض الأصوات" data-fa="تفویض آراء" data-zh="委托投票">Delegate Votes</a>
+                <a href="#" class="btn" data-en="Lock TMT for Voting" data-ru="Заблокировать TMT для голосования" data-tk="Ses bermek üçin TMT blokirle" data-ar="قفل TMT للتصويت" data-fa="قفل TMT برای رأی" data-zh="锁定 TMT 进行投票">Lock TMT for Voting</a>
+            </div>
+
+            <div class="card">
+                <h2 data-en="🏦 Treasury Proposals" data-ru="🏦 Предложения казначейства" data-tk="🏦 Hazyna teklpleri" data-ar="🏦 مقترحات الخزانة" data-fa="🏦 پیشنهادهای خزانه" data-zh="🏦 金库提案">🏦 Treasury Proposals</h2>
+                <div class="proposal"><strong data-en="#12: Increase Staking Rewards to 15%" data-ru="#12: Увеличить награды за стейкинг до 15%" data-tk="#12: Staking baýraklaryny 15% çenli artdyr" data-ar="#12: زيادة مكافآت التجميد إلى 15%" data-fa="#۱۲: افزایش پاداش استیکینگ به ۱۵٪" data-zh="#12：将质押奖励提高到 15%">#12: Increase Staking Rewards to 15%</strong><p data-en="Proposed by: Whale.eth | Status: Active" data-ru="Предложил: Whale.eth | Статус: Активно" data-tk="Teklip ediji: Whale.eth | Status: Işjeň" data-ar="مقترح من: Whale.eth | الحالة: نشط" data-fa="پیشنهاد دهنده: Whale.eth | وضعیت: فعال" data-zh="提议者：Whale.eth | 状态：进行中">Proposed by: Whale.eth | Status: Active</p>
+                <div class="vote-bar"><div class="vote-for"></div></div>
+                <p data-en="For: 67% (5.2M TMT) | Against: 33% (2.6M TMT)" data-ru="За: 67% (5.2M TMT) | Против: 33% (2.6M TMT)" data-tk="Gaý: 67% (5.2M TMT) | Garşy: 33% (2.6M TMT)" data-ar="مع: 67% (5.2M TMT) | ضد: 33% (2.6M TMT)" data-fa="موافق: ۶۷٪ (۵.۲M TMT) | مخالف: ۳۳٪ (۲.۶M TMT)" data-zh="赞成：67%（520 万 TMT）| 反对：33%（260 万 TMT）">For: 67% (5.2M TMT) | Against: 33% (2.6M TMT)</p>
+                <a href="#" class="btn" data-en="✅ Vote For" data-ru="✅ Голосовать ЗА" data-tk="✅ Gaý ses ber" data-ar="✅ التصويت مع" data-fa="✅ رأی موافق" data-zh="✅ 投赞成票">✅ Vote For</a>
+                <a href="#" class="btn" data-en="❌ Vote Against" data-ru="❌ Голосовать ПРОТИВ" data-tk="❌ Garşy ses ber" data-ar="❌ التصويت ضد" data-fa="❌ رأی مخالف" data-zh="❌ 投反对票">❌ Vote Against</a>
+                </div>
+                <div class="proposal"><strong data-en="#13: Allocate $500k for CEX Listing" data-ru="#13: Выделить $500k на CEX листинг" data-tk="#13: CEX list üçin $500k böl" data-ar="#13: تخصيص 500 ألف دولار للإدراج في البورصة المركزية" data-fa="#۱۳: تخصیص ۵۰۰ هزار دلار برای لیستینگ CEX" data-zh="#13：拨款 50 万美元用于 CEX 上市">#13: Allocate $500k for CEX Listing</strong><p data-en="Proposed by: TMT Foundation | Status: Active" data-ru="Предложил: TMT Foundation | Статус: Активно" data-tk="Teklip ediji: TMT Foundation | Status: Işjeň" data-ar="مقترح من: TMT Foundation | الحالة: نشط" data-fa="پیشنهاد دهنده: TMT Foundation | وضعیت: فعال" data-zh="提议者：TMT Foundation | 状态：进行中">Proposed by: TMT Foundation | Status: Active</p>
+                <div class="vote-bar"><div class="vote-for" style="width:82%"></div></div>
+                <p data-en="For: 82% (6.1M TMT) | Against: 18% (1.3M TMT)" data-ru="За: 82% (6.1M TMT) | Против: 18% (1.3M TMT)" data-tk="Gaý: 82% (6.1M TMT) | Garşy: 18% (1.3M TMT)" data-ar="مع: 82% (6.1M TMT) | ضد: 18% (1.3M TMT)" data-fa="موافق: ۸۲٪ (۶.۱M TMT) | مخالف: ۱۸٪ (۱.۳M TMT)" data-zh="赞成：82%（610 万 TMT）| 反对：18%（130 万 TMT）">For: 82% (6.1M TMT) | Against: 18% (1.3M TMT)</p>
+                <a href="#" class="btn">✅ Vote For</a>
+                <a href="#" class="btn">❌ Vote Against</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 data-en="📜 Past Proposals" data-ru="📜 Прошлые предложения" data-tk="📜 Geçmiş teklpler" data-ar="📜 المقترحات السابقة" data-fa="📜 پیشنهادهای گذشته" data-zh="📜 过去的提案">📜 Past Proposals</h2>
+                <div class="proposal">✅ <span data-en="#9: Bridge to Ethereum — PASSED (89%)" data-ru="#9: Мост на Ethereum — ПРИНЯТ (89%)" data-tk="#9: Ethereum köpri — KABUL EDİLDİ (89%)" data-ar="#9: الجسر إلى إيثريوم — تم PASSED (89%)" data-fa="#۹: پل به اتریوم — تصویب شد (۸۹٪)" data-zh="#9：通往以太坊的跨链桥——通过（89%）">#9: Bridge to Ethereum — PASSED (89%)</span></div>
+                <div class="proposal">✅ <span data-en="#10: Gold Tokenization Launch — PASSED (94%)" data-ru="#10: Запуск токенизации золота — ПРИНЯТ (94%)" data-tk="#10: Altyn tokenizasiýa başlatmak — KABUL EDİLDİ (94%)" data-ar="#10: إطلاق ترميز الذهب — تم PASSED (94%)" data-fa="#۱۰: راه‌اندازی توکن‌سازی طلا — تصویب شد (۹۴٪)" data-zh="#10：黄金代币化启动——通过（94%）">#10: Gold Tokenization Launch — PASSED (94%)</span></div>
+                <div class="proposal">✅ <span data-en="#11: Reduce Protocol Fees — PASSED (76%)" data-ru="#11: Снизить комиссии протокола — ПРИНЯТ (76%)" data-tk="#11: Protokol komissiýalaryny azalt — KABUL EDİLDİ (76%)" data-ar="#11: تخفيض رسوم البروتوكول — تم PASSED (76%)" data-fa="#۱۱: کاهش کارمزد پروتکل — تصویب شد (۷۶٪)" data-zh="#11：降低协议费用——通过（76%）">#11: Reduce Protocol Fees — PASSED (76%)</span></div>
+                <div class="proposal">❌ <span data-en="#8: Increase Total Supply — REJECTED (91% against)" data-ru="#8: Увеличить общее предложение — ОТКЛОНЕН (91% против)" data-tk="#8: Jemi üpjünçiligi artdyr — RET EDİLDİ (91% garşy)" data-ar="#8: زيادة العرض الكلي — مرفوض (91% ضد)" data-fa="#۸: افزایش کل عرضه — رد شد (۹۱٪ مخالف)" data-zh="#8：增加总供应量——被否决（91% 反对）">#8: Increase Total Supply — REJECTED (91% against)</span></div>
+                <div class="proposal">📌 <span data-en="Create Proposal: Require 1M TMT locked for 30 days" data-ru="Создать предложение: Требуется 1M TMT заблокированных на 30 дней" data-tk="Teklip döret: 30 gün blokirlenen 1M TMT gerek" data-ar="إنشاء اقتراح: يتطلب قفل 1M TMT لمدة 30 يومًا" data-fa="ایجاد پیشنهاد: نیاز به قفل ۱M TMT به مدت ۳۰ روز" data-zh="创建提案：需要锁定 100 万 TMT 30 天">Create Proposal: Require 1M TMT locked for 30 days</span></div>
+            </div>
+        </div>
+
+        <div class="footer">© 2025 TMT DAO — Community-Driven Governance | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</div>
     </div>
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            document.documentElement.lang = lang;
+            if (lang === 'ar' || lang === 'fa') { document.body.style.direction = 'rtl'; document.querySelector('.container').style.direction = 'rtl'; }
+            else { document.body.style.direction = 'ltr'; document.querySelector('.container').style.direction = 'ltr'; }
+        }
+        document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))); });
+        setLanguage('en');
+    </script>
 </body>
 </html>
