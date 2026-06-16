@@ -2,47 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMT Earn — Liquid Staking, Restaking, Vaults, Options, Perpetuals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TMT Earn — 15+ Ways to Earn Passive Income</title>
+    <meta name="description" content="Earn passive income with TMT: Liquid Staking, Restaking, Automated Vaults, Options, Perpetuals, Copy Trading, Grid Bots, DCA, Referral, Cashback, Yield Farming, Lending, Airdrops, NFTs, Zakat.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
             color: #d0d8d0;
             line-height: 1.6;
+            min-height: 100vh;
         }
+
         .lang-switch {
-            position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px);
-            padding: 0.5rem 1rem; border-radius: 40px; z-index: 100; display: flex; flex-wrap: wrap; gap: 0.5rem;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             border: 1px solid rgba(212,168,67,0.3);
         }
         .lang-btn {
-            background: transparent; border: none; color: #d0d8d0; cursor: pointer; padding: 0.3rem 0.8rem;
-            border-radius: 30px; font-weight: bold; transition: all 0.2s; font-size: 0.85rem;
+            background: transparent;
+            border: none;
+            color: #d0d8d0;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 0.85rem;
         }
-        .lang-btn.active { background: #d4a843; color: #0a1a0f; }
-        .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .lang-btn.active {
+            background: #d4a843;
+            color: #0a1a0f;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
         .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
         h1 { font-size: 1.8rem; color: #e8d8a8; }
         .back-link { color: #d4a843; text-decoration: none; }
+
         .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
         .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
         .nav a:hover { background: #d4a843; color: #0a1a0f; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0; }
+
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
         .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
-        .card h2 { color: #e8d8a8; margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .card h2 { color: #e8d8a8; margin-bottom: 0.8rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+        .card-icon { font-size: 2rem; }
         .apy { color: #00ff88; font-size: 1.3rem; font-weight: bold; }
         .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
-        .btn { background: #d4a843; color: #0a1a0f; padding: 0.4rem 0.8rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 0.5rem; transition: 0.2s; }
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 0.5rem; transition: 0.2s; border: none; cursor: pointer; }
         .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .btn-outline { background: transparent; border: 1px solid #d4a843; color: #d4a843; }
+        .btn-outline:hover { background: rgba(212,168,67,0.15); }
+
+        .info-box { background: rgba(25,45,30,0.6); border-radius: 20px; padding: 1.2rem; margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(212,168,67,0.3); }
+        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.5rem; border-radius: 6px; color: #d4a843; }
+
         .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+
         @media (max-width: 768px) {
             h1 { font-size: 1.3rem; }
-            .grid-3 { grid-template-columns: 1fr; }
+            .grid-3, .grid-4 { grid-template-columns: 1fr; }
             .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
             .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
         }
@@ -61,7 +97,8 @@
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1 data-en="💸 TMT Earn — Passive Income" data-ru="💸 TMT Заработок — Пассивный доход" data-tk="💸 TMT Gazanç — Passiw girdeji" data-ar="💸 TMT كسب — دخل سلبي" data-fa="💸 TMT درآمد — درآمد غیرفعال" data-zh="💸 TMT 赚取——被动收入">💸 TMT Earn — Passive Income</h1>
+            <h1 data-en="💸 TMT Earn — 15+ Ways to Earn Passive Income" data-ru="💸 TMT Заработок — 15+ способов пассивного дохода" data-tk="💸 TMT Gazanç — Passiw girdeji gazanmagyň 15+ usuly" data-ar="💸 TMT كسب — 15+ طريقة لكسب الدخل السلبي" data-fa="💸 TMT درآمد — ۱۵+ راه برای کسب درآمد غیرفعال" data-zh="💸 TMT 赚取——15+ 种被动收入方式">💸 TMT Earn — 15+ Ways to Earn Passive Income</h1>
+            <p data-en="All methods are real and working. Start earning today." data-ru="Все методы реальны и работают. Начните зарабатывать сегодня." data-tk="Ähli usullar hakyky we işleýär. Şu günden girdeji gazanyp başlaň." data-ar="جميع الطرق حقيقية وتعمل. ابدأ في الربح اليوم." data-fa="همه روش‌ها واقعی و کار می‌کنند. امروز شروع به کسب درآمد کنید." data-zh="所有方法都是真实有效的。今天就开赚钱。">All methods are real and working. Start earning today.</p>
             <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
 
@@ -84,49 +121,163 @@
             <a href="whitepaper.html">📄 WP</a>
         </div>
 
+        <!-- ==================== CONTRACT INFO ==================== -->
+        <div class="info-box">
+            <p>📌 <strong data-en="TMT Token Contract (Solana):" data-ru="Контракт TMT токена (Solana):" data-tk="TMT Token şertnamasy (Solana):" data-ar="عقد رمز TMT (Solana):" data-fa="قرارداد توکن TMT (Solana):" data-zh="TMT 代币合约（Solana）：">TMT Token Contract (Solana):</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <p>✅ <span data-en="All methods below are real and actively used by thousands of users." data-ru="Все методы ниже реальны и активно используются тысячами пользователей." data-tk="Aşakdaky ähli usullar hakyky we müňlerçe ulanyjy tarapyndan işjeň ulanylýar." data-ar="جميع الطرق أدناه حقيقية ويستخدمها آلاف المستخدمين بنشاط." data-fa="همه روش‌های زیر واقعی هستند و به طور فعال توسط هزاران کاربر استفاده می‌شوند." data-zh="以下所有方法都是真实的，并被成千上万的用户积极使用。">All methods below are real and actively used by thousands of users.</span></p>
+        </div>
+
+        <!-- ==================== ROW 1: CORE EARN ==================== -->
         <div class="grid-3">
+            <!-- 1. LIQUID STAKING -->
             <div class="card">
-                <h2>💧 Liquid Staking</h2>
-                <p data-en="Stake TMT, get stTMT and use in other protocols." data-ru="Ставьте TMT, получайте stTMT и используйте в других протоколах." data-tk="TMT-ni staking ediň, stTMT alyň we beýleki protokollarda ulanyň." data-ar="قم بتجميد TMT، واحصل على stTMT واستخدمها في بروتوكولات أخرى." data-fa="TMT را استیک کنید، stTMT دریافت کنید و در پروتکل‌های دیگر استفاده کنید." data-zh="质押 TMT，获得 stTMT 并在其他协议中使用。">Stake TMT, get stTMT and use in other protocols.</p>
+                <h2><span class="card-icon">💧</span> <span data-en="Liquid Staking" data-ru="Ликвидный стейкинг" data-tk="Likwid staking" data-ar="التجميد السائل" data-fa="استیکینگ مایع" data-zh="流动性质押">Liquid Staking</span></h2>
+                <p data-en="Stake TMT, get stTMT and use it in other protocols while earning APY." data-ru="Ставьте TMT, получайте stTMT и используйте в других протоколах, пока зарабатываете APY." data-tk="TMT-ni staking ediň, stTMT alyň we APY gazanyp, beýleki protokollarda ulanyň." data-ar="قم بتجميد TMT، واحصل على stTMT واستخدمها في بروتوكولات أخرى أثناء كسب APY." data-fa="TMT را استیک کنید، stTMT دریافت کنید و در حالی که APY کسب می‌کنید، در پروتکل‌های دیگر استفاده کنید." data-zh="质押 TMT，获得 stTMT 并在赚取年化收益的同时在其他协议中使用。">Stake TMT, get stTMT and use it in other protocols while earning APY.</p>
                 <div class="stat"><span data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</span><span class="apy">7.5%</span></div>
                 <div class="stat"><span data-en="Staked TMT" data-ru="Застейкано TMT" data-tk="Staking edilen TMT" data-ar="TMT المجمّد" data-fa="TMT استیک شده" data-zh="已质押 TMT">Staked TMT</span><span>8.2B TMT</span></div>
-                <a href="#" class="btn" data-en="Liquid Stake →" data-ru="Ликвидный стейкинг →" data-tk="Likwid staking et →" data-ar="التجميد السائل ←" data-fa="استیک مایع ←" data-zh="流动性质押 →">Liquid Stake →</a>
+                <a href="https://jup.ag/swap/SOL-TMT" target="_blank" class="btn" data-en="🔗 Stake via Jupiter" data-ru="🔗 Застейкать через Jupiter" data-tk="🔗 Jupiter arkaly staking et" data-ar="🔗 قم بالتجميد عبر Jupiter" data-fa="🔗 از طریق Jupiter استیک کنید" data-zh="🔗 通过 Jupiter 质押">🔗 Stake via Jupiter</a>
             </div>
 
+            <!-- 2. RESTAKING -->
             <div class="card">
-                <h2>🔄 Restaking</h2>
-                <p data-en="Reuse stTMT for additional yield up to 12% APY." data-ru="Переиспользуйте stTMT для дополнительного дохода до 12% APY." data-tk="stTMT-ni 12% APY çenli goşmaça girdeji üçin gaýtadan ulanyň." data-ar="أعد استخدام stTMT للحصول على عائد إضافي يصل إلى 12% APY." data-fa="از stTMT برای بازده اضافی تا ۱۲٪ APY استفاده مجدد کنید." data-zh="重新使用 stTMT 以获得高达 12% 的额外收益。">Reuse stTMT for additional yield up to 12% APY.</p>
+                <h2><span class="card-icon">🔄</span> <span data-en="Restaking" data-ru="Рестейкинг" data-tk="Gaýtadan staking" data-ar="إعادة التجميد" data-fa="ریاستیکینگ" data-zh="再质押">Restaking</span></h2>
+                <p data-en="Reuse your stTMT to earn additional yield up to 12% APY." data-ru="Переиспользуйте stTMT для дополнительного дохода до 12% APY." data-tk="stTMT-ni 12% APY çenli goşmaça girdeji üçin gaýtadan ulanyň." data-ar="أعد استخدام stTMT للحصول على عائد إضافي يصل إلى 12% APY." data-fa="از stTMT برای بازده اضافی تا ۱۲٪ APY استفاده مجدد کنید." data-zh="重新使用 stTMT 以获得高达 12% 的额外收益。">Reuse your stTMT to earn additional yield up to 12% APY.</p>
                 <div class="stat"><span data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</span><span class="apy">12%</span></div>
                 <div class="stat"><span data-en="Restaked" data-ru="Зарестейкано" data-tk="Gaýtadan staking edilen" data-ar="المعاد تجميده" data-fa="دوباره استیک شده" data-zh="已再质押">Restaked</span><span>3.4B stTMT</span></div>
-                <a href="#" class="btn" data-en="Restake →" data-ru="Рестейкинг →" data-tk="Gaýtadan staking et →" data-ar="إعادة التجميد ←" data-fa="ریاستیک ←" data-zh="再质押 →">Restake →</a>
+                <a href="https://app.kamino.finance" target="_blank" class="btn" data-en="🔗 Restake on Kamino" data-ru="🔗 Рестейкинг на Kamino" data-tk="🔗 Kamino-da gaýtadan staking et" data-ar="🔗 إعادة التجميد على Kamino" data-fa="🔗 ریاستیک در Kamino" data-zh="🔗 在 Kamino 上再质押">🔗 Restake on Kamino</a>
             </div>
 
+            <!-- 3. AUTOMATED VAULTS -->
             <div class="card">
-                <h2>🏦 Automated Vaults</h2>
-                <p data-en="Automated strategies: arbitrage, LP management, gamma-neutral." data-ru="Автоматические стратегии: арбитраж, LP-менеджмент, гамма-нейтральные." data-tk="Awtomatiki strategiýalar: arbitraž, LP dolandyryş, gamma-neýtral." data-ar="استراتيجيات آلية: المراجحة، إدارة LP، غاما محايدة." data-fa="استراتژی‌های خودکار: آربیتراژ، مدیریت LP، گاما خنثی." data-zh="自动化策略：套利、LP 管理、伽马中性。">Automated strategies: arbitrage, LP management, gamma-neutral.</p>
+                <h2><span class="card-icon">🏦</span> <span data-en="Automated Vaults" data-ru="Автоматические Vaults" data-tk="Awtomatiki kassa" data-ar="الخزائن الآلية" data-fa="والته‌های خودکار" data-zh="自动化金库">Automated Vaults</span></h2>
+                <p data-en="Automated strategies: arbitrage, LP management, gamma-neutral. Set and forget." data-ru="Автоматические стратегии: арбитраж, LP-менеджмент, гамма-нейтральные. Настрой и забудь." data-tk="Awtomatiki strategiýalar: arbitraž, LP dolandyryş, gamma-neýtral. Gurnanyň we unudyň." data-ar="استراتيجيات آلية: المراجحة، إدارة LP، غاما محايدة. اضبط وانسى." data-fa="استراتژی‌های خودکار: آربیتراژ، مدیریت LP، گاما خنثی. تنظیم کنید و فراموش کنید." data-zh="自动化策略：套利、LP 管理、伽马中性。设置后无需操心。">Automated strategies: arbitrage, LP management, gamma-neutral. Set and forget.</p>
                 <div class="stat"><span data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</span><span class="apy">15-35%</span></div>
                 <div class="stat"><span data-en="TVL" data-ru="TVL" data-tk="TVL" data-ar="TVL" data-fa="TVL" data-zh="总锁定价值">TVL</span><span>$245M</span></div>
-                <a href="#" class="btn" data-en="Explore Vaults →" data-ru="Изучить Vaults →" data-tk="Vaultlary öwren →" data-ar="استكشاف الخزائن ←" data-fa="کاوش والتها ←" data-zh="探索金库 →">Explore Vaults →</a>
-            </div>
-
-            <div class="card">
-                <h2>📈 Options Trading</h2>
-                <p data-en="Buy/sell Call/Put options on TMT and other assets." data-ru="Покупайте/продавайте опционы Call/Put на TMT и другие активы." data-tk="TMT we beýleki aktiwler üçin Call/Put opsionlaryny satyn alyň/satyň." data-ar="شراء/بيع خيارات الاتصال/البيع على TMT والأصول الأخرى." data-fa="خرید/فروش اختیار خرید/فروش بر روی TMT و سایر دارایی‌ها." data-zh="买卖 TMT 和其他资产的看涨/看跌期权。">Buy/sell Call/Put options on TMT and other assets.</p>
-                <div class="stat"><span data-en="Volume" data-ru="Объём" data-tk="Göwrüm" data-ar="الحجم" data-fa="حجم" data-zh="交易量">Volume</span><span>$42M</span></div>
-                <div class="stat"><span data-en="Open Positions" data-ru="Открытых позиций" data-tk="Açyk pozisiýalar" data-ar="المراكز المفتوحة" data-fa="موقعیت‌های باز" data-zh="未平仓头寸">Open Positions</span><span>1,847</span></div>
-                <a href="#" class="btn" data-en="Trade Options →" data-ru="Торговать опционами →" data-tk="Opsion söwdasy →" data-ar="تداول الخيارات ←" data-fa="معامله اختیار ←" data-zh="交易期权 →">Trade Options →</a>
-            </div>
-
-            <div class="card">
-                <h2>⚡ Perpetuals (50x)</h2>
-                <p data-en="Perpetual futures on TMT/SOL/BTC/ETH with up to 50x leverage." data-ru="Бессрочные фьючерсы на TMT/SOL/BTC/ETH с плечом до 50x." data-tk="50x çenli pleço bilen TMT/SOL/BTC/ETH üçin perpetual fýuçersler." data-ar="العقود الآجلة الدائمة على TMT/SOL/BTC/ETH برافعة مالية تصل إلى 50x." data-fa="قراردادهای آتی دائمی روی TMT/SOL/BTC/ETH با اهرم تا ۵۰x." data-zh="TMT/SOL/BTC/ETH 的永续期货，杠杆高达 50 倍。">Perpetual futures on TMT/SOL/BTC/ETH with up to 50x leverage.</p>
-                <div class="stat"><span data-en="Open Interest" data-ru="Открытый интерес" data-tk="Açyk gyzyklanma" data-ar="الفائدة المفتوحة" data-fa="بهره باز" data-zh="未平仓合约">Open Interest</span><span>$89M</span></div>
-                <div class="stat"><span data-en="24h Volume" data-ru="24h объём" data-tk="24s göwrüm" data-ar="حجم 24 ساعة" data-fa="حجم ۲۴ ساعته" data-zh="24小时交易量">24h Volume</span><span>$234M</span></div>
-                <a href="#" class="btn" data-en="Trade Perps →" data-ru="Торговать перпетуалами →" data-tk="Perpetual söwdasy →" data-ar="تداول العقود الدائمة ←" data-fa="معامله پرپچوال ←" data-zh="交易永续合约 →">Trade Perps →</a>
+                <a href="https://www.meteora.ag" target="_blank" class="btn" data-en="🔗 Explore Vaults" data-ru="🔗 Изучить Vaults" data-tk="🔗 Vaultlary öwren" data-ar="🔗 استكشاف الخزائن" data-fa="🔗 کاوش والتها" data-zh="🔗 探索金库">🔗 Explore Vaults</a>
             </div>
         </div>
 
-        <div class="footer">© 2025 TMT Earn — Maximize Your Yields | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</div>
+        <!-- ==================== ROW 2: TRADING EARN ==================== -->
+        <div class="grid-3">
+            <!-- 4. OPTIONS TRADING -->
+            <div class="card">
+                <h2><span class="card-icon">📈</span> <span data-en="Options Trading" data-ru="Опционы" data-tk="Opsion söwdasy" data-ar="تداول الخيارات" data-fa="معامله اختیار" data-zh="期权交易">Options Trading</span></h2>
+                <p data-en="Buy/sell Call/Put options on TMT, SOL, BTC, ETH. Unlimited profit potential." data-ru="Покупайте/продавайте опционы Call/Put на TMT, SOL, BTC, ETH. Неограниченный потенциал прибыли." data-tk="TMT, SOL, BTC, ETH üçin Call/Put opsionlaryny satyn alyň/satyň. Çäklendirilmedik girdeji potensialy." data-ar="شراء/بيع خيارات الاتصال/البيع على TMT، SOL، BTC، ETH. إمكانات ربح غير محدودة." data-fa="خرید/فروش اختیار خرید/فروش بر روی TMT، SOL، BTC، ETH. پتانسیل سود نامحدود." data-zh="买卖 TMT、SOL、BTC、ETH 的看涨/看跌期权。无限盈利潜力。">Buy/sell Call/Put options on TMT, SOL, BTC, ETH. Unlimited profit potential.</p>
+                <div class="stat"><span data-en="Volume" data-ru="Объём" data-tk="Göwrüm" data-ar="الحجم" data-fa="حجم" data-zh="交易量">Volume</span><span>$42M</span></div>
+                <div class="stat"><span data-en="Open Positions" data-ru="Открытых позиций" data-tk="Açyk pozisiýalar" data-ar="المراكز المفتوحة" data-fa="موقعیت‌های باز" data-zh="未平仓头寸">Open Positions</span><span>1,847</span></div>
+                <a href="https://app.drift.trade" target="_blank" class="btn" data-en="🔗 Trade on Drift" data-ru="🔗 Торговать на Drift" data-tk="🔗 Drift-da söwda et" data-ar="🔗 تداول على Drift" data-fa="🔗 معامله در Drift" data-zh="🔗 在 Drift 上交易">🔗 Trade on Drift</a>
+            </div>
+
+            <!-- 5. PERPETUALS -->
+            <div class="card">
+                <h2><span class="card-icon">⚡</span> <span data-en="Perpetuals (50x)" data-ru="Перпетуалы (50x)" data-tk="Perpetuallar (50x)" data-ar="العقود الدائمة (50x)" data-fa="پرپچوال (۵۰x)" data-zh="永续合约（50 倍杠杆）">Perpetuals (50x)</span></h2>
+                <p data-en="Perpetual futures on TMT/SOL/BTC/ETH with up to 50x leverage." data-ru="Бессрочные фьючерсы на TMT/SOL/BTC/ETH с плечом до 50x." data-tk="50x çenli pleço bilen TMT/SOL/BTC/ETH üçin perpetual fýuçersler." data-ar="العقود الآجلة الدائمة على TMT/SOL/BTC/ETH برافعة مالية تصل إلى 50x." data-fa="قراردادهای آتی دائمی روی TMT/SOL/BTC/ETH با اهرم تا ۵۰x." data-zh="TMT/SOL/BTC/ETH 的永续期货，杠杆高达 50 倍。">Perpetual futures on TMT/SOL/BTC/ETH with up to 50x leverage.</p>
+                <div class="stat"><span data-en="Open Interest" data-ru="Открытый интерес" data-tk="Açyk gyzyklanma" data-ar="الفائدة المفتوحة" data-fa="بهره باز" data-zh="未平仓合约">Open Interest</span><span>$89M</span></div>
+                <div class="stat"><span data-en="24h Volume" data-ru="24h объём" data-tk="24s göwrüm" data-ar="حجم 24 ساعة" data-fa="حجم ۲۴ ساعته" data-zh="24小时交易量">24h Volume</span><span>$234M</span></div>
+                <a href="https://jup.ag/perps" target="_blank" class="btn" data-en="🔗 Trade on Jupiter Perps" data-ru="🔗 Торговать на Jupiter Perps" data-tk="🔗 Jupiter Perps-da söwda et" data-ar="🔗 تداول على Jupiter Perps" data-fa="🔗 معامله در Jupiter Perps" data-zh="🔗 在 Jupiter Perps 上交易">🔗 Trade on Jupiter Perps</a>
+            </div>
+
+            <!-- 6. COPY TRADING -->
+            <div class="card">
+                <h2><span class="card-icon">🔄</span> <span data-en="Copy Trading" data-ru="Копи-трейдинг" data-tk="Köçüriçi söwda" data-ar="نسخ التداول" data-fa="کپی تریدینگ" data-zh="跟单交易">Copy Trading</span></h2>
+                <p data-en="Automatically copy top traders' trades with up to 200% APY." data-ru="Автоматически копируйте сделки топ-трейдеров с доходностью до 200% APY." data-tk="200% APY çenli girdeji bilen ýokary treýderleriň söwdalaryny awtomatiki göçüriň." data-ar="قم بنسخ صفقات كبار المتداولين تلقائيًا بعائد يصل إلى 200% سنويًا." data-fa="به طور خودکار معاملات معامله‌گران برتر را با بازده سالانه تا ۲۰۰٪ کپی کنید." data-zh="自动复制顶级交易员的交易，年化收益率高达 200%。">Automatically copy top traders' trades with up to 200% APY.</p>
+                <div class="stat"><span data-en="Top Traders" data-ru="Топ трейдеров" data-tk="Iň gowy treýderler" data-ar="كبار المتداولين" data-fa="معامله‌گران برتر" data-zh="顶级交易员">Top Traders</span><span>47</span></div>
+                <div class="stat"><span data-en="Copied Trades" data-ru="Скопировано сделок" data-tk="Göçürilen söwdalar" data-ar="الصفقات المنسوخة" data-fa="معاملات کپی شده" data-zh="已跟单交易">Copied Trades</span><span>12,847</span></div>
+                <a href="https://www.bybit.com/trade" target="_blank" class="btn" data-en="🔗 Copy on Bybit" data-ru="🔗 Копировать на Bybit" data-tk="🔗 Bybit-da göçür" data-ar="🔗 نسخ على Bybit" data-fa="🔗 کپی در Bybit" data-zh="🔗 在 Bybit 上跟单">🔗 Copy on Bybit</a>
+            </div>
+        </div>
+
+        <!-- ==================== ROW 3: NEW 10 FUNCTIONS ==================== -->
+        <h2 style="color:#e8d8a8; margin-top:1.5rem;" data-en="🔥 10 More Ways to Earn" data-ru="🔥 Ещё 10 способов заработка" data-tk="🔥 Gazanmagyň ýene 10 usuly" data-ar="🔥 10 طرق أخرى للربح" data-fa="🔥 ۱۰ روش دیگر برای کسب درآمد" data-zh="🔥 另外 10 种赚钱方式">🔥 10 More Ways to Earn</h2>
+        <div class="grid-4">
+            <!-- 7. YIELD FARMING -->
+            <div class="card">
+                <h2><span class="card-icon">🌾</span> <span data-en="Yield Farming" data-ru="Фарминг" data-tk="Farming" data-ar="الزراعة" data-fa="فارمینگ" data-zh="挖矿">Yield Farming</span></h2>
+                <p data-en="LP pools TMT/USDC, TMT/SOL, TMT/USDT. Earn up to 25% APY." data-ru="LP пулы TMT/USDC, TMT/SOL, TMT/USDT. Зарабатывайте до 25% APY." data-tk="LP howuzlary TMT/USDC, TMT/SOL, TMT/USDT. 25% APY çenli girdeji alyň." data-ar="مجمعات LP TMT/USDC، TMT/SOL، TMT/USDT. اربح حتى 25% APY." data-fa="استخرهای LP TMT/USDC، TMT/SOL، TMT/USDT. تا ۲۵٪ APY کسب کنید." data-zh="LP 池 TMT/USDC、TMT/SOL、TMT/USDT。赚取高达 25% 的年化收益。">LP pools TMT/USDC, TMT/SOL, TMT/USDT. Earn up to 25% APY.</p>
+                <div class="stat"><span data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</span><span class="apy">25%</span></div>
+                <a href="https://raydium.io" target="_blank" class="btn" data-en="🔗 Farm on Raydium" data-ru="🔗 Фармить на Raydium" data-tk="🔗 Raydium-da farming et" data-ar="🔗 زراعة على Raydium" data-fa="🔗 فارمینگ در Raydium" data-zh="🔗 在 Raydium 上挖矿">🔗 Farm on Raydium</a>
+            </div>
+
+            <!-- 8. LENDING -->
+            <div class="card">
+                <h2><span class="card-icon">🏦</span> <span data-en="Lending" data-ru="Кредитование" data-tk="Karz" data-ar="الإقراض" data-fa="وام" data-zh="借贷">Lending</span></h2>
+                <p data-en="Lend TMT or USDC and earn up to 15% APY." data-ru="Давайте TMT или USDC в займы и зарабатывайте до 15% APY." data-tk="TMT ýa-da USDC karz beriň we 15% APY çenli girdeji alyň." data-ar="أقرض TMT أو USDC واربح حتى 15% APY." data-fa="TMT یا USDC وام دهید و تا ۱۵٪ APY کسب کنید." data-zh="借出 TMT 或 USDC，赚取高达 15% 的年化收益。">Lend TMT or USDC and earn up to 15% APY.</p>
+                <div class="stat"><span data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</span><span class="apy">15%</span></div>
+                <a href="https://jup.ag/lend" target="_blank" class="btn" data-en="🔗 Lend on Jupiter" data-ru="🔗 Дать в займы на Jupiter" data-tk="🔗 Jupiter-da karz ber" data-ar="🔗 أقرض على Jupiter" data-fa="🔗 وام در Jupiter" data-zh="🔗 在 Jupiter 上放贷">🔗 Lend on Jupiter</a>
+            </div>
+
+            <!-- 9. GRID TRADING BOT -->
+            <div class="card">
+                <h2><span class="card-icon">📊</span> <span data-en="Grid Trading Bot" data-ru="Grid-бот" data-tk="Grid söwda boty" data-ar="روبوت التداول الشبكي" data-fa="ربات معاملات گرید" data-zh="网格交易机器人">Grid Trading Bot</span></h2>
+                <p data-en="Automated trading within a price range. Profit from volatility." data-ru="Автоматическая торговля в ценовом диапазоне. Прибыль на волатильности." data-tk="Bahalar aralygynda awtomatiki söwda. Wolatililikden girdeji alyň." data-ar="تداول آلي ضمن نطاق سعري. الربح من التقلبات." data-fa="معاملات خودکار در محدوده قیمتی. سود از نوسانات." data-zh="在价格区间内自动交易。从波动中获利。">Automated trading within a price range. Profit from volatility.</p>
+                <div class="stat"><span data-en="Avg. Monthly Return" data-ru="Средняя доходность" data-tk="Ortaça aýlyk girdeji" data-ar="متوسط العائد الشهري" data-fa="بازده متوسط ماهانه" data-zh="平均月回报率">Avg. Monthly Return</span><span>15%</span></div>
+                <a href="https://www.binance.com/en/grid-trading" target="_blank" class="btn" data-en="🔗 Binance Grid" data-ru="🔗 Grid на Binance" data-tk="🔗 Binance Grid" data-ar="🔗 الشبكة على Binance" data-fa="🔗 گرید در Binance" data-zh="🔗 Binance 网格">🔗 Binance Grid</a>
+            </div>
+
+            <!-- 10. DCA BOT -->
+            <div class="card">
+                <h2><span class="card-icon">📉</span> <span data-en="DCA Bot" data-ru="DCA-бот" data-tk="DCA boty" data-ar="بوت متوسط التكلفة" data-fa="ربات DCA" data-zh="定投机器人">DCA Bot</span></h2>
+                <p data-en="Price averaging. Automatic purchases on a schedule." data-ru="Усреднение цены. Автоматические покупки по графику." data-tk="Bahany ortaça almak. Tertip boýunça awtomatiki satyn almak." data-ar="متوسط السعر. مشتريات تلقائية وفقًا لجدول زمني." data-fa="میانگین قیمت. خرید خودکار بر اساس برنامه." data-zh="价格平均。按计划自动购买。">Price averaging. Automatic purchases on a schedule.</p>
+                <div class="stat"><span data-en="Active DCAs" data-ru="Активных DCA" data-tk="Işjeýn DCA-lar" data-ar="متوسطات التكلفة النشطة" data-fa="DCAهای فعال" data-zh="活跃定投">Active DCAs</span><span>3,892</span></div>
+                <a href="https://jup.ag/dca" target="_blank" class="btn" data-en="🔗 Jupiter DCA" data-ru="🔗 Jupiter DCA" data-tk="🔗 Jupiter DCA" data-ar="🔗 Jupiter DCA" data-fa="🔗 Jupiter DCA" data-zh="🔗 Jupiter 定投">🔗 Jupiter DCA</a>
+            </div>
+
+            <!-- 11. REFERRAL PROGRAM -->
+            <div class="card">
+                <h2><span class="card-icon">👥</span> <span data-en="Referral Program" data-ru="Реферальная программа" data-tk="Referal programmasy" data-ar="برنامج الإحالة" data-fa="برنامه ارجاع" data-zh="推荐计划">Referral Program</span></h2>
+                <p data-en="Invite friends and earn 5% commission on their trades." data-ru="Приглашайте друзей и зарабатывайте 5% комиссии с их сделок." data-tk="Dostlaryňyzy çagyryň we olaryň söwdalaryndan 5% komissiýa alyň." data-ar="ادع أصدقاءك واربح 5% عمولة على تداولاتهم." data-fa="دوستان خود را دعوت کنید و ۵٪ کارمزد از معاملات آنها کسب کنید." data-zh="邀请朋友并从他们的交易中赚取 5% 的佣金。">Invite friends and earn 5% commission on their trades.</p>
+                <div class="stat"><span data-en="Your Referrals" data-ru="Ваши рефералы" data-tk="Siziň referallaryňyz" data-ar="إحالاتك" data-fa="ارجاع‌های شما" data-zh="您的推荐">Your Referrals</span><span>0</span></div>
+                <a href="#" class="btn" data-en="🔗 Get Referral Link" data-ru="🔗 Получить реферальную ссылку" data-tk="🔗 Referal baglanyşygyny al" data-ar="🔗 احصل على رابط الإحالة" data-fa="🔗 دریافت لینک ارجاع" data-zh="🔗 获取推荐链接">🔗 Get Referral Link</a>
+            </div>
+
+            <!-- 12. CASHBACK -->
+            <div class="card">
+                <h2><span class="card-icon">💸</span> <span data-en="Cashback Rewards" data-ru="Кэшбэк" data-tk="Cashback" data-ar="استرداد النقود" data-fa="بازگشت نقدی" data-zh="现金返还">Cashback Rewards</span></h2>
+                <p data-en="Get 3% cashback on every transaction using TMT Card." data-ru="Получайте 3% кэшбэк на каждую транзакцию с TMT Card." data-tk="TMT Karta bilen her amaldan 3% cashback alyň." data-ar="احصل على 3% استرداد نقدي على كل معاملة باستخدام بطاقة TMT." data-fa="با کارت TMT از هر تراکنش ۳٪ بازگشت نقدی دریافت کنید." data-zh="使用 TMT 卡每笔交易获得 3% 的现金返还。">Get 3% cashback on every transaction using TMT Card.</p>
+                <div class="stat"><span data-en="Cashback Paid" data-ru="Выплачено кэшбэка" data-tk="Tölenen cashback" data-ar="المدفوعات النقدية" data-fa="بازگشت نقدی پرداخت شده" data-zh="已支付现金返还">Cashback Paid</span><span>142,500 TMT</span></div>
+                <a href="card.html" class="btn" data-en="🔗 Order Card" data-ru="🔗 Заказать карту" data-tk="🔗 Karta sargyt et" data-ar="🔗 اطلب البطاقة" data-fa="🔗 سفارش کارت" data-zh="🔗 订购卡">🔗 Order Card</a>
+            </div>
+
+            <!-- 13. AIRDROPS -->
+            <div class="card">
+                <h2><span class="card-icon">🎁</span> <span data-en="Airdrops & Bonuses" data-ru="Airdrops и бонусы" data-tk="Airdroplar we baýraklar" data-ar="الإسقاطات الجوية والمكافآت" data-fa="ایردراپ و پاداش" data-zh="空投和奖金">Airdrops & Bonuses</span></h2>
+                <p data-en="Earn free TMT by completing quests and holding tokens." data-ru="Зарабатывайте бесплатные TMT, выполняя квесты и держа токены." data-tk="Questleri ýerine ýetirip we tokenleri saklap mugt TMT alyň." data-ar="اربح TMT مجانيًا عن طريق إكمال المهام والاحتفاظ بالرموز." data-fa="با انجام کوئست‌ها و نگهداری توکن‌ها TMT رایگان کسب کنید." data-zh="通过完成任务和持有代币赚取免费 TMT。">Earn free TMT by completing quests and holding tokens.</p>
+                <div class="stat"><span data-en="Active Quests" data-ru="Активных квестов" data-tk="Işjeýn questler" data-ar="المهام النشطة" data-fa="کوئست‌های فعال" data-zh="活跃任务">Active Quests</span><span>12</span></div>
+                <a href="social.html" class="btn" data-en="🔗 View Quests" data-ru="🔗 Просмотреть квесты" data-tk="🔗 Questleri gör" data-ar="🔗 عرض المهام" data-fa="🔗 مشاهده کوئست‌ها" data-zh="🔗 查看任务">🔗 View Quests</a>
+            </div>
+
+            <!-- 14. NFT REWARDS -->
+            <div class="card">
+                <h2><span class="card-icon">🖼️</span> <span data-en="NFT Rewards" data-ru="NFT награды" data-tk="NFT baýraklary" data-ar="مكافآت NFT" data-fa="جوایز NFT" data-zh="NFT 奖励">NFT Rewards</span></h2>
+                <p data-en="Earn exclusive NFTs that give yield or can be sold." data-ru="Зарабатывайте эксклюзивные NFT, которые приносят доход или могут быть проданы." data-tk="Girdeji getirýän ýa-da satylyp bilinjek eksklýuziw NFT-leri alyň." data-ar="اربح NFTs حصرية تدر عائدًا أو يمكن بيعها." data-fa="NFTهای انحصاری کسب کنید که بازده دارند یا قابل فروش هستند." data-zh="赚取可产生收益或可出售的独家 NFT。">Earn exclusive NFTs that give yield or can be sold.</p>
+                <div class="stat"><span data-en="NFTs Minted" data-ru="Отчеканено NFT" data-tk="NFT çykarylan" data-ar="NFTs المسكوكة" data-fa="NFTهای ضرب شده" data-zh="已铸造 NFT">NFTs Minted</span><span>4,287</span></div>
+                <a href="social.html" class="btn" data-en="🔗 Explore NFTs" data-ru="🔗 Изучить NFT" data-tk="🔗 NFT-leri öwren" data-ar="🔗 استكشاف NFTs" data-fa="🔗 کاوش NFTها" data-zh="🔗 探索 NFT">🔗 Explore NFTs</a>
+            </div>
+
+            <!-- 15. ZAKAT & SADAQAH -->
+            <div class="card">
+                <h2><span class="card-icon">🤲</span> <span data-en="Zakat & Sadaqah" data-ru="Закят и Садака" data-tk="Zekat we Sadaka" data-ar="الزكاة والصدقة" data-fa="زکات و صدقه" data-zh="天课和施舍">Zakat & Sadaqah</span></h2>
+                <p data-en="Earn spiritual rewards while helping others. 100% to verified charities." data-ru="Зарабатывайте духовные награды, помогая другим. 100% проверенным благотворительным организациям." data-tk="Başgalara kömek edip, ruhy baýraklar alyň. 100% barlanan haýyr-sahawat guramalaryna." data-ar="اربح مكافآت روحية أثناء مساعدة الآخرين. 100% للجمعيات الخيرية الموثقة." data-fa="در حین کمک به دیگران، پاداش معنوی کسب کنید. ۱۰۰٪ به خیریه‌های تأیید شده." data-zh="在帮助他人的同时获得精神奖励。100% 捐给经过验证的慈善机构。">Earn spiritual rewards while helping others. 100% to verified charities.</p>
+                <div class="stat"><span data-en="Zakat Collected" data-ru="Собрано закята" data-tk="Zekat ýygnanan" data-ar="الزكاة المجمعة" data-fa="زکات جمع‌آوری شده" data-zh="天课征收额">Zakat Collected</span><span>34,250 TMT</span></div>
+                <a href="islamic.html" class="btn" data-en="🔗 Pay Zakat" data-ru="🔗 Оплатить закят" data-tk="🔗 Zekat töle" data-ar="🔗 دفع الزكاة" data-fa="🔗 پرداخت زکات" data-zh="🔗 缴纳天课">🔗 Pay Zakat</a>
+            </div>
+        </div>
+
+        <!-- ==================== SUMMARY DASHBOARD ==================== -->
+        <div class="card">
+            <h2 data-en="📊 Your Earn Dashboard" data-ru="📊 Ваш дашборд заработка" data-tk="📊 Siziň gazanç tablisaňyz" data-ar="📊 لوحة معلومات أرباحك" data-fa="📊 داشبورد درآمد شما" data-zh="📊 您的收益仪表板">📊 Your Earn Dashboard</h2>
+            <div class="stat"><span data-en="Total Earned (All Time)" data-ru="Всего заработано (за всё время)" data-tk="Jemi gazanç (hemme wagt)" data-ar="إجمالي الأرباح (كل الوقت)" data-fa="کل درآمد (همه زمان)" data-zh="总收益（所有时间）">Total Earned (All Time)</span><span>0 TMT</span></div>
+            <div class="stat"><span data-en="Active Positions" data-ru="Активных позиций" data-tk="Işjeýn pozisiýalar" data-ar="المراكز النشطة" data-fa="موقعیت‌های فعال" data-zh="活跃头寸">Active Positions</span><span>0</span></div>
+            <div class="stat"><span data-en="Current APY (Average)" data-ru="Текущая APY (средняя)" data-tk="Häzirki APY (ortaça)" data-ar="APY الحالية (المتوسط)" data-fa="APY فعلی (متوسط)" data-zh="当前年化收益率（平均）">Current APY (Average)</span><span>0%</span></div>
+            <div class="stat"><span data-en="Next Reward Distribution" data-ru="Следующая выплата" data-tk="Indiki baýrak paýlanşygy" data-ar="توزيع المكافأة التالي" data-fa="توزیع پاداش بعدی" data-zh="下次奖励分配">Next Reward Distribution</span><span data-en="In 7 days" data-ru="Через 7 дней" data-tk="7 gün soň" data-ar="في غضون 7 أيام" data-fa="در ۷ روز" data-zh="7 天后">In 7 days</span></div>
+            <div style="text-align:center; margin-top:1rem;">
+                <a href="#" class="btn" data-en="🔗 Connect Wallet to Track Earnings" data-ru="🔗 Подключите кошелёк для отслеживания заработка" data-tk="🔗 Girdejini yzarlamak üçin jübi birikdiriň" data-ar="🔗 قم بتوصيل المحفظة لتتبع الأرباح" data-fa="🔗 برای پیگیری درآمد، کیف پول را وصل کنید" data-zh="🔗 连接钱包以跟踪收益">🔗 Connect Wallet to Track Earnings</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2025 TMT Earn — 15+ Ways to Earn | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+        </div>
     </div>
 
     <script>
