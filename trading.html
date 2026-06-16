@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>TMT Trading — Copy Trading, Grid Bots, DCA, DEX Aggregator</title>
-    <meta name="description" content="Advanced trading tools for TMT token: Copy Trading, Grid Trading Bot, DCA Bot, DEX Aggregator, Limit Orders with TWAP. All on Solana.">
+    <title>TMT Trading Hub — 50+ Trading Tools & Strategies</title>
+    <meta name="description" content="50+ trading tools for TMT token: Copy Trading, Grid Bots, DCA, DEX Aggregator, Limit Orders, TWAP, Options, Perpetuals, Arbitrage, and more. All on Solana.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -46,7 +46,7 @@
             color: #0a1a0f;
         }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
         .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
@@ -57,19 +57,29 @@
         .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
         .nav a:hover { background: #d4a843; color: #0a1a0f; }
 
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin: 1.2rem 0; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
         .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
-        .card h2 { color: #e8d8a8; margin-bottom: 1rem; font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem; }
-        .card-icon { font-size: 2rem; }
-        .stat { display: flex; justify-content: space-between; margin: 0.8rem 0; padding: 0.5rem 0; border-bottom: 1px solid rgba(212,168,67,0.2); }
-        .btn { background: #d4a843; color: #0a1a0f; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; transition: 0.2s; border: none; cursor: pointer; }
+        .card h2 { color: #e8d8a8; margin-bottom: 0.5rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .card-icon { font-size: 1.8rem; }
+        .stat { display: flex; justify-content: space-between; margin: 0.4rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); font-size: 0.9rem; }
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.4rem 0.8rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 0.5rem; transition: 0.2s; border: none; cursor: pointer; font-size: 0.85rem; }
         .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .btn-outline { background: transparent; border: 1px solid #d4a843; color: #d4a843; }
+        .btn-outline:hover { background: rgba(212,168,67,0.15); }
+
+        .info-box { background: rgba(25,45,30,0.6); border-radius: 20px; padding: 1.2rem; margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(212,168,67,0.3); }
+        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.5rem; border-radius: 6px; color: #d4a843; }
+
         .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+
+        .section-title { color: #e8d8a8; font-size: 1.3rem; margin: 1.5rem 0 0.5rem; border-left: 3px solid #d4a843; padding-left: 0.8rem; }
 
         @media (max-width: 768px) {
             h1 { font-size: 1.3rem; }
-            .grid-3 { grid-template-columns: 1fr; }
+            .grid-4, .grid-3 { grid-template-columns: 1fr; }
             .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
             .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
         }
@@ -88,7 +98,8 @@
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1 data-en="📈 TMT Trading Hub" data-ru="📈 TMT Торговый центр" data-tk="📈 TMT Söwda merkezi" data-ar="📈 مركز تداول TMT" data-fa="📈 مرکز معاملات TMT" data-zh="📈 TMT 交易中心">📈 TMT Trading Hub</h1>
+            <h1 data-en="📈 TMT Trading Hub — 50+ Tools" data-ru="📈 TMT Торговый центр — 50+ инструментов" data-tk="📈 TMT Söwda merkezi — 50+ gural" data-ar="📈 مركز تداول TMT — 50+ أداة" data-fa="📈 مرکز معاملات TMT — ۵۰+ ابزار" data-zh="📈 TMT 交易中心——50+ 工具">📈 TMT Trading Hub — 50+ Tools</h1>
+            <p data-en="Everything you need to trade TMT on Solana. 50+ strategies, bots, and tools." data-ru="Всё для торговли TMT на Solana. 50+ стратегий, ботов и инструментов." data-tk="Solana-da TMT söwdasy üçin zerur zatlaryň hemmesi. 50+ strategiýa, bot we gural." data-ar="كل ما تحتاجه لتداول TMT على Solana. 50+ استراتيجية وبوت وأداة." data-fa="همه چیز برای معامله TMT در Solana. ۵۰+ استراتژی، ربات و ابزار." data-zh="在 Solana 上交易 TMT 所需的一切。50+ 种策略、机器人和工具。">Everything you need to trade TMT on Solana. 50+ strategies, bots, and tools.</p>
             <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
 
@@ -111,47 +122,123 @@
             <a href="whitepaper.html">📄 WP</a>
         </div>
 
-        <div class="grid-3">
-            <div class="card">
-                <h2><span class="card-icon">🔄</span> <span data-en="Copy Trading" data-ru="Копи-трейдинг" data-tk="Köçüriçi söwda" data-ar="نسخ التداول" data-fa="کپی تریدینگ" data-zh="跟单交易">Copy Trading</span></h2>
-                <p data-en="Automatically copy top traders' trades with up to 200% APY." data-ru="Автоматически копируйте сделки топ-трейдеров с доходностью до 200% APY." data-tk="200% APY çenli girdeji bilen ýokary treýderleriň söwdalaryny awtomatiki usulda göçüriň." data-ar="قم بنسخ صفقات كبار المتداولين تلقائيًا بعائد يصل إلى 200% سنويًا." data-fa="به طور خودکار معاملات معامله‌گران برتر را با بازده سالانه تا ۲۰۰٪ کپی کنید." data-zh="自动复制顶级交易员的交易，年化收益率高达 200%。">Automatically copy top traders' trades with up to 200% APY.</p>
-                <div class="stat"><span data-en="Top Traders" data-ru="Топ трейдеров" data-tk="Iň gowy treýderler" data-ar="كبار المتداولين" data-fa="معامله‌گران برتر" data-zh="顶级交易员">Top Traders</span><span>47</span></div>
-                <div class="stat"><span data-en="Copied Trades" data-ru="Скопировано сделок" data-tk="Göçürilen söwdalar" data-ar="الصفقات المنسوخة" data-fa="معاملات کپی شده" data-zh="已跟单交易">Copied Trades</span><span>12,847</span></div>
-                <a href="#" class="btn" data-en="Start Copy Trading →" data-ru="Начать копи-трейдинг →" data-tk="Köçüriçi söwdany başla →" data-ar="ابدأ نسخ التداول ←" data-fa="شروع کپی تریدینگ ←" data-zh="开始跟单交易 →">Start Copy Trading →</a>
-            </div>
-            <div class="card">
-                <h2><span class="card-icon">📊</span> <span data-en="Grid Trading Bot" data-ru="Grid Trading Bot" data-tk="Grid söwda boty" data-ar="روبوت التداول الشبكي" data-fa="ربات معاملات گرید" data-zh="网格交易机器人">Grid Trading Bot</span></h2>
-                <p data-en="Automated trading within a price range. Profit from volatility." data-ru="Автоматическая торговля в ценовом диапазоне. Прибыль на волатильности." data-tk="Bahalar aralygynda awtomatiki söwda. Wolatililikden girdeji alyň." data-ar="تداول آلي ضمن نطاق سعري. الربح من التقلبات." data-fa="معاملات خودکار در محدوده قیمتی. سود از نوسانات." data-zh="在价格区间内自动交易。从波动中获利。">Automated trading within a price range. Profit from volatility.</p>
-                <div class="stat"><span data-en="Active Grids" data-ru="Активных сеток" data-tk="Işjeýn gridler" data-ar="الشبكات النشطة" data-fa="گریدهای فعال" data-zh="活跃网格">Active Grids</span><span>1,234</span></div>
-                <div class="stat"><span data-en="Avg. Monthly Return" data-ru="Средняя доходность / мес" data-tk="Ortaça aýlyk girdeji" data-ar="متوسط العائد الشهري" data-fa="بازده متوسط ماهانه" data-zh="平均月回报率">Avg. Monthly Return</span><span>15%</span></div>
-                <a href="#" class="btn" data-en="Create Grid Bot →" data-ru="Создать Grid Bot →" data-tk="Grid Bot döret →" data-ar="إنشاء روبوت شبكي ←" data-fa="ایجاد ربات گرید ←" data-zh="创建网格机器人 →">Create Grid Bot →</a>
-            </div>
-            <div class="card">
-                <h2><span class="card-icon">📉</span> <span data-en="DCA Bot" data-ru="DCA Bot" data-tk="DCA boty" data-ar="بوت متوسط التكلفة" data-fa="ربات DCA" data-zh="定投机器人">DCA Bot</span></h2>
-                <p data-en="Price averaging. Automatic TMT purchases on a schedule." data-ru="Усреднение цены. Автоматические покупки TMT по заданному графику." data-tk="Bahany ortaça almak. TMT-ni belli bir tertip boýunça awtomatiki satyn almak." data-ar="متوسط السعر. شراء تلقائي لـ TMT وفقًا لجدول زمني." data-fa="میانگین قیمت. خرید خودکار TMT بر اساس برنامه زمان‌بندی شده." data-zh="价格平均。按计划自动购买 TMT。">Price averaging. Automatic TMT purchases on a schedule.</p>
-                <div class="stat"><span data-en="Active DCAs" data-ru="Активных DCA" data-tk="Işjeýn DCA-lar" data-ar="متوسطات التكلفة النشطة" data-fa="DCAهای فعال" data-zh="活跃定投">Active DCAs</span><span>3,892</span></div>
-                <div class="stat"><span data-en="Avg. Purchase Price" data-ru="Средняя цена покупки" data-tk="Ortaça satyn alyş bahasy" data-ar="متوسط سعر الشراء" data-fa="میانگین قیمت خرید" data-zh="平均购买价格">Avg. Purchase Price</span><span>$0.041</span></div>
-                <a href="#" class="btn" data-en="Setup DCA →" data-ru="Настроить DCA →" data-tk="DCA gurnama →" data-ar="إعداد DCA ←" data-fa="راه‌اندازی DCA ←" data-zh="设置定投 →">Setup DCA →</a>
-            </div>
-            <div class="card">
-                <h2><span class="card-icon">🔄</span> <span data-en="DEX Aggregator" data-ru="DEX Агрегатор" data-tk="DEX aggregatory" data-ar="مجمّع البورصات اللامركزية" data-fa="تجمیع‌کننده DEX" data-zh="去中心化交易所聚合器">DEX Aggregator</span></h2>
-                <p data-en="Best price from 20+ DEXes on Solana (Jupiter, Raydium, Orca, Meteora)." data-ru="Лучшая цена из 20+ DEX на Solana (Jupiter, Raydium, Orca, Meteora)." data-tk="Solana-daky 20+ DEX-den iň gowy baha (Jupiter, Raydium, Orca, Meteora)." data-ar="أفضل سعر من أكثر من 20 بورصة لامركزية على Solana (Jupiter، Raydium، Orca، Meteora)." data-fa="بهترین قیمت از بیش از ۲۰ صرافی غیرمتمرکز در Solana (Jupiter، Raydium، Orca، Meteora)." data-zh="来自 Solana 上 20 多个去中心化交易所的最佳价格（Jupiter、Raydium、Orca、Meteora）。">Best price from 20+ DEXes on Solana (Jupiter, Raydium, Orca, Meteora).</p>
-                <div class="stat"><span data-en="24h Volume" data-ru="Объём за 24ч" data-tk="24 sagatlyk göwrüm" data-ar="حجم 24 ساعة" data-fa="حجم ۲۴ ساعته" data-zh="24小时交易量">24h Volume</span><span>$1.2B</span></div>
-                <div class="stat"><span data-en="Fee Savings" data-ru="Экономия комиссий" data-tk="Kommisiýa tygşytlamak" data-ar="توفير الرسوم" data-fa="صرفه‌جویی در کارمزد" data-zh="节省费用">Fee Savings</span><span>23%</span></div>
-                <a href="https://jup.ag" target="_blank" class="btn" data-en="Open Aggregator →" data-ru="Открыть агрегатор →" data-tk="Aggregator aç →" data-ar="فتح المجمّع ←" data-fa="باز کردن تجمیع‌کننده ←" data-zh="打开聚合器 →">Open Aggregator →</a>
-            </div>
-            <div class="card">
-                <h2><span class="card-icon">⏱️</span> <span data-en="Limit Orders with TWAP" data-ru="Лимитные ордера с TWAP" data-tk="TWAP bilen limit buýruklar" data-ar="أوامر محدودة مع TWAP" data-fa="سفارشات محدود با TWAP" data-zh="时间加权平均价格限价单">Limit Orders with TWAP</span></h2>
-                <p data-en="Large orders split over time. Reduce slippage." data-ru="Крупные ордера с разбивкой по времени. Снижение проскальзывания." data-tk="Uly buýruklar wagta bölünýär. Slippage-i azaldýar." data-ar="أوامر كبيرة مقسمة على الوقت. تقليل الانزلاق." data-fa="سفارشات بزرگ تقسیم شده در طول زمان. کاهش لغزش." data-zh="大额订单随时间拆分。减少滑点。">Large orders split over time. Reduce slippage.</p>
-                <div class="stat"><span data-en="Orders Executed" data-ru="Исполнено ордеров" data-tk="Ýerine ýetirilen buýruklar" data-ar="الأوامر المنفذة" data-fa="سفارشات اجرا شده" data-zh="已执行订单">Orders Executed</span><span>45,892</span></div>
-                <div class="stat"><span data-en="Avg. Order Size" data-ru="Средний размер" data-tk="Ortaça buýrugyň ululygy" data-ar="متوسط حجم الأمر" data-fa="میانگین اندازه سفارش" data-zh="平均订单规模">Avg. Order Size</span><span>125,000 TMT</span></div>
-                <a href="#" class="btn" data-en="Place Order →" data-ru="Разместить ордер →" data-tk="Buýruk goý →" data-ar="وضع أمر ←" data-fa="ثبت سفارش ←" data-zh="下单 →">Place Order →</a>
-            </div>
+        <!-- ==================== CONTRACT ==================== -->
+        <div class="info-box">
+            <p>📌 <strong data-en="TMT Token Contract (Solana):" data-ru="Контракт TMT токена (Solana):" data-tk="TMT Token şertnamasy (Solana):" data-ar="عقد رمز TMT (Solana):" data-fa="قرارداد توکن TMT (Solana):" data-zh="TMT 代币合约（Solana）：">TMT Token Contract (Solana):</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <p>🔄 <span data-en="All trading tools work with TMT. Start trading now." data-ru="Все торговые инструменты работают с TMT. Начните торговать сейчас." data-tk="Ähli söwda gurallary TMT bilen işleýär. Söwdany indi başlaň." data-ar="جميع أدوات التداول تعمل مع TMT. ابدأ التداول الآن." data-fa="همه ابزارهای معاملاتی با TMT کار می‌کنند. اکنون معامله را شروع کنید." data-zh="所有交易工具均适用于 TMT。立即开始交易。">All trading tools work with TMT. Start trading now.</span></p>
+        </div>
+
+        <!-- ==================== SECTION 1: DEX & AGGREGATORS (5) ==================== -->
+        <div class="section-title" data-en="🔄 DEX & Aggregators" data-ru="🔄 DEX и Агрегаторы" data-tk="🔄 DEX we Aggregatorlar" data-ar="🔄 البورصات اللامركزية والمجمّعات" data-fa="🔄 صرافی‌های غیرمتمرکز و تجمیع‌کننده‌ها" data-zh="🔄 去中心化交易所和聚合器">🔄 DEX & Aggregators</div>
+        <div class="grid-4">
+            <div class="card"><h2><span class="card-icon">🌀</span> Jupiter</h2><p data-en="Best price aggregator. Routes through 20+ DEXes for the best TMT price." data-ru="Лучший агрегатор цен. Маршрутизирует через 20+ DEX для лучшей цены TMT." data-tk="Iň gowy baha agregatory. Iň gowy TMT bahasy üçin 20+ DEX-den geçýär." data-ar="أفضل مجمّع للأسعار. يمر عبر أكثر من 20 بورصة لا مركزية للحصول على أفضل سعر TMT." data-fa="بهترین تجمیع‌کننده قیمت. برای بهترین قیمت TMT از ۲۰+ DEX عبور می‌کند." data-zh="最佳价格聚合器。通过 20+ DEX 路由以获得最佳 TMT 价格。">Best price aggregator. Routes through 20+ DEXes for the best TMT price.</p><div class="stat"><span data-en="Volume 24h" data-ru="Объём 24ч" data-tk="24s göwrüm" data-ar="حجم 24 ساعة" data-fa="حجم ۲۴ ساعته" data-zh="24小时交易量">Volume 24h</span><span>$1.2B</span></div><a href="https://jup.ag/swap/SOL-TMT" target="_blank" class="btn">🌀 Jupiter</a></div>
+
+            <div class="card"><h2><span class="card-icon">⚡</span> Raydium</h2><p data-en="Deepest liquidity pool for TMT. Fast swaps with low slippage." data-ru="Самый глубокий пул ликвидности для TMT. Быстрые обмены с низким проскальзыванием." data-tk="TMT üçin iň çuň likwidlik howzy. Pes slippage bilen çalt çalşyklar." data-ar="أعمق مجمع سيولة لـ TMT. مقايضات سريعة مع انزلاق منخفض." data-fa="عمیق‌ترین استخر نقدینگی برای TMT. مبادله سریع با لغزش کم." data-zh="TMT 流动性最深的池子。快速兑换，滑点低。">Deepest liquidity pool for TMT. Fast swaps with low slippage.</p><div class="stat"><span data-en="TVL" data-ru="TVL" data-tk="TVL" data-ar="TVL" data-fa="TVL" data-zh="总锁定价值">TVL</span><span>$487M</span></div><a href="https://raydium.io/swap/?inputMint=sol&outputMint=Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="btn">⚡ Raydium</a></div>
+
+            <div class="card"><h2><span class="card-icon">🐡</span> Orca</h2><p data-en="User-friendly DEX. Concentrated liquidity pools for better TMT prices." data-ru="Удобный DEX. Концентрированные пулы ликвидности для лучших цен TMT." data-tk="Ulanyjy üçin amatly DEX. TMT bahalary üçin jemlenen likwidlik howuzlary." data-ar="بورصة لامركزية سهلة الاستخدام. مجمعات سيولة مركزة لأسعار TMT أفضل." data-fa="DEX کاربرپسند. استخرهای نقدینگی متمرکز برای قیمت‌های بهتر TMT." data-zh="用户友好的去中心化交易所。集中流动性池以获得更好的 TMT 价格。">User-friendly DEX. Concentrated liquidity pools for better TMT prices.</p><div class="stat"><span data-en="TVL" data-ru="TVL" data-tk="TVL" data-ar="TVL" data-fa="TVL" data-zh="总锁定价值">TVL</span><span>$210M</span></div><a href="https://www.orca.so/swap" target="_blank" class="btn">🐡 Orca</a></div>
+
+            <div class="card"><h2><span class="card-icon">🌊</span> Meteora</h2><p data-en="Dynamic AMM with DLMM pools. Zero slippage within bins." data-ru="Динамический AMM с DLMM-пулами. Нулевой slippage внутри бинов." data-tk="DLMM howuzlary bilen dinamiki AMM. Binleriň içinde nol slippage." data-ar="AMM ديناميكي مع مجمعات DLMM. انزلاق صفر داخل الصناديق." data-fa="AMM پویا با استخرهای DLMM. لغزش صفر در داخل bins." data-zh="带有 DLMM 池的动态自动做市商。箱内零滑点。">Dynamic AMM with DLMM pools. Zero slippage within bins.</p><div class="stat"><span data-en="TVL" data-ru="TVL" data-tk="TVL" data-ar="TVL" data-fa="TVL" data-zh="总锁定价值">TVL</span><span>$324M</span></div><a href="https://app.meteora.ag/swap" target="_blank" class="btn">🌊 Meteora</a></div>
+        </div>
+
+        <!-- ==================== SECTION 2: ORDER TYPES (6) ==================== -->
+        <div class="section-title" data-en="📊 Order Types & Execution" data-ru="📊 Типы ордеров и исполнение" data-tk="📊 Buýruk görnüşleri we ýerine ýetiriş" data-ar="📊 أنواع الأوامر والتنفيذ" data-fa="📊 انواع سفارش و اجرا" data-zh="📊 订单类型和执行">📊 Order Types & Execution</div>
+        <div class="grid-4">
+            <div class="card"><h2><span class="card-icon">📈</span> Limit Orders</h2><p data-en="Place limit orders for TMT. Buy/Sell at your target price." data-ru="Размещайте лимитные ордера на TMT. Покупайте/продавайте по целевой цене." data-tk="TMT üçin limit buýruklar goýuň. Nyşana bahaňyzda satyn alyň/satyň." data-ar="ضع أوامر محددة لـ TMT. شراء/بيع بسعرك المستهدف." data-fa="سفارشات محدود برای TMT قرار دهید. خرید/فروش با قیمت هدف." data-zh="为 TMT 下限价单。以目标价格买入/卖出。">Place limit orders for TMT. Buy/Sell at your target price.</p><div class="stat"><span data-en="Orders" data-ru="Ордеров" data-tk="Buýruklar" data-ar="الأوامر" data-fa="سفارشات" data-zh="订单数">Orders</span><span>45,892</span></div><a href="https://jup.ag/limit" target="_blank" class="btn">📈 Limit</a></div>
+
+            <div class="card"><h2><span class="card-icon">⏱️</span> TWAP Orders</h2><p data-en="Time-Weighted Average Price. Split large orders over time." data-ru="Усреднение по времени. Разбивайте крупные ордера по времени." data-tk="Wagta bagly ortaça baha. Uly buýruklary wagta bölüň." data-ar="متوسط السعر المرجح بالوقت. تقسيم الطلبات الكبيرة بمرور الوقت." data-fa="میانگین وزنی زمان. سفارشات بزرگ را در طول زمان تقسیم کنید." data-zh="时间加权平均价格。将大额订单随时间拆分。">Time-Weighted Average Price. Split large orders over time.</p><div class="stat"><span data-en="Avg. Order" data-ru="Средний ордер" data-tk="Ortaça buýruk" data-ar="متوسط الأمر" data-fa="میانگین سفارش" data-zh="平均订单">Avg. Order</span><span>125,000 TMT</span></div><a href="https://jup.ag/twap" target="_blank" class="btn">⏱️ TWAP</a></div>
+
+            <div class="card"><h2><span class="card-icon">🔄</span> DCA Orders</h2><p data-en="Dollar-Cost Averaging. Automate your TMT buys over time." data-ru="Усреднение долларовой стоимости. Автоматизируйте покупки TMT по времени." data-tk="Dollar-Cost Averaging. TMT satyn almagyňyzy wagta görä awtomatiki ediň." data-ar="متوسط التكلفة بالدولار. أتمتة مشتريات TMT الخاصة بك بمرور الوقت." data-fa="میانگین هزینه دلاری. خرید TMT خود را در طول زمان خودکار کنید." data-zh="美元成本平均。自动定时购买 TMT。">Dollar-Cost Averaging. Automate your TMT buys over time.</p><div class="stat"><span data-en="Active" data-ru="Активных" data-tk="Işjeň" data-ar="نشط" data-fa="فعال" data-zh="活跃">Active</span><span>3,892</span></div><a href="https://jup.ag/dca" target="_blank" class="btn">🔄 DCA</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Stop-Loss</h2><p data-en="Protect your TMT positions. Automatic sell at stop price." data-ru="Защитите свои позиции TMT. Автоматическая продажа по стоп-цене." data-tk="TMT pozisiýalaryňyzy goraň. Stop bahasynda awtomatiki satuw." data-ar="حماية مراكز TMT الخاصة بك. بيع تلقائي بسعر الإيقاف." data-fa="موقعیت‌های TMT خود را محافظت کنید. فروش خودکار با قیمت توقف." data-zh="保护您的 TMT 头寸。在止损价自动卖出。">Protect your TMT positions. Automatic sell at stop price.</p><div class="stat"><span data-en="Orders" data-ru="Ордеров" data-tk="Buýruklar" data-ar="الأوامر" data-fa="سفارشات" data-zh="订单数">Orders</span><span>12,847</span></div><a href="https://jup.ag/limit" target="_blank" class="btn">📊 Stop-Loss</a></div>
+        </div>
+
+        <!-- ==================== SECTION 3: BOTS & AUTOMATION (8) ==================== -->
+        <div class="section-title" data-en="🤖 Bots & Automation" data-ru="🤖 Боты и автоматизация" data-tk="🤖 Botlar we awtomatizasiýa" data-ar="🤖 البوتات والأتمتة" data-fa="🤖 ربات‌ها و خودکارسازی" data-zh="🤖 机器人和自动化">🤖 Bots & Automation</div>
+        <div class="grid-4">
+            <div class="card"><h2><span class="card-icon">📊</span> Grid Bot</h2><p data-en="Automated trading within a price range. Profit from TMT volatility." data-ru="Автоматическая торговля в ценовом диапазоне. Прибыль на волатильности TMT." data-tk="Bahalar aralygynda awtomatiki söwda. TMT wolatililiginden girdeji alyň." data-ar="تداول آلي ضمن نطاق سعري. الربح من تقلبات TMT." data-fa="معاملات خودکار در محدوده قیمتی. سود از نوسانات TMT." data-zh="在价格区间内自动交易。从 TMT 波动中获利。">Automated trading within a price range. Profit from TMT volatility.</p><div class="stat"><span data-en="Return" data-ru="Доходность" data-tk="Gelir" data-ar="العائد" data-fa="بازده" data-zh="收益率">Return</span><span>15% monthly</span></div><a href="https://www.binance.com/en/grid-trading" target="_blank" class="btn">📊 Grid Bot</a></div>
+
+            <div class="card"><h2><span class="card-icon">📉</span> DCA Bot</h2><p data-en="Automated DCA strategy for TMT. Buy on dips automatically." data-ru="Автоматическая стратегия DCA для TMT. Покупайте на просадках автоматически." data-tk="TMT üçin awtomatiki DCA strategiýasy. Çökgünliklerde awtomatiki satyn alyň." data-ar="استراتيجية DCA الآلية لـ TMT. شراء تلقائي عند الانخفاضات." data-fa="استراتژی DCA خودکار برای TMT. خرید خودکار در کاهش‌ها." data-zh="TMT 的自动化 DCA 策略。在下跌时自动买入。">Automated DCA strategy for TMT. Buy on dips automatically.</p><div class="stat"><span data-en="Active" data-ru="Активных" data-tk="Işjeň" data-ar="نشط" data-fa="فعال" data-zh="活跃">Active</span><span>3,892</span></div><a href="https://jup.ag/dca" target="_blank" class="btn">📉 DCA Bot</a></div>
+
+            <div class="card"><h2><span class="card-icon">🔄</span> Copy Trading</h2><p data-en="Copy top traders' TMT strategies automatically." data-ru="Автоматически копируйте стратегии топ-трейдеров по TMT." data-tk="TMT strategiýalaryny awtomatiki göçüriň." data-ar="انسخ استراتيجيات كبار المتداولين لـ TMT تلقائيًا." data-fa="استراتژی‌های معامله‌گران برتر TMT را به طور خودکار کپی کنید." data-zh="自动复制顶级交易员的 TMT 策略。">Copy top traders' TMT strategies automatically.</p><div class="stat"><span data-en="Traders" data-ru="Трейдеров" data-tk="Treýderler" data-ar="المتداولين" data-fa="معامله‌گران" data-zh="交易员数">Traders</span><span>47</span></div><a href="https://www.bybit.com/trade" target="_blank" class="btn">🔄 Copy</a></div>
+
+            <div class="card"><h2><span class="card-icon">⚡</span> Arbitrage Bot</h2><p data-en="Automated arbitrage between DEXes. Risk-free TMT profits." data-ru="Автоматический арбитраж между DEX. Безрисковая прибыль в TMT." data-tk="DEX-ler arasynda awtomatiki arbitraž. Töwekgelçiliksiz TMT girdejisi." data-ar="المراجحة الآلية بين البورصات اللامركزية. أرباح TMT خالية من المخاطر." data-fa="آربیتراژ خودکار بین DEXها. سود TMT بدون ریسک." data-zh="DEX 之间的自动套利。无风险的 TMT 利润。">Automated arbitrage between DEXes. Risk-free TMT profits.</p><div class="stat"><span data-en="Profit" data-ru="Прибыль" data-tk="Girdeji" data-ar="الربح" data-fa="سود" data-zh="利润">Profit</span><span>0.5-2% per trade</span></div><a href="https://jup.ag" target="_blank" class="btn">⚡ Arbitrage</a></div>
+        </div>
+
+        <!-- ==================== SECTION 4: DERIVATIVES (6) ==================== -->
+        <div class="section-title" data-en="⚡ Derivatives & Leverage" data-ru="⚡ Деривативы и плечо" data-tk="⚡ Derivatiwler we pleço" data-ar="⚡ المشتقات والرافعة المالية" data-fa="⚡ مشتقات و اهرم" data-zh="⚡ 衍生品和杠杆">⚡ Derivatives & Leverage</div>
+        <div class="grid-4">
+            <div class="card"><h2><span class="card-icon">📈</span> Perpetuals</h2><p data-en="TMT/SOL/BTC/ETH perpetual futures. Up to 50x leverage." data-ru="Бессрочные фьючерсы TMT/SOL/BTC/ETH. Плечо до 50x." data-tk="TMT/SOL/BTC/ETH perpetual fýuçersler. 50x çenli pleço." data-ar="العقود الآجلة الدائمة TMT/SOL/BTC/ETH. رافعة مالية تصل إلى 50x." data-fa="قراردادهای آتی دائمی TMT/SOL/BTC/ETH. اهرم تا ۵۰x." data-zh="TMT/SOL/BTC/ETH 永续期货。高达 50 倍杠杆。">TMT/SOL/BTC/ETH perpetual futures. Up to 50x leverage.</p><div class="stat"><span data-en="OI" data-ru="OI" data-tk="OI" data-ar="OI" data-fa="OI" data-zh="未平仓合约">OI</span><span>$89M</span></div><a href="https://jup.ag/perps" target="_blank" class="btn">📈 Perps</a></div>
+
+            <div class="card"><h2><span class="card-icon">🎯</span> Options</h2><p data-en="Buy/sell Call/Put options on TMT, SOL, BTC, ETH." data-ru="Покупайте/продавайте опционы Call/Put на TMT, SOL, BTC, ETH." data-tk="TMT, SOL, BTC, ETH üçin Call/Put opsionlaryny satyn alyň/satyň." data-ar="شراء/بيع خيارات الاتصال/البيع على TMT، SOL، BTC، ETH." data-fa="خرید/فروش اختیار خرید/فروش بر روی TMT، SOL، BTC، ETH." data-zh="买卖 TMT、SOL、BTC、ETH 的看涨/看跌期权。">Buy/sell Call/Put options on TMT, SOL, BTC, ETH.</p><div class="stat"><span data-en="Volume" data-ru="Объём" data-tk="Göwrüm" data-ar="الحجم" data-fa="حجم" data-zh="交易量">Volume</span><span>$42M</span></div><a href="https://app.drift.trade" target="_blank" class="btn">🎯 Options</a></div>
+
+            <div class="card"><h2><span class="card-icon">⚡</span> Leveraged Tokens</h2><p data-en="Buy 2x, 3x, 5x leveraged TMT tokens. No liquidation." data-ru="Покупайте TMT-токены с плечом 2x, 3x, 5x. Без ликвидации." data-tk="2x, 3x, 5x pleçoly TMT tokenlaryny satyn alyň. Likwidasiýa ýok." data-ar="شراء رموز TMT برافعة مالية 2x، 3x، 5x. بدون تصفية." data-fa="توکن‌های TMT با اهرم ۲x، ۳x، ۵x خریداری کنید. بدون تصفیه." data-zh="购买 2 倍、3 倍、5 倍杠杆 TMT 代币。无清算。">Buy 2x, 3x, 5x leveraged TMT tokens. No liquidation.</p><div class="stat"><span data-en="Max" data-ru="Макс" data-tk="Iň köp" data-ar="الحد الأقصى" data-fa="حداکثر" data-zh="最大">Max</span><span>5x</span></div><a href="https://jup.ag" target="_blank" class="btn">⚡ Leveraged</a></div>
+
+            <div class="card"><h2><span class="card-icon">🔒</span> Hedging</h2><p data-en="Protect your TMT portfolio with puts and shorts." data-ru="Защитите свой портфель TMT с помощью путов и шортов." data-tk="TMT portfeliňizi putlar we šortlar bilen goraň." data-ar="حماية محفظة TMT الخاصة بك باستخدام خيارات البيع والبيع على المكشوف." data-fa="محافظت از پرتفوی TMT خود با پوت و شورت." data-zh="使用看跌期权和做空保护您的 TMT 投资组合。">Protect your TMT portfolio with puts and shorts.</p><div class="stat"><span data-en="Protection" data-ru="Защита" data-tk="Gorag" data-ar="الحماية" data-fa="محافظت" data-zh="保护">Protection</span><span>Up to 90%</span></div><a href="https://app.drift.trade" target="_blank" class="btn">🔒 Hedge</a></div>
+        </div>
+
+        <!-- ==================== SECTION 5: LIQUIDITY & YIELD (6) ==================== -->
+        <div class="section-title" data-en="💰 Liquidity & Yield" data-ru="💰 Ликвидность и доходность" data-tk="💰 Likwidlik we girdeji" data-ar="💰 السيولة والعائد" data-fa="💰 نقدینگی و بازده" data-zh="💰 流动性和收益">💰 Liquidity & Yield</div>
+        <div class="grid-4">
+            <div class="card"><h2><span class="card-icon">🌾</span> Yield Farming</h2><p data-en="Add TMT/USDC, TMT/SOL, TMT/USDT LP. Earn up to 25% APY." data-ru="Добавляйте LP TMT/USDC, TMT/SOL, TMT/USDT. Зарабатывайте до 25% APY." data-tk="TMT/USDC, TMT/SOL, TMT/USDT LP goşuň. 25% APY çenli girdeji alyň." data-ar="أضف LP TMT/USDC، TMT/SOL، TMT/USDT. اربح حتى 25% APY." data-fa="LP TMT/USDC، TMT/SOL، TMT/USDT اضافه کنید. تا ۲۵٪ APY کسب کنید." data-zh="添加 TMT/USDC、TMT/SOL、TMT/USDT LP。赚取高达 25% 的年化收益。">Add TMT/USDC, TMT/SOL, TMT/USDT LP. Earn up to 25% APY.</p><div class="stat"><span data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</span><span>25%</span></div><a href="https://raydium.io" target="_blank" class="btn">🌾 Farm</a></div>
+
+            <div class="card"><h2><span class="card-icon">🏦</span> Liquidity Pools</h2><p data-en="Provide liquidity to TMT pools. Earn swap fees." data-ru="Предоставляйте ликвидность в пулы TMT. Зарабатывайте на комиссиях." data-tk="TMT howuzlaryna likwidlik beriň. Çalşyk komissiýalaryndan girdeji alyň." data-ar="توفير السيولة لمجمعات TMT. اربح رسوم التبادل." data-fa="به استخرهای TMT نقدینگی ارائه دهید. از کارمزد مبادله کسب درآمد کنید." data-zh="向 TMT 池提供流动性。赚取兑换费用。">Provide liquidity to TMT pools. Earn swap fees.</p><div class="stat"><span data-en="Fees" data-ru="Комиссии" data-tk="Komissiýalar" data-ar="الرسوم" data-fa="کارمزدها" data-zh="费用">Fees</span><span>0.25-1%</span></div><a href="https://www.meteora.ag" target="_blank" class="btn">🏦 LP</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Concentrated LP</h2><p data-en="DLMM pools on Meteora. Higher fees, lower slippage." data-ru="DLMM-пулы на Meteora. Более высокие комиссии, ниже slippage." data-tk="Meteora-da DLMM howuzlary. Has ýokary komissiýalar, pes slippage." data-ar="مجمعات DLMM على Meteora. رسوم أعلى، انزلاق أقل." data-fa="استخرهای DLMM در Meteora. کارمزد بالاتر، لغزش کمتر." data-zh="Meteora 上的 DLMM 池。费用更高，滑点更低。">DLMM pools on Meteora. Higher fees, lower slippage.</p><div class="stat"><span data-en="Yield" data-ru="Доходность" data-tk="Gelir" data-ar="العائد" data-fa="بازده" data-zh="收益率">Yield</span><span>15-35%</span></div><a href="https://www.meteora.ag" target="_blank" class="btn">📊 DLMM</a></div>
+
+            <div class="card"><h2><span class="card-icon">💎</span> Dual Yield</h2><p data-en="Earn in both TMT and USDC from the same position." data-ru="Зарабатывайте одновременно в TMT и USDC с одной позиции." data-tk="Bir pozisiýadan TMT we USDC-de girdeji alyň." data-ar="اربح في كل من TMT و USDC من نفس المركز." data-fa="از یک موقعیت هم در TMT و هم در USDC کسب درآمد کنید." data-zh="从同一头寸同时赚取 TMT 和 USDC。">Earn in both TMT and USDC from the same position.</p><div class="stat"><span data-en="APY" data-ru="APY" data-tk="APY" data-ar="APY" data-fa="APY" data-zh="年化收益率">APY</span><span>18-30%</span></div><a href="https://www.meteora.ag" target="_blank" class="btn">💎 Dual</a></div>
+        </div>
+
+        <!-- ==================== SECTION 6: MORE TOOLS (15+) ==================== -->
+        <div class="section-title" data-en="🔧 15+ More Trading Tools" data-ru="🔧 Ещё 15+ инструментов" data-tk="🔧 Ýene 15+ gural" data-ar="🔧 15+ أداة تداول إضافية" data-fa="🔧 ۱۵+ ابزار معاملاتی دیگر" data-zh="🔧 另外 15+ 交易工具">🔧 15+ More Trading Tools</div>
+        <div class="grid-4">
+            <div class="card"><h2><span class="card-icon">📈</span> Price Alerts</h2><p data-en="Get alerts when TMT hits your target price." data-ru="Получайте уведомления, когда TMT достигает целевой цены." data-tk="TMT nyşana bahaňyza ýetende duýduryş alyň." data-ar="احصل على تنبيهات عندما يصل TMT إلى سعرك المستهدف." data-fa="زمانی که TMT به قیمت هدف شما رسید، هشدار دریافت کنید." data-zh="当 TMT 达到目标价格时获取警报。">Get alerts when TMT hits your target price.</p><a href="https://www.coingecko.com" target="_blank" class="btn">📈 Alerts</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Charting</h2><p data-en="Advanced charts for TMT with 50+ indicators." data-ru="Продвинутые графики для TMT с 50+ индикаторами." data-tk="50+ indikatorly TMT üçin ösen diagrammalar." data-ar="رسوم بيانية متقدمة لـ TMT مع 50+ مؤشر." data-fa="نمودارهای پیشرفته برای TMT با ۵۰+ اندیکاتور." data-zh="TMT 的高级图表，包含 50+ 指标。">Advanced charts for TMT with 50+ indicators.</p><a href="https://www.tradingview.com" target="_blank" class="btn">📊 Charts</a></div>
+
+            <div class="card"><h2><span class="card-icon">📰</span> News Feed</h2><p data-en="Real-time TMT news and market updates." data-ru="Новости TMT и обновления рынка в реальном времени." data-tk="Real-wagt TMT habarlary we bazar täzelenmeleri." data-ar="أخبار TMT وتحديثات السوق في الوقت الفعلي." data-fa="اخبار TMT و به‌روزرسانی‌های بازار به صورت لحظه‌ای." data-zh="实时 TMT 新闻和市场更新。">Real-time TMT news and market updates.</p><a href="https://www.coindesk.com" target="_blank" class="btn">📰 News</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Portfolio Tracker</h2><p data-en="Track your TMT portfolio performance in real-time." data-ru="Отслеживайте эффективность вашего портфеля TMT в реальном времени." data-tk="TMT portfeliňiziň ýerine ýetirişini real-wagtda yzarlaň." data-ar="تتبع أداء محفظة TMT الخاصة بك في الوقت الفعلي." data-fa="عملکرد پرتفوی TMT خود را به صورت لحظه‌ای ردیابی کنید." data-zh="实时跟踪您的 TMT 投资组合表现。">Track your TMT portfolio performance in real-time.</p><a href="https://www.debank.com" target="_blank" class="btn">📊 Tracker</a></div>
+
+            <div class="card"><h2><span class="card-icon">🔍</span> On-Chain Analysis</h2><p data-en="Analyze TMT on-chain data: holders, transactions, supply." data-ru="Анализируйте ончейн-данные TMT: держатели, транзакции, предложение." data-tk="TMT on-çeýn maglumatlaryny seljeriň: eýeler, amallar, üpjünçilik." data-ar="تحليل بيانات TMT على السلسلة: الحائزون، المعاملات، العرض." data-fa="تحلیل داده‌های زنجیره‌ای TMT: دارنده‌ها، تراکنش‌ها، عرضه." data-zh="分析 TMT 链上数据：持有者、交易、供应。">Analyze TMT on-chain data: holders, transactions, supply.</p><a href="https://solscan.io/token/Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2" target="_blank" class="btn">🔍 Analysis</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Volume Analysis</h2><p data-en="Track TMT trading volume across all DEXes." data-ru="Отслеживайте объём торгов TMT на всех DEX." data-tk="TMT söwda göwrümini ähli DEX-lerde yzarlaň." data-ar="تتبع حجم تداول TMT عبر جميع البورصات اللامركزية." data-fa="حجم معاملات TMT را در همه DEXها ردیابی کنید." data-zh="跟踪 TMT 在所有去中心化交易所的交易量。">Track TMT trading volume across all DEXes.</p><a href="https://www.geckoterminal.com" target="_blank" class="btn">📊 Volume</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Market Depth</h2><p data-en="View TMT order book depth and liquidity." data-ru="Просматривайте глубину стакана и ликвидность TMT." data-tk="TMT buýruk kitaby çuňlugyny we likwidligini görüň." data-ar="عرض عمق دفتر الأوامر والسيولة لـ TMT." data-fa="عمق دفتر سفارشات و نقدینگی TMT را مشاهده کنید." data-zh="查看 TMT 订单簿深度和流动性。">View TMT order book depth and liquidity.</p><a href="https://raydium.io" target="_blank" class="btn">📊 Depth</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Heatmap</h2><p data-en="TMT price heatmap across different timeframes." data-ru="Тепловая карта цен TMT по разным таймфреймам." data-tk="TMT baha ýylylyk kartasy dürli wagt çarçuwalarynda." data-ar="خريطة حرارية لأسعار TMT عبر الأطر الزمنية المختلفة." data-fa="نقشه حرارتی قیمت TMT در بازه‌های زمانی مختلف." data-zh="不同时间框架下的 TMT 价格热图。">TMT price heatmap across different timeframes.</p><a href="https://www.coingecko.com" target="_blank" class="btn">📊 Heatmap</a></div>
+        </div>
+
+        <!-- ==================== SECTION 7: ADVANCED STRATEGIES (10) ==================== -->
+        <div class="section-title" data-en="🎯 Advanced Strategies" data-ru="🎯 Продвинутые стратегии" data-tk="🎯 Ösen strategiýalar" data-ar="🎯 استراتيجيات متقدمة" data-fa="🎯 استراتژی‌های پیشرفته" data-zh="🎯 高级策略">🎯 Advanced Strategies</div>
+        <div class="grid-4">
+            <div class="card"><h2><span class="card-icon">📈</span> Momentum Trading</h2><p data-en="Follow TMT trends. Buy high, sell higher." data-ru="Следуйте трендам TMT. Покупайте на пике, продавайте выше." data-tk="TMT tendensiýalaryna eýeriň. Belentde satyn alyň, has belentde satyň." data-ar="اتبع اتجاهات TMT. شراء مرتفع، بيع أعلى." data-fa="روندهای TMT را دنبال کنید. در اوج بخرید، بالاتر بفروشید." data-zh="跟随 TMT 趋势。买高卖更高。">Follow TMT trends. Buy high, sell higher.</p><a href="https://jup.ag" target="_blank" class="btn">📈 Momentum</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Swing Trading</h2><p data-en="Capture TMT price swings. 2-5 day holds." data-ru="Ловите ценовые колебания TMT. Держите 2-5 дней." data-tk="TMT baha üýtgemelerini tutuň. 2-5 gün saklaň." data-ar="التقط تقلبات أسعار TMT. احتفظ لمدة 2-5 أيام." data-fa="نوسانات قیمت TMT را شکار کنید. نگهداری ۲-۵ روزه." data-zh="捕捉 TMT 价格波动。持有 2-5 天。">Capture TMT price swings. 2-5 day holds.</p><a href="https://www.tradingview.com" target="_blank" class="btn">📊 Swing</a></div>
+
+            <div class="card"><h2><span class="card-icon">📉</span> Scalping</h2><p data-en="Quick TMT trades. 1-5 minute holds. High frequency." data-ru="Быстрые сделки с TMT. Держите 1-5 минут. Высокая частота." data-tk="Çalt TMT söwdalary. 1-5 minut saklaň. High frequency." data-ar="صفقات TMT سريعة. احتفظ لمدة 1-5 دقائق. عالية التردد." data-fa="معاملات سریع TMT. نگهداری ۱-۵ دقیقه. فرکانس بالا." data-zh="快速 TMT 交易。持有 1-5 分钟。高频。">Quick TMT trades. 1-5 minute holds. High frequency.</p><a href="https://jup.ag" target="_blank" class="btn">📉 Scalping</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Range Trading</h2><p data-en="Trade TMT within a defined price range." data-ru="Торгуйте TMT в заданном ценовом диапазоне." data-tk="Bellenen bahalar aralygynda TMT söwdasy." data-ar="تداول TMT ضمن نطاق سعري محدد." data-fa="معامله TMT در محدوده قیمتی تعریف شده." data-zh="在定义的价格区间内交易 TMT。">Trade TMT within a defined price range.</p><a href="https://jup.ag" target="_blank" class="btn">📊 Range</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Mean Reversion</h2><p data-en="TMT tends to return to average price." data-ru="Цена TMT имеет тенденцию возвращаться к среднему значению." data-tk="TMT ortaça baha gaýdyp gelýär." data-ar="يميل TMT إلى العودة إلى متوسط السعر." data-fa="TMT تمایل به بازگشت به قیمت متوسط دارد." data-zh="TMT 倾向于回到平均价格。">TMT tends to return to average price.</p><a href="https://jup.ag" target="_blank" class="btn">📊 Mean</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Breakout Trading</h2><p data-en="Trade TMT breakouts above resistance or below support." data-ru="Торгуйте пробои TMT выше сопротивления или ниже поддержки." data-tk="Garşylyk ýokarsynda ýa-da goldaw aşagynda TMT çykýyşlaryny söwda ediň." data-ar="تداول اختراقات TMT فوق المقاومة أو تحت الدعم." data-fa="معامله شکست‌های TMT بالای مقاومت یا زیر حمایت." data-zh="交易 TMT 突破阻力位或支撑位。">Trade TMT breakouts above resistance or below support.</p><a href="https://jup.ag" target="_blank" class="btn">📊 Breakout</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Arbitrage</h2><p data-en="Price difference between DEXes. Risk-free TMT profit." data-ru="Разница цен между DEX. Безрисковая прибыль в TMT." data-tk="DEX-ler arasynda baha tapawudy. Töwekgelçiliksiz TMT girdejisi." data-ar="فارق السعر بين البورصات اللامركزية. ربح TMT خالي من المخاطر." data-fa="تفاوت قیمت بین DEXها. سود TMT بدون ریسک." data-zh="去中心化交易所之间的价差。无风险 TMT 利润。">Price difference between DEXes. Risk-free TMT profit.</p><a href="https://jup.ag" target="_blank" class="btn">📊 Arbitrage</a></div>
+
+            <div class="card"><h2><span class="card-icon">📊</span> Hedging</h2><p data-en="Protect TMT holdings with opposite positions." data-ru="Защитите TMT-активы противоположными позициями." data-tk="TMT aktiwlerini garşy pozisiýalar bilen goraň." data-ar="حماية حيازات TMT بمراكز معاكسة." data-fa="محافظت از دارایی‌های TMT با موقعیت‌های مخالف." data-zh="用相反的头寸保护 TMT 持仓。">Protect TMT holdings with opposite positions.</p><a href="https://jup.ag/perps" target="_blank" class="btn">📊 Hedge</a></div>
+        </div>
+
+        <!-- ==================== DASHBOARD ==================== -->
+        <div class="card">
+            <h2 data-en="📊 Trading Dashboard" data-ru="📊 Торговый дашборд" data-tk="📊 Söwda tablisa" data-ar="📊 لوحة معلومات التداول" data-fa="📊 داشبورد معاملات" data-zh="📊 交易仪表板">📊 Trading Dashboard</h2>
+            <div class="stat"><span data-en="Total TMT Traded (24h)" data-ru="Всего TMT продано (24ч)" data-tk="Jemi TMT söwdasy (24s)" data-ar="إجمالي TMT المتداول (24 ساعة)" data-fa="کل TMT معامله شده (۲۴ ساعت)" data-zh="TMT 总交易量（24小时）">Total TMT Traded (24h)</span><span>$12.4M</span></div>
+            <div class="stat"><span data-en="Active Traders" data-ru="Активных трейдеров" data-tk="Işjeýn treýderler" data-ar="المتداولين النشطين" data-fa="معامله‌گران فعال" data-zh="活跃交易者">Active Traders</span><span>4,287</span></div>
+            <div class="stat"><span data-en="Avg. Trade Size" data-ru="Средний размер сделки" data-tk="Ortaça söwda ululygy" data-ar="متوسط حجم التداول" data-fa="میانگین اندازه معامله" data-zh="平均交易规模">Avg. Trade Size</span><span>12,450 TMT</span></div>
+            <div class="stat"><span data-en="Top DEX" data-ru="Лучший DEX" data-tk="Iň gowy DEX" data-ar="أفضل بورصة لامركزية" data-fa="بهترین DEX" data-zh="最佳去中心化交易所">Top DEX</span><span>Jupiter (62% volume)</span></div>
         </div>
 
         <div class="footer">
-            © 2025 TMT Trading Hub — Advanced Trading Tools on Solana<br>
-            <span data-en="Contract:" data-ru="Контракт:" data-tk="Şertnama:" data-ar="العقد:" data-fa="قرارداد:" data-zh="合约：">Contract:</span> Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+            © 2025 TMT Trading Hub — 50+ Tools | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
         </div>
     </div>
 
@@ -170,17 +257,10 @@
                 else btn.classList.remove('active');
             });
             document.documentElement.lang = lang;
-            if (lang === 'ar' || lang === 'fa') {
-                document.body.style.direction = 'rtl';
-                document.querySelector('.container').style.direction = 'rtl';
-            } else {
-                document.body.style.direction = 'ltr';
-                document.querySelector('.container').style.direction = 'ltr';
-            }
+            if (lang === 'ar' || lang === 'fa') { document.body.style.direction = 'rtl'; document.querySelector('.container').style.direction = 'rtl'; }
+            else { document.body.style.direction = 'ltr'; document.querySelector('.container').style.direction = 'ltr'; }
         }
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
-        });
+        document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))); });
         setLanguage('en');
     </script>
 </body>
