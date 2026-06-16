@@ -2,47 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMT RWA — Tokenized Real World Assets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TMT RWA — Tokenized Real World Assets | Gold, Silver, Real Estate, Oil, Art, Carbon</title>
+    <meta name="description" content="Tokenized real world assets with TMT. Buy gold, silver, platinum, real estate, oil, gas, art, carbon credits, private equity, commodities, and more.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
             color: #d0d8d0;
             line-height: 1.6;
+            min-height: 100vh;
         }
+
         .lang-switch {
-            position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px);
-            padding: 0.5rem 1rem; border-radius: 40px; z-index: 100; display: flex; flex-wrap: wrap; gap: 0.5rem;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             border: 1px solid rgba(212,168,67,0.3);
         }
         .lang-btn {
-            background: transparent; border: none; color: #d0d8d0; cursor: pointer; padding: 0.3rem 0.8rem;
-            border-radius: 30px; font-weight: bold; transition: all 0.2s; font-size: 0.85rem;
+            background: transparent;
+            border: none;
+            color: #d0d8d0;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 0.85rem;
         }
-        .lang-btn.active { background: #d4a843; color: #0a1a0f; }
-        .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .lang-btn.active {
+            background: #d4a843;
+            color: #0a1a0f;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
         .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
         .logo img { width: 80%; border-radius: 50%; }
         h1 { font-size: 1.8rem; color: #e8d8a8; }
         .back-link { color: #d4a843; text-decoration: none; }
+
         .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
         .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
         .nav a:hover { background: #d4a843; color: #0a1a0f; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0; }
+
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
         .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
-        .card h2 { color: #e8d8a8; margin-bottom: 0.5rem; font-size: 1.2rem; }
-        .price { font-size: 1.6rem; color: #d4a843; margin: 0.5rem 0; }
-        .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
-        .btn { background: #d4a843; color: #0a1a0f; padding: 0.4rem 0.8rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 0.5rem; transition: 0.2s; }
+        .card h2 { color: #e8d8a8; margin-bottom: 0.8rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+        .card-icon { font-size: 2rem; }
+
+        .price { font-size: 1.4rem; color: #d4a843; font-weight: bold; margin: 0.5rem 0; }
+        .stat { display: flex; justify-content: space-between; margin: 0.4rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 0.5rem; transition: 0.2s; border: none; cursor: pointer; }
         .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .btn-outline { background: transparent; border: 1px solid #d4a843; color: #d4a843; }
+        .btn-outline:hover { background: rgba(212,168,67,0.15); }
+
+        .info-box { background: rgba(25,45,30,0.6); border-radius: 20px; padding: 1.2rem; margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(212,168,67,0.3); }
+        .contract { font-family: monospace; background: #0a1a0f; padding: 0.2rem 0.5rem; border-radius: 6px; color: #d4a843; }
+
         .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+
         @media (max-width: 768px) {
             h1 { font-size: 1.3rem; }
-            .grid-3 { grid-template-columns: 1fr; }
+            .grid-3, .grid-4 { grid-template-columns: 1fr; }
             .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
             .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
         }
@@ -61,7 +98,8 @@
     <div class="container">
         <div class="header">
             <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
-            <h1 data-en="🏔️ TMT RWA Tokenization" data-ru="🏔️ TMT RWA Токенизация" data-tk="🏔️ TMT RWA Tokenizasiýa" data-ar="🏔️ ترميز TMT للأصول الحقيقية" data-fa="🏔️ توکن‌سازی دارایی واقعی TMT" data-zh="🏔️ TMT 现实世界资产代币化">🏔️ TMT RWA Tokenization</h1>
+            <h1 data-en="🏔️ TMT RWA — Tokenized Real World Assets" data-ru="🏔️ TMT RWA — Токенизированные реальные активы" data-tk="🏔️ TMT RWA — Tokenizirlenen hakyky aktiwler" data-ar="🏔️ TMT RWA — الأصول الحقيقية المرمّزة" data-fa="🏔️ TMT RWA — دارایی‌های واقعی توکن‌سازی شده" data-zh="🏔️ TMT RWA——代币化现实世界资产">🏔️ TMT RWA — Tokenized Real World Assets</h1>
+            <p data-en="20+ tokenized assets. Buy, trade, and earn with real-world value." data-ru="20+ токенизированных активов. Покупайте, торгуйте и зарабатывайте с реальной ценностью." data-tk="20+ tokenizirlenen aktiw. Hakyky baha bilen satyn alyň, söwda ediň we girdeji alyň." data-ar="20+ أصول مرمّزة. اشترِ وتداول واربح بقيمة حقيقية." data-fa="۲۰+ دارایی توکن‌سازی شده. با ارزش واقعی خرید، معامله و درآمد کسب کنید." data-zh="20+ 种代币化资产。用真实价值购买、交易和赚取收益。">20+ tokenized assets. Buy, trade, and earn with real-world value.</p>
             <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
 
@@ -84,28 +122,84 @@
             <a href="whitepaper.html">📄 WP</a>
         </div>
 
-        <div class="grid-3">
-            <div class="card"><h2>🥇 Physical Gold</h2><div class="price">1 oz = 85,650 TMT</div><p data-en="99.99% pure LBMA-certified gold bars. Storage in Swiss vaults." data-ru="99.99% чистые слитки золота с сертификацией LBMA. Хранение в швейцарских хранилищах." data-tk="99.99% arassa LBMA-sertifikatly altyn külçeler. Şweýsariýa ammarlarynda saklanýar." data-ar="سبائك ذهب نقية 99.99% معتمدة من LBMA. تخزين في خزائن سويسرية." data-fa="شمش طلا خالص ۹۹.۹۹٪ دارای گواهی LBMA. ذخیره در خزانه‌های سوئیس." data-zh="纯度 99.99% 的 LBMA 认证金条。存放在瑞士金库中。">99.99% pure LBMA-certified gold bars. Storage in Swiss vaults.</p><div class="stat"><span data-en="Total tokenized" data-ru="Всего токенизировано" data-tk="Jemi tokenizirlenen" data-ar="إجمالي المرمّز" data-fa="کل توکن‌سازی شده" data-zh="总计代币化">Total tokenized</span><span>1,240 oz</span></div><a href="#" class="btn" data-en="Buy Gold →" data-ru="Купить золото →" data-tk="Altyn satyn al →" data-ar="شراء الذهب ←" data-fa="خرید طلا ←" data-zh="购买黄金 →">Buy Gold →</a></div>
-
-            <div class="card"><h2>🥈 Silver Bars</h2><div class="price">1 oz = 1,375 TMT</div><p data-en="99.9% pure silver. LBMA-certified. Secure storage or physical delivery." data-ru="99.9% чистое серебро. Сертифицировано LBMA. Безопасное хранение или физическая доставка." data-tk="99.9% arassa kümüş. LBMA-sertifikatly. Ygtybarly saklanýar ýa-da fiziki eltip berilýär." data-ar="فضة نقية 99.9%. معتمدة من LBMA. تخزين آمن أو تسليم مادي." data-fa="نقره خالص ۹۹.۹٪. دارای گواهی LBMA. ذخیره امن یا تحویل فیزیکی." data-zh="纯度 99.9% 的银条。LBMA 认证。安全存储或实物交付。">99.9% pure silver. LBMA-certified. Secure storage or physical delivery.</p><div class="stat"><span data-en="Total tokenized" data-ru="Всего токенизировано" data-tk="Jemi tokenizirlenen" data-ar="إجمالي المرمّز" data-fa="کل توکن‌سازی شده" data-zh="总计代币化">Total tokenized</span><span>85,000 oz</span></div><a href="#" class="btn" data-en="Buy Silver →" data-ru="Купить серебро →" data-tk="Kümüş satyn al →" data-ar="شراء الفضة ←" data-fa="خرید نقره ←" data-zh="购买白银 →">Buy Silver →</a></div>
-
-            <div class="card"><h2>🔷 Platinum</h2><div class="price">1 oz = 28,550 TMT</div><p data-en="Investment-grade platinum. LPPM-certified bars." data-ru="Платина инвестиционного класса. Слитки с сертификацией LPPM." data-tk="Maýa goýum derejesindäki platina. LPPM-sertifikatly külçeler." data-ar="بلاتين بدرجة استثمارية. سبائك معتمدة من LPPM." data-fa="پلاتین درجه سرمایه‌گذاری. شمش‌های دارای گواهی LPPM." data-zh="投资级铂金。LPPM 认证金条。">Investment-grade platinum. LPPM-certified bars.</p><div class="stat"><span data-en="Total tokenized" data-ru="Всего токенизировано" data-tk="Jemi tokenizirlenen" data-ar="إجمالي المرمّز" data-fa="کل توکن‌سازی شده" data-zh="总计代币化">Total tokenized</span><span>320 oz</span></div><a href="#" class="btn" data-en="Buy Platinum →" data-ru="Купить платину →" data-tk="Platinum satyn al →" data-ar="شراء البلاتين ←" data-fa="خرید پلاتین ←" data-zh="购买铂金 →">Buy Platinum →</a></div>
-
-            <div class="card"><h2>🏠 Real Estate (Dubai)</h2><div class="price">from 50,000 TMT</div><p data-en="Fractional ownership of luxury apartments in Dubai Marina, Downtown, Palm Jumeirah." data-ru="Долевое владение роскошными апартаментами в Dubai Marina, Downtown, Palm Jumeirah." data-tk="Dubai Marina, Downtown, Palm Jumeirah-da gowy öýleriň paýlaýyn eýeçiligi." data-ar="ملكية جزئية للشقق الفاخرة في دبي مارينا، داون تاون، نخلة جميرا." data-fa="مالکیت کسری آپارتمان‌های لوکس در دبی مارینا، داون‌تاون، پالم جمیرا." data-zh="迪拜码头、市中心、朱美拉棕榈岛豪华公寓的分式所有权。">Fractional ownership of luxury apartments in Dubai Marina, Downtown, Palm Jumeirah.</p><div class="stat"><span data-en="Properties tokenized" data-ru="Объектов токенизировано" data-tk="Tokenizirlenen emläkler" data-ar="الممتلكات المرمّزة" data-fa="املاک توکن‌سازی شده" data-zh="代币化房产">Properties tokenized</span><span>24</span></div><a href="#" class="btn" data-en="Invest →" data-ru="Инвестировать →" data-tk="Maýa goý →" data-ar="استثمر ←" data-fa="سرمایه‌گذاری ←" data-zh="投资 →">Invest →</a></div>
-
-            <div class="card"><h2>🛢️ Oil & Gas</h2><div class="price">1 barrel = 1,800 TMT</div><p data-en="Tokenized crude oil futures. Backed by physical reserves." data-ru="Токенизированные фьючерсы на сырую нефть. Обеспечены физическими резервами." data-tk="Tokenizirlenen çig nebit fýuçersleri. Fiziki ätiýaçlyklar bilen üpjün edilen." data-ar="العقود الآجلة للنفط الخام المرمّزة. مدعومة بالاحتياطيات المادية." data-fa="قراردادهای آتی نفت خام توکن‌سازی شده. پشتیبانی شده با ذخایر فیزیکی." data-zh="代币化原油期货。由实物储备支持。">Tokenized crude oil futures. Backed by physical reserves.</p><div class="stat"><span data-en="Barrels tokenized" data-ru="Баррелей токенизировано" data-tk="Tokenizirlenen barrel" data-ar="البراميل المرمّزة" data-fa="بشکه‌های توکن‌سازی شده" data-zh="代币化桶数">Barrels tokenized</span><span>500,000</span></div><a href="#" class="btn" data-en="Buy Oil →" data-ru="Купить нефть →" data-tk="Nebit satyn al →" data-ar="شراء النفط ←" data-fa="خرید نفت ←" data-zh="购买石油 →">Buy Oil →</a></div>
-
-            <div class="card"><h2>🌾 Agricultural Land</h2><div class="price">1 hectare = 12,000 TMT</div><p data-en="Farmland in Argentina, Brazil, Ukraine. Annual yield 8-12% from crop sales." data-ru="Сельхозземли в Аргентине, Бразилии, Украине. Ежегодная доходность 8-12% от продажи урожая." data-tk="Argentinada, Braziliýada, Ukrainada ekerançylyk ýerleri. Hasyl satuwyndan 8-12% ýyllyk girdeji." data-ar="الأراضي الزراعية في الأرجنتين والبرازيل وأوكرانيا. عائد سنوي 8-12% من مبيعات المحاصيل." data-fa="زمین‌های کشاورزی در آرژانتین، برزیل، اوکراین. بازده سالانه ۸-۱۲٪ از فروش محصول." data-zh="阿根廷、巴西、乌克兰的农田。作物销售年收益 8-12%。">Farmland in Argentina, Brazil, Ukraine. Annual yield 8-12% from crop sales.</p><div class="stat"><span data-en="Hectares tokenized" data-ru="Гектаров токенизировано" data-tk="Tokenizirlenen gektar" data-ar="الهكتارات المرمّزة" data-fa="هکتارهای توکن‌سازی شده" data-zh="代币化公顷">Hectares tokenized</span><span>12,500</span></div><a href="#" class="btn" data-en="Invest →" data-ru="Инвестировать →" data-tk="Maýa goý →" data-ar="استثمر ←" data-fa="سرمایه‌گذاری ←" data-zh="投资 →">Invest →</a></div>
+        <!-- ==================== CONTRACT ==================== -->
+        <div class="info-box">
+            <p>📌 <strong data-en="TMT Token Contract (Solana):" data-ru="Контракт TMT токена (Solana):" data-tk="TMT Token şertnamasy (Solana):" data-ar="عقد رمز TMT (Solana):" data-fa="قرارداد توکن TMT (Solana):" data-zh="TMT 代币合约（Solana）：">TMT Token Contract (Solana):</strong> <code class="contract">Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</code></p>
+            <p>✅ <span data-en="All assets are tokenized on Solana. Buy with TMT." data-ru="Все активы токенизированы на Solana. Покупайте за TMT." data-tk="Ähli aktiwler Solana-da tokenizirlenen. TMT bilen satyn alyň." data-ar="جميع الأصول مرمّزة على Solana. اشترِ باستخدام TMT." data-fa="همه دارایی‌ها در Solana توکن‌سازی شده‌اند. با TMT خرید کنید." data-zh="所有资产均在 Solana 上代币化。使用 TMT 购买。">All assets are tokenized on Solana. Buy with TMT.</span></p>
         </div>
 
+        <!-- ==================== ROW 1: PRECIOUS METALS ==================== -->
+        <div class="grid-3">
+            <div class="card"><h2>🥇 Physical Gold</h2><div class="price">1 oz = 85,650 TMT</div><p data-en="99.99% pure LBMA-certified gold bars. Storage in Swiss vaults." data-ru="99.99% чистые слитки золота с сертификацией LBMA. Хранение в швейцарских хранилищах." data-tk="99.99% arassa LBMA-sertifikatly altyn külçeler. Şweýsariýa ammarlarynda saklanýar." data-ar="سبائك ذهب نقية 99.99% معتمدة من LBMA. تخزين في خزائن سويسرية." data-fa="شمش طلا خالص ۹۹.۹۹٪ دارای گواهی LBMA. ذخیره در خزانه‌های سوئیس." data-zh="纯度 99.99% 的 LBMA 认证金条。存放在瑞士金库中。">99.99% pure LBMA-certified gold bars. Storage in Swiss vaults.</p><div class="stat"><span data-en="Total tokenized" data-ru="Всего токенизировано" data-tk="Jemi tokenizirlenen" data-ar="إجمالي المرمّز" data-fa="کل توکن‌سازی شده" data-zh="总计代币化">Total tokenized</span><span>1,240 oz</span></div><div class="stat"><span data-en="Available" data-ru="Доступно" data-tk="Bar" data-ar="متاح" data-fa="موجود" data-zh="可用">Available</span><span>420 oz</span></div><a href="https://www.kitco.com" target="_blank" class="btn" data-en="🥇 Buy Gold" data-ru="🥇 Купить золото" data-tk="🥇 Altyn satyn al" data-ar="🥇 شراء الذهب" data-fa="🥇 خرید طلا" data-zh="🥇 购买黄金">🥇 Buy Gold</a></div>
+
+            <div class="card"><h2>🥈 Silver Bars</h2><div class="price">1 oz = 1,375 TMT</div><p data-en="99.9% pure silver. LBMA-certified. Secure storage or physical delivery." data-ru="99.9% чистое серебро. Сертифицировано LBMA. Безопасное хранение или физическая доставка." data-tk="99.9% arassa kümüş. LBMA-sertifikatly. Ygtybarly saklanýar ýa-da fiziki eltip berilýär." data-ar="فضة نقية 99.9%. معتمدة من LBMA. تخزين آمن أو تسليم مادي." data-fa="نقره خالص ۹۹.۹٪. دارای گواهی LBMA. ذخیره امن یا تحویل فیزیکی." data-zh="纯度 99.9% 的银条。LBMA 认证。安全存储或实物交付。">99.9% pure silver. LBMA-certified. Secure storage or physical delivery.</p><div class="stat"><span data-en="Total tokenized" data-ru="Всего токенизировано" data-tk="Jemi tokenizirlenen" data-ar="إجمالي المرمّز" data-fa="کل توکن‌سازی شده" data-zh="总计代币化">Total tokenized</span><span>85,000 oz</span></div><div class="stat"><span data-en="Available" data-ru="Доступно" data-tk="Bar" data-ar="متاح" data-fa="موجود" data-zh="可用">Available</span><span>12,500 oz</span></div><a href="https://www.kitco.com" target="_blank" class="btn" data-en="🥈 Buy Silver" data-ru="🥈 Купить серебро" data-tk="🥈 Kümüş satyn al" data-ar="🥈 شراء الفضة" data-fa="🥈 خرید نقره" data-zh="🥈 购买白银">🥈 Buy Silver</a></div>
+
+            <div class="card"><h2>🔷 Platinum</h2><div class="price">1 oz = 28,550 TMT</div><p data-en="Investment-grade platinum. LPPM-certified bars." data-ru="Платина инвестиционного класса. Слитки с сертификацией LPPM." data-tk="Maýa goýum derejesindäki platina. LPPM-sertifikatly külçeler." data-ar="بلاتين بدرجة استثمارية. سبائك معتمدة من LPPM." data-fa="پلاتین درجه سرمایه‌گذاری. شمش‌های دارای گواهی LPPM." data-zh="投资级铂金。LPPM 认证金条。">Investment-grade platinum. LPPM-certified bars.</p><div class="stat"><span data-en="Total tokenized" data-ru="Всего токенизировано" data-tk="Jemi tokenizirlenen" data-ar="إجمالي المرمّز" data-fa="کل توکن‌سازی شده" data-zh="总计代币化">Total tokenized</span><span>320 oz</span></div><div class="stat"><span data-en="Available" data-ru="Доступно" data-tk="Bar" data-ar="متاح" data-fa="موجود" data-zh="可用">Available</span><span>85 oz</span></div><a href="https://www.kitco.com" target="_blank" class="btn" data-en="🔷 Buy Platinum" data-ru="🔷 Купить платину" data-tk="🔷 Platinum satyn al" data-ar="🔷 شراء البلاتين" data-fa="🔷 خرید پلاتین" data-zh="🔷 购买铂金">🔷 Buy Platinum</a></div>
+        </div>
+
+        <!-- ==================== ROW 2: REAL ESTATE & ENERGY ==================== -->
+        <div class="grid-3">
+            <div class="card"><h2>🏠 Real Estate (Dubai)</h2><div class="price">from 50,000 TMT</div><p data-en="Fractional ownership of luxury apartments in Dubai Marina, Downtown, Palm Jumeirah." data-ru="Долевое владение роскошными апартаментами в Dubai Marina, Downtown, Palm Jumeirah." data-tk="Dubai Marina, Downtown, Palm Jumeirah-da gowy öýleriň paýlaýyn eýeçiligi." data-ar="ملكية جزئية للشقق الفاخرة في دبي مارينا، داون تاون، نخلة جميرا." data-fa="مالکیت کسری آپارتمان‌های لوکس در دبی مارینا، داون‌تاون، پالم جمیرا." data-zh="迪拜码头、市中心、朱美拉棕榈岛豪华公寓的分式所有权。">Fractional ownership of luxury apartments in Dubai Marina, Downtown, Palm Jumeirah.</p><div class="stat"><span data-en="Properties" data-ru="Объектов" data-tk="Emlekler" data-ar="الممتلكات" data-fa="املاک" data-zh="房产">Properties</span><span>24</span></div><div class="stat"><span data-en="Min investment" data-ru="Мин. инвестиции" data-tk="Iň az maýa goýum" data-ar="الحد الأدنى للاستثمار" data-fa="حداقل سرمایه‌گذاری" data-zh="最低投资额">Min investment</span><span>50,000 TMT</span></div><a href="https://www.emaar.com" target="_blank" class="btn" data-en="🏠 Invest in Dubai" data-ru="🏠 Инвестировать в Дубай" data-tk="🏠 Dubaýa maýa goý" data-ar="🏠 استثمر في دبي" data-fa="🏠 سرمایه‌گذاری در دبی" data-zh="🏠 投资迪拜">🏠 Invest in Dubai</a></div>
+
+            <div class="card"><h2>🛢️ Oil & Gas</h2><div class="price">1 barrel = 1,800 TMT</div><p data-en="Tokenized crude oil futures. Backed by physical reserves." data-ru="Токенизированные фьючерсы на сырую нефть. Обеспечены физическими резервами." data-tk="Tokenizirlenen çig nebit fýuçersleri. Fiziki ätiýaçlyklar bilen üpjün edilen." data-ar="العقود الآجلة للنفط الخام المرمّزة. مدعومة بالاحتياطيات المادية." data-fa="قراردادهای آتی نفت خام توکن‌سازی شده. پشتیبانی شده با ذخایر فیزیکی." data-zh="代币化原油期货。由实物储备支持。">Tokenized crude oil futures. Backed by physical reserves.</p><div class="stat"><span data-en="Barrels" data-ru="Баррелей" data-tk="Barrel" data-ar="براميل" data-fa="بشکه" data-zh="桶数">Barrels</span><span>500,000</span></div><div class="stat"><span data-en="Yield" data-ru="Доходность" data-tk="Gelir" data-ar="العائد" data-fa="بازده" data-zh="收益率">Yield</span><span>6-9% APY</span></div><a href="https://www.oilprice.com" target="_blank" class="btn" data-en="🛢️ Buy Oil Futures" data-ru="🛢️ Купить фьючерсы на нефть" data-tk="🛢️ Nebit fýuçerslerini satyn al" data-ar="🛢️ شراء العقود الآجلة للنفط" data-fa="🛢️ خرید قراردادهای آتی نفت" data-zh="🛢️ 购买石油期货">🛢️ Buy Oil Futures</a></div>
+
+            <div class="card"><h2>⚡ Green Energy</h2><div class="price">from 10,000 TMT</div><p data-en="Tokenized solar farms and renewable energy projects. Earn 10-14% APY." data-ru="Токенизированные солнечные фермы и проекты ВИЭ. Зарабатывайте 10-14% APY." data-tk="Tokenizirlenen gün fermalary we täzelenýän energiýa taslamalary. 10-14% APY girdeji alyň." data-ar="مزارع الطاقة الشمسية المرمّزة ومشاريع الطاقة المتجددة. اربح 10-14% APY." data-fa="مزارع خورشیدی توکن‌سازی شده و پروژه‌های انرژی تجدیدپذیر. ۱۰-۱۴٪ APY کسب کنید." data-zh="代币化太阳能农场和可再生能源项目。赚取 10-14% 的年化收益。">Tokenized solar farms and renewable energy projects. Earn 10-14% APY.</p><div class="stat"><span data-en="Projects" data-ru="Проектов" data-tk="Taslamalar" data-ar="المشاريع" data-fa="پروژه‌ها" data-zh="项目数">Projects</span><span>8</span></div><div class="stat"><span data-en="Total capacity" data-ru="Мощность" data-tk="Kuwwaty" data-ar="السعة الإجمالية" data-fa="ظرفیت کل" data-zh="总容量">Total capacity</span><span>125 MW</span></div><a href="https://www.energy.gov" target="_blank" class="btn" data-en="⚡ Invest in Energy" data-ru="⚡ Инвестировать в энергию" data-tk="⚡ Energiýa maýa goý" data-ar="⚡ استثمر في الطاقة" data-fa="⚡ سرمایه‌گذاری در انرژی" data-zh="⚡ 投资能源">⚡ Invest in Energy</a></div>
+        </div>
+
+        <!-- ==================== ROW 3: AGRICULTURE & COMMODITIES ==================== -->
+        <div class="grid-3">
+            <div class="card"><h2>🌾 Agricultural Land</h2><div class="price">1 hectare = 12,000 TMT</div><p data-en="Farmland in Argentina, Brazil, Ukraine. Annual yield 8-12% from crop sales." data-ru="Сельхозземли в Аргентине, Бразилии, Украине. Ежегодная доходность 8-12% от продажи урожая." data-tk="Argentinada, Braziliýada, Ukrainada ekerançylyk ýerleri. Hasyl satuwyndan 8-12% ýyllyk girdeji." data-ar="الأراضي الزراعية في الأرجنتين والبرازيل وأوكرانيا. عائد سنوي 8-12% من مبيعات المحاصيل." data-fa="زمین‌های کشاورزی در آرژانتین، برزیل، اوکراین. بازده سالانه ۸-۱۲٪ از فروش محصول." data-zh="阿根廷、巴西、乌克兰的农田。作物销售年收益 8-12%。">Farmland in Argentina, Brazil, Ukraine. Annual yield 8-12% from crop sales.</p><div class="stat"><span data-en="Hectares" data-ru="Гектаров" data-tk="Gektar" data-ar="هكتارات" data-fa="هکتار" data-zh="公顷">Hectares</span><span>12,500</span></div><div class="stat"><span data-en="Yield" data-ru="Доходность" data-tk="Gelir" data-ar="العائد" data-fa="بازده" data-zh="收益率">Yield</span><span>8-12% APY</span></div><a href="https://www.agriinvest.com" target="_blank" class="btn" data-en="🌾 Invest in Farmland" data-ru="🌾 Инвестировать в землю" data-tk="🌾 Ekerançylyk ýerine maýa goý" data-ar="🌾 استثمر في الأراضي الزراعية" data-fa="🌾 سرمایه‌گذاری در زمین کشاورزی" data-zh="🌾 投资农田">🌾 Invest in Farmland</a></div>
+
+            <div class="card"><h2>🛢️ Commodities</h2><div class="price">from 5,000 TMT</div><p data-en="Tokenized wheat, coffee, cocoa, sugar, and more. Trade global commodities." data-ru="Токенизированная пшеница, кофе, какао, сахар и другие. Торгуйте глобальными товарами." data-tk="Tokenizirlenen bugdaý, kofe, kakao, şeker we başgalar. Global harytlar bilen söwda ediň." data-ar="القمح والبن والكاكاو والسكر المرمّزة والمزيد. تداول السلع العالمية." data-fa="گندم، قهوه، کاکائو، شکر و بیشتر توکن‌سازی شده. معامله کالاهای جهانی." data-zh="代币化小麦、咖啡、可可、糖等。交易全球大宗商品。">Tokenized wheat, coffee, cocoa, sugar, and more. Trade global commodities.</p><div class="stat"><span data-en="Commodities" data-ru="Товаров" data-tk="Harytlar" data-ar="السلع" data-fa="کالاها" data-zh="商品种类">Commodities</span><span>12</span></div><div class="stat"><span data-en="Liquidity" data-ru="Ликвидность" data-tk="Likwidlik" data-ar="السيولة" data-fa="نقدینگی" data-zh="流动性">Liquidity</span><span>$45M</span></div><a href="https://www.investing.com/commodities" target="_blank" class="btn" data-en="🛢️ Trade Commodities" data-ru="🛢️ Торговать товарами" data-tk="🛢️ Haryt söwdasy" data-ar="🛢️ تداول السلع" data-fa="🛢️ معامله کالاها" data-zh="🛢️ 交易大宗商品">🛢️ Trade Commodities</a></div>
+
+            <div class="card"><h2>🌍 Carbon Credits</h2><div class="price">50 TMT / ton</div><p data-en="Trade carbon credits. Support the environment and earn." data-ru="Торгуйте углеродными кредитами. Поддерживайте экологию и зарабатывайте." data-tk="Uglerod kreditleri bilen söwda ediň. Ekologiýany goldaň we girdeji alyň." data-ar="تداول ائتمانات الكربون. ادعم البيئة واربح." data-fa="اعتبارات کربن را معامله کنید. از محیط زیست حمایت کنید و کسب درآمد کنید." data-zh="交易碳信用。支持环境并赚取收益。">Trade carbon credits. Support the environment and earn.</p><div class="stat"><span data-en="Credits" data-ru="Кредитов" data-tk="Kreditler" data-ar="الائتمانات" data-fa="اعتبارات" data-zh="信用额">Credits</span><span>2.4M tons</span></div><div class="stat"><span data-en="Volume" data-ru="Объём" data-tk="Göwrüm" data-ar="الحجم" data-fa="حجم" data-zh="交易量">Volume</span><span>$8.2M</span></div><a href="https://www.carboncredits.com" target="_blank" class="btn" data-en="🌍 Trade Carbon" data-ru="🌍 Торговать углеродом" data-tk="🌍 Uglerod söwdasy" data-ar="🌍 تداول الكربون" data-fa="🌍 معامله کربن" data-zh="🌍 交易碳信用">🌍 Trade Carbon</a></div>
+        </div>
+
+        <!-- ==================== ROW 4: NEW 10 FUNCTIONS ==================== -->
+        <h2 style="color:#e8d8a8; margin-top:1.5rem;" data-en="🔥 10 More Tokenized Assets" data-ru="🔥 Ещё 10 токенизированных активов" data-tk="🔥 Ýene 10 tokenizirlenen aktiw" data-ar="🔥 10 أصول مرمّزة إضافية" data-fa="🔥 ۱۰ دارایی توکن‌سازی شده دیگر" data-zh="🔥 另外 10 种代币化资产">🔥 10 More Tokenized Assets</h2>
+        <div class="grid-4">
+            <div class="card"><h2>📦 Private Equity</h2><p data-en="Invest in startup shares and closed funds." data-ru="Инвестируйте в доли стартапов и закрытые фонды." data-tk="Başlangyç paýlaryna we ýapyk gaznalara maýa goýuň." data-ar="استثمر في أسهم الشركات الناشئة والصناديق المغلقة." data-fa="در سهام استارتاپ‌ها و صندوق‌های بسته سرمایه‌گذاری کنید." data-zh="投资于初创公司和封闭式基金。">Invest in startup shares and closed funds.</p><div class="stat"><span data-en="Funds" data-ru="Фондов" data-tk="Gaznalar" data-ar="الصناديق" data-fa="صندوق‌ها" data-zh="基金数量">Funds</span><span>23</span></div><div class="stat"><span data-en="IRR" data-ru="IRR" data-tk="IRR" data-ar="IRR" data-fa="IRR" data-zh="内部收益率">IRR</span><span>18%</span></div><a href="https://www.angelinvest.com" target="_blank" class="btn" data-en="📦 Invest" data-ru="📦 Инвестировать" data-tk="📦 Maýa goý" data-ar="📦 استثمر" data-fa="📦 سرمایه‌گذاری" data-zh="📦 投资">📦 Invest</a></div>
+
+            <div class="card"><h2>🎨 Art & Collectibles</h2><p data-en="Tokenized paintings, sculptures, and digital art." data-ru="Токенизированные картины, скульптуры и цифровое искусство." data-tk="Tokenizirlenen suratlar, heýkeller we sanly sungat." data-ar="اللوحات والمنحوتات والفن الرقمي المرمّزة." data-fa="نقاشی‌ها، مجسمه‌ها و هنر دیجیتال توکن‌سازی شده." data-zh="代币化绘画、雕塑和数字艺术。">Tokenized paintings, sculptures, and digital art.</p><div class="stat"><span data-en="Works" data-ru="Произведений" data-tk="Eserler" data-ar="الأعمال" data-fa="آثار" data-zh="作品数量">Works</span><span>87</span></div><div class="stat"><span data-en="Value" data-ru="Стоимость" data-tk="Bahasy" data-ar="القيمة" data-fa="ارزش" data-zh="价值">Value</span><span>$12.4M</span></div><a href="https://www.artstation.com" target="_blank" class="btn" data-en="🎨 Buy Art" data-ru="🎨 Купить искусство" data-tk="🎨 Sungat satyn al" data-ar="🎨 شراء الفن" data-fa="🎨 خرید هنر" data-zh="🎨 购买艺术品">🎨 Buy Art</a></div>
+
+            <div class="card"><h2>🏢 Commercial RE</h2><p data-en="Office buildings, retail spaces, warehouses tokenized." data-ru="Токенизированные офисные здания, торговые центры, склады." data-tk="Ofis binalary, söwda merkezleri, ammarlar tokenizirlenen." data-ar="المباني المكتبية ومساحات البيع بالتجزئة والمستودعات المرمّزة." data-fa="ساختمان‌های اداری، فضاهای خرده فروشی، انبارها توکن‌سازی شده." data-zh="代币化办公楼、零售空间、仓库。">Office buildings, retail spaces, warehouses tokenized.</p><div class="stat"><span data-en="Properties" data-ru="Объектов" data-tk="Emlekler" data-ar="الممتلكات" data-fa="املاک" data-zh="房产数量">Properties</span><span>18</span></div><div class="stat"><span data-en="Yield" data-ru="Доходность" data-tk="Gelir" data-ar="العائد" data-fa="بازده" data-zh="收益率">Yield</span><span>7-10% APY</span></div><a href="https://www.crexi.com" target="_blank" class="btn" data-en="🏢 Invest" data-ru="🏢 Инвестировать" data-tk="🏢 Maýa goý" data-ar="🏢 استثمر" data-fa="🏢 سرمایه‌گذاری" data-zh="🏢 投资">🏢 Invest</a></div>
+
+            <div class="card"><h2>🚜 Timberland</h2><p data-en="Tokenized forestry assets. Sustainable timber production." data-ru="Токенизированные лесные активы. Устойчивое производство древесины." data-tk="Tokenizirlenen tokaý aktiwleri. Durnukly agaç önümçiligi." data-ar="الأصول الحرجية المرمّزة. إنتاج الأخشاب المستدام." data-fa="دارایی‌های جنگلی توکن‌سازی شده. تولید چوب پایدار." data-zh="代币化林业资产。可持续木材生产。">Tokenized forestry assets. Sustainable timber production.</p><div class="stat"><span data-en="Hectares" data-ru="Гектаров" data-tk="Gektar" data-ar="هكتارات" data-fa="هکتار" data-zh="公顷数">Hectares</span><span>8,200</span></div><div class="stat"><span data-en="Yield" data-ru="Доходность" data-tk="Gelir" data-ar="العائد" data-fa="بازده" data-zh="收益率">Yield</span><span>6-8% APY</span></div><a href="https://www.timberinvest.com" target="_blank" class="btn" data-en="🚜 Invest" data-ru="🚜 Инвестировать" data-tk="🚜 Maýa goý" data-ar="🚜 استثمر" data-fa="🚜 سرمایه‌گذاری" data-zh="🚜 投资">🚜 Invest</a></div>
+
+            <div class="card"><h2>🏗️ Infrastructure</h2><p data-en="Tokenized bridges, highways, and public works." data-ru="Токенизированные мосты, дороги и общественные сооружения." data-tk="Tokenizirlenen köprüler, awtoulag ýollary we jemgyýetçilik işleri." data-ar="الجسور والطرق السريعة والأشغال العامة المرمّزة." data-fa="پل‌ها، بزرگراه‌ها و کارهای عمومی توکن‌سازی شده." data-zh="代币化桥梁、高速公路和公共工程。">Tokenized bridges, highways, and public works.</p><div class="stat"><span data-en="Projects" data-ru="Проектов" data-tk="Taslamalar" data-ar="المشاريع" data-fa="پروژه‌ها" data-zh="项目数">Projects</span><span>5</span></div><div class="stat"><span data-en="Yield" data-ru="Доходность" data-tk="Gelir" data-ar="العائد" data-fa="بازده" data-zh="收益率">Yield</span><span>5-7% APY</span></div><a href="https://www.globalinfra.com" target="_blank" class="btn" data-en="🏗️ Invest" data-ru="🏗️ Инвестировать" data-tk="🏗️ Maýa goý" data-ar="🏗️ استثمر" data-fa="🏗️ سرمایه‌گذاری" data-zh="🏗️ 投资">🏗️ Invest</a></div>
+
+            <div class="card"><h2>💎 Precious Gems</h2><p data-en="Tokenized diamonds, rubies, sapphires, emeralds." data-ru="Токенизированные алмазы, рубины, сапфиры, изумруды." data-tk="Tokenizirlenen almaz, ýakut, sapfir, zümrüt." data-ar="الأحجار الكريمة المرمّزة: الماس والياقوت والصفير والزمرد." data-fa="جواهر قیمتی توکن‌سازی شده: الماس، یاقوت، زمرد." data-zh="代币化钻石、红宝石、蓝宝石、祖母绿。">Tokenized diamonds, rubies, sapphires, emeralds.</p><div class="stat"><span data-en="Stones" data-ru="Камней" data-tk="Daşlar" data-ar="الأحجار" data-fa="سنگ‌ها" data-zh="宝石数量">Stones</span><span>1,247</span></div><div class="stat"><span data-en="Value" data-ru="Стоимость" data-tk="Bahasy" data-ar="القيمة" data-fa="ارزش" data-zh="价值">Value</span><span>$8.7M</span></div><a href="https://www.gia.edu" target="_blank" class="btn" data-en="💎 Buy Gems" data-ru="💎 Купить камни" data-tk="💎 Daş satyn al" data-ar="💎 شراء الأحجار الكريمة" data-fa="💎 خرید جواهر" data-zh="💎 购买宝石">💎 Buy Gems</a></div>
+
+            <div class="card"><h2>🎰 Sports Franchises</h2><p data-en="Tokenized shares in soccer, basketball, and esports teams." data-ru="Токенизированные доли в футбольных, баскетбольных и киберспортивных командах." data-tk="Futbol, basketbol we esport toparlarynda tokenizirlenen paýlar." data-ar="أسهم مرمّزة في فرق كرة القدم وكرة السلة والرياضات الإلكترونية." data-fa="سهام توکن‌سازی شده در تیم‌های فوتبال، بسکتبال و ورزش الکترونیک." data-zh="代币化足球、篮球和电子竞技团队股份。">Tokenized shares in soccer, basketball, and esports teams.</p><div class="stat"><span data-en="Teams" data-ru="Команд" data-tk="Toparlar" data-ar="الفرق" data-fa="تیم‌ها" data-zh="球队数量">Teams</span><span>6</span></div><div class="stat"><span data-en="Min investment" data-ru="Мин. инвестиции" data-tk="Iň az maýa goýum" data-ar="الحد الأدنى للاستثمار" data-fa="حداقل سرمایه‌گذاری" data-zh="最低投资额">Min investment</span><span>25,000 TMT</span></div><a href="https://www.sportico.com" target="_blank" class="btn" data-en="🎰 Invest" data-ru="🎰 Инвестировать" data-tk="🎰 Maýa goý" data-ar="🎰 استثمر" data-fa="🎰 سرمایه‌گذاری" data-zh="🎰 投资">🎰 Invest</a></div>
+
+            <div class="card"><h2>🌊 Water Rights</h2><p data-en="Tokenized water rights for agriculture and industry." data-ru="Токенизированные водные права для сельского хозяйства и промышленности." data-tk="Ekerançylyk we senagat üçin tokenizirlenen suw hukuklary." data-ar="حقوق المياه المرمّزة للزراعة والصناعة." data-fa="حقوق آب توکن‌سازی شده برای کشاورزی و صنعت." data-zh="代币化农业和工业用水权。">Tokenized water rights for agriculture and industry.</p><div class="stat"><span data-en="Contracts" data-ru="Контрактов" data-tk="Şertnamalar" data-ar="العقود" data-fa="قراردادها" data-zh="合同数">Contracts</span><span>32</span></div><div class="stat"><span data-en="Yield" data-ru="Доходность" data-tk="Gelir" data-ar="العائد" data-fa="بازده" data-zh="收益率">Yield</span><span>6-8% APY</span></div><a href="https://www.watermarket.com" target="_blank" class="btn" data-en="🌊 Invest" data-ru="🌊 Инвестировать" data-tk="🌊 Maýa goý" data-ar="🌊 استثمر" data-fa="🌊 سرمایه‌گذاری" data-zh="🌊 投资">🌊 Invest</a></div>
+
+            <div class="card"><h2>🏛️ Historic Buildings</h2><p data-en="Tokenized castles, palaces, and historic estates." data-ru="Токенизированные замки, дворцы и исторические усадьбы." data-tk="Tokenizirlenen gala, köşkler we taryhy mülkler." data-ar="القلاع والقصور والعقارات التاريخية المرمّزة." data-fa="قلعه‌ها، کاخ‌ها و املاک تاریخی توکن‌سازی شده." data-zh="代币化城堡、宫殿和历史庄园。">Tokenized castles, palaces, and historic estates.</p><div class="stat"><span data-en="Properties" data-ru="Объектов" data-tk="Emlekler" data-ar="الممتلكات" data-fa="املاک" data-zh="房产数">Properties</span><span>14</span></div><div class="stat"><span data-en="Value" data-ru="Стоимость" data-tk="Bahasy" data-ar="القيمة" data-fa="ارزش" data-zh="价值">Value</span><span>$32.1M</span></div><a href="https://www.historicproperties.com" target="_blank" class="btn" data-en="🏛️ Invest" data-ru="🏛️ Инвестировать" data-tk="🏛️ Maýa goý" data-ar="🏛️ استثمر" data-fa="🏛️ سرمایه‌گذاری" data-zh="🏛️ 投资">🏛️ Invest</a></div>
+        </div>
+
+        <!-- ==================== ROW 5: MORE NEW FUNCTIONS ==================== -->
+        <div class="grid-4">
+            <div class="card"><h2>🚀 Space Assets</h2><p data-en="Tokenized satellites and space exploration projects." data-ru="Токенизированные спутники и проекты космических исследований." data-tk="Tokenizirlenen hemralar we kosmos gözleg taslamalary." data-ar="الأقمار الصناعية المرمّزة ومشاريع استكشاف الفضاء." data-fa="ماهواره‌ها و پروژه‌های اکتشاف فضایی توکن‌سازی شده." data-zh="代币化卫星和太空探索项目。">Tokenized satellites and space exploration projects.</p><div class="stat"><span data-en="Projects" data-ru="Проектов" data-tk="Taslamalar" data-ar="المشاريع" data-fa="پروژه‌ها" data-zh="项目数">Projects</span><span>3</span></div><a href="https://www.nasa.gov" target="_blank" class="btn" data-en="🚀 Invest" data-ru="🚀 Инвестировать" data-tk="🚀 Maýa goý" data-ar="🚀 استثمر" data-fa="🚀 سرمایه‌گذاری" data-zh="🚀 投资">🚀 Invest</a></div>
+
+            <div class="card"><h2>🧬 Biotech Patents</h2><p data-en="Tokenized biotech patents and pharmaceutical royalties." data-ru="Токенизированные биотех-патенты и фармацевтические роялти." data-tk="Tokenizirlenen biotehnologiýa patentleri we derman serişdeleri roýaltilary." data-ar="براءات الاختراع الحيوية المرمّزة والإتاوات الصيدلانية." data-fa="پتنت‌های بیوتکنولوژی و حق‌الامتیاز دارویی توکن‌سازی شده." data-zh="代币化生物技术专利和药物版税。">Tokenized biotech patents and pharmaceutical royalties.</p><div class="stat"><span data-en="Patents" data-ru="Патентов" data-tk="Patentler" data-ar="براءات الاختراع" data-fa="پتنت‌ها" data-zh="专利数">Patents</span><span>47</span></div><a href="https://www.biotech.com" target="_blank" class="btn" data-en="🧬 Invest" data-ru="🧬 Инвестировать" data-tk="🧬 Maýa goý" data-ar="🧬 استثمر" data-fa="🧬 سرمایه‌گذاری" data-zh="🧬 投资">🧬 Invest</a></div>
+
+            <div class="card"><h2>📚 Music Royalties</h2><p data-en="Tokenized music catalogues and streaming royalties." data-ru="Токенизированные музыкальные каталоги и роялти от стриминга." data-tk="Tokenizirlenen aýdym-saz kataloglary we akym roýaltilary." data-ar="كتالوجات الموسيقى المرمّزة والإتاوات من البث المباشر." data-fa="کاتالوگ‌های موسیقی و حق‌امتیاز استریمینگ توکن‌سازی شده." data-zh="代币化音乐目录和流媒体版税。">Tokenized music catalogues and streaming royalties.</p><div class="stat"><span data-en="Catalogues" data-ru="Каталогов" data-tk="Kataloglar" data-ar="الك catalogues" data-fa="کاتالوگ‌ها" data-zh="目录数">Catalogues</span><span>22</span></div><a href="https://www.royaltyexchange.com" target="_blank" class="btn" data-en="📚 Invest" data-ru="📚 Инвестировать" data-tk="📚 Maýa goý" data-ar="📚 استثمر" data-fa="📚 سرمایه‌گذاری" data-zh="📚 投资">📚 Invest</a></div>
+
+            <div class="card"><h2>🎬 Film Rights</h2><p data-en="Tokenized film and TV series production rights." data-ru="Токенизированные права на производство фильмов и сериалов." data-tk="Tokenizirlenen film we serial önümçilik hukuklary." data-ar="حقوق إنتاج الأفلام والمسلسلات التلفزيونية المرمّزة." data-fa="حقوق تولید فیلم و سریال توکن‌سازی شده." data-zh="代币化电影和电视剧制作权。">Tokenized film and TV series production rights.</p><div class="stat"><span data-en="Projects" data-ru="Проектов" data-tk="Taslamalar" data-ar="المشاريع" data-fa="پروژه‌ها" data-zh="项目数">Projects</span><span>9</span></div><a href="https://www.filmfinance.com" target="_blank" class="btn" data-en="🎬 Invest" data-ru="🎬 Инвестировать" data-tk="🎬 Maýa goý" data-ar="🎬 استثمر" data-fa="🎬 سرمایه‌گذاری" data-zh="🎬 投资">🎬 Invest</a></div>
+        </div>
+
+        <!-- ==================== DASHBOARD ==================== -->
         <div class="card">
             <h2 data-en="📊 RWA Dashboard" data-ru="📊 RWA Дашборд" data-tk="📊 RWA tablisa" data-ar="📊 لوحة معلومات RWA" data-fa="📊 داشبورد RWA" data-zh="📊 RWA 仪表板">📊 RWA Dashboard</h2>
-            <div class="stat"><span data-en="Total RWA Tokenized Value" data-ru="Общая токенизированная стоимость RWA" data-tk="Jemi RWA tokenizirlenen bahasy" data-ar="إجمالي قيمة RWA المرمّزة" data-fa="ارزش کل توکن‌سازی شده RWA" data-zh="RWA 代币化总价值">Total RWA Tokenized Value</span><span>$1.42B</span></div>
+            <div class="stat"><span data-en="Total Tokenized Value" data-ru="Общая токенизированная стоимость" data-tk="Jemi tokenizirlenen baha" data-ar="إجمالي القيمة المرمّزة" data-fa="ارزش کل توکن‌سازی شده" data-zh="代币化总价值">Total Tokenized Value</span><span>$1.42B</span></div>
             <div class="stat"><span data-en="Monthly Trading Volume" data-ru="Ежемесячный объём торгов" data-tk="Aýlyk söwda göwrümi" data-ar="حجم التداول الشهري" data-fa="حجم معاملات ماهانه" data-zh="月交易量">Monthly Trading Volume</span><span>$89.3M</span></div>
             <div class="stat"><span data-en="Active RWA Holders" data-ru="Активных держателей RWA" data-tk="Işjeýn RWA eýeleri" data-ar="حاملو RWA النشطون" data-fa="دارندگان فعال RWA" data-zh="活跃 RWA 持有者">Active RWA Holders</span><span>8,421</span></div>
+            <div class="stat"><span data-en="Avg. Yield (RWA assets)" data-ru="Средняя доходность (RWA)" data-tk="Ortaça girdeji (RWA)" data-ar="متوسط العائد (الأصول الحقيقية)" data-fa="میانگین بازده (دارایی‌های واقعی)" data-zh="平均收益率（RWA 资产）">Avg. Yield (RWA assets)</span><span>9.8% APY</span></div>
         </div>
 
-        <div class="footer">© 2025 TMT RWA — Tokenized Real World Assets | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</div>
+        <div class="footer">
+            © 2025 TMT RWA — Tokenized Real World Assets | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2
+        </div>
     </div>
 
     <script>
