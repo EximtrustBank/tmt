@@ -8,44 +8,126 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a2a0a 0%, #2d5a1e 50%, #1a3a0a 100%);
-            color: #fff;
+            background: radial-gradient(ellipse at 30% 20%, #0a1a12, #050d08);
+            color: #d0d8d0;
             line-height: 1.6;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .lang-switch {
+            position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem; border-radius: 40px; z-index: 100; display: flex; flex-wrap: wrap; gap: 0.5rem;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .lang-btn {
+            background: transparent; border: none; color: #d0d8d0; cursor: pointer; padding: 0.3rem 0.8rem;
+            border-radius: 30px; font-weight: bold; transition: all 0.2s; font-size: 0.85rem;
+        }
+        .lang-btn.active { background: #d4a843; color: #0a1a0f; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .logo { width: 80px; height: 80px; margin: 0 auto 1rem; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #ffd700; }
-        .logo img { width: 75%; border-radius: 50%; }
-        h1 { font-size: 2rem; color: #ffd700; }
-        .back-link { color: #ffec80; text-decoration: none; }
-        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; }
-        .nav a { background: rgba(255,215,0,0.2); padding: 0.4rem 1rem; border-radius: 40px; text-decoration: none; color: white; font-size: 0.9rem; }
-        .nav a:hover, .nav a.active { background: #ffd700; color: #0a2e1c; }
+        .logo { width: 100px; height: 100px; margin: 0 auto 1rem; background: #0f2418; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #d4a843; }
+        .logo img { width: 80%; border-radius: 50%; }
+        h1 { font-size: 1.8rem; color: #e8d8a8; }
+        .back-link { color: #d4a843; text-decoration: none; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+        .nav a { background: rgba(30,45,35,0.7); padding: 0.3rem 0.8rem; border-radius: 40px; text-decoration: none; color: #d0d8d0; font-size: 0.8rem; border: 1px solid rgba(212,168,67,0.25); transition: 0.2s; }
+        .nav a:hover { background: #d4a843; color: #0a1a0f; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,215,0,0.3); }
-        .card h2 { color: #ffd700; margin-bottom: 1rem; }
-        .price { font-size: 1.8rem; color: #ffd700; margin: 0.5rem 0; }
-        .btn { background: #ffd700; color: #0a2e1c; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
-        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
+        .card { background: rgba(20,35,25,0.7); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.2rem; border: 1px solid rgba(212,168,67,0.25); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); border-color: #d4a843; background: rgba(30,50,38,0.75); }
+        .card h2 { color: #e8d8a8; margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .price { font-size: 1.6rem; color: #d4a843; margin: 0.5rem 0; }
+        .stat { display: flex; justify-content: space-between; margin: 0.5rem 0; padding: 0.3rem 0; border-bottom: 1px solid rgba(212,168,67,0.15); }
+        .btn { background: #d4a843; color: #0a1a0f; padding: 0.4rem 0.8rem; border-radius: 40px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 0.5rem; transition: 0.2s; }
+        .btn:hover { background: #e8c060; transform: scale(1.02); }
+        .footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(212,168,67,0.2); font-size: 0.7rem; }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.3rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .lang-switch { top: 10px; right: 10px; padding: 0.3rem 0.6rem; }
+            .lang-btn { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header"><div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div><h1>🏔️ TMT RWA Tokenization</h1><a href="index.html" class="back-link">← Back to Main</a></div>
-        <div class="nav"><a href="index.html">🏠 Home</a><a href="ecosystem.html">🌿 Ecosystem</a><a href="defi-hub.html">💰 DeFi Hub</a><a href="rwa.html" class="active">🏔️ RWA</a><a href="dao.html">🗳️ DAO</a><a href="card.html">💳 Card</a><a href="bridge.html">🌉 Bridge</a><a href="whitepaper.html">📄 WP</a></div>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="tk">Tk</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
 
-        <div class="grid-3">
-            <div class="card"><h2>🥇 Physical Gold</h2><div class="price">1 oz = 85,650 TMT</div><p>99.99% pure LBMA-certified gold bars. Storage in Swiss vaults. Delivery worldwide.</p><div class="stat"><span>Total tokenized</span><span>1,240 oz</span></div><a href="#" class="btn">Buy Gold →</a></div>
-            <div class="card"><h2>🥈 Silver Bars</h2><div class="price">1 oz = 1,375 TMT</div><p>99.9% pure silver. LBMA-certified. Secure storage or physical delivery.</p><div class="stat"><span>Total tokenized</span><span>85,000 oz</span></div><a href="#" class="btn">Buy Silver →</a></div>
-            <div class="card"><h2>🔷 Platinum</h2><div class="price">1 oz = 28,550 TMT</div><p>Investment-grade platinum. LPPM-certified bars.</p><div class="stat"><span>Total tokenized</span><span>320 oz</span></div><a href="#" class="btn">Buy Platinum →</a></div>
-            <div class="card"><h2>🏠 Real Estate (Dubai)</h2><div class="price">from 50,000 TMT</div><p>Fractional ownership of luxury apartments in Dubai Marina, Downtown, Palm Jumeirah.</p><div class="stat"><span>Properties tokenized</span><span>24</span></div><a href="#" class="btn">Invest →</a></div>
-            <div class="card"><h2>🛢️ Oil & Gas</h2><div class="price">1 barrel = 1,800 TMT</div><p>Tokenized crude oil futures. Backed by physical reserves. Monthly dividends.</p><div class="stat"><span>Barrels tokenized</span><span>500,000</span></div><a href="#" class="btn">Buy Oil →</a></div>
-            <div class="card"><h2>🌾 Agricultural Land</h2><div class="price">1 hectare = 12,000 TMT</div><p>Farmland in Argentina, Brazil, Ukraine. Annual yield 8-12% from crop sales.</p><div class="stat"><span>Hectares tokenized</span><span>12,500</span></div><a href="#" class="btn">Invest →</a></div>
+    <div class="container">
+        <div class="header">
+            <div class="logo"><img src="https://raw.githubusercontent.com/EximtrustBank/tmt/main/logo_tmt.png" alt="TMT"></div>
+            <h1 data-en="🏔️ TMT RWA Tokenization" data-ru="🏔️ TMT RWA Токенизация" data-tk="🏔️ TMT RWA Tokenizasiýa" data-ar="🏔️ ترميز TMT للأصول الحقيقية" data-fa="🏔️ توکن‌سازی دارایی واقعی TMT" data-zh="🏔️ TMT 现实世界资产代币化">🏔️ TMT RWA Tokenization</h1>
+            <a href="index.html" class="back-link" data-en="← Back to Main Page" data-ru="← На главную" data-tk="← Baş sahypa" data-ar="← العودة إلى الصفحة الرئيسية" data-fa="← بازگشت به صفحه اصلی" data-zh="← 返回主页">← Back to Main Page</a>
         </div>
 
-        <div class="card"><h2>📊 RWA Dashboard</h2><div class="stat"><span>Total RWA Tokenized Value</span><span>$1.42B</span></div><div class="stat"><span>Monthly Trading Volume</span><span>$89.3M</span></div><div class="stat"><span>Active RWA Holders</span><span>8,421</span></div><div class="stat"><span>Avg. Yield (RWA assets)</span><span>9.8% APY</span></div></div>
+        <div class="nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="ecosystem.html">🌿 Ecosystem</a>
+            <a href="defi-hub.html">💰 DeFi Hub</a>
+            <a href="lending.html">🏦 Lending</a>
+            <a href="trading.html">📈 Trading</a>
+            <a href="earn.html">💸 Earn</a>
+            <a href="rwa.html" style="background:#d4a843; color:#0a1a0f;">🏔️ RWA</a>
+            <a href="rwa2.html">🏔️ RWA+</a>
+            <a href="payments.html">💳 Payments</a>
+            <a href="social.html">🎮 Social</a>
+            <a href="dao.html">🗳️ DAO</a>
+            <a href="card.html">💳 Card</a>
+            <a href="bridge.html">🌉 Bridge</a>
+            <a href="currency.html">💱 Currency</a>
+            <a href="islamic.html">🕌 Islamic</a>
+            <a href="whitepaper.html">📄 WP</a>
+        </div>
 
-        <div class="footer">© 2025 TMT RWA — Tokenized Real World Assets on Solana</div>
+        <div class="grid-3">
+            <div class="card"><h2>🥇 Physical Gold</h2><div class="price">1 oz = 85,650 TMT</div><p data-en="99.99% pure LBMA-certified gold bars. Storage in Swiss vaults." data-ru="99.99% чистые слитки золота с сертификацией LBMA. Хранение в швейцарских хранилищах." data-tk="99.99% arassa LBMA-sertifikatly altyn külçeler. Şweýsariýa ammarlarynda saklanýar." data-ar="سبائك ذهب نقية 99.99% معتمدة من LBMA. تخزين في خزائن سويسرية." data-fa="شمش طلا خالص ۹۹.۹۹٪ دارای گواهی LBMA. ذخیره در خزانه‌های سوئیس." data-zh="纯度 99.99% 的 LBMA 认证金条。存放在瑞士金库中。">99.99% pure LBMA-certified gold bars. Storage in Swiss vaults.</p><div class="stat"><span data-en="Total tokenized" data-ru="Всего токенизировано" data-tk="Jemi tokenizirlenen" data-ar="إجمالي المرمّز" data-fa="کل توکن‌سازی شده" data-zh="总计代币化">Total tokenized</span><span>1,240 oz</span></div><a href="#" class="btn" data-en="Buy Gold →" data-ru="Купить золото →" data-tk="Altyn satyn al →" data-ar="شراء الذهب ←" data-fa="خرید طلا ←" data-zh="购买黄金 →">Buy Gold →</a></div>
+
+            <div class="card"><h2>🥈 Silver Bars</h2><div class="price">1 oz = 1,375 TMT</div><p data-en="99.9% pure silver. LBMA-certified. Secure storage or physical delivery." data-ru="99.9% чистое серебро. Сертифицировано LBMA. Безопасное хранение или физическая доставка." data-tk="99.9% arassa kümüş. LBMA-sertifikatly. Ygtybarly saklanýar ýa-da fiziki eltip berilýär." data-ar="فضة نقية 99.9%. معتمدة من LBMA. تخزين آمن أو تسليم مادي." data-fa="نقره خالص ۹۹.۹٪. دارای گواهی LBMA. ذخیره امن یا تحویل فیزیکی." data-zh="纯度 99.9% 的银条。LBMA 认证。安全存储或实物交付。">99.9% pure silver. LBMA-certified. Secure storage or physical delivery.</p><div class="stat"><span data-en="Total tokenized" data-ru="Всего токенизировано" data-tk="Jemi tokenizirlenen" data-ar="إجمالي المرمّز" data-fa="کل توکن‌سازی شده" data-zh="总计代币化">Total tokenized</span><span>85,000 oz</span></div><a href="#" class="btn" data-en="Buy Silver →" data-ru="Купить серебро →" data-tk="Kümüş satyn al →" data-ar="شراء الفضة ←" data-fa="خرید نقره ←" data-zh="购买白银 →">Buy Silver →</a></div>
+
+            <div class="card"><h2>🔷 Platinum</h2><div class="price">1 oz = 28,550 TMT</div><p data-en="Investment-grade platinum. LPPM-certified bars." data-ru="Платина инвестиционного класса. Слитки с сертификацией LPPM." data-tk="Maýa goýum derejesindäki platina. LPPM-sertifikatly külçeler." data-ar="بلاتين بدرجة استثمارية. سبائك معتمدة من LPPM." data-fa="پلاتین درجه سرمایه‌گذاری. شمش‌های دارای گواهی LPPM." data-zh="投资级铂金。LPPM 认证金条。">Investment-grade platinum. LPPM-certified bars.</p><div class="stat"><span data-en="Total tokenized" data-ru="Всего токенизировано" data-tk="Jemi tokenizirlenen" data-ar="إجمالي المرمّز" data-fa="کل توکن‌سازی شده" data-zh="总计代币化">Total tokenized</span><span>320 oz</span></div><a href="#" class="btn" data-en="Buy Platinum →" data-ru="Купить платину →" data-tk="Platinum satyn al →" data-ar="شراء البلاتين ←" data-fa="خرید پلاتین ←" data-zh="购买铂金 →">Buy Platinum →</a></div>
+
+            <div class="card"><h2>🏠 Real Estate (Dubai)</h2><div class="price">from 50,000 TMT</div><p data-en="Fractional ownership of luxury apartments in Dubai Marina, Downtown, Palm Jumeirah." data-ru="Долевое владение роскошными апартаментами в Dubai Marina, Downtown, Palm Jumeirah." data-tk="Dubai Marina, Downtown, Palm Jumeirah-da gowy öýleriň paýlaýyn eýeçiligi." data-ar="ملكية جزئية للشقق الفاخرة في دبي مارينا، داون تاون، نخلة جميرا." data-fa="مالکیت کسری آپارتمان‌های لوکس در دبی مارینا، داون‌تاون، پالم جمیرا." data-zh="迪拜码头、市中心、朱美拉棕榈岛豪华公寓的分式所有权。">Fractional ownership of luxury apartments in Dubai Marina, Downtown, Palm Jumeirah.</p><div class="stat"><span data-en="Properties tokenized" data-ru="Объектов токенизировано" data-tk="Tokenizirlenen emläkler" data-ar="الممتلكات المرمّزة" data-fa="املاک توکن‌سازی شده" data-zh="代币化房产">Properties tokenized</span><span>24</span></div><a href="#" class="btn" data-en="Invest →" data-ru="Инвестировать →" data-tk="Maýa goý →" data-ar="استثمر ←" data-fa="سرمایه‌گذاری ←" data-zh="投资 →">Invest →</a></div>
+
+            <div class="card"><h2>🛢️ Oil & Gas</h2><div class="price">1 barrel = 1,800 TMT</div><p data-en="Tokenized crude oil futures. Backed by physical reserves." data-ru="Токенизированные фьючерсы на сырую нефть. Обеспечены физическими резервами." data-tk="Tokenizirlenen çig nebit fýuçersleri. Fiziki ätiýaçlyklar bilen üpjün edilen." data-ar="العقود الآجلة للنفط الخام المرمّزة. مدعومة بالاحتياطيات المادية." data-fa="قراردادهای آتی نفت خام توکن‌سازی شده. پشتیبانی شده با ذخایر فیزیکی." data-zh="代币化原油期货。由实物储备支持。">Tokenized crude oil futures. Backed by physical reserves.</p><div class="stat"><span data-en="Barrels tokenized" data-ru="Баррелей токенизировано" data-tk="Tokenizirlenen barrel" data-ar="البراميل المرمّزة" data-fa="بشکه‌های توکن‌سازی شده" data-zh="代币化桶数">Barrels tokenized</span><span>500,000</span></div><a href="#" class="btn" data-en="Buy Oil →" data-ru="Купить нефть →" data-tk="Nebit satyn al →" data-ar="شراء النفط ←" data-fa="خرید نفت ←" data-zh="购买石油 →">Buy Oil →</a></div>
+
+            <div class="card"><h2>🌾 Agricultural Land</h2><div class="price">1 hectare = 12,000 TMT</div><p data-en="Farmland in Argentina, Brazil, Ukraine. Annual yield 8-12% from crop sales." data-ru="Сельхозземли в Аргентине, Бразилии, Украине. Ежегодная доходность 8-12% от продажи урожая." data-tk="Argentinada, Braziliýada, Ukrainada ekerançylyk ýerleri. Hasyl satuwyndan 8-12% ýyllyk girdeji." data-ar="الأراضي الزراعية في الأرجنتين والبرازيل وأوكرانيا. عائد سنوي 8-12% من مبيعات المحاصيل." data-fa="زمین‌های کشاورزی در آرژانتین، برزیل، اوکراین. بازده سالانه ۸-۱۲٪ از فروش محصول." data-zh="阿根廷、巴西、乌克兰的农田。作物销售年收益 8-12%。">Farmland in Argentina, Brazil, Ukraine. Annual yield 8-12% from crop sales.</p><div class="stat"><span data-en="Hectares tokenized" data-ru="Гектаров токенизировано" data-tk="Tokenizirlenen gektar" data-ar="الهكتارات المرمّزة" data-fa="هکتارهای توکن‌سازی شده" data-zh="代币化公顷">Hectares tokenized</span><span>12,500</span></div><a href="#" class="btn" data-en="Invest →" data-ru="Инвестировать →" data-tk="Maýa goý →" data-ar="استثمر ←" data-fa="سرمایه‌گذاری ←" data-zh="投资 →">Invest →</a></div>
+        </div>
+
+        <div class="card">
+            <h2 data-en="📊 RWA Dashboard" data-ru="📊 RWA Дашборд" data-tk="📊 RWA tablisa" data-ar="📊 لوحة معلومات RWA" data-fa="📊 داشبورد RWA" data-zh="📊 RWA 仪表板">📊 RWA Dashboard</h2>
+            <div class="stat"><span data-en="Total RWA Tokenized Value" data-ru="Общая токенизированная стоимость RWA" data-tk="Jemi RWA tokenizirlenen bahasy" data-ar="إجمالي قيمة RWA المرمّزة" data-fa="ارزش کل توکن‌سازی شده RWA" data-zh="RWA 代币化总价值">Total RWA Tokenized Value</span><span>$1.42B</span></div>
+            <div class="stat"><span data-en="Monthly Trading Volume" data-ru="Ежемесячный объём торгов" data-tk="Aýlyk söwda göwrümi" data-ar="حجم التداول الشهري" data-fa="حجم معاملات ماهانه" data-zh="月交易量">Monthly Trading Volume</span><span>$89.3M</span></div>
+            <div class="stat"><span data-en="Active RWA Holders" data-ru="Активных держателей RWA" data-tk="Işjeýn RWA eýeleri" data-ar="حاملو RWA النشطون" data-fa="دارندگان فعال RWA" data-zh="活跃 RWA 持有者">Active RWA Holders</span><span>8,421</span></div>
+        </div>
+
+        <div class="footer">© 2025 TMT RWA — Tokenized Real World Assets | Contract: Go8VAmc2SWtYsHxhfjBtuwa8HVUGE3uSqRtMWmW6GuP2</div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en][data-ru][data-tk][data-ar][data-fa][data-zh]').forEach(el => {
+                if (lang === 'en') el.innerText = el.getAttribute('data-en');
+                else if (lang === 'ru') el.innerText = el.getAttribute('data-ru');
+                else if (lang === 'tk') el.innerText = el.getAttribute('data-tk');
+                else if (lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else if (lang === 'fa') el.innerText = el.getAttribute('data-fa');
+                else if (lang === 'zh') el.innerText = el.getAttribute('data-zh');
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            document.documentElement.lang = lang;
+            if (lang === 'ar' || lang === 'fa') { document.body.style.direction = 'rtl'; document.querySelector('.container').style.direction = 'rtl'; }
+            else { document.body.style.direction = 'ltr'; document.querySelector('.container').style.direction = 'ltr'; }
+        }
+        document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))); });
+        setLanguage('en');
+    </script>
 </body>
 </html>
